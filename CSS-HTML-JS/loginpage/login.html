@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>Log In</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="loginstyle.css">
+    <link rel="icon" type="image/x-icon" href="../images/logo.png">
+    <meta name="Wokhunt log in" content="HTML">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="up">
+        <h2 id="WorkhuntHeader"><img id="mainLogo" src="../images/logo.png" alt="logo">WorkHunt</h2>
+    </div>
+    <img id="img1" src="../images/img1.png">
+    <img id="img2" src="../images/img2.png">
+    <img id="img3" src="../images/img3.png">
+    <img id="img4" src="../images/img4.png">
+    <div class="form">
+        <h1 id="LogInHeader">LOG IN</h1>
+        <form autocomplete="on" action="GREGG_RULZ_OK?" id="LoginForm">
+            
+                <div class="infoword"><label for="login">Login:</label></div><br>
+                <input type="text" name="login" value=""
+                    placeholder="Enter login..." size="34" maxlength="50" required><br><br>
+
+                    <div class="infoword"><label for="password">Password:</label></div><br>
+                <input type="password" name="password" value="" 
+                    placeholder="Enter password..." size="34" maxlength="50" required><br>
+
+                <p class="error">Invalid login or password</p> 
+
+                <input id="Submit" type="submit" value="Log in" onclick="alert('BRUH')">
+        </form>
+        <p id="IDontHaveAnAccount">I don't have an account</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,250 @@
+*
+{
+    margin: 0px;
+    padding: 0px;
+    font-size: 20px;
+    color: #A6884E;
+    font-family: sans-serif;
+}
+#WorkhuntHeader
+{
+    padding-top: 0px;
+    text-align: center;
+    color: #E7E7E7;
+    text-shadow: 0px 6px 6px rgba(231, 231, 231, 0.5);
+    font-family: 'Segoe UI';
+    font-size: 50px;
+    cursor:pointer;
+}
+#mainLogo
+{
+    margin-right: 5px;
+    width:60px;
+    height:60px;
+    vertical-align: sub;
+}
+.form
+{
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 60px;
+    box-sizing: border-box;
+    min-width: 400px;
+    max-width: 500px;
+    height: 500px;
+    border-radius: 50px;
+    box-shadow: 0px 8px 10px 2px rgba(0, 0, 0, 0.300);
+    background-image: linear-gradient(#302A33,  #3E2D47);
+    padding: 10px;
+    position: relative;
+}
+body
+{
+    background-image: url(../images/20prlines.png);
+    background-attachment: fixed;
+    background-size: 216px, 384px, cover;
+    background-color: #302A33;
+}
+.up
+{
+    margin: 0;
+    width: 100%;
+    min-height: 80px;
+    background-size: 100vw;
+    background-image: linear-gradient(to right,#302A33, #5b2775 ,#302A33);
+    background-clip: border-box;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.484);
+}
+#LogInHeader
+{
+    color: #F4D18C;
+    font-size: 38px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+#LoginForm
+{
+    text-align: center;
+}
+.infoword
+{
+    padding-left: 40px;
+    margin-bottom: -15px;
+    text-align: left;
+}
+@media only screen and (max-width: 485px) {
+    .infoword
+    {
+        padding-left: 25px;
+    }
+    .error
+    {
+        margin: 0px;
+        padding: 0px;
+        position: relative;
+        left: -15px;
+    }
+}
+@media only screen and (max-width: 410px) {
+    .up
+    {
+        min-width: 405px;
+    }
+    .infoword
+    {
+    padding-left: 0px;
+    margin-bottom: -15px;
+    text-align: left;
+    }
+    .error
+    {
+        margin: 0px;
+        padding: 0px;
+        position: relative;
+        left: -40px;
+    }
+}
+.error
+{
+    padding-left: 40px;
+    font-size: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: left;
+    color: #E7E7E7;
+}
+#Submit
+{
+    margin-top: 10px;
+    background-color: #663C7B;
+    color: #E0ACFA;
+    font-weight: bold;
+    border: hidden;
+    border-radius: 20px;
+    box-shadow: 0px 4px 8px 4px rgba(0, 0, 0, 0.2);
+    width: 250px;
+    height: 40px;
+    transition-duration: 0.4s;
+    cursor:pointer;
+}
+#Submit:hover
+{
+    background-color: #844da0;
+    color: #e7bdfc;
+    font-size: 23px;
+    box-shadow: 0px 0px 10px 6px rgb(157, 92, 189);
+    transition-duration: 0.4s;
+}
+#Submit:active {
+    background-color: #663C7B;
+    color: #e0aef9;
+    box-shadow: 0px 0px 10px 6px rgb(124, 73, 150);
+    transform: translateY(4px);
+    background-image: url(../images/20prlines.png);
+    background-attachment: fixed;
+    background-size: 216px, 384px, cover;
+    transition-duration: 0.2s;
+  }
+#IDontHaveAnAccount
+{
+    font-family: sans-serif;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 45px;
+    color: #E0ACFA;
+    cursor:pointer;
+    font-weight: bolder;
+    position: relative;
+    bottom: -52px;
+}
+#IDontHaveAnAccount:hover
+{
+    color: #e6bdfa;
+    text-shadow: 0 0 10px rgb(223, 170, 250);
+}
+input[type=text],input[type=password]
+{
+    background-color: #262229;
+    color: #E7E7E7;
+    font-style: italic;
+    border: 3px solid #262229;
+    max-width: 450px;
+    height: 40px;
+    border-radius: 10px;
+    outline: none;
+    transition-duration: 0.4s;
+}
+input[type=text]:focus, input[type=password]:focus 
+{
+    border: 3px solid #A343D3;
+    border-radius: 10px;
+}
+#img1, #img2, #img3, #img4
+{
+    position: absolute;
+    z-index: -1;
+    transition-duration: 0.4s;
+}
+#img1
+{
+    left: 300px;
+    bottom: 100px;
+    width: 120px;
+    height: 120px;
+}
+#img2
+{
+    right: 80px;
+    top: 210px;
+    width: 180px;
+    height: 180px;
+}
+#img3
+{
+    right: 180px;
+    bottom: 70px;
+    width: 180px;
+    height: 180px;
+}
+#img4
+{
+    left: 70px;
+    top: 150px;
+    width: 220px;
+    height: 220px;
+}
+@media only screen and (max-width: 1120px) {
+    #img1, #img2, #img3, #img4
+    {
+        display: none;
+    }   
+}
+@media only screen and (max-width: 720px) {
+    #img1, #img2, #img3, #img4 {
+        position: static;
+        transition-duration: 0.4s;
+    }
+}
+@media only screen and (min-width: 1800px) {
+    #img1
+    {
+        width: 320px;
+        height: 320px;
+    }
+    #img2
+    {
+        width: 380px;
+        height: 380px;
+    }
+    #img3
+    {
+        width: 280px;
+        height: 280px;
+    }
+    #img4
+    {
+        width: 350px;
+        height: 350px;
+    }
+}
