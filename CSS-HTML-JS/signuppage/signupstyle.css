@@ -3,7 +3,7 @@
     padding: 0;
     margin: 0; 
     font-size: 20px;
-     font-family: sans-serif;
+    font-family: sans-serif;
 }
 body
 {
@@ -110,4 +110,30 @@ h1
 {
     color: #e6bdfa;
     text-shadow: 0 0 10px rgb(223, 170, 250);
+}
+#img
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    height: 520px;
+    width: auto;
+    transition-duration: 0.2s;
+    z-index: -2;
+}
+@media only screen and (max-width: 1000px) 
+{
+    #img
+    {
+        opacity: 0;
+        transition-duration: 0.2s;
+    }
+}
+@media only screen and (max-width: 950px) 
+{
+    #img
+    {
+        width: 0px;
+    }
 }
