@@ -2,14 +2,14 @@ Rails.application.routes.draw do
   root :to => "home#index"
 
   # Регистрация
-  get '/users/registration', to: 'users#registration'
-  get '/users/registration/user', to: 'users#registrationuser'
-  get '/users/registration/organization', to: 'users#registrationorganization'
+  get '/registration', to: 'home#registration'
+  get '/registration/user', to: 'users#registration'
+  get '/registration/organization', to: 'organizations#registration'
   # Вход в аккаунт
-  get '/users/login', to: 'users#login'
-  get '/users/login/user', to: 'users#loginuser'
-  get '/users/login/organization', to: 'users#loginorganization'
+  get '/login', to: 'home#login'
+  get '/login/user', to: 'users#login'
+  get '/login/organization', to: 'organizations#login'
   
   #get '/users/:id', to: 'users#show'#, as: 'user'
-  # resources :user
+  # resources :user, only: [:show]
 end

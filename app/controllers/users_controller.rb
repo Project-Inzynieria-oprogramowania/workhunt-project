@@ -1,16 +1,8 @@
 class UsersController < ApplicationController
-    def chooseregistration
+    def registration
+        @user = User.new
     end
-    def registrationuser
-    end
-    def registrationorganization
-    end
-    
-    def chooselogin
-    end
-    def loginuser
-    end
-    def loginorganization
+    def login
     end
 
     # def index
