@@ -1,2 +1,19 @@
-<h1>Форма регистрации пользователя</h1>
-<%= link_to 'текст ссылки (назад, форма регистрации)', registration_path %><br>
+<div class="TopBanner">
+    <%= link_to root_path do %>
+        <%= image_tag 'logo.png', id: 'MainLogo'%>
+        <%= content_tag :span, "WorkHunt", id: "WorkhuntHeader" %>
+    <% end %>
+</div>
+<div class="DefaultForm">
+<div id="Buttons">
+    <h1 id="MainHeader">SIGN UP</h1>
+    <hr class='DivisionLine'>
+    <p class="Info">Create personal account</p>
+
+    <form autocomplete="on" action="Some action" id="LoginForm">
+    </form>
+    <%= link_to 'Choose another account to create', registration_path, class: 'AnotherOption' %><br>
+    <%= link_to "I already have an account", login_path, class: 'AnotherOption', id: 'LoggingInOption' %><br>
+</div>
+    <%= image_tag '4in1.png', id: 'FourInOne'%>
+</div>
