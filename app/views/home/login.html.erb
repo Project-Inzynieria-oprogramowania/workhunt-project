@@ -1,7 +1,15 @@
-<h1>Форма входа в аккаунт</h1>
-<%= link_to 'текст ссылки (назад)', root_path %><br>
+<div class="TopBanner">
+    <%= image_tag 'logo.png', id: 'MainLogo'%>
+    <%= link_to "WorkHunt", root_path, id: 'WorkhuntHeader'%>
+</div>
+<div class="LoginForm">
+<div id="Buttons">
+    <h1 id="LogInHeader">LOG IN</h1>
+    <hr class='DivisionLine'>
+    <p class="Info">Continue as...</p>
+    <%= link_to "An user", login_user_path, class: 'Button' %><br>
+    <%= link_to "An organization", login_organization_path, class: 'Button' %><br>
 
-<%= link_to 'текст ссылки (пользователь)', login_user_path %><br>
-<%= link_to 'текст ссылки (организация)', login_organization_path %><br>
-
-<%= link_to 'текст ссылки (форма регистрации)', registration_path %><br>
+    <%= link_to "I don't have an account", registration_path, id: 'IDontHaveAnAccount' %><br>
+</div>
+</div>

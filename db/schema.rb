@@ -18,7 +18,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_02_175003) do
     t.text "about"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    # t.index ["login"], name: "index_organizations_on_login", unique: true
+    t.index ["login"], name: "index_organizations_on_login", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -29,6 +29,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_02_175003) do
     t.text "about"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["login"], name: "index_users_on_login", unique: true
   end
 
 end
