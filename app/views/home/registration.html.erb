@@ -1,4 +1,19 @@
-<h1>Форма регистрации</h1>
-<%= link_to 'sign up as an user', registration_user_path %><br>
-<%= link_to 'sign up as an organization', registration_organization_path %><br>
-<%= link_to 'i already have an account', login_path %><br>
+<div class="TopBanner">
+<!--#<%= image_tag 'logo.png', id: 'MainLogo'%>--!>
+<!--#<%= link_to "WorkHunt", root_path, id: 'WorkhuntHeader'%>--!>
+    <%= link_to root_path do %>
+        <%= image_tag 'logo.png', id: 'MainLogo'%>
+        <%= content_tag :span, "WorkHunt", id: "WorkhuntHeader" %>
+    <% end %>
+</div>
+<div class="DefaultForm">
+<div id="Buttons">
+    <h1 id="MainHeader">SIGN UP</h1>
+    <hr class='DivisionLine'>
+    <p class="Info">Select which account you want to create</p>
+    <%= link_to 'Create a personal account', registration_user_path, class: 'Button' %><br>
+    <%= link_to 'Create an organization account', registration_organization_path, class: 'Button' %><br>
+    <%= link_to 'I already have an account', login_path, class: 'AnotherOption', id: 'RegistrationThirdOption' %><br>
+</div>
+    <%= image_tag '4in1.png', id: 'FourInOne'%>
+</div>
