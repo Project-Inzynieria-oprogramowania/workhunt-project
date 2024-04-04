@@ -1,13 +1,37 @@
-<div class="DefaultForm">
+<div class="SignUpForm">
 <div id="Buttons">
     <h1 id="MainHeader">SIGN UP</h1>
     <hr class='DivisionLine'>
     <p class="Info">Create personal account</p>
 
     <form autocomplete="on" action="Some action" id="LoginForm">
+                <input type="email" name="email" value=""
+                placeholder="Enter email..." size="34" maxlength="50" required><br><br>
+
+                <input type="text" name="login" value=""
+                    placeholder="Enter login..." size="34" maxlength="50" required><br><br>
+
+                <input type="text" name="login" value=""
+                    placeholder="Name..." size="34" maxlength="50" class="InputName" required>
+                <input type="text" name="login" value=""
+                    placeholder="Surname..." size="34" maxlength="50" class="InputSurname" required><br><br>
+
+                <input type="date" name="DOB" required><br>
+
+                <input type="password" name="password" value="" 
+                    placeholder="Enter password..." size="34" maxlength="50" required><br><br>
+
+                <input type="password" name="password2" value="" 
+                    placeholder="Repeat password..." size="34" maxlength="50" required><br>
+
+                <p class="error">Invalid login or password</p> 
+
+                <input id="Submit" class='Button' type="submit" value="Confirm" onclick="alert('Some alert')">
     </form>
-    <%= link_to 'Choose another account to create', registration_path, class: 'AnotherOption' %><br>
+
+    <%= link_to 'Choose another account to create', registration_path, class: 'Button' %><br>
     <%= link_to "I already have an account", login_path, class: 'AnotherOption', id: 'LoggingInOption' %><br>
+    <p class="ItalicInfo">*You will be able to add additional information on your profile page</p>
 </div>
-    <%= image_tag '4in1.png', id: 'FourInOne'%>
+    <%= image_tag '4in1.png', id: 'FourInOneReg'%>
 </div>
