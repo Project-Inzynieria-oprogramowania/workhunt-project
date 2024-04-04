@@ -26,6 +26,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_02_175003) do
     t.string "password_digest", null: false
     t.string "name", null: false
     t.string "surname", null: false
+    t.datetime "DOB"
     t.text "about"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
