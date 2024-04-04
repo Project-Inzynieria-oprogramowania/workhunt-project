@@ -5,7 +5,6 @@ class CreateUsers < ActiveRecord::Migration[7.1]
       t.string :password_digest, null: false              # null: false             не пустое поле
       t.string :name, null: false
       t.string :surname, null: false
-      t.datetime :DOB
       t.text :about
 
       t.timestamps
