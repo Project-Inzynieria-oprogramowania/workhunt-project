@@ -6,10 +6,9 @@
 
 <div>
     <% if user_signed_in? %>
-        <% current_user.name %>
+        <%= current_user.name %>
     <% elsif organization_signed_in? %>
-        <% current_organization.name %>
-    <% else %>
-        <%= link_to 'Log in form', login_path %><br>
-    <% end %>
+        <%= current_organization.name %>
+    <% end %><br>
+    <%= link_to 'Log in form', login_path %><br>
 </div>

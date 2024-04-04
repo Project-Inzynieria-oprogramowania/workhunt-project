@@ -13,7 +13,8 @@ class OrganizationsController < ApplicationController
             flash[:success] = "Successful registration!"
             redirect_to root_path   # перенаправление на гравную страницу (мб на страницу пользователя?)
         else
-            render :registration
+            # flash[:error] = "Some errors in form"
+            render :new, status: :unprocessable_entity
         end
     end
 

@@ -1,0 +1,51 @@
+<%= form_with model: @user, id: 'LoginForm'  do | form | %>
+
+    <%# <%= form.label :login, 'Login' %>
+    <%= form.text_field :login, placeholder: 'Enter login...' %><br>
+    <% if @user.errors[:login].any? %> 
+        <% @user.errors.full_messages_for(:login).each do | message | %> 
+            <p class="error"><%= message %></p>  
+        <% end %> 
+    <% end %>
+
+    <%# <%= form.label :name, 'Name' %>
+    <%= form.text_field :name, placeholder: 'Name...' %><br>
+    <% if @user.errors[:name].any? %> 
+        <% @user.errors.full_messages_for(:name).each do | message | %> 
+            <p class="error"><%= message %></p>  
+        <% end %> 
+    <% end %>
+
+    <%# <%= form.label :surname, 'Surname' %>
+    <%= form.text_field :surname, placeholder: 'Surname...' %><br>
+    <% if @user.errors[:surname].any? %> 
+        <% @user.errors.full_messages_for(:surname).each do | message | %> 
+            <p class="error"><%= message %></p>  
+        <% end %> 
+    <% end %>
+
+    <%= form.date_field :DOB %><br>
+    <% if @user.errors[:DOB].any? %> 
+        <% @user.errors.full_messages_for(:DOB).each do | message | %> 
+            <p class="error"><%= message %></p>  
+        <% end %> 
+    <% end %>
+
+    <%# <%= form.label :password, 'Password' %>
+    <%= form.password_field :password, placeholder: 'Enter password...' %><br>
+    <% if @user.errors[:password].any? %> 
+        <% @user.errors.full_messages_for(:password).each do | message | %> 
+            <p class="error"><%= message %></p>  
+        <% end %> 
+    <% end %>
+    
+    <%# <%= form.label :password_confirmation, 'Confirm password' %>
+    <%= form.password_field :password_confirmation, placeholder: 'Confirm password...' %><br>
+    <% if @user.errors[:password_confirmation].any? %> 
+        <% @user.errors.full_messages_for(:password_confirmation).each do | message | %> 
+            <p class="error"><%= message %></p>  
+        <% end %> 
+    <% end %>
+
+    <%= form.submit 'Confirm', class: 'button', id: 'Submit' %>
+<% end %>
