@@ -29,6 +29,7 @@ body
     top: 0;
     text-align: center;
     align-content: center;
+    z-index: 5;
 }
 .DefaultForm
 {
@@ -380,4 +381,110 @@ input[type=date]:focus
 #OrgSignUpForm
 {
     max-height: 660px;
+}
+/* Start page */
+#FutureSlider
+{
+    margin: 0 auto;
+    background-image: url(placeholder.png);
+    width: 100%;
+    height: 800px;
+    min-width: 400px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    z-index: 0;
+}
+#StartField
+{
+    cursor:pointer;
+    position: absolute;
+    text-decoration: none;
+    place-content: center;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    z-index: 1;
+    text-align: center;
+}
+.StartButton
+{
+    font-size: 30px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: #675A41;
+    background-image: url(20prlines.png);
+    background-attachment: fixed;
+    background-size: 216px, 384px, cover;
+    color: #F4D18C;
+    font-weight: bold;
+    border: hidden;
+    border-radius: 20px;
+    box-shadow: 0px 4px 8px 4px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    height: 80px;
+    transition-duration: 0.4s;
+    cursor:pointer;
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    place-content: center;
+}
+.StartButton:hover
+{
+    background-color: #8b7956;
+    color: #f5d9a0;
+    font-size: 31px;
+    box-shadow: 0px 0px 10px 6px rgb(172, 151, 108);
+    transition-duration: 0.4s;
+}
+.StartButton:active 
+{
+    background-color: #77684a;
+    color: #d7be8b;
+    box-shadow: 0px 0px 10px 6px rgb(143, 125, 90);
+    transform: translateY(4px);
+    background-image: url(20prlines.png);
+    background-attachment: fixed;
+    background-size: 258px, 360px, cover;
+    transition-duration: 0.2s;
+}
+#GeneralInfo
+{
+    margin: auto;
+    width: 1420px;
+    padding: 10px;
+    position: relative;
+}
+#About
+{
+    margin-top: 5px;
+    margin-bottom: 50px;
+    padding-top: 20px;
+    padding-left: 10px;
+    color: #d0d0d0e4;
+    background-image: linear-gradient(to right,#302A33, #5b2775);
+    border-radius: 20px;
+    width: 700px;
+    height: 200px;
+    box-shadow: 0px 8px 10px 2px rgba(0, 0, 0, 0.300);
+    float: left;
+    position: relative;
+    left: 0;
+}
+#Screen
+{
+    margin-top: 45px;
+    margin-bottom: 80px;
+    width: 480px;
+    height: 270px;
+    float: right;
+}
+.ParagraphName
+{
+    color: #F4D18C;
+    font-size: 38px;
+    margin-top: 50px;
+    margin-bottom: 0px;
+    text-align: left;
 }

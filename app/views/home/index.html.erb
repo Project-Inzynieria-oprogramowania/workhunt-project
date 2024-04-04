@@ -1,14 +1,25 @@
-<h1>Стартовая страница сайта</h1>
-<p>Только то, что находится в тегах body
-    <br>Такие элементы, как шапка и подвал так же можно подключить отдельными блоками в ... /views/layouts/application.html.erb
-</p>
-<%= link_to 'Something', root_path %><br>
-
-<div>
+<div id='FutureSlider'>
+<div id='StartField'>
     <% if user_signed_in? %>
         <%= current_user.name %>
     <% elsif organization_signed_in? %>
-        <%= current_organization.name %>
-    <% end %><br>
-    <%= link_to 'Log in form', login_path %><br>
+        <%= current_organization.name%>
+    <% else %>
+        <%= link_to 'START NOW', login_path, class: 'StartButton' %><br>
+    <% end %>
 </div>
+</div>
+<div id='GeneralInfo'>
+    <%= image_tag 'Screen.png', id: 'Screen', class: 'InfoClass'%>
+    <h1 class='ParagraphName'>About WorkHunt</h1>
+    <div id='About' class='InfoClass'>
+        Workhunt is a free recruitment service. 
+        Here you can find a job that suits your preferences or find workers for your business.
+    <div>
+</div>
+
+<!--<h1>Стартовая страница сайта</h1>
+<p>Только то, что находится в тегах body
+    <br>Такие элементы, как шапка и подвал так же можно подключить отдельными блоками в ... /views/layouts/application.html.erb
+    <%= link_to 'Something', root_path %><br>
+</p>--!>
