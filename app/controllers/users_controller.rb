@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-    def registration
+    def new
+        session[:current_time] = Time.now
         @user = User.new
     end
     def login
