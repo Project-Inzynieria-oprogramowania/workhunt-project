@@ -19,6 +19,6 @@ class OrganizationsController < ApplicationController
     private
 
     def organization_params
-        params.require(:organization).permit(:login, :password, :password_confirmation, :name, :about)
+        params.require(:organization).permit(:login, :password, :password_confirmation, :name)
     end
 end
