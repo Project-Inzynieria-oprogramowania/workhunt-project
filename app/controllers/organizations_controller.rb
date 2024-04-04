@@ -1,5 +1,6 @@
 class OrganizationsController < ApplicationController
-    def registration
+    def new
+        session[:current_time] = Time.now
         @organization = Organization.new
     end
     def login
