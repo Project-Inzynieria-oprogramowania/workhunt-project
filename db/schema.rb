@@ -10,11 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_06_115246) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_06_152838) do
   create_table "organizations", force: :cascade do |t|
     t.string "name", null: false
     t.text "about"
-
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -22,20 +21,23 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_06_115246) do
   create_table "people", force: :cascade do |t|
     t.string "name", null: false
     t.string "surname", null: false
-    t.string "sex"
+    t.string "sex", null: false
     t.date "DOB"
     t.text "about"
-
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.check_constraint "sex IN ('male', 'female', 'other')"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "login", null: false
     t.string "password_digest", null: false
-
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "account_type_type", null: false
+    t.integer "account_type_id", default: 0, null: false
+    t.index ["account_type_type", "account_type_id"], name: "index_users_on_account_type"
     t.index ["login"], name: "index_users_on_login", unique: true
   end
+
 end
