@@ -10,14 +10,14 @@ class ApplicationController < ActionController::Base
         current_user.present?
     end
 
-    def current_organization
-        @current_organization ||= Organization.find_by(id: session[:organization_id]) if session[:organization_id].present?
+    def sign_in( user )
+        session[:user_id] = user.id
     end
 
-    def organization_signed_in?
-        current_organization.present?
+    def sign_out
+        session.delete :user_id
     end
 
     # Делает методы доступными не только в контроллерах, но и в представлениях
-    helper_method :current_user, :user_signed_in?, :current_organization, :organization_signed_in?
+    helper_method :current_user, :user_signed_in? #, :sign_in
 end

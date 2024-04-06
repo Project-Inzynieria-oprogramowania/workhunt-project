@@ -1,7 +1,7 @@
 <%= form_with model: @user, id: 'LoginForm'  do | form | %>
 
     <%# <%= form.label :login, 'Login' %>
-    <%= form.text_field :login, placeholder: 'Enter login...' %><br>
+    <%= form.text_field :login, placeholder: 'Enter login...' %>
     <% if @user.errors[:login].any? %> 
         <% @user.errors.full_messages_for(:login).each do | message | %> 
             <p class="error"><%= message %></p>  
@@ -9,15 +9,15 @@
     <% end %>
 
     <%# <%= form.label :password, 'Password' %>
-    <%= form.password_field :password, placeholder: 'Enter password...' %><br>
+    <%= form.password_field :password, placeholder: 'Enter password...' %>
+    
+    <%# <%= form.label :password_confirmation, 'Confirm password' %>
+    <%= form.password_field :password_confirmation, placeholder: 'Confirm password...' %>
     <% if @user.errors[:password].any? %> 
         <% @user.errors.full_messages_for(:password).each do | message | %> 
             <p class="error"><%= message %></p>  
         <% end %> 
     <% end %>
-    
-    <%# <%= form.label :password_confirmation, 'Confirm password' %>
-    <%= form.password_field :password_confirmation, placeholder: 'Confirm password...' %><br>
     <% if @user.errors[:password_confirmation].any? %> 
         <% @user.errors.full_messages_for(:password_confirmation).each do | message | %> 
             <p class="error"><%= message %></p>  
