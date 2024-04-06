@@ -7,6 +7,7 @@
 <div><h1>
     <% if user_signed_in? %>
         <%= current_user[:login] %><br>
+        <%= current_user[:account_type] %><br>
         <%= button_to 'LOG OUT', logout_path, method: :delete %>
     <% else %>
         You are not sing up

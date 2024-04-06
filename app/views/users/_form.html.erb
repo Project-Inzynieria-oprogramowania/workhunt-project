@@ -24,5 +24,13 @@
         <% end %> 
     <% end %>
 
+    <div>
+        <%# <%= form.label :account_type, 'Select account type'%>
+        <%= form.radio_button :account_type, 'person', checked: true %>
+        <%= form.label :account_type_person, 'Person' %>
+        <%= form.radio_button :account_type, 'organization' %>
+        <%= form.label :account_type_organization, 'Organization' %>
+    </div>
+
     <%= form.submit 'Confirm', class: 'button', id: 'Submit' %>
 <% end %>
