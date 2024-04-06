@@ -1,0 +1,15 @@
+<%= form_with model: @user, url: sessions_path, id: 'LoginForm'  do | form | %>
+    <%# <%= "USER:\n#{@user.inspect}\n" %>
+    <%# <%= form.label :login, 'Login' %>
+    <%= form.text_field :login, placeholder: 'Enter login...' %>
+
+    <%# <%= form.label :password, 'Password' %>
+    <%= form.password_field :password, placeholder: 'Enter password...' %>
+    <% if @user&.errors[:password].any? %> 
+        <% @user.errors[:password].each do | message | %> 
+            <p class="error"><%= message %></p>  
+        <% end %> 
+    <% end %>
+
+    <%= form.submit 'Confirm', class: 'button', id: 'Submit' %>
+<% end %>

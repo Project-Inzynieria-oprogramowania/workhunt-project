@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+    enum account_type: { person: 0, organization: 1 }
+    
     has_secure_password
 
     PASSWORD_FORMAT = /\A
@@ -10,9 +12,6 @@ class User < ApplicationRecord
 
     validates :login, presence: true, uniqueness: true
     validates :password, presence: true, length: {minimum: 8, maximum: 32}#, format: { with: PASSWORD_FORMAT }
-    # validates :password_digest, presence: true
-    validates :name, presence: true
-    validates :surname, presence: true
 
     before_save :downcase_login
     

@@ -2,10 +2,8 @@
     <div id="Buttons">
         <h1 id="MainHeader">SIGN UP</h1>
         <hr class='DivisionLine'>
-        <p class="Info">Create personal account</p>
         <%= render 'form' %>
 
-        <%= link_to 'Choose another account to create', registration_path, class: 'Button' %><br>
         <%= link_to "I already have an account", login_path, class: 'AnotherOption', id: 'LoggingInOption' %><br>
         <p class="ItalicInfo">*You will be able to add additional information on your profile page</p>
     </div>
