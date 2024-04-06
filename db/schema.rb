@@ -16,6 +16,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_06_161458) do
     t.text "about"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_organizations_on_user_id"
   end
 
   create_table "people", force: :cascade do |t|
@@ -26,6 +28,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_06_161458) do
     t.text "about"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_people_on_user_id"
     t.check_constraint "sex IN ('unspecified', 'male', 'female', 'other')"
   end
 
@@ -35,9 +39,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_06_161458) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "account_type", default: 0, null: false
-    t.integer "account_type_id", default: 0, null: false
-    t.index ["account_type_id"], name: "index_users_on_account_type_id"
     t.index ["login"], name: "index_users_on_login", unique: true
   end
 
+  add_foreign_key "organizations", "users"
+  add_foreign_key "people", "users"
 end

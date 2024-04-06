@@ -1,5 +1,5 @@
 class Organization < ApplicationRecord
-    has_one :account, as: :account_type, class_name: 'User'
+    belongs_to :user, foreign_key: 'user_id'
     
     validates :name, presence: true
 
