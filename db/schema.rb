@@ -10,26 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_02_175003) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_06_115246) do
   create_table "organizations", force: :cascade do |t|
-    t.string "login", null: false
-    t.string "password_digest", null: false
     t.string "name", null: false
     t.text "about"
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["login"], name: "index_organizations_on_login", unique: true
+  end
+
+  create_table "people", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "surname", null: false
+    t.string "sex"
+    t.date "DOB"
+    t.text "about"
+
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string "login", null: false
     t.string "password_digest", null: false
-    t.string "name", null: false
-    t.string "surname", null: false
-    t.text "about"
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["login"], name: "index_users_on_login", unique: true
   end
-
 end
