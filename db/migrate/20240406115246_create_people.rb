@@ -9,6 +9,6 @@ class CreatePeople < ActiveRecord::Migration[7.1]
 
       t.timestamps
     end
-    add_check_constraint :people, "sex IN ('male', 'female', 'other')"
+    add_check_constraint :people, "sex IN ('unspecified', 'male', 'female', 'other')"
   end
 end

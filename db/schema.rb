@@ -26,7 +26,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_06_161458) do
     t.text "about"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.check_constraint "sex IN ('male', 'female', 'other')"
+    t.check_constraint "sex IN ('unspecified', 'male', 'female', 'other')"
   end
 
   create_table "users", force: :cascade do |t|
