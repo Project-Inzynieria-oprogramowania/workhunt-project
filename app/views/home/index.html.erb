@@ -9,6 +9,7 @@
         <%= current_user[:login] %><br>
         <%= current_user[:account_type] %><br>
         <%= button_to 'LOG OUT', logout_path, method: :delete %>
+        <%= link_to 'EDIT INFO', user_settings_path %>
     <% else %>
         You are not sing up
     <% end %>

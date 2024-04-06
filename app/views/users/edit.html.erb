@@ -1,0 +1,43 @@
+<h1>Edit profile information</h1>
+<div>
+    <%= User.all.inspect %><br>
+    <%= Person.all.inspect %><br>
+    <%= Organization.all.inspect %><br>
+</div>
+
+<%= form_with model: @user, url: user_update_path do |form| %>
+
+    <%= form.label :login, 'Login' %>
+    <%= form.text_field :login, placeholder: 'Enter login...' %>
+    <% if @user.errors[:login].any? %> 
+        <% @user.errors.full_messages_for(:login).each do |message| %> 
+        <p class="error"><%= message %></p>  
+        <% end %> 
+    <% end %>
+
+    <%= form.label :old_password, 'Password' %>
+    <%= form.password_field :old_password, placeholder: 'Enter password...' %>
+    <% if @user.errors[:old_password].any? %> 
+        <% @user.errors.full_messages_for(:old_password).each do |message| %> 
+        <p class="error"><%= message %></p>  
+        <% end %> 
+    <% end %>
+
+    <%= form.label :password, 'New password' %>
+    <%= form.password_field :password, placeholder: 'Enter new password...' %>
+    
+    <%= form.label :password_confirmation, 'Confirm new password' %>
+    <%= form.password_field :password_confirmation, placeholder: 'Confirm new password...' %>
+    <% if @user.errors[:password].any? %> 
+        <% @user.errors.full_messages_for(:password).each do |message| %> 
+        <p class="error"><%= message %></p>  
+        <% end %> 
+    <% end %>
+    <% if @user.errors[:password_confirmation].any? %> 
+        <% @user.errors.full_messages_for(:password_confirmation).each do |message| %> 
+        <p class="error"><%= message %></p>  
+        <% end %> 
+    <% end %>
+    
+    <%= form.submit 'Confirm changes', class: 'button', id: 'Submit' %>
+<% end %>
