@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_06_152838) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_06_161458) do
   create_table "organizations", force: :cascade do |t|
     t.string "name", null: false
     t.text "about"
@@ -34,9 +34,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_06_152838) do
     t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "account_type_type", null: false
+    t.integer "account_type", default: 0, null: false
     t.integer "account_type_id", default: 0, null: false
-    t.index ["account_type_type", "account_type_id"], name: "index_users_on_account_type"
+    t.index ["account_type_id"], name: "index_users_on_account_type_id"
     t.index ["login"], name: "index_users_on_login", unique: true
   end
 

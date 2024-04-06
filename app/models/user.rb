@@ -1,7 +1,5 @@
 class User < ApplicationRecord
-    # enum account_type: { person: 0, organization: 1 }
-    belongs_to :account_type, polymorphic: true
-    #has_one (:person || :organization)
+    enum account_type: { person: 0, organization: 1 }
     
     has_secure_password
 
