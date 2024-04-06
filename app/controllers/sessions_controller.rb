@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+    before_action :check_no_authenticate, only: [:new, :create]
+    before_action :check_authenticate, only: :destroy
+
     def new
         @user ||= User.new
     end

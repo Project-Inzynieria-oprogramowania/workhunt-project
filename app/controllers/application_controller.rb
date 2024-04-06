@@ -10,6 +10,18 @@ class ApplicationController < ActionController::Base
         current_user.present?
     end
 
+    def check_authenticate
+        return if user_signed_in?
+        # flash[:warning] = "You are no signed in"
+        redirect_to root_path
+    end
+
+    def check_no_authenticate
+        return if !user_signed_in?
+        # flash[:warning] = "You are already signed in"
+        redirect_to root_path
+    end
+
     def sign_in( user )
         session[:user_id] = user.id
     end

@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+    before_action :check_no_authenticate, only: [:new, :create]
+
     def new
         session[:current_time] = Time.now
         @user = User.new
