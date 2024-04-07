@@ -1,5 +1,6 @@
 /* Автоматически загружается на страницы приложения */
 /*Common things*/
+/*
 *
 {
     margin: 0px;
@@ -17,7 +18,9 @@ body
     background-size: 216px, 384px, cover;
     background-color: #302A33;
 }
+*/
 /*Only on the LogIn page and Sign Up page*/
+/*
 .TopBanner
 {
     width: 100%;
@@ -149,7 +152,9 @@ hr.DivisionLine
     border-top: 5px dashed #262229;
     margin: 1em 0;
 }
+*/
 /*ONLY FOR LOGIN PAGE*/
+/*
 #img1, #img2, #img3, #img4
 {
     position: absolute;
@@ -238,7 +243,9 @@ hr.DivisionLine
         opacity: 0;
     }
 }
+*/
 /*ONLY FOR SIGN UP PAGE*/
+/*
 #FourInOne
 {
     position: absolute;
@@ -265,7 +272,9 @@ hr.DivisionLine
         width: 0px;
     }
 }
+*/
 /*LOGGING IN*/
+/*
 input[type=text],input[type=password],input[type=email],input[type=date]
 {
     background-color: #262229;
@@ -300,7 +309,9 @@ input[type=text]:focus,input[type=password]:focus,input[type=email]:focus,input[
 {
     display: inline-block;
 }
+*/
 /*SIGNING UP*/
+/*
 .SignUpForm
 {
     margin: 0 auto;
@@ -382,7 +393,9 @@ input[type=date]:focus
 {
     max-height: 660px;
 }
+*/
 /* Start page */
+/*
 #FutureSlider
 {
     margin: 0 auto;
@@ -488,3 +501,4 @@ input[type=date]:focus
     margin-bottom: 0px;
     text-align: left;
 }
+*/

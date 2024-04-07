@@ -1,15 +1,18 @@
 <%= form_with model: @user, url: sessions_path, id: 'LoginForm'  do | form | %>
     <%# <%= "USER:\n#{@user.inspect}\n" %>
-    <%# <%= form.label :login, 'Login' %>
-    <%= form.text_field :login, placeholder: 'Enter login...' %>
-
-    <%# <%= form.label :password, 'Password' %>
-    <%= form.password_field :password, placeholder: 'Enter password...' %>
+<div class='formField'>
+    <%= form.label :login, 'Login', class: 'formElement' %>
+    <%= form.text_field :login, placeholder: 'Enter login...', class: ['textbox', 'formElement'] %>
+</div>
+<div class='formField'>
+    <%= form.label :password, 'Password', class: 'formElement' %>
+    <%= form.password_field :password, placeholder: 'Enter password...', class: ['textbox','formElement'] %>
+</div>
     <% if @user&.errors[:password].any? %> 
         <% @user.errors[:password].each do | message | %> 
-            <p class="error"><%= message %></p>  
+            <p class="error formElement"><%= message %></p>  
         <% end %> 
     <% end %>
 
-    <%= form.submit 'Confirm', class: 'button', id: 'Submit' %>
+    <%= form.submit 'Confirm', id: 'Submit', class: ['formElement','button'] %>
 <% end %>

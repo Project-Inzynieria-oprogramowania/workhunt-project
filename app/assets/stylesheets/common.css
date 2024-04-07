@@ -1,0 +1,17 @@
+/*File which defines styles for common elements*/
+*
+{
+    margin: 0px;
+    padding: 0px;
+    font-size: 20px;
+    color: #A6884E;
+    font-family: sans-serif;
+    text-decoration: none;
+}
+body
+{
+    background-image: url(20prlines.png);
+    background-attachment: fixed;
+    background-size: 216px, 384px, cover;
+    background-color: #302A33;
+}
