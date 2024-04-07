@@ -1,8 +1,9 @@
 class User < ApplicationRecord
     enum account_type: { person: 0, organization: 1 }
     
-    has_one :person, -> { where(user_type: 'person') }, dependent: :destroy, foreign_key: :user_id, inverse_of: :user
-    has_one :organization, -> { where(user_type: 'organization') }, dependent: :destroy, foreign_key: :user_id, inverse_of: :user
+    has_one :person, ->(user) { where(user_id: user.id) }, dependent: :destroy, foreign_key: :user_id, inverse_of: :user
+    has_one :organization, ->(user) { where(user_id: user.id) }, dependent: :destroy, foreign_key: :user_id, inverse_of: :user
+    accepts_nested_attributes_for :person, :organization
 
     attr_accessor :old_password
     has_secure_password validations: false
@@ -13,7 +14,7 @@ class User < ApplicationRecord
     validate :password_presence
     validate :correct_old_password, on: :update
     before_save :downcase_login
-    
+
     private 
 
     def downcase_login
@@ -30,8 +31,13 @@ class User < ApplicationRecord
     end
 
     def correct_old_password
+        if login_changed? && !old_password.present?
+            errors.add(:old_password, "must be filled in when changing the login")
+            return
+        end
         return unless password_digest_changed? && !old_password.blank?
         return if BCrypt::Password.new(password_digest_was).is_password?(old_password) && !old_password.blank?
+        
         errors.add :old_password, 'is incorrect'
     end
 end
