@@ -11,7 +11,7 @@ class UsersController < ApplicationController
         @user = User.new user_params
         if @user.save
             sign_in(@user)
-            # flash[:success] = "Successful registration!"
+            # flash[:success] = "Successful registration"
             redirect_to root_path   # перенаправление на главную страницу (мб на страницу пользователя?)
         else
             # flash.now[:error] = "Some errors in form"
@@ -20,33 +20,31 @@ class UsersController < ApplicationController
     end
     
     def edit
-        # puts "=============3\n#{@user.inspect}\n=============="
         @user ||= User.find_by id: session[:user_id]
+        @user.build_person unless @user.person?
+        @user.build_organization unless @user.organization?
     end
 
     def update
         @user = User.find_by id: session[:user_id]
-        current_params = user_params
+        
+        current_params = user_params_all
 
         # Сheck password only when specifying a new one
-        if user_params[:password].blank?
-            current_params = user_params.except(:password, :password_confirmation, :old_password)
+        if current_params[:password].blank? 
+            # Check old password when changing login
+            if current_params[:login] == @user.login
+                current_params = current_params.except(:password, :password_confirmation, :old_password)
+            else 
+                current_params.except(:password_confirmation, :old_password)
+            end
         end
 
         if @user.update(current_params)
-            # case @user.account_type
-            # when 'person'
-            #     @person = @user.account || @user.build_account(type: 'Person')
-            #     @person.update(person_params)
-            # when 'organization'
-            #     @organization = @user.account || @user.build_account(type: 'Organization')
-            #     @organization.update(organization_params)
-            # end
-            # flash[:success] = "User profile updated successfully"
+            # flash[:success] = "Data changed successfully"
             redirect_to user_settings_path
         else
-            # @user = User.new user_params
-            # @user.build_person if @user.person?.nil?
+            # flash[:warning] = "Some errors in form"
             render :edit, status: :unprocessable_entity
         end
     end
@@ -57,15 +55,11 @@ class UsersController < ApplicationController
         params.require(:user).permit(:login, :password, :password_confirmation, :account_type, :old_password)
     end
 
-    # def user_params_all
-    #     params.require(:user).permit(:id, :login, :password, :password_confirmation, :old_password, person_attributes: [:name, :surname, :sex, :DOB, :about])
-    # end
-
-    # def person_params
-    #     params.require(:person).permit(:name, :surname, :sex, :DOB, :about)
-    # end
-
-    # def organization_params
-    #     params.require(:organization).permit(:name, :about)
-    # end
+    def user_params_all
+        params.require(:user).permit(
+            :login, :password, :password_confirmation, :old_password,
+            person_attributes: [:id, :name, :surname, :sex, :DOB, :about],
+            organization_attributes: [:id, :name, :about]
+        )
+    end
 end

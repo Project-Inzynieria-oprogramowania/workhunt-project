@@ -1,9 +1,4 @@
 <h1>Edit profile information</h1>
-<div>
-    <%= User.all.inspect %><br>
-    <%= Person.all.inspect %><br>
-    <%= Organization.all.inspect %><br>
-</div>
 
 <%= form_with model: @user, url: user_update_path do |form| %>
 
@@ -39,5 +34,73 @@
         <% end %> 
     <% end %>
     
+    <% if @user.person? %>
+        <%# Пользователь %>
+        <%= form.fields_for :person do |person_fields| %>
+
+            <%= person_fields.label :name, 'Name' %>
+            <%= person_fields.text_field :name, placeholder: 'Enter name...' %>
+            <% if @user.person.errors[:name].any? %> 
+                <% @user.person.errors.full_messages_for(:name).each do |message| %> 
+                    <p class="error"><%= message %></p>  
+                <% end %> 
+            <% end %>
+
+            <%= person_fields.label :surname, 'Surname' %>
+            <%= person_fields.text_field :surname, placeholder: 'Enter surname...' %>
+            <% if @user.person.errors[:surname].any? %> 
+                <% @user.person.errors.full_messages_for(:surname).each do |message| %> 
+                    <p class="error"><%= message %></p>  
+                <% end %> 
+            <% end %>
+
+            <%= person_fields.label :sex, "Select gender" %>
+            <%= person_fields.collection_select :sex, Person.sexes.keys, :to_s, :to_s, { selected: @user.person&.sex || 'unspecified' } %>
+            <% if @user.person.errors[:sex].any? %> 
+                <% @user.person.errors.full_messages_for(:sex).each do |message| %> 
+                    <p class="error"><%= message %></p>  
+                <% end %> 
+            <% end %>
+
+            <%= person_fields.label :DOB, 'Date of birthday' %>
+            <%= person_fields.date_field :DOB, placeholder: 'Enter date of birthday...' %>
+            <% if @user.person.errors[:DOB].any? %> 
+                <% @user.person.errors.full_messages_for(:DOB).each do |message| %> 
+                    <p class="error"><%= message %></p>  
+                <% end %> 
+            <% end %>
+
+            <%= person_fields.label :about, 'About' %>
+            <%= person_fields.text_area :about, placeholder: 'Tell about yourself...' %>
+            <% if @user.person.errors[:about].any? %> 
+                <% @user.person.errors.full_messages_for(:about).each do |message| %> 
+                    <p class="error"><%= message %></p>  
+                <% end %> 
+            <% end %>
+
+        <% end %>
+    <% elsif @user.organization? %>
+        <%# Организация %>
+        <%= form.fields_for :organization do |organization_fields| %>
+
+            <%= organization_fields.label :name, 'Name' %>
+            <%= organization_fields.text_field :name, placeholder: 'Enter name...' %>
+            <% if @user.organization.errors[:name].any? %> 
+                <% @user.organization.errors.full_messages_for(:name).each do |message| %> 
+                    <p class="error"><%= message %></p>  
+                <% end %> 
+            <% end %>
+
+            <%= organization_fields.label :about, 'About' %>
+            <%= organization_fields.text_area :about, placeholder: 'Tell about...' %>
+            <% if @user.organization.errors[:about].any? %> 
+                <% @user.organization.errors.full_messages_for(:about).each do |message| %> 
+                    <p class="error"><%= message %></p>  
+                <% end %> 
+            <% end %>
+
+        <% end %>
+    <% end %>
+
     <%= form.submit 'Confirm changes', class: 'button', id: 'Submit' %>
 <% end %>
