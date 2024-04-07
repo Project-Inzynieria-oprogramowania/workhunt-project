@@ -1,8 +1,8 @@
 class User < ApplicationRecord
     enum account_type: { person: 0, organization: 1 }
     
-    has_one :person, dependent: :destroy, foreign_key: :user_id, inverse_of: :user, if: -> { person? }
-    has_one :organization, dependent: :destroy, foreign_key: :user_id, inverse_of: :user, if: -> { organization? }
+    has_one :person, -> { where(user_type: 'person') }, dependent: :destroy, foreign_key: :user_id, inverse_of: :user
+    has_one :organization, -> { where(user_type: 'organization') }, dependent: :destroy, foreign_key: :user_id, inverse_of: :user
 
     attr_accessor :old_password
     has_secure_password validations: false
