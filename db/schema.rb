@@ -10,16 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_06_161458) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_07_172238) do
   create_table "organizations", force: :cascade do |t|
-    t.string "login", null: false
-    t.string "password_digest", null: false
     t.string "name", null: false
     t.text "about"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.index ["login"], name: "index_organizations_on_login", unique: true
     t.index ["user_id"], name: "index_organizations_on_user_id"
   end
 
@@ -39,13 +36,25 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_06_161458) do
   create_table "users", force: :cascade do |t|
     t.string "login", null: false
     t.string "password_digest", null: false
-    t.string "name", null: false
-    t.string "surname", null: false
-    t.text "about"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "account_type", default: 0, null: false
     t.index ["login"], name: "index_users_on_login", unique: true
+  end
+
+  create_table "vacancies", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "description"
+    t.decimal "salary_min", precision: 10
+    t.decimal "salary_max", precision: 10
+    t.string "country"
+    t.string "city"
+    t.text "skills"
+    t.integer "experience"
+    t.string "status", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.check_constraint "status IN ('opened', 'closed', 'active', 'pending', 'withdrawn')"
   end
 
   add_foreign_key "organizations", "users"
