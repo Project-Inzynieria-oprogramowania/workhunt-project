@@ -19,6 +19,7 @@ input {
     text-align: left;
 }
 input.textbox {
+    font-size: 16px;
     background-color: #262229;
     color: #E7E7E7;
     font-style: normal;
@@ -26,8 +27,8 @@ input.textbox {
     width: 80%;
     min-width: 200px;
     outline: none;
-    height: 40px;
-    border-radius: 10px;
+    height: 32px;
+    border-radius: 6px;
     transition-duration: 0.4s;
 }
 input.textbox:focus {
@@ -109,9 +110,9 @@ hr.divisionLine {
     text-align: left;
     color: #aa2424;
     font-style: italic;
-    font-size: 18px;
+    font-size: 14px;
     display: block;
-    margin-top: 20px;
+    margin-top: 5px;
 }
 @media only screen and (max-width: 600px) {
    .form {

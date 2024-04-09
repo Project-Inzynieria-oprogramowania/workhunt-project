@@ -1,36 +1,43 @@
 <%= form_with model: @user, id: 'LoginForm'  do | form | %>
-
-    <%# <%= form.label :login, 'Login' %>
-    <%= form.text_field :login, placeholder: 'Enter login...' %>
+ <div class='formField'>
+    <%= form.label :login, 'Login', class: 'formElement' %>
+    <%= form.text_field :login, placeholder: 'Enter login...', class: ['textbox', 'formElement'] %>
     <% if @user.errors[:login].any? %> 
         <% @user.errors.full_messages_for(:login).each do | message | %> 
-            <p class="error"><%= message %></p>  
+            <p class="error formElement"><%= message %></p>  
         <% end %> 
     <% end %>
-
-    <%# <%= form.label :password, 'Password' %>
-    <%= form.password_field :password, placeholder: 'Enter password...' %>
-    
-    <%# <%= form.label :password_confirmation, 'Confirm password' %>
-    <%= form.password_field :password_confirmation, placeholder: 'Confirm password...' %>
+</div>
+<div class='formField'>
+    <%= form.label :password, 'Password', class: 'formElement' %>
+    <%= form.password_field :password, placeholder: 'Enter password...', class: ['textbox', 'formElement'] %>
+</div>
+<div class='formField'>
+    <%= form.label :password_confirmation, 'Confirm password', class: 'formElement' %>
+    <%= form.password_field :password_confirmation, placeholder: 'Confirm password...', class: ['textbox', 'formElement'] %>
+</div>
     <% if @user.errors[:password].any? %> 
         <% @user.errors.full_messages_for(:password).each do | message | %> 
-            <p class="error"><%= message %></p>  
+            <p class="error formElement"><%= message %></p>  
         <% end %> 
     <% end %>
     <% if @user.errors[:password_confirmation].any? %> 
         <% @user.errors.full_messages_for(:password_confirmation).each do | message | %> 
-            <p class="error"><%= message %></p>  
+            <p class="error formElement"><%= message %></p>  
         <% end %> 
     <% end %>
 
-    <div>
+    <div class='radioButtons'>
         <%# <%= form.label :account_type, 'Select account type'%>
-        <%= form.radio_button :account_type, 'person', checked: true %>
-        <%= form.label :account_type_person, 'Person' %>
-        <%= form.radio_button :account_type, 'organization' %>
-        <%= form.label :account_type_organization, 'Organization' %>
+        <div class='radioField'>
+            <%= form.radio_button :account_type, 'person', checked: true %>
+            <%= form.label :account_type_person, 'Person' %>
+        </div>
+        <div class='radioField'>
+            <%= form.radio_button :account_type, 'organization' %>
+            <%= form.label :account_type_organization, 'Organization' %>
+        </div>
     </div>
 
-    <%= form.submit 'Confirm', class: 'button', id: 'Submit' %>
+    <%= form.submit 'Confirm', class: ['formElement','button'] %>
 <% end %>

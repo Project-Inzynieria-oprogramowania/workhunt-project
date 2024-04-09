@@ -1,4 +1,4 @@
-.TopBanner
+.topBanner
 {
     width: 100%;
     min-width: 300px;
@@ -11,14 +11,14 @@
     align-content: center;
     z-index: 5;
 }
-#MainLogo
+#mainLogo
 {
     margin-right: 0px;
     width:60px;
     height:60px;
     vertical-align: sub;
 }
-#WorkhuntHeader
+#workhuntHeader
 {
     padding-top: 0px;
     text-align: center;
@@ -32,7 +32,7 @@
     position: relative;
     bottom: 6px;
 }
-#WorkhuntHeader:hover
+#workhuntHeader:hover
 {
     text-shadow: 0px 6px 10px rgba(241, 241, 241, 0.7);
 }

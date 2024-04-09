@@ -8,15 +8,15 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "common", "banner", "form", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "common", "banner", "form", "signup", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <div class="TopBanner">
+    <div class="topBanner">
       <%= link_to root_path do %>
-        <%= image_tag 'logo.png', id: 'MainLogo'%>
-        <%= content_tag :span, "WorkHunt", id: "WorkhuntHeader" %>
+        <%= image_tag 'logo.png', id: 'mainLogo'%>
+        <%= content_tag :span, "WorkHunt", id: "workhuntHeader" %>
       <% end %>
     </div>
     <%= yield %>

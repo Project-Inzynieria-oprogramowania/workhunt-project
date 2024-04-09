@@ -1,11 +1,9 @@
-<div class="SignUpForm">
-    <div id="Buttons">
-        <h1 id="MainHeader">SIGN UP</h1>
-        <hr class='DivisionLine'>
+<div class='form'>
+        <h1 class='formHeader'>SIGN UP</h1>
+        <hr class='divisionLine'>
         <%= render 'form' %>
+        <%= link_to "I already have an account", login_path, class: 'anotherOption' %>
 
-        <%= link_to "I already have an account", login_path, class: 'AnotherOption', id: 'LoggingInOption' %><br>
-        <p class="ItalicInfo">*You will be able to add additional information on your profile page</p>
-    </div>
-    <%= image_tag '4in1.png', id: 'FourInOneReg'%>
+        <p class='clarificationMessage'>*You will be able to add additional information on your profile page</p>
+        <div class='backgroundSet'></div>
 </div>
