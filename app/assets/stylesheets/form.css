@@ -144,3 +144,29 @@ hr.divisionLine {
       display: none;
     }
  }
+.label {
+    font-size: 18px;
+}
+@media only screen and (max-width: 500px) {
+    .label {
+        font-size: 14px;
+    }
+    .formField {
+        margin-top: 0px;
+    }
+    .anotherOption{
+        margin-top: 10px;
+        font-size: 14px;
+        height: 30px;
+    }
+    .formHeader{
+        font-size: 30px;
+        margin-top: 10px;
+    }
+    hr.divisionLine {
+        margin: 0.5em 0;
+    }
+    .form {
+        margin-top: 2vh;
+    }
+ }
