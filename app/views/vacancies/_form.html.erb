@@ -1,0 +1,59 @@
+<% require_relative "../../../app/assets/config/initializers/work_constants.rb" 
+%>
+<%# app/assets/javascripts/job_type_select.js %>
+<%#<%= javascript_include_tag 'job_type_select' %>
+<%= form_with model: @vacancy do | form | %>
+
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+
+    <%= form.label :salary_min %>
+    <%= form.number_field :salary_min %>
+
+    <%= form.label :salary_max %>
+    <%= form.number_field :salary_max %>
+
+    <%= form.label :country %>
+    <%= form.text_field :country %>
+
+    <%= form.label :city %>
+    <%= form.text_field :city %>
+
+    <%= form.label :skills_mandatory %>
+    <%= form.text_area :skills_mandatory %>
+
+    <%= form.label :skills_optional %>
+    <%= form.text_area :skills_optional %>
+
+    <%= form.label :experience %>
+    <%= form.number_field :experience %>
+
+    <%= form.label :job_category, "Job category" %>
+    <%= form.select :job_category, options_for_select(JOB_TYPES.keys), {}, { id: 'job-category-select' } %>
+    
+    <%= form.label :job_type, "Job subcategory" %>
+    <%= form.select :job_type, options_for_select(JOB_TYPES.values.flatten), {}, { id: 'job-type-select' } %>
+
+    <%= form.label :education %>
+    <%= form.select :education, EDUCATION %>
+
+    <%= form.label :subordination_level %>
+    <%= form.select :subordination_level, SUBORDINATION_LEVEL %>
+
+    <%= form.label :contract_type %>
+    <%= form.select :contract_type, CONTRACT_TYPE %>
+
+    <%= form.label :working_time %>
+    <%= form.select :working_time, WORKING_TIME %>
+
+    <%= form.label :status %>
+    <%= form.select :status, STATUS %>
+
+    <%= form.submit 'Confirm' %>
+
+<% end %>
+<%# <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> %>
+<script type="module" src="/assets/job_type_select.js"></script>

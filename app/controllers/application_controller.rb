@@ -22,6 +22,12 @@ class ApplicationController < ActionController::Base
         redirect_to root_path
     end
 
+    def check_profile_organization
+        return if user_signed_in? && current_user.organization?
+        # flash[:warning] = "You may not change this information as an unauthorized or non-organizational user."
+        redirect_to root_path
+    end
+
     def sign_in( user )
         session[:user_id] = user.id
     end

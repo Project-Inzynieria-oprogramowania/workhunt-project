@@ -14,5 +14,10 @@ Rails.application.routes.draw do
   get '/user/settings', to: 'users#edit'
   patch '/user/update', to: 'users#update'
 
+  # Vacancies Bissness Cards
+  get '/vacancy', to: 'vacancies#new'
+  post '/vacancy/create', to: 'vacancies#create'
+  get '/work', to: 'vacancies#show'
+  
   # get '/user/:id', to: 'users#show'#, as: 'user'
 end
