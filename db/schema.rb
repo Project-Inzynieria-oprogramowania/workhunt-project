@@ -49,14 +49,22 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_07_172238) do
     t.decimal "salary_max", precision: 10
     t.string "country"
     t.string "city"
-    t.text "skills"
+    t.text "skills_mandatory"
+    t.text "skills_optional"
     t.integer "experience"
+    t.string "job_type", null: false
+    t.string "education", null: false
+    t.string "subordination_level", null: false
+    t.string "contract_type", null: false
+    t.string "working_time", null: false
     t.string "status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.check_constraint "status IN ('opened', 'closed', 'active', 'pending', 'withdrawn')"
+    t.integer "organization_id", null: false
+    t.index ["organization_id"], name: "index_vacancies_on_organization_id"
   end
 
   add_foreign_key "organizations", "users"
   add_foreign_key "people", "users"
+  add_foreign_key "vacancies", "organizations"
 end
