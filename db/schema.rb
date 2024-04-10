@@ -45,8 +45,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_07_172238) do
   create_table "vacancies", force: :cascade do |t|
     t.string "title", null: false
     t.text "description"
-    t.decimal "salary_min", precision: 10
-    t.decimal "salary_max", precision: 10
+    t.integer "salary_min_cents", default: 0, null: false
+    t.integer "salary_max_cents", default: 0, null: false
+    t.string "currency", null: false
     t.string "country"
     t.string "city"
     t.text "skills_mandatory"
@@ -57,6 +58,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_07_172238) do
     t.string "subordination_level", null: false
     t.string "contract_type", null: false
     t.string "working_time", null: false
+    t.string "work_type", null: false
     t.string "status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

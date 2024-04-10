@@ -16,6 +16,13 @@ WORKING_TIME = [
   'Additional work'   # Дополнительная работа
 ]
 
+WORK_TYPE = [
+  'Offline',    # Оффлайн работа
+  'Hybrid',     # Гибридная работа
+  'Online',     # Онлайн работа
+  'Mobile'      # Мобильная работа
+]
+
 EDUCATION = [
   'None',                   # Нет требований по образованию
   'High School Diploma',    # Среднее образование
