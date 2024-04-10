@@ -3,5 +3,6 @@
         <h2><%= v.title %></h2>
         <p><%= v.description %></p>
         <p><b><%= v.salary_min %> to <%= v.salary_max %> <%= v.currency %></b></p>
-    <% end %><br>
+    <% end %>
+    <%= render 'buttons', locals: {vacancy: v} %><br><br>
 <% end %>

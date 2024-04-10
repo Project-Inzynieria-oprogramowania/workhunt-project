@@ -3,7 +3,7 @@
 <%# app/assets/javascripts/job_type_select.js %>
 <%# <%= javascript_include_tag 'jquery-3.7.1.min' %>
 <%# <%= javascript_include_tag 'job_type_select' %>
-<%= form_with model: @vacancy, url: vacancy_create_path do | form | %>
+<%= form_with model: @vacancy, url: locals[:address] do | form | %>
 
     <%= form.label :title %>
     <%= form.text_field :title %>

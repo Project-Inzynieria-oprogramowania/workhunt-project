@@ -5,3 +5,5 @@
 <p><%= @vacancy.skills_mandatory %></p>
 <p><%= @vacancy.skills_optional %></p>
 <p><b><%= @vacancy.salary_min %> to <%= @vacancy.salary_max %> <%= @vacancy.currency %></b></p>
+
+<%= render 'buttons', locals: {vacancy: @vacancy} %>
