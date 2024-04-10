@@ -1,7 +1,21 @@
-<div id='FutureSlider'>
-    <div id='StartField'>
-        <%= link_to 'START NOW', login_path, class: 'StartButton' %>
+<div class='sliderField'>
+<div class='greatingsContainer'>
+       <div class='welcomeMessage'>
+        <p class='largeTitle'>Welcome to the WorkHunt</p>
+        <p class='subTitle'>The newest job search service!</p>
+       </div>
+       <div class='startButtonContainer'>
+        <%= link_to 'START NOW', login_path, class: ['largeButton'] %>
+       </div>
+</div>
+</div>
+<div class='paragraph'>
+    <div class='paragraphElement'>
+        <h1>About WorkHunt</h1>
+        Workhunt is a free recruitment service. 
+        Here you can find a job that suits your preferences or find workers for your business.
     </div>
+        <%= image_tag 'Screen.png', class: 'paragraphElement'%>
 </div>
 
 <div><h1>
@@ -19,17 +33,6 @@
     <%= Person.all.inspect %><br>
     <%= Organization.all.inspect %><br>
 </div>
-
-<div id='GeneralInfo'>
-    <%= image_tag 'Screen.png', id: 'Screen', class: 'InfoClass'%>
-    <h1 class='ParagraphName'>About WorkHunt</h1>
-    <div id='About' class='InfoClass'>
-        Workhunt is a free recruitment service. 
-        Here you can find a job that suits your preferences or find workers for your business.
-    </div>
-</div>
-
-
 
 <!--<h1>Стартовая страница сайта</h1>
 <p>Только то, что находится в тегах body
