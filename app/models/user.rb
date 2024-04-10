@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
     validates :login, presence: true, uniqueness: true
     validates :password, confirmation: true, allow_blank: true, length: {minimum: 8, maximum: 32}
+    validate :login_complexity
     validate :password_complexity
     validate :password_presence
     validate :correct_old_password, on: :update
@@ -21,8 +22,13 @@ class User < ApplicationRecord
         login.downcase!
     end
 
+    def login_complexity
+        return if login =~ /\A[a-zA-Z0-9_]\z/
+        errors.add :login, 'complexity requirement not met. Login should include only digits, uppercases, lowercases and underscore'
+    end
+
     def password_complexity
-        return if password.blank? || password =~ /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/
+        return if password.blank? || password =~ /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-_])/
         errors.add :password, 'complexity requirement not met. Password should include: 1 uppercase, 1 lowercase, 1 digit and 1 special character'
     end
 
