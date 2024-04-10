@@ -12,7 +12,7 @@ class UsersController < ApplicationController
         if @user.save
             sign_in(@user)
             # flash[:success] = "Successful registration"
-            redirect_to root_path   # перенаправление на главную страницу (мб на страницу пользователя?)
+            redirect_to user_settings_path
         else
             # flash.now[:error] = "Some errors in form"
             render :new, status: :unprocessable_entity
@@ -21,8 +21,8 @@ class UsersController < ApplicationController
     
     def edit
         @user ||= User.find_by id: session[:user_id]
-        @user.build_person unless @user.person?
-        @user.build_organization unless @user.organization?
+        @user.build_person unless @user.person
+        @user.build_organization unless @user.organization
     end
 
     def update
