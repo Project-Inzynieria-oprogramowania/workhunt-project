@@ -9,16 +9,41 @@
        </div>
 </div>
 </div>
-<div class='paragraph'>
-    <div class='paragraphElement'>
-        <h1>About WorkHunt</h1>
-        Workhunt is a free recruitment service. 
-        Here you can find a job that suits your preferences or find workers for your business.
-    </div>
-        <%= image_tag 'Screen.png', class: 'paragraphElement'%>
+<div class='limitationContainer'>
+    <h1 class='paragraphTitle'>About WorkHunt</h1>
 </div>
-
-<div><h1>
+<div class='paragraph'>
+    <div class='paragraphElement aboutWH'>
+        <div class='description'>
+            <p>Workhunt is a free recruitment service.</p>
+            <p>Here you can find a job that suits your preferences or find workers for your business.</p>
+        </div>
+    </div>
+        <%= image_tag 'Screen.png', class: ['paragraphElement aboutImg']%>
+</div>
+<div class='colorContainer'>
+    <div class='limitationContainer'>
+    <h1 class='paragraphTitle'>Functionality</h1>
+        <div class='advantages'>
+            <%= image_tag("icons/Convenientsearch.png") %> <span>Find interesting job offers using a convenient and functional search.</span>
+        </div>
+        <div class='advantages'>
+            <%= image_tag("icons/Offers.png") %> <span>Create your own job offers if you have a business and are looking for employees.</span>
+        </div>
+        <div class='advantages'>
+            <%= image_tag("icons/Profile.png") %> <span>Create your profile and add all the important information about yourself 
+            so that employers can easily view it right on the website.</span>
+        </div>
+        <div class='advantages'>
+            <%= image_tag("icons/Messages.png") %> <span>Receive and respond to messages without leaving our site.</span>
+        </div>
+        <div class='advantages'>
+            <%= image_tag("icons/AndMore.png") %> <span>...and other useful functions you will find in Workhunt! </span>
+        </div>
+    </div>
+</div>
+<div>
+    <h1>
     <% if user_signed_in? %>
         <%= current_user[:login] %><br>
         <%= current_user[:account_type] %><br>
@@ -27,15 +52,5 @@
     <% else %>
         You are not sing up
     <% end %>
-</h1></div>
-<div>
-    <%= User.all.inspect %><br>
-    <%= Person.all.inspect %><br>
-    <%= Organization.all.inspect %><br>
+    </h1>
 </div>
-
-<!--<h1>Стартовая страница сайта</h1>
-<p>Только то, что находится в тегах body
-    <br>Такие элементы, как шапка и подвал так же можно подключить отдельными блоками в ... /views/layouts/application.html.erb
-    <%= link_to 'Something', root_path %><br>
-</p>--!>

@@ -80,30 +80,102 @@
     transform: translateY(4px);
 }
 .paragraph {
-    display: block;
-    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     margin: 0 auto;
-    text-align: center;
     width: 100%;
+    max-width: 900px;
     min-width: 200px;
 }
 .paragraphElement {
     display: inline-block;
-    border: 1px solid red;
-    padding: 1rem 1rem;
-    vertical-align: middle;
     width: 400px;
-    min-width: 200px;
+    min-width: 250px;
     height: auto;
     text-align: left;
-    margin-left: 50px;
-    margin-right: 50px;
+    position: relative;
+    margin: 0px 5% 0px 5%;
 }
-img.paragraphElement {
-    margin-top: 45px;
-    margin-bottom: 80px;
-    height: 270px;
-    width: auto;
-    min-width: 200px;
+.paragraphElement .description {
+    padding: 20px 20px 20px 20px;
+    height: auto;
+    background-image: linear-gradient(to right,#302A33, #5b2775);
+    border-radius: 20px;
+    box-shadow: 0px 8px 10px 2px rgba(0, 0, 0, 0.300);
+}
+.description p {
+    color: #d0d0d0e4;
+    font-size: 18px;
+}
+.paragraphTitle {
+    margin-top: 20px;
+    font-size: 35px;
+    color: #F4D18C;
+    margin-left: 10px;
+}
+.aboutWH {
+    width: 600px;
+    min-width: 200px; 
+    height: 100px;
+}
+@media only screen and (max-width: 850px) 
+{
+    .aboutWH {
+        height: auto;
+        margin-left: 10px;
+        margin-right: 0px;
+    }
+    .aboutImg {
+        display: none;
+    }
+    .paragraphElement .description
+    {
+        width: 90%;
+        min-width: 260px;
+        margin: 0 auto;
+        margin-left: 0px;
+        padding-right: 0px;
+    }
+    .paragraph {
+        margin-top: 0px;
+        justify-content: left;
+        align-items: left;
+    }
+}
+.advantages img {
+    width: 70px;
+    height: 70px;
+}
+.limitationContainer {
+    display: block;
+    width: 100%;
+    max-width: 800px;
+    min-width: 300px;
+    margin: 0 auto;
+}
+.advantages {
+    text-align: left;
+    align-items: center;
+    justify-content: center;
+    display: inline-flex;
+    margin: 10px 20px 10px 20px;
+}
+.advantages span {
+    margin-left: 10px;
+    color: #d0d0d0e4;
+    font-size: 18px;
+}
+.colorContainer {
+    border-top: 5px dashed #262229;
+    border-bottom: 5px dashed #262229;
+    outline-offset: -5px;
+    width: 100%;
+    min-width: 300px;
+    background-color: #2f2a33;
+    height: auto;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.100);
+    padding: 20px 0px 20px 0px;
+    margin-top: 20px;
 }
