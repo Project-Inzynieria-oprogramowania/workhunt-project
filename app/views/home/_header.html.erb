@@ -5,8 +5,10 @@
     <% end %>
 
     <% if user_signed_in? %>
-
+        <%= current_user[:login] %>
+        <%= button_to 'LOG OUT', logout_path, method: :delete %>
+        <%= link_to 'EDIT INFO', user_settings_path %>
     <% else %>
-
+        You are not sing up
     <% end %>    
 </div>

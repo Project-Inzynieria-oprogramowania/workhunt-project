@@ -1,6 +1,7 @@
 class VacanciesController < ApplicationController
     before_action :check_profile_organization, only: [:new, :create, :edit, :update, :destroy]
     before_action :check_organization, only: [:edit, :update, :destroy]
+    before_action :get_vacancy, only: [:edit, :update, :destroy]
 
     def new
         @vacancy ||= Vacancy.new
@@ -15,10 +16,10 @@ class VacanciesController < ApplicationController
         @vacancy.user_id = current_user.id
         
         if @vacancy.save
-            # flash[:success] = "Job vacancy successfully created"
+            flash[:success] = "Job vacancy successfully created"
             redirect_to vacancies_path
         else
-            # flash[:warning] = "Cannot be save. Some errors in form"
+            flash[:error] = "Cannot be save. Some errors in form"
             render :new, status: :unprocessable_entity
         end
     end
@@ -32,11 +33,9 @@ class VacanciesController < ApplicationController
     end
 
     def edit
-        @vacancy ||= Vacancy.find_by id: params[:id]
     end
 
     def update
-        @vacancy = Vacancy.find_by id: params[:id]
         salary_min = Money.from_amount(params[:vacancy][:salary_min].to_f, params[:vacancy][:currency])
         salary_max = Money.from_amount(params[:vacancy][:salary_max].to_f, params[:vacancy][:currency])
         @vacancy.salary_min_cents = salary_min.cents
@@ -44,16 +43,15 @@ class VacanciesController < ApplicationController
         @vacancy.user_id = current_user.id
         
         if @vacancy.update(vacancy_params)
-            # flash[:success] = "Job vacancy successfully created"
+            flash[:success] = "Job vacancy successfully created"
             redirect_to vacancy_path(@vacancy)
         else
-            # flash[:warning] = "Cannot be save. Some errors in form"
+            flash[:warning] = "Cannot be save. Some errors in form"
             render :edit, status: :unprocessable_entity
         end
     end
 
     def destroy
-        @vacancy = Vacancy.find_by id: params[:id]
         @vacancy.destroy
         redirect_to vacancies_path
     end
@@ -73,8 +71,12 @@ class VacanciesController < ApplicationController
     def check_organization
         @vacancy = Vacancy.find_by id: params[:id]
         unless current_user.id == @vacancy.user_id
-            # flash[:alert] = "You are not authorized to perform this action."
+            flash[:warning] = "You are not authorized to perform this action."
             redirect_back fallback_location: root_path
         end
+    end
+
+    def get_vacancy
+        @vacancy = Vacancy.find_by id: params[:id]
     end
 end

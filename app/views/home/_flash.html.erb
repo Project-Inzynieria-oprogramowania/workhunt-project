@@ -1,0 +1,8 @@
+<div id="flashContainer">
+    <% flash.each do |key, message| %>
+        <div class="flash-message <%= key %>">
+            <%= message %>
+        </div>
+    <% end %>
+</div>
+<%= javascript_include_tag 'flash_messages' %>

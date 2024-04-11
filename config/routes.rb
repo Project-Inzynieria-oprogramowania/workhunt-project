@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   # Update User information
   get '/user/settings', to: 'users#edit'
   patch '/user/update', to: 'users#update'
+  delete '/user/destroy', to: 'users#destroy'
 
   # Vacancies Bissness Cards
   get '/vacancy/new', to: 'vacancies#new'

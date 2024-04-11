@@ -48,9 +48,9 @@
         <%= content_tag :span, "WorkHunt", class: 'workhuntHeader' %>
     </div>
     <p>Hunt down your future work right now!</p>  
-    There are [total number of current job offers in the data base] job offers in the database.
+    There are <%= Vacancy.count %> job offers in the database.
     <div class='startButtonContainer'>
-        <%= link_to 'TO THE HUNT!', login_path, class: ['largeButton'] %>
+        <%= link_to 'TO THE HUNT!', vacancies_path, class: ['largeButton'] %>
      </div>
 </div>
 <div class='colorContainer'>
@@ -63,16 +63,4 @@
         </ul>
         <p>Uniwersytet Łódzki. Inżynieria oprogramowania. 2024.</p>
     </footer>
-</div>
-<div>
-    <h1>
-    <% if user_signed_in? %>
-        <%= current_user[:login] %><br>
-        <%= current_user[:account_type] %><br>
-        <%= button_to 'LOG OUT', logout_path, method: :delete %>
-        <%= link_to 'EDIT INFO', user_settings_path %>
-    <% else %>
-        You are not sing up
-    <% end %>
-    </h1>
 </div>

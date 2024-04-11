@@ -9,10 +9,12 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "common", "banner", "form", "signup", "startpage", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "flash" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
+    <%= render 'home/flash' %>
     <%= render 'home/header' %>
     <%= yield %>
   </body>

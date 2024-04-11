@@ -8,12 +8,14 @@ class User < ApplicationRecord
     attr_accessor :old_password
     has_secure_password validations: false
 
-    validates :login, presence: true, uniqueness: true
+    validates :login, presence: true
+    validate :login_complexity, if: -> { login.present? }
+    validates :login, uniqueness: true, if: -> { login.present? }
     validates :password, confirmation: true, allow_blank: true, length: {minimum: 8, maximum: 32}
-    validate :login_complexity
     validate :password_complexity
     validate :password_presence
     validate :correct_old_password, on: :update
+    
     before_save :downcase_login
 
     private 

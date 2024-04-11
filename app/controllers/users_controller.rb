@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
     before_action :check_no_authenticate, only: [:new, :create]
-    before_action :check_authenticate, only: [:edit, :update]
+    before_action :check_authenticate, only: [:edit, :update, :destroy]
+    before_action :get_user, only: [:edit, :update, :destroy]
 
     def new
         session[:current_time] = Time.now
@@ -11,23 +12,20 @@ class UsersController < ApplicationController
         @user = User.new user_params
         if @user.save
             sign_in(@user)
-            # flash[:success] = "Successful registration"
+            flash[:success] = "Successful registration"
             redirect_to user_settings_path
         else
-            # flash.now[:error] = "Some errors in form"
+            flash[:error] = "Cannot be create. Some errors in form"
             render :new, status: :unprocessable_entity
         end
     end
     
     def edit
-        @user ||= User.find_by id: session[:user_id]
         @user.build_person unless @user.person
         @user.build_organization unless @user.organization
     end
 
     def update
-        @user = User.find_by id: session[:user_id]
-        
         current_params = user_params_all
 
         # Сheck password only when specifying a new one
@@ -41,12 +39,16 @@ class UsersController < ApplicationController
         end
 
         if @user.update(current_params)
-            # flash[:success] = "Data changed successfully"
+            flash[:success] = "Data changed successfully"
             redirect_to user_settings_path
         else
-            # flash[:warning] = "Some errors in form"
+            flash[:error] = "Cannot be update. Some errors in form"
             render :edit, status: :unprocessable_entity
         end
+    end
+
+    def destroy
+
     end
 
     private
@@ -61,5 +63,9 @@ class UsersController < ApplicationController
             person_attributes: [:id, :name, :surname, :sex, :DOB, :about],
             organization_attributes: [:id, :name, :about]
         )
+    end
+
+    def get_user
+        @user = User.find_by id: session[:user_id]
     end
 end
