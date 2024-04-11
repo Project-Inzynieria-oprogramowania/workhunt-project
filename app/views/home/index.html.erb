@@ -42,6 +42,28 @@
         </div>
     </div>
 </div>
+<div class='limitationContainer encouragementContainer'>
+    <div class='logo'>
+        <%= image_tag 'logo.png', class: 'mainLogo' %>
+        <%= content_tag :span, "WorkHunt", class: 'workhuntHeader' %>
+    </div>
+    <p>Hunt down your future work right now!</p>  
+    There are [total number of current job offers in the data base] job offers in the database.
+    <div class='startButtonContainer'>
+        <%= link_to 'TO THE HUNT!', login_path, class: ['largeButton'] %>
+     </div>
+</div>
+<div class='colorContainer'>
+    <footer class='limitationContainer startPageFooter'>
+        Created by:
+        <ul class='listOfNonames'>
+            <li>Sadouski Andrei - database</li>
+            <li>Miranchuk Krystsina - backend</li>
+            <li>Vereshchahin Mark - frontend</li>
+        </ul>
+        <p>Uniwersytet Łódzki. Inżynieria oprogramowania. 2024.</p>
+    </footer>
+</div>
 <div>
     <h1>
     <% if user_signed_in? %>
