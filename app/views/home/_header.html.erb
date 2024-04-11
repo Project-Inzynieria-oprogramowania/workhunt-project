@@ -1,0 +1,12 @@
+<div class="topBanner">
+    <%= link_to root_path do %>
+        <%= image_tag 'logo.png', id: 'mainLogo'%>
+        <%= content_tag :span, "WorkHunt", id: "workhuntHeader" %>
+    <% end %>
+
+    <% if user_signed_in? %>
+
+    <% else %>
+
+    <% end %>    
+</div>

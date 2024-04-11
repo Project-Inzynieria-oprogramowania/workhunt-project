@@ -12,7 +12,7 @@ class VacanciesController < ApplicationController
         @vacancy = Vacancy.new(vacancy_params)
         @vacancy.salary_min_cents = salary_min.cents
         @vacancy.salary_max_cents = salary_max.cents
-        @vacancy.organization_id = current_user.organization.id
+        @vacancy.user_id = current_user.id
         
         if @vacancy.save
             # flash[:success] = "Job vacancy successfully created"
@@ -41,7 +41,7 @@ class VacanciesController < ApplicationController
         salary_max = Money.from_amount(params[:vacancy][:salary_max].to_f, params[:vacancy][:currency])
         @vacancy.salary_min_cents = salary_min.cents
         @vacancy.salary_max_cents = salary_max.cents
-        @vacancy.organization_id = current_user.organization.id
+        @vacancy.user_id = current_user.id
         
         if @vacancy.update(vacancy_params)
             # flash[:success] = "Job vacancy successfully created"
@@ -67,12 +67,12 @@ class VacanciesController < ApplicationController
             :skills_mandatory, :skills_optional, 
             :experience, :job_type, :job_category, :education, 
             :subordination_level, :contract_type, :working_time, 
-            :work_type, :status)
+            :work_type, :status, :user_id)
     end
 
     def check_organization
         @vacancy = Vacancy.find_by id: params[:id]
-        unless current_user.organization.id == @vacancy.organization_id
+        unless current_user.id == @vacancy.user_id
             # flash[:alert] = "You are not authorized to perform this action."
             redirect_back fallback_location: root_path
         end

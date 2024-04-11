@@ -29,6 +29,6 @@ class CreateVacancies < ActiveRecord::Migration[7.1]
 
       t.timestamps
     end
-    add_reference :vacancies, :organization, null: false, foreign_key: true
+    add_reference :vacancies, :user, null: false, foreign_key: true
   end
 end

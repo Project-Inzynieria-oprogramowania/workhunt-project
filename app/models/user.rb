@@ -23,7 +23,7 @@ class User < ApplicationRecord
     end
 
     def login_complexity
-        return if login =~ /\A[a-zA-Z0-9_]\z/
+        return if login =~ /\A[a-zA-Z0-9_]+\z/
         errors.add :login, 'complexity requirement not met. Login should include only digits, uppercases, lowercases and underscore'
     end
 

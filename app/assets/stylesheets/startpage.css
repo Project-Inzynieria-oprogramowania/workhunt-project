@@ -50,7 +50,7 @@
     display: block;
     font-size: 31px;
     font-weight: bold;
-    height: 70px;
+    /* height: 70px; */
     width: 250px;
     align-content: center;
     background-color: #675A41;
@@ -59,6 +59,7 @@
     background-size: 216px, 384px, cover;
     border-radius: 40px;
     transition-duration: 0.4s;
+    padding: 1.5vw;
 }
 .largeButton:hover {
     font-size: 32px;

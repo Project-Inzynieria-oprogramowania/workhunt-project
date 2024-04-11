@@ -1,7 +1,7 @@
 require_relative '../../app/assets/config/initializers/work_constants.rb'
 
 class Vacancy < ApplicationRecord
-    belongs_to :organization
+    belongs_to :user
     
     attr_accessor :job_category
     validates :title, presence: true
