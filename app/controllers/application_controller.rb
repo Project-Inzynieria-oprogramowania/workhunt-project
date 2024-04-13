@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-
+    include ErrorHandling
+    
     private
 
     def current_user
@@ -29,7 +30,7 @@ class ApplicationController < ActionController::Base
 
     def check_profile_organization
         return if user_signed_in? && current_user.organization?
-        flash[:warning] = "You may not change this information as an unauthorized or non-organizational user."
+        flash[:warning] = "You do not have access to this page non-organizational user."
         redirect_to root_path
     end
 
@@ -39,8 +40,8 @@ class ApplicationController < ActionController::Base
 
     def sign_out
         session.delete :user_id
-    end
+    end    
 
     # Делает методы доступными не только в контроллерах, но и в представлениях
-    helper_method :current_user, :user_signed_in? #, :sign_in
+    helper_method :current_user, :user_signed_in? #, :check_profile_organization
 end

@@ -14,14 +14,14 @@
   </head>
 
   <body>
-    <%= render 'home/flash' %>
+    <%= render 'shared/flash' %>
           <% if controller_name == 'sessions' || controller_name == 'users' && action_name != 'edit' %>
-              <%= render 'home/header' %>
+              <%= render 'shared/header' %>
           <% elsif controller_name != 'home' %>
-              <%= render 'home/headerAlt' %>
+              <%= render 'shared/headerAlt' %>
           <% else %>
             <% if user_signed_in? %>
-              <%= render 'home/headerAlt' %>
+              <%= render 'shared/headerAlt' %>
             <% end %>
           <% end %>
     <%= yield %>

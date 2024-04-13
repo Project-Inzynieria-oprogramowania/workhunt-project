@@ -19,13 +19,20 @@
                             <hr>
                         </li> 
                         <li>
-                            <%= link_to user_settings_path do %>
+                            <%= link_to user_path(current_user) do %>
                                 <%= image_tag 'menuIcons/human.png' %>
                                 My profile
-                            <% end %></li>
+                            <% end %>
+                        </li>
                         <li>
-                            <a><%= image_tag 'menuIcons/gear.png' %>Options</a></li>
+                            <%= link_to user_settings_path do %>
+                                <%= image_tag 'menuIcons/gear.png' %>
+                                Options
+                            <% end %>
+                        </li>
+
                         <li><hr class="divisionLine"></li>
+
                         <li><%= button_to logout_path, method: :delete, class: "logoutButton" do %>
                             <%= image_tag "menuIcons/poweroff.png" %>
                             Log out

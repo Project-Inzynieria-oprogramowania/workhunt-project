@@ -1,0 +1,23 @@
+<div>
+    <% if @user.person? %>
+        <h3><%= @user.person.name %> <%= @user.person.surname %></h3><br>
+        <p><%= @user.person.about %></p>
+    <% elsif @user.organization? %>
+        <h3><%= @user.organization.name %></h3><br>
+        <p><%= @user.organization.about %></p>
+    <% end %>
+</div>
+<% if @user.id == current_user.id %>
+    <%# Кнопки, допустим, перенаправляющие на редактирование профиля %>
+    <%= link_to 'Options', user_settings_path %>
+<% else %>
+    <%# если понадобится поставить что-то вместо этого %>
+<% end %>
+
+<%# 
+    Будет какой-то блок, в котором будет хранится или только блок отзывов, или блок отзывов и блок вакансий. 
+    Нужно через js сделать переключение между ними 
+%>
+<% if @user.organization? %>
+    <%= render Vacancy.where(organization_id: @user.organization.id) %>
+<% end %>

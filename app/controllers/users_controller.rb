@@ -10,6 +10,12 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new user_params
+        if @user.person?
+            @user.build_person unless @user.person
+        elsif @user.organization?
+            @user.build_organization unless @user.organization
+        end
+
         if @user.save
             sign_in(@user)
             flash[:success] = "Successful registration"
@@ -18,6 +24,10 @@ class UsersController < ApplicationController
             flash[:error] = "Cannot be create. Some errors in form"
             render :new, status: :unprocessable_entity
         end
+    end
+
+    def show
+        @user = User.find(params[:id])
     end
     
     def edit
