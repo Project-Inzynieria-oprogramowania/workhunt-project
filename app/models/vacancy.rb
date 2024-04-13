@@ -1,7 +1,7 @@
 require_relative '../../app/assets/config/initializers/work_constants.rb'
 
 class Vacancy < ApplicationRecord
-    belongs_to :user
+    belongs_to :organization, foreign_key: 'organization_id'
     
     attr_accessor :job_category
     validates :title, presence: true
@@ -21,4 +21,14 @@ class Vacancy < ApplicationRecord
     # validates :contract_type, presence: true, one_of: CONTRACT_TYPE, message: "is not valid"
     # validates :working_time, presence: true, one_of: WORKING_TIME, message: "is not valid"
     # validates :status, presence: true, one_of: STATUS, message: "is not valid"
+
+    
+    def self.ransackable_attributes(auth_object = nil)
+        ["title", "description",
+        "job_type", "work_type", "education", "subordination_level", "contract_type", "working_time"]
+    end
+
+    def self.ransackable_associations(auth_object = nil)
+        ["user"]
+    end
 end

@@ -8,12 +8,12 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 require_relative "../app/assets/config/initializers/work_constants.rb" 
-96.times do 
+100.times do 
     v = Vacancy.new(
         title: Faker::Job.title,
-        description: Faker::Lorem.paragraph,
-        salary_min_cents: rand(1000..50000),
-        salary_max_cents: rand(50000..100000),
+        description: Faker::Lorem.paragraphs(number: rand(2..5)).join("\n\n"),
+        salary_min_cents: rand(1000..50000) * 1000,
+        salary_max_cents: rand(50000..100000) * 1000,
         currency: %w[USD EUR].sample,
         country: Faker::Address.country,
         city: Faker::Address.city,
@@ -27,7 +27,11 @@ require_relative "../app/assets/config/initializers/work_constants.rb"
         working_time: WORKING_TIME.sample,
         work_type: WORK_TYPE.sample,
         status: 'Opened',
-        user_id: rand(2..3)
+        organization_id: rand(1..3)
     )
-    v.save
+    if v.save
+        puts "Vacancy created successfully"
+    else
+        puts "Error creating vacancy: #{v.errors.full_messages.to_sentence}"
+    end
 end
