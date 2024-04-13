@@ -1,0 +1,45 @@
+<div class="topBanner">
+    <div class="headerLimit">
+        <div class="headerElement">
+            <%= link_to root_path, class: 'logoLink' do %>
+                <%= image_tag 'logo.png', id: 'mainLogo'%>
+                <%= content_tag :span, "WorkHunt", id: "workhuntHeader"%>
+            <% end %>
+        </div>
+        <div class="headerElement">
+            <% if user_signed_in? %>
+                <div class="dropdown">
+                    <span class="accountButton"><%= current_user[:login] %></span>
+                    <span class="smallButtton">...</span>
+                    <ul class="accountMenu">
+                        <li class="smallWidthMenu">
+                            <%= current_user[:login] %>
+                        </li>
+                        <li class="smallWidthMenu">
+                            <hr>
+                        </li> 
+                        <li>
+                            <%= link_to user_settings_path do %>
+                                <%= image_tag 'menuIcons/human.png' %>
+                                My profile
+                            <% end %></li>
+                        <li>
+                            <a><%= image_tag 'menuIcons/gear.png' %>Options</a></li>
+                        <li><hr class="divisionLine"></li>
+                        <li><%= button_to logout_path, method: :delete, class: "logoutButton" do %>
+                            <%= image_tag "menuIcons/poweroff.png" %>
+                            Log out
+                        <% end %></li>
+                    </ul>
+                </div>
+            <% else %>
+                <div class="dropdown">
+                    <%= link_to login_path do %>
+                            <span class="accountButton">You are not logged in</span>
+                            <span class="smallButtton">Log In</span>
+                    <% end %>
+                </div>
+            <% end %>    
+        </div>
+    </div>  
+</div>

@@ -1,14 +1,6 @@
 <div class="topBanner">
-    <%= link_to root_path do %>
-        <%= image_tag 'logo.png', id: 'mainLogo'%>
-        <%= content_tag :span, "WorkHunt", id: "workhuntHeader" %>
-    <% end %>
-
-    <% if user_signed_in? %>
-        <%= current_user[:login] %>
-        <%= button_to 'LOG OUT', logout_path, method: :delete %>
-        <%= link_to 'EDIT INFO', user_settings_path %>
-    <% else %>
-        You are not sing up
-    <% end %>    
+            <%= link_to root_path, class: 'logoLink' do %>
+                <%= image_tag 'logo.png', id: 'mainLogo'%>
+                <%= content_tag :span, "WorkHunt", id: "workhuntHeader"%>
+            <% end %>
 </div>

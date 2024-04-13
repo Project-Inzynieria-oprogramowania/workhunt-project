@@ -8,14 +8,22 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "common", "banner", "form", "signup", "startpage", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "common", "header", "form", "signup", "startpage", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "flash" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
     <%= render 'home/flash' %>
-    <%= render 'home/header' %>
+          <% if controller_name == 'sessions' && action_name == 'new' || controller_name == 'users' && action_name == 'new' %>
+              <%= render 'home/header' %>
+          <% elsif controller_name != 'home' %>
+              <%= render 'home/headerAlt' %>
+          <% else %>
+            <% if user_signed_in? %>
+              <%= render 'home/headerAlt' %>
+            <% end %>
+          <% end %>
     <%= yield %>
   </body>
 </html>

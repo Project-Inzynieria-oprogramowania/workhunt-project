@@ -1,0 +1,193 @@
+.topBanner {
+    width: 100%;
+    min-width: 300px;
+    min-height: 50px;
+    background-image: linear-gradient(to right,#302A33, #5b2775 ,#302A33);
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.484);
+    position: relative;
+    top: 0;
+    text-align: center;
+    align-content: center;
+    z-index: 5;
+}
+.logoLink {
+    align-items: center;
+    justify-content: center;
+    display: inline-flex;
+}
+#mainLogo {
+    width:60px;
+    height:60px;
+    transition-duration: 0.4s;
+}
+#workhuntHeader {
+    font-size: 50px;
+    font-weight: bold;
+    color: #E7E7E7;
+    text-shadow: 0px 4px 6px rgba(231, 231, 231, 0.5);
+    padding: 5px 10px 5px 10px;
+    transition-duration: 0.4s;
+}
+.logoLink:hover #workhuntHeader {
+    text-shadow: 0px 6px 10px rgba(241, 241, 241, 0.7);
+}
+.logoLink:hover #mainLogo {
+    filter: saturate(150%)  drop-shadow(0px 0px 10px rgba(231, 231, 231, 0.5));
+}
+.accountButton {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    width: auto;
+    text-align: center;
+    background-color: #675A41;
+    background-image: url(20prlines.png);
+    background-attachment: fixed;
+    background-size: 216px, 384px, cover;
+    border-radius: 40px;
+    transition-duration: 0.4s;
+    padding: 10px 20px;
+    box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.3);
+    border: 5px dashed #d7b064;
+    color: #d7b064;
+}
+
+.accountMenu {
+    display: none;
+    position: absolute;
+    background-color: #E7E7E7;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+    list-style-type: none;
+    border-radius: 5px;
+    padding: 10px 0px 10px 0px;
+}
+.dropdown {
+    display: inline-block;
+    justify-content: center;
+}
+.dropdown:hover .accountMenu {
+    display: block;
+}
+.dropdown:hover .accountButton {
+    background-color: #8b7956;
+    color: #F4D18C;
+    box-shadow: 0px 0px 10px 6px rgb(172, 151, 108, 0.6);
+    transition-duration: 0.4s;
+}
+.accountMenu li a, .logoutButton {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+.accountMenu li a {
+    font-size: 14px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+.accountMenu li a img{
+    width: 22%;
+    height: 22%;
+    margin-right: 10px;
+}
+.accountMenu li a:hover {
+    background-color: #c9c9c9 ;
+}
+.accountMenu li hr.divisionLine {
+    border: 1px dashed #9f62be;
+    margin: 10px 0px 10px 0px;
+}
+.logoutButton {
+    font-size: 14px;
+    width: 100%;
+    padding: 10px 15px;
+    cursor: pointer;
+    border: none;
+    background-color: #E7E7E7;
+    color: #9f62be;
+}
+.logoutButton img{
+    width: 22%;
+    height: 22%;
+    margin-right: 10px;
+}
+.logoutButton:hover {
+    background-color:#c9c9c9 ;
+}
+
+
+
+.headerLimit {
+    width: 100%;
+    max-width: 1600px;
+    min-width: 300px;
+    margin: 0 auto;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+.headerElement {
+    display: inline-flex;
+    position: relative;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.smallWidthMenu {
+    display: none;
+}
+.smallWidthMenu hr {
+    border: 1px dashed #8b7956;
+    margin: 10px 0px 10px 0px;
+}
+.smallButtton {
+    display: none;
+    font-size: 16px;
+    font-weight: bold;
+    width: auto;
+    text-align: center;
+    background-color: #675A41;
+    background-image: url(20prlines.png);
+    background-attachment: fixed;
+    background-size: 216px, 384px, cover;
+    border-radius: 5px;
+    transition-duration: 0.4s;
+    padding: 5px 8px;
+    box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.3);
+    border: 3px dashed #d7b064;
+    color: #d7b064;
+}
+
+@media only screen and (max-width: 600px) 
+{
+    #mainLogo {
+        width:30px;
+        height:30px;
+        transition-duration: 0.4s;
+    }
+    #workhuntHeader {
+        font-size: 25px;
+        padding: 2px 5px 2px 5px;
+        transition-duration: 0.4s;
+    }
+    .smallWidthMenu {
+        display: block;
+    }
+    .accountButton {
+        display: none;
+    }
+    .smallButtton {
+        display: inline-block;
+    }
+}
+@media (max-width: 600px) {
+    .accountMenu {
+        transform: translateX(-80%); /* Adjust horizontally to center */
+    }
+}
+@media (max-width: 350px) {
+    .smallButtton {
+        font-size: 10px;
+    }
+}

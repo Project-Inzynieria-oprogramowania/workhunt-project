@@ -219,7 +219,7 @@
     color: #A343D3;
     margin-bottom: 5px;
 }
-@media only screen and (max-width: 400px) 
+@media only screen and (max-width: 500px) 
 {
     .logo span {
         font-size: 45px;
