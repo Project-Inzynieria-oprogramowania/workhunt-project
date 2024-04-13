@@ -45,6 +45,9 @@ gem "bootsnap", require: false
 # To support currency as a data type, perform scalar operations, and display
 gem 'money-rails', '~> 1.12'
 
+# Help easily add searching to application, without any additional dependencies.
+gem 'ransack'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 

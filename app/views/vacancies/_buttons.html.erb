@@ -1,5 +1,5 @@
 <% if current_user&.organization? %>
-    <% if current_user.id == locals[:vacancy].user_id %>
+    <% if current_user.organization.id == locals[:vacancy].organization_id %>
         <%= button_to "Delete", vacancy_destroy_path(locals[:vacancy]), method: :delete, confirm: 'Are you sure you want to delete vacancy?' %>
         <%= link_to "Edit", vacancy_edit_path(locals[:vacancy]) %>
     <% end %>
