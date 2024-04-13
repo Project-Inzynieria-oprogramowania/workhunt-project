@@ -7,3 +7,27 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+require_relative "../app/assets/config/initializers/work_constants.rb" 
+96.times do 
+    v = Vacancy.new(
+        title: Faker::Job.title,
+        description: Faker::Lorem.paragraph,
+        salary_min_cents: rand(1000..50000),
+        salary_max_cents: rand(50000..100000),
+        currency: %w[USD EUR].sample,
+        country: Faker::Address.country,
+        city: Faker::Address.city,
+        skills_mandatory: Faker::Lorem.words(number: rand(3..5)).join('\n'),
+        skills_optional: Faker::Lorem.words(number: rand(3..5)).join('\n'),
+        experience: rand(0..10),
+        job_type: JOB_TYPES.values.flatten.sample,
+        education: EDUCATION.sample,
+        subordination_level: SUBORDINATION_LEVEL.sample,
+        contract_type: CONTRACT_TYPE.sample,
+        working_time: WORKING_TIME.sample,
+        work_type: WORK_TYPE.sample,
+        status: 'Opened',
+        user_id: rand(2..3)
+    )
+    v.save
+end
