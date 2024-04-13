@@ -10,7 +10,7 @@
 </div>
     <% if @user&.errors[:password].any? %> 
         <% @user.errors[:password].each do | message | %> 
-            <p class="error formElement"><%= message %></p>  
+            <p class="formError formElement"><%= message %></p>  
         <% end %> 
     <% end %>
 

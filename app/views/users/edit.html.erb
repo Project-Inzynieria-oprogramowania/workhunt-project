@@ -1,108 +1,128 @@
-<h1>Edit profile information</h1>
-
+<% provide :page_title, 'Profile' %>
+<div class='userInfo'>
+    <h1 class='editTitle'>Edit profile information</h1>
+</div>
 <%= form_with model: @user, url: user_update_path do |form| %>
-
-    <%= form.label :login, 'Login' %>
-    <%= form.text_field :login, placeholder: 'Enter login...' %>
-    <% if @user.errors[:login].any? %> 
-        <% @user.errors.full_messages_for(:login).each do |message| %> 
-        <p class="error"><%= message %></p>  
-        <% end %> 
-    <% end %>
-
-    <%= form.label :old_password, 'Password' %>
-    <%= form.password_field :old_password, placeholder: 'Enter password...' %>
-    <% if @user.errors[:old_password].any? %> 
-        <% @user.errors.full_messages_for(:old_password).each do |message| %> 
-        <p class="error"><%= message %></p>  
-        <% end %> 
-    <% end %>
-
-    <%= form.label :password, 'New password' %>
-    <%= form.password_field :password, placeholder: 'Enter new password...' %>
-    
-    <%= form.label :password_confirmation, 'Confirm new password' %>
-    <%= form.password_field :password_confirmation, placeholder: 'Confirm new password...' %>
-    <% if @user.errors[:password].any? %> 
-        <% @user.errors.full_messages_for(:password).each do |message| %> 
-        <p class="error"><%= message %></p>  
-        <% end %> 
-    <% end %>
-    <% if @user.errors[:password_confirmation].any? %> 
-        <% @user.errors.full_messages_for(:password_confirmation).each do |message| %> 
-        <p class="error"><%= message %></p>  
-        <% end %> 
-    <% end %>
-    
+<div class='colorContainer'>
+    <div class='commonInfo'>
+        <div class='formField'>
+            <%= form.label :login, 'Login', class: ['formElement','label'] %>
+            <%= form.text_field :login, placeholder: 'Enter login...', class: ['textbox', 'formElement'] %>
+            <% if @user.errors[:login].any? %> 
+                <% @user.errors.full_messages_for(:login).each do |message| %> 
+                <p class="formError formElement"><%= message %></p>  
+                <% end %> 
+            <% end %>
+        </div>
+        <div class='formField'>
+            <%= form.label :password, 'New password', class: ['formElement','label'], class: ['textbox', 'formElement'] %>
+            <%= form.password_field :password, placeholder: 'Enter new password...', class: ['textbox', 'formElement'] %>
+        </div>
+        <div class='formField'>
+            <%= form.label :password_confirmation, 'Confirm new password', class: ['formElement','label'] %>
+            <%= form.password_field :password_confirmation, placeholder: 'Confirm new password...', class: ['textbox', 'formElement'] %>
+            <% if @user.errors[:password].any? %> 
+                <% @user.errors.full_messages_for(:password).each do |message| %> 
+                <p class="formError formElement"><%= message %></p>  
+                <% end %> 
+            <% end %>
+            <% if @user.errors[:password_confirmation].any? %> 
+                <% @user.errors.full_messages_for(:password_confirmation).each do |message| %> 
+                <p class="formError formElement"><%= message %></p>  
+                <% end %> 
+            <% end %>
+        </div>
+        <div class='formField'>
+            <%= form.label :old_password, 'Enter password to confirm changes', class: ['formElement','label'] %>
+            <%= form.password_field :old_password, placeholder: 'Enter password...', class: ['textbox', 'formElement'] %>
+            <% if @user.errors[:old_password].any? %> 
+                <% @user.errors.full_messages_for(:old_password).each do |message| %> 
+                <p class="formError formElement"><%= message %></p>  
+                <% end %> 
+            <% end %>
+        </div>
+    </div>
+</div>
+<div class='userInfo'>
     <% if @user.person? %>
         <%# Пользователь %>
         <%= form.fields_for :person do |person_fields| %>
-
-            <%= person_fields.label :name, 'Name' %>
-            <%= person_fields.text_field :name, placeholder: 'Enter name...' %>
-            <% if @user.person.errors[:name].any? %> 
-                <% @user.person.errors.full_messages_for(:name).each do |message| %> 
-                    <p class="error"><%= message %></p>  
-                <% end %> 
-            <% end %>
-
-            <%= person_fields.label :surname, 'Surname' %>
-            <%= person_fields.text_field :surname, placeholder: 'Enter surname...' %>
-            <% if @user.person.errors[:surname].any? %> 
-                <% @user.person.errors.full_messages_for(:surname).each do |message| %> 
-                    <p class="error"><%= message %></p>  
-                <% end %> 
-            <% end %>
-
-            <%= person_fields.label :sex, "Select gender" %>
-            <%= person_fields.collection_select :sex, Person.sexes.keys, :to_s, :to_s, { selected: @user.person&.sex || 'unspecified' } %>
-            <% if @user.person.errors[:sex].any? %> 
-                <% @user.person.errors.full_messages_for(:sex).each do |message| %> 
-                    <p class="error"><%= message %></p>  
-                <% end %> 
-            <% end %>
-
-            <%= person_fields.label :DOB, 'Date of birthday' %>
-            <%= person_fields.date_field :DOB, placeholder: 'Enter date of birthday...' %>
-            <% if @user.person.errors[:DOB].any? %> 
-                <% @user.person.errors.full_messages_for(:DOB).each do |message| %> 
-                    <p class="error"><%= message %></p>  
-                <% end %> 
-            <% end %>
-
-            <%= person_fields.label :about, 'About' %>
-            <%= person_fields.text_area :about, placeholder: 'Tell about yourself...' %>
-            <% if @user.person.errors[:about].any? %> 
-                <% @user.person.errors.full_messages_for(:about).each do |message| %> 
-                    <p class="error"><%= message %></p>  
-                <% end %> 
-            <% end %>
-
+            <div class='formField'>
+                <%= person_fields.label :name, 'Name', class: ['formElement','label'] %>
+                <%= person_fields.text_field :name, placeholder: 'Enter name...', class: ['textbox', 'formElement'] %>
+                <% if @user.person.errors[:name].any? %> 
+                    <% @user.person.errors.full_messages_for(:name).each do |message| %> 
+                        <p class="formError formElement"><%= message %></p>  
+                    <% end %> 
+                <% end %>
+            </div>
+            <div class='formField'>
+                <%= person_fields.label :surname, 'Surname', class: ['formElement','label'] %>
+                <%= person_fields.text_field :surname, placeholder: 'Enter surname...', class: ['textbox', 'formElement'] %>
+                <% if @user.person.errors[:surname].any? %> 
+                    <% @user.person.errors.full_messages_for(:surname).each do |message| %> 
+                        <p class="formError formElement"><%= message %></p>  
+                    <% end %> 
+                <% end %>
+            </div>
+            <div class='editContainer'>
+                <div class='formField'>
+                    <%= person_fields.label :sex, "Select gender", class: ['formElement','label'] %>
+                    <%= person_fields.collection_select :sex, Person.sexes.keys, :to_s, :to_s, { selected: @user.person&.sex || 'unspecified' }, class: ['formElement','selectbox'] %>
+                    <% if @user.person.errors[:sex].any? %> 
+                        <% @user.person.errors.full_messages_for(:sex).each do |message| %> 
+                            <p class="formError formElement"><%= message %></p>  
+                        <% end %> 
+                    <% end %>
+                </div>
+                <div class='formField'>
+                    <%= person_fields.label :DOB, 'Date of birthday', class: ['formElement','label'] %>
+                    <%= person_fields.date_field :DOB, placeholder: 'Enter date of birthday...', class: ['formElement'] %>
+                    <% if @user.person.errors[:DOB].any? %> 
+                        <% @user.person.errors.full_messages_for(:DOB).each do |message| %> 
+                            <p class="formError formElement"><%= message %></p>  
+                        <% end %> 
+                    <% end %>
+                </div>
+            </div>
+            <div class='formField'>
+                <%= person_fields.label :about, 'About', class: ['formElement','label'] %>
+                <%= person_fields.text_area :about, placeholder: 'Tell about yourself...', class: ['formElement'] %>
+                <% if @user.person.errors[:about].any? %> 
+                    <% @user.person.errors.full_messages_for(:about).each do |message| %> 
+                        <p class="formError formElement"><%= message %></p>  
+                    <% end %> 
+                <% end %>
+            </div>
         <% end %>
     <% elsif @user.organization? %>
         <%# Организация %>
         <%= form.fields_for :organization do |organization_fields| %>
-
-            <%= organization_fields.label :name, 'Name' %>
-            <%= organization_fields.text_field :name, placeholder: 'Enter name...' %>
-            <% if @user.organization.errors[:name].any? %> 
-                <% @user.organization.errors.full_messages_for(:name).each do |message| %> 
-                    <p class="error"><%= message %></p>  
-                <% end %> 
-            <% end %>
-
-            <%= organization_fields.label :about, 'About' %>
-            <%= organization_fields.text_area :about, placeholder: 'Tell about...' %>
-            <% if @user.organization.errors[:about].any? %> 
-                <% @user.organization.errors.full_messages_for(:about).each do |message| %> 
-                    <p class="error"><%= message %></p>  
-                <% end %> 
-            <% end %>
-
+            <div class='formField'>
+                <%= organization_fields.label :name, 'Name', class: ['formElement','label'] %>
+                <%= organization_fields.text_field :name, placeholder: 'Enter name...', class: ['textbox', 'formElement'] %>
+                <% if @user.organization.errors[:name].any? %> 
+                    <% @user.organization.errors.full_messages_for(:name).each do |message| %> 
+                        <p class="formError formElement"><%= message %></p>  
+                    <% end %> 
+                <% end %>
+            </div>
+            <div class='formField'>
+                <%= organization_fields.label :about, 'About', class: ['formElement','label'] %>
+                <%= organization_fields.text_area :about, placeholder: 'Tell about...', class: ['formElement'] %>
+                <% if @user.organization.errors[:about].any? %> 
+                    <% @user.organization.errors.full_messages_for(:about).each do |message| %> 
+                        <p class="formError formElement"><%= message %></p>  
+                    <% end %> 
+                <% end %>
+            </div>
         <% end %>
     <% end %>
-
+</div>
+<div class='colorContainer'>
+    <div class='commonInfo editButtons'>
     <%= form.submit 'Confirm changes', class: 'button', id: 'Submit' %>
 <% end %>
-
-<%= button_to "Delete account", user_destroy_path(@user), method: :delete, confirm: 'Are you sure you want to delete account?' %>
+    <%= button_to "Delete account", user_destroy_path(@user), method: :delete, confirm: 'Are you sure you want to delete account?', class: 'button deleteButton' %>
+    </div>
+</div>

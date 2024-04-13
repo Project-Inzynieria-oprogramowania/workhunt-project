@@ -4,7 +4,7 @@
     <%= form.text_field :login, placeholder: 'Enter login...', class: ['textbox', 'formElement'] %>
     <% if @user.errors[:login].any? %> 
         <% @user.errors.full_messages_for(:login).each do | message | %> 
-            <p class="error formElement"><%= message %></p>  
+            <p class="formError formElement"><%= message %></p>  
         <% end %> 
     <% end %>
 </div>
@@ -18,12 +18,12 @@
 </div>
     <% if @user.errors[:password].any? %> 
         <% @user.errors.full_messages_for(:password).each do | message | %> 
-            <p class="error formElement"><%= message %></p>  
+            <p class="formError formElement"><%= message %></p>  
         <% end %> 
     <% end %>
     <% if @user.errors[:password_confirmation].any? %> 
         <% @user.errors.full_messages_for(:password_confirmation).each do | message | %> 
-            <p class="error formElement"><%= message %></p>  
+            <p class="formError formElement"><%= message %></p>  
         <% end %> 
     <% end %>
 

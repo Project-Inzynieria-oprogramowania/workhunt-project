@@ -57,7 +57,7 @@
     position: absolute;
     background-color: #E7E7E7;
     min-width: 160px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 6px 8px 8px 1px rgba(0,0,0,0.4);
     z-index: 1;
     list-style-type: none;
     border-radius: 5px;
@@ -115,7 +115,10 @@
 .logoutButton:hover {
     background-color:#c9c9c9 ;
 }
-
+.accountMenu {
+    top: 100%;
+    right: 2%;
+}
 
 
 .headerLimit {
@@ -181,11 +184,11 @@
         display: inline-block;
     }
 }
-@media (max-width: 600px) {
+/*@media (max-width: 600px) {
     .accountMenu {
-        transform: translateX(-80%); /* Adjust horizontally to center */
+        transform: translateX(-80%);
     }
-}
+}*/
 @media (max-width: 350px) {
     .smallButtton {
         font-size: 10px;

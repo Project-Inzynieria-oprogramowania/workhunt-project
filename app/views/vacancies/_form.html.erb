@@ -9,7 +9,7 @@
     <%= form.text_field :title %>
     <% if @vacancy.errors[:title].any? %> 
         <% @vacancy.errors.full_messages_for(:title).each do | message | %> 
-            <p class="error"><%= message %></p>  
+            <p class="formError"><%= message %></p>  
         <% end %> 
     <% end %>
 
@@ -17,7 +17,7 @@
     <%= form.text_area :description %>
     <% if @vacancy.errors[:description].any? %> 
         <% @vacancy.errors.full_messages_for(:description).each do | message | %> 
-            <p class="error"><%= message %></p>  
+            <p class="formError"><%= message %></p>  
         <% end %> 
     <% end %>
 
@@ -25,7 +25,7 @@
     <%= form.number_field :salary_min %>
     <% if @vacancy.errors[:salary_min].any? %> 
         <% @vacancy.errors.full_messages_for(:salary_min).each do | message | %> 
-            <p class="error"><%= message %></p>  
+            <p class="formError"><%= message %></p>  
         <% end %> 
     <% end %>
 
@@ -33,7 +33,7 @@
     <%= form.number_field :salary_max %>
     <% if @vacancy.errors[:salary_max].any? %> 
         <% @vacancy.errors.full_messages_for(:salary_max).each do | message | %> 
-            <p class="error"><%= message %></p>  
+            <p class="formError"><%= message %></p>  
         <% end %> 
     <% end %>
 
@@ -41,7 +41,7 @@
     <%= form.select :currency, Money::Currency.all.map { |currency| [currency.iso_code, currency.id] }, { selected: 'USD' } %>
     <% if @vacancy.errors[:currency].any? %> 
         <% @vacancy.errors.full_messages_for(:currency).each do | message | %> 
-            <p class="error"><%= message %></p>  
+            <p class="formError"><%= message %></p>  
         <% end %> 
     <% end %>
 
@@ -49,7 +49,7 @@
     <%= form.text_field :country %>
     <% if @vacancy.errors[:country].any? %> 
         <% @vacancy.errors.full_messages_for(:country).each do | message | %> 
-            <p class="error"><%= message %></p>  
+            <p class="formError"><%= message %></p>  
         <% end %> 
     <% end %>
 
@@ -57,7 +57,7 @@
     <%= form.text_field :city %>
     <% if @vacancy.errors[:city].any? %> 
         <% @vacancy.errors.full_messages_for(:city).each do | message | %> 
-            <p class="error"><%= message %></p>  
+            <p class="formError"><%= message %></p>  
         <% end %> 
     <% end %>
 
@@ -65,7 +65,7 @@
     <%= form.text_area :skills_mandatory %>
     <% if @vacancy.errors[:skills_mandatory].any? %> 
         <% @vacancy.errors.full_messages_for(:skills_mandatory).each do | message | %> 
-            <p class="error"><%= message %></p>  
+            <p class="formError"><%= message %></p>  
         <% end %> 
     <% end %>
 
@@ -73,7 +73,7 @@
     <%= form.text_area :skills_optional %>
     <% if @vacancy.errors[:skills_optional].any? %> 
         <% @vacancy.errors.full_messages_for(:skills_optional).each do | message | %> 
-            <p class="error"><%= message %></p>  
+            <p class="formError"><%= message %></p>  
         <% end %> 
     <% end %>
 
@@ -81,7 +81,7 @@
     <%= form.number_field :experience %>
     <% if @vacancy.errors[:experience].any? %> 
         <% @vacancy.errors.full_messages_for(:experience).each do | message | %> 
-            <p class="error"><%= message %></p>  
+            <p class="formError"><%= message %></p>  
         <% end %> 
     <% end %>
 
@@ -92,7 +92,7 @@
     <%= form.select :job_type, options_for_select(JOB_TYPES.values.flatten, @vacancy.job_type), {}, { id: 'job-type-select' } %>
     <% if @vacancy.errors[:job_type].any? %> 
         <% @vacancy.errors.full_messages_for(:job_type).each do | message | %> 
-            <p class="error"><%= message %></p>  
+            <p class="formError"><%= message %></p>  
         <% end %> 
     <% end %>
 
@@ -100,7 +100,7 @@
     <%= form.select :work_type, options_for_select(WORK_TYPE, @vacancy.work_type), {}, { selected: @vacancy.work_type } %>
     <% if @vacancy.errors[:work_type].any? %> 
         <% @vacancy.errors.full_messages_for(:work_type).each do | message | %> 
-            <p class="error"><%= message %></p>  
+            <p class="formError"><%= message %></p>  
         <% end %> 
     <% end %>
 
@@ -108,7 +108,7 @@
     <%= form.select :education, options_for_select(EDUCATION, @vacancy.education) %>
     <% if @vacancy.errors[:education].any? %> 
         <% @vacancy.errors.full_messages_for(:education).each do | message | %> 
-            <p class="error"><%= message %></p>  
+            <p class="formError"><%= message %></p>  
         <% end %> 
     <% end %>
 
@@ -116,7 +116,7 @@
     <%= form.select :subordination_level, options_for_select(SUBORDINATION_LEVEL, @vacancy.subordination_level) %>
     <% if @vacancy.errors[:subordination_level].any? %> 
         <% @vacancy.errors.full_messages_for(:subordination_level).each do | message | %> 
-            <p class="error"><%= message %></p>  
+            <p class="formError"><%= message %></p>  
         <% end %> 
     <% end %>
 
@@ -124,7 +124,7 @@
     <%= form.select :contract_type, options_for_select(CONTRACT_TYPE, @vacancy.contract_type) %>
     <% if @vacancy.errors[:contract_type].any? %> 
         <% @vacancy.errors.full_messages_for(:contract_type).each do | message | %> 
-            <p class="error"><%= message %></p>  
+            <p class="formError"><%= message %></p>  
         <% end %> 
     <% end %>
 
@@ -132,7 +132,7 @@
     <%= form.select :working_time, options_for_select(WORKING_TIME, @vacancy.working_time) %>
     <% if @vacancy.errors[:working_time].any? %> 
         <% @vacancy.errors.full_messages_for(:working_time).each do | message | %> 
-            <p class="error"><%= message %></p>  
+            <p class="formError"><%= message %></p>  
         <% end %> 
     <% end %>
 
@@ -140,7 +140,7 @@
     <%= form.select :status, options_for_select(STATUS, @vacancy.status), {}, { selected: @vacancy.status } %>
     <% if @vacancy.errors[:status].any? %> 
         <% @vacancy.errors.full_messages_for(:status).each do | message | %> 
-            <p class="error"><%= message %></p>  
+            <p class="formError"><%= message %></p>  
         <% end %> 
     <% end %>
 

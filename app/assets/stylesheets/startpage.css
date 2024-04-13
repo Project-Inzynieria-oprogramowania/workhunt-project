@@ -174,7 +174,6 @@
 }
 .colorContainer {
     border-top: 5px dashed #262229;
-    border-bottom: 5px dashed #262229;
     outline-offset: -5px;
     width: 100%;
     min-width: 300px;
@@ -233,6 +232,10 @@
     .largeButton {
         padding: 10px 10px 10px 10px;
         width: 200px;
+        font-size: 25px;
+    }
+    .largeButton:hover {
+        font-size: 26px;
     }
     .encouragementContainer p {
         font-size: 20px;

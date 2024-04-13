@@ -106,7 +106,7 @@ hr.divisionLine {
     display: inline-block;
     margin-top: 20px;
 }
-.error {
+.formError {
     text-align: left;
     color: #aa2424;
     font-style: italic;
