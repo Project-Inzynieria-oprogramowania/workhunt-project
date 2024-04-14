@@ -14,8 +14,17 @@ body
     background-attachment: fixed;
     background-size: 216px, 384px, cover;
     background-color: #302A33;
+    height: 100%;
 }
 .showDebugBorders /*Class for debugging*/
 {
     border: 4px dotted blue;
+}
+h1
+{
+    color: #E7E7E7;
+    text-align: left;
+}
+html {
+    height: 100%;
 }

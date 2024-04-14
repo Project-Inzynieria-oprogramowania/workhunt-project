@@ -1,119 +1,119 @@
-.commonInfo
+.editForm
 {
     width: 80%;
     margin: 0 auto;
+    margin-bottom: 20px;
     display: block;
     min-width: 300px;
-    /*border: 3px solid red;*/
     max-width: 900px;
     text-align: center;
     height: min-content;
+    padding-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 8px 10px 2px rgba(0, 0, 0, 0.300);
+    background-image: linear-gradient(#302A33,  #3b2e43);
 }
-.userInfo
+.editForm h2
 {
-    width: 80%;
-    margin: 0 auto;
-    display: block;
-    min-width: 300px;
-    /*border: 3px solid red;*/
-    max-width: 900px;
-    text-align: center;
-    height: min-content;
+    text-align: left;
+    margin-left: 10%;
+    padding-top: 6px;
+    font-size: 22px;
+    color:#E7E7E7;
+    text-shadow: 0px 1px 3px rgba(231, 231, 231, 0.3);
 }
 .formField input[type=date]
 {
     font-size: 16px;
     background-color: #262229;
-    color: #E7E7E7;
+    color: #bcbcbc;
     font-style: normal;
     border: 3px solid #262229;
-    width: 80%;
+    padding-left: 10px;
+    width: calc(100% - 10px);
     min-width: 140px;
     outline: none;
     height: 36px;
     border-radius: 6px;
     transition-duration: 0.4s;
 }
-.formField input[type=date]:focus
+.formField input[type=date]:hover
 {
+    color: #E7E7E7;
+    background-color: #221f25;
+    border-color: #221f25;
+}
+.formField input[type=date]:active
+{
+    color: #E7E7E7;
     border-color:  #A343D3;
+    background-color: #221f25;
 }
 .formField textarea
 {
     font-size: 16px;
     background-color: #262229;
-    color: #E7E7E7;
+    color: #bcbcbc;
     font-style: normal;
     border: 3px solid #262229;
     outline: none;
     border-radius: 6px;
     transition-duration: 0.4s;
     resize: none;
-    width: 80%;
+    padding-left: 10px;
+    padding-top: 10px;
+    width: calc(80% - 10px);
     min-width: 200px;
     height: 200px;
-    padding: 9px 9px;
+}
+.formField textarea:hover
+{
+    color: #E7E7E7;
+    background-color: #221f25;
+    border-color: #221f25;
 }
 .formField textarea:focus
 {
+    color: #E7E7E7;
     border-color:  #A343D3;
+    background-color: #221f25;
     transition-duration: 0.4s;
-}
-.editContainer
-{
-    align-items: center;
-    justify-content: left;
-    display: flex;
-    flex-wrap: wrap;
-    width: 70%;
-    margin-left: 10%;
-}
-.editContainer .formElement
-{
-    margin-left: 0px;
-    flex: 1;
-    margin-right: 80px;
-    display: block;
-}
-.editContainer.formField 
-{
-    display: inline-flex;
-    margin-right: 20px;
 }
 .selectbox
 {
     font-size: 16px;
     background-color: #262229;
-    color: #E7E7E7;
+    color: #bcbcbc;
     border: 3px solid #262229;
     border-radius: 6px;
     padding: 8px;
+    width: calc(100% + 5px); /*idk*/
     transition-duration: 0.4s;
+}
+.selectbox:hover
+{
+    background-color: #221f25;
+    color: #E7E7E7;
+    border-color: #221f25;
 }
 .selectbox:focus
 {
     border-color:  #A343D3;
+    background-color: #221f25;
     transition-duration: 0.4s;
     outline: none;
 }
-.editTitle
-{
-    margin-top: 20px;
-    font-size: 35px;
-    color: #F4D18C;
-    margin-left: 10%;
-    text-align: left;
-    display: block;
-}
 .editButtons
 {
-    width: 50%;
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 80%;
     max-width: 700px;
+    min-width: 300px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    /*border: 3px solid red;*/
 }
 .deleteButton {
     background-color: #dd182c;
@@ -129,15 +129,110 @@
     color: #c2c1c1;
     box-shadow: 0px 0px 10px 6px rgb(168, 23, 35);
 }
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 900px) {
+    .editButtons .button
+    {
+        max-width: 180px;
+        font-size: 14px;
+        min-width: 150px;
+    }
+ }
+ @media only screen and (max-width: 400px) {
     .editButtons
     {
-        width: 50%;
-        max-width: 700px;
         display: block;
+        align-items: center;
+        text-align: center;
     }
     .deleteButton
     {
-        margin-top: 10px;
+        margin-top: 20px;
     }
  }
+ .pairEditContainer
+ {
+    align-items: top;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 80%;
+    /*border: 3px dashed blue;*/
+ }
+ .leftEditContainer
+ {
+    display: block;
+    /*border: 3px dashed yellow;*/
+    width: 45%;
+    padding-right: 20px;
+ }
+ .leftEditContainer input.textbox
+ {
+    width: calc(100% - 10px);
+ }
+ .rightEditContainer
+ {
+    display: block;
+    /*border: 3px dashed orange;*/
+    width: 45%;
+ }
+ .rightEditContainer input.textbox
+ {
+    width: calc(100% - 10px);
+ }
+ @media only screen and (max-width: 985px) {
+    .leftEditContainer
+    {
+       width: 100%;
+       padding-right: 0px;
+    }
+    .rightEditContainer
+    {
+        width: 100%;
+    }
+ }
+ .editTitle
+{
+    font-size: 35px;
+    color: #F4D18C;
+    text-align: left;
+    display: block;
+    transition-duration: 0.4s;
+}
+ .pageTitle
+ {
+    margin: 0 auto;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-items: left;
+    width: 80%;
+    max-width: 900px;
+    min-width: 300px;
+ }
+ .pageTitle img
+ {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    filter: brightness(150%);
+ }
+ @media only screen and (max-width: 610px)
+{
+    .editTitle
+    {
+        margin-left: 10%;
+        font-size: 20px;
+        transition-duration: 0.4s;
+        text-align: center;
+    }
+    .pageTitle img
+    {
+       width: 25px;
+       height: 25px;
+    }
+    .editForm h2
+    {
+        font-size: 14px;
+    }
+}

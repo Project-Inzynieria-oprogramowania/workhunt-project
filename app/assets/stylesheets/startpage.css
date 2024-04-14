@@ -119,6 +119,7 @@
     font-size: 35px;
     color: #F4D18C;
     margin-left: 10px;
+    transition-duration: 0.4s;
 }
 .aboutWH {
     width: 600px;
@@ -152,6 +153,7 @@
 .advantages img {
     width: 70px;
     height: 70px;
+    transition-duration: 0.4s;
 }
 .limitationContainer {
     display: block;
@@ -171,6 +173,7 @@
     margin-left: 10px;
     color: #d0d0d0e4;
     font-size: 18px;
+    transition-duration: 0.4s;
 }
 .colorContainer {
     border-top: 5px dashed #262229;
@@ -239,6 +242,20 @@
     }
     .encouragementContainer p {
         font-size: 20px;
+    }
+    .paragraphTitle{
+        font-size: 25px;
+        margin-top: 10px;
+        transition-duration: 0.4s;
+    }
+    .advantages span {
+        font-size: 14px;
+        transition-duration: 0.4s;
+    }
+    .advantages img {
+        width: 50px;
+        height: 50px;
+        transition-duration: 0.4s;
     }
 }
 .startPageFooter {

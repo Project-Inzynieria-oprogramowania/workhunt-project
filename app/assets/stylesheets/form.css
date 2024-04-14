@@ -14,32 +14,42 @@ input {
 }
 .formField
 {
+    /*border: 3px solid red;*/
     margin-top: 20px;
     display: block;
     text-align: left;
 }
 input.textbox {
     font-size: 16px;
-    background-color: #262229;
-    color: #E7E7E7;
+    background-color: #262229;;
+    color: #bcbcbc;
     font-style: normal;
     border: 3px solid #262229;
-    width: 80%;
     min-width: 200px;
     outline: none;
+    padding-left: 10px;
+    width: calc(80% - 10px);
     height: 32px;
     border-radius: 6px;
     transition-duration: 0.4s;
 }
+input.textbox:hover {
+    color: #E7E7E7;
+    background-color: #221f25;
+    border-color: #221f25;
+}
 input.textbox:focus {
-    border: 3px solid #A343D3;
-    border-radius: 10px;
+    border-color: #A343D3;
+    color: #E7E7E7;
+    background-color: #221f25;
+    border-radius: 6px;
 }
 input.textbox:-webkit-autofill, input.textbox:-webkit-autofill:focus {
     transition-duration: 0ms;
-    -webkit-box-shadow: 0 0 0 1000px #262229 inset;
+    -webkit-box-shadow: 0 0 0 1000px #221f25 inset;
     -webkit-text-fill-color: #E7E7E7;
-    background-color: #262229 !important;
+    border-color: #221f25 !important;
+    background-color: #221f25 !important;
     color: #E7E7E7 !important;
 }
 .formElement {
