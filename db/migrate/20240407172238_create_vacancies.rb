@@ -3,8 +3,8 @@ class CreateVacancies < ActiveRecord::Migration[7.1]
     create_table :vacancies do |t|
       t.string :title, null: false
       t.text :description
-      t.integer :salary_min_cents, null: false, default: 0
-      t.integer :salary_max_cents, null: false, default: 0
+      t.integer :salary_min_cents, null: true
+      t.integer :salary_max_cents, null: true
       t.string :currency, null: false
       t.string :country
       t.string :city

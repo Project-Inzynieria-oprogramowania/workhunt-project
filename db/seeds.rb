@@ -7,13 +7,15 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
 require_relative "../app/assets/config/initializers/work_constants.rb" 
 100.times do 
+    salary = rand(1..500)
     v = Vacancy.new(
         title: Faker::Job.title,
         description: Faker::Lorem.paragraphs(number: rand(2..5)).join("\n\n"),
-        salary_min_cents: rand(1000..50000) * 1000,
-        salary_max_cents: rand(50000..100000) * 1000,
+        salary_min_cents: [salary * 1000, nil].sample,
+        salary_max_cents: [(salary + rand(5..100)) * 1000, nil].sample,
         currency: %w[USD EUR].sample,
         country: Faker::Address.country,
         city: Faker::Address.city,

@@ -12,8 +12,8 @@ class Vacancy < ApplicationRecord
     validates :subordination_level, presence: true, inclusion: { in: SUBORDINATION_LEVEL, message: "is not valid" }
     validates :contract_type, presence: true, inclusion: { in: CONTRACT_TYPE, message: "is not valid" }
     validates :status, presence: true, inclusion: { in: STATUS, message: "is not valid" }
-    monetize :salary_min_cents
-    monetize :salary_max_cents
+    monetize :salary_min_cents, numericality: true, allow_nil: true
+    monetize :salary_max_cents, numericality: true, allow_nil: true
 
     # validates :job_type, presence: true, one_of: JOB_TYPES.values.flatten, message: "is not valid"
     # validates :education, presence: true, one_of: EDUCATION, message: "is not valid"
@@ -22,7 +22,10 @@ class Vacancy < ApplicationRecord
     # validates :working_time, presence: true, one_of: WORKING_TIME, message: "is not valid"
     # validates :status, presence: true, one_of: STATUS, message: "is not valid"
 
+    before_validation :salary_convertation
     
+    private
+
     def self.ransackable_attributes(auth_object = nil)
         ["title", "description",
         "job_type", "work_type", "education", "subordination_level", "contract_type", "working_time"]
@@ -30,5 +33,10 @@ class Vacancy < ApplicationRecord
 
     def self.ransackable_associations(auth_object = nil)
         ["user"]
+    end
+
+    def salary_convertation
+        self.salary_min_cents = self.salary_min.nil? ? nil : self.salary_min * 100
+        self.salary_max_cents = self.salary_max.nil? ? nil : self.salary_max * 100
     end
 end

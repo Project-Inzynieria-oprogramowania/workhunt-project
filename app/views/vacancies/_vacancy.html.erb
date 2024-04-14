@@ -1,6 +1,18 @@
 <%= link_to vacancy_path(vacancy) do %>
     <h2><%= vacancy.title %></h2>
     <p><%= truncate vacancy.description, length: 100 %></p>
-    <p><b><%= vacancy.salary_min %> to <%= vacancy.salary_max %> <%= vacancy.currency %></b></p>
+    <p><b>
+        <% if vacancy.salary_min_cents.present? && vacancy.salary_max_cents.present? %>
+            <%= Money.from_cents(vacancy.salary_min_cents, vacancy.currency).format %> - 
+            <%= Money.from_cents(vacancy.salary_max_cents, vacancy.currency).format %>
+        <% elsif vacancy.salary_min_cents.present? %>
+            > <%= Money.from_cents(vacancy.salary_min_cents, vacancy.currency).format %>
+        <% elsif vacancy.salary_max_cents.present? %>
+            up to <%= Money.from_cents(vacancy.salary_max_cents, vacancy.currency).format %>
+        <% else %>
+            Negotiable 
+        <% end %>
+        
+    </b></p>
 <% end %>
 <%= render 'vacancies/buttons', locals: {vacancy: vacancy} %><br><br>

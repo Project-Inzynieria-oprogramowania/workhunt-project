@@ -45,8 +45,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_07_172238) do
   create_table "vacancies", force: :cascade do |t|
     t.string "title", null: false
     t.text "description"
-    t.integer "salary_min_cents", default: 0, null: false
-    t.integer "salary_max_cents", default: 0, null: false
+    t.integer "salary_min_cents"
+    t.integer "salary_max_cents"
     t.string "currency", null: false
     t.string "country"
     t.string "city"
