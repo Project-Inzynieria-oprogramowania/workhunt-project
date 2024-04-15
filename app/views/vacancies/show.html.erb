@@ -5,6 +5,19 @@
 <p><%= @vacancy.description %></p>
 <p><%= @vacancy.skills_mandatory %></p>
 <p><%= @vacancy.skills_optional %></p>
-<p><b><%= @vacancy.salary_min %> to <%= @vacancy.salary_max %> <%= @vacancy.currency %></b></p>
+<p>
+    <b>
+        <% if @vacancy.salary_min_cents.present? && @vacancy.salary_max_cents.present? %>
+            <%= Money.from_cents(@vacancy.salary_min_cents, @vacancy.currency).format %> - 
+            <%= Money.from_cents(@vacancy.salary_max_cents, @vacancy.currency).format %>
+        <% elsif @vacancy.salary_min_cents.present? %>
+            from <%= Money.from_cents(@vacancy.salary_min_cents, @vacancy.currency).format %>
+        <% elsif @vacancy.salary_max_cents.present? %>
+            up to <%= Money.from_cents(@vacancy.salary_max_cents, @vacancy.currency).format %>
+        <% else %>
+            Negotiated
+        <% end %>
+    </b>
+</p>
 
 <%= render 'buttons', locals: {vacancy: @vacancy} %>

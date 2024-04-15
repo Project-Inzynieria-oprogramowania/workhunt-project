@@ -6,11 +6,11 @@
             <%= Money.from_cents(vacancy.salary_min_cents, vacancy.currency).format %> - 
             <%= Money.from_cents(vacancy.salary_max_cents, vacancy.currency).format %>
         <% elsif vacancy.salary_min_cents.present? %>
-            > <%= Money.from_cents(vacancy.salary_min_cents, vacancy.currency).format %>
+            from <%= Money.from_cents(vacancy.salary_min_cents, vacancy.currency).format %>
         <% elsif vacancy.salary_max_cents.present? %>
             up to <%= Money.from_cents(vacancy.salary_max_cents, vacancy.currency).format %>
         <% else %>
-            Negotiable 
+            Negotiated
         <% end %>
         
     </b></p>

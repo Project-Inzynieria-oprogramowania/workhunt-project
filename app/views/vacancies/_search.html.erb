@@ -30,5 +30,11 @@
 
         <%= form.label :working_time_in %>
         <%= form.select :working_time_in, options_for_select(WORKING_TIME, params[:q]&.fetch(:working_time_in, nil)), {}, multiple: true %>
+
+        <%= form.label :salary_min_cents_gteq, "Minimal salary" %> 
+        <%= form.number_field :salary_min_cents_gteq, value: params[:q]&.fetch(:salary_min_cents_gteq, nil) %> 
+
+        <%= form.label :currency_in %>
+        <%= form.select :currency_in, options_for_select(Money::Currency.all, params[:q]&.fetch(:currency_in, nil)), {}, multiple: true %>
     </div>
 <% end %>

@@ -14,6 +14,7 @@ class Vacancy < ApplicationRecord
     validates :status, presence: true, inclusion: { in: STATUS, message: "is not valid" }
     monetize :salary_min_cents, numericality: true, allow_nil: true
     monetize :salary_max_cents, numericality: true, allow_nil: true
+    validate :salary_range
 
     # validates :job_type, presence: true, one_of: JOB_TYPES.values.flatten, message: "is not valid"
     # validates :education, presence: true, one_of: EDUCATION, message: "is not valid"
@@ -28,7 +29,7 @@ class Vacancy < ApplicationRecord
 
     def self.ransackable_attributes(auth_object = nil)
         ["title", "description",
-        "job_type", "work_type", "education", "subordination_level", "contract_type", "working_time"]
+        "job_type", "work_type", "education", "subordination_level", "contract_type", "working_time", "currency"]
     end
 
     def self.ransackable_associations(auth_object = nil)
@@ -38,5 +39,10 @@ class Vacancy < ApplicationRecord
     def salary_convertation
         self.salary_min_cents = self.salary_min.nil? ? nil : self.salary_min * 100
         self.salary_max_cents = self.salary_max.nil? ? nil : self.salary_max * 100
+    end
+
+    def salary_range
+        return if salary_min.nil? || salary_max.nil? || salary_min < salary_max
+        errors.add(:salary_max, "must be more than salary min")
     end
 end
