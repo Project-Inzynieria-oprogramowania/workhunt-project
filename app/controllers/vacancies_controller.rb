@@ -24,7 +24,6 @@ class VacanciesController < ApplicationController
     end
 
     def index
-        puts "===============\n#{params[:q].inspect}\n=========================="
         @vacancies = Vacancy.where(status: 'Opened')
         if params[:q].present? && params[:q][:salary_min_cents_gteq].present?
             min_salary = params[:q][:salary_min_cents_gteq].to_i * 100
@@ -68,24 +67,6 @@ class VacanciesController < ApplicationController
             :subordination_level, :contract_type, :working_time, 
             :work_type, :status, :organization_id)
     end
-
-    
-        # params.require(:search).permit(
-        #     :title_or_description_cont,
-        #     :job_type_in, :work_type_in, :education_in, :subordination_level_in, :contract_type_in, :working_time_in,
-        #     :salary_min_cents_gteq
-        # )
-    # def search_vacancy_params
-    #     if params[:q].present?
-    #         params.require(:q).permit(
-    #             :title_or_description_cont, 
-    #             :job_type_in, :work_type_in, :education_in, :subordination_level_in, :contract_type_in, :working_time_in, :currency_in,
-    #             :salary_min_cents_gteq
-    #         )
-    #     else
-    #         {}
-    #     end
-    # end
 
     def check_organization
         @vacancy = Vacancy.find(params[:id])

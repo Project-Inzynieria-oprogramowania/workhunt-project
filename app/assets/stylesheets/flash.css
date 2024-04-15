@@ -1,6 +1,6 @@
 #flashContainer {
-    position: absolute;
-    top: 20px;
+    position: fixed;
+    top: 80px;
     right: 20px;
     z-index: 1000;
 }
