@@ -4,11 +4,11 @@ class Organization < ApplicationRecord
     
     validates :name, presence: true
 
-    after_initialize :set_defaults, if: :new_record?
+    before_validation :set_defaults, if: :new_record?
 
     private
 
     def set_defaults
-        self.name = "User##{self.user_id.hash}"
+        self.name = "User##{self.user_id.hash.abs}"
     end
 end

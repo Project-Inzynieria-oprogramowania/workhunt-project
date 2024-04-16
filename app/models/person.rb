@@ -5,13 +5,13 @@ class Person < ApplicationRecord
     validates :name, presence: true
     validates :surname, presence: true
 
-    after_initialize :set_defaults, if: :new_record?
+    before_validation :set_defaults, if: :new_record?
     
     private
 
     def set_defaults
         self.sex ||= 'unspecified'
-        self.name ||= "User_name##{self.user_id.hash}"
-        self.surname ||= "User_surname##{self.user_id.hash}"
+        self.name ||= "User_name##{self.user_id.hash.abs}"
+        self.surname ||= "User_surname##{self.user_id.hash.abs}"
     end
 end
