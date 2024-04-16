@@ -1,12 +1,16 @@
-<% provide :page_title, 'Profile' %>
+<% provide :page_title, 'Edit account' %>
 <div class='pageTitle'>
     <h1 class='editTitle'>Edit profile information</h1><%= image_tag 'menuIcons/gear.png' %>
 </div>
 <%= form_with model: @user, url: user_update_path do |form| %>
-    <div class='editForm'>
+    <div class='profileForm'>
         <h2>Account information:</h2>
         <div class='pairEditContainer'>
+            
             <div class='leftEditContainer'>
+                 <div class='iconPlaceholder formField'></div>
+            </div>
+            <div class='rightEditContainer'>
                 <div class='formField'>
                     <%= form.label :login, 'Login', class: ['label'] %>
                     <%= form.text_field :login, placeholder: 'Enter login...', class: ['textbox'] %>
@@ -16,8 +20,6 @@
                         <% end %> 
                     <% end %>
                 </div>
-            </div>
-            <div class='rightEditContainer'>
                 <div class='formField'>
                     <%= form.label :password, 'New password', class: ['label'] %>
                     <%= form.password_field :password, placeholder: 'Enter new password...', class: ['textbox'] %>
@@ -50,7 +52,7 @@
         </div>
     </div>
 </div>
-<div class='editForm'>
+<div class='profileForm'>
     <h2>Personal information:</h2>
     <% if @user.person? %>
         <%# Пользователь %>
@@ -139,6 +141,8 @@
     <div class='editButtons'>
             <%= form.submit 'Confirm changes', class: 'button', id: 'Submit' %>
         <% end %>
+        <!--
             <%= button_to "Delete account", user_destroy_path(@user), method: :delete, confirm: 'Are you sure you want to delete account?', class: 'button deleteButton' %>
-    </div>
+        --!>
+        </div>
 </div>
