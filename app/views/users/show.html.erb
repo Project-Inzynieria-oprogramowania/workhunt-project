@@ -1,5 +1,5 @@
 <div class='pageTitle'>
-    <% if @user.id == current_user.id %>
+    <% if current_user.present? && @user.id == current_user.id %>
         <h1 class='editTitle'>My profile</h1><%= image_tag 'menuIcons/human.png' %>
         <% provide :page_title, 'My profile' %>
     <% else %>
@@ -14,13 +14,14 @@
 </div>
 <div class='profileForm'>
     <div class='pairProfileContainer'>
-            <% if @user.id == current_user.id %>
+            <% if current_user.present? && @user.id == current_user.id %>
                 <%= link_to user_settings_path, class: 'cornerLink' do %>
                     <%= image_tag 'menuIcons/edit.png' %>
                 <% end %>
             <% else %>
                 <div class='cornerLink'><%= image_tag 'menuIcons/writeToPlaceholder.png' %></div>
-                <%# кнопка "написать сообщение"/"добавить в избранное"? %>
+                <%# кнопка "написать сообщение"/"добавить в избранное"?  %>
+                <%# может нужно сделать потом, что если пользователь не вошёл, то эта кнопка либо выбрасывает флеш либо кидает на логин пейдж %>
             <% end %>
             <div class='leftProfileContainer'>
                 <div class='iconPlaceholder'></div>
