@@ -14,22 +14,22 @@
 </div>
 <div class='profileForm'>
     <div class='pairProfileContainer'>
-            <% if current_user.present? && @user.id == current_user.id %>
-                <%= link_to user_settings_path, class: 'cornerLink' do %>
-                    <%= image_tag 'menuIcons/edit.png' %>
-                <% end %>
+        <% if current_user.present? && @user.id == current_user.id %>
+            <%= link_to user_settings_path, class: 'cornerLink' do %>
+                <%= image_tag 'menuIcons/edit.png' %>
+            <% end %>
+        <% else %>
+            <% if user_signed_in? %>
+                <div class='cornerLink'><%= image_tag 'menuIcons/writeToPlaceholder.png' %></div>
             <% else %>
-                <% if user_signed_in? %>
+                <%= link_to login_path do %>
                     <div class='cornerLink'><%= image_tag 'menuIcons/writeToPlaceholder.png' %></div>
-                <% else %>
-                    <%= link_to login_path do %>
-                        <div class='cornerLink'><%= image_tag 'menuIcons/writeToPlaceholder.png' %></div>
-                    <% end %>
                 <% end %>
             <% end %>
-            <div class='leftProfileContainer'>
-                <div class='iconPlaceholder'></div>
-            </div>
+        <% end %>
+        <div class='leftProfileContainer'>
+            <div class='iconPlaceholder'></div>
+        </div>
         <% if @user.person? %>
             <div class='rightProfileContainer'>
                 <h1 class='nameSurname'><%= @user.person.name %> <%= @user.person.surname %></h1>

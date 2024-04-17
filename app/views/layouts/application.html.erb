@@ -8,24 +8,24 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "common", "header", "form", "signup", "startpage", "edit", "profile" , "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "common", "header", "form", "signup", "startpage", "edit", "profile" , "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "flash" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
+    <% if controller_name == 'sessions' || (controller_name == 'users' && (action_name == 'new' || action_name == 'create'))%> 
+      <%= render 'shared/header' %> 
+    <% elsif controller_name == 'home' %> 
+      <% if user_signed_in? %> 
+        <%= render 'shared/header_menu' %> 
+      <% end %>
+    <% else %>
+      <%= render 'shared/header_menu' %> 
+    <% end %>
+
     <%= render 'shared/flash' %>
-        <% if controller_name == 'sessions' %> 
-            <%= render 'shared/header' %> 
-        <% elsif controller_name == 'home' %> 
-          <% if user_signed_in? %> 
-            <%= render 'shared/headerAlt' %> 
-          <% end %> 
-        <% elsif !(controller_name == 'users' && (action_name == 'new' || action_name == 'create')) %> 
-          <%= render 'shared/headerAlt' %> 
-        <% else %>
-          <%= render 'shared/header' %> 
-        <% end %>
+
     <%= yield %>
   </body>
 </html>
