@@ -21,7 +21,7 @@ class UsersController < ApplicationController
             flash[:success] = "Successful registration"
             redirect_to user_settings_path
         else
-            flash[:error] = "Cannot be create. Some errors in form"
+            flash[:error] = "Cannot be create: some errors in form"
             render :new, status: :unprocessable_entity
         end
     end
@@ -52,7 +52,7 @@ class UsersController < ApplicationController
             flash[:success] = "Data changed successfully"
             redirect_to user_settings_path
         else
-            flash[:error] = "Cannot be update. Some errors in form"
+            flash[:error] = "Cannot be update: some errors in form"
             render :edit, status: :unprocessable_entity
         end
     end

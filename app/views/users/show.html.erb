@@ -1,19 +1,65 @@
-<div>
-    <% if @user.person? %>
-        <h3><%= @user.person.name %> <%= @user.person.surname %></h3><br>
-        <p><%= @user.person.about %></p>
-    <% elsif @user.organization? %>
-        <h3><%= @user.organization.name %></h3><br>
-        <p><%= @user.organization.about %></p>
+<div class='pageTitle'>
+    <% if current_user.present? && @user.id == current_user.id %>
+        <h1 class='editTitle'>My profile</h1><%= image_tag 'menuIcons/human.png' %>
+        <% provide :page_title, 'My profile' %>
+    <% else %>
+        <% if @user.person? %>
+            <h1 class='editTitle'>Person profile</h1><%= image_tag 'menuIcons/human.png' %>
+            <% provide :page_title, @user.person.name + ' ' + @user.person.surname %>
+        <% elsif @user.organization? %>
+            <h1 class='editTitle'>Organization profile</h1><%= image_tag 'menuIcons/human.png' %>
+            <% provide :page_title, @user.organization.name %>
+        <% end %>
     <% end %>
 </div>
-<% if @user.id == current_user.id %>
-    <%# Кнопки, допустим, перенаправляющие на редактирование профиля %>
-    <%= link_to 'Options', user_settings_path %>
-<% else %>
-    <%# если понадобится поставить что-то вместо этого %>
-<% end %>
-
+<div class='profileForm'>
+    <div class='pairProfileContainer'>
+        <% if current_user.present? && @user.id == current_user.id %>
+            <%= link_to user_settings_path, class: 'cornerLink' do %>
+                <%= image_tag 'menuIcons/edit.png' %>
+            <% end %>
+        <% else %>
+            <% if user_signed_in? %>
+                <div class='cornerLink'><%= image_tag 'menuIcons/writeToPlaceholder.png' %></div>
+            <% else %>
+                <%= link_to login_path do %>
+                    <div class='cornerLink'><%= image_tag 'menuIcons/writeToPlaceholder.png' %></div>
+                <% end %>
+            <% end %>
+        <% end %>
+        <div class='leftProfileContainer'>
+            <div class='iconPlaceholder'></div>
+        </div>
+        <% if @user.person? %>
+            <div class='rightProfileContainer'>
+                <h1 class='nameSurname'><%= @user.person.name %> <%= @user.person.surname %></h1>
+                <p class='singleInfo'><span>Gender:</span> <%= @user.person.sex %></p>
+                <% if @user.person.DOB.present? %>
+                    <div class='singleInfo'><span>DOB:</span> <%= @user.person.DOB %></div>
+                <% else %>
+                    <div class='singleInfo'><span>DOB:</span> no data</div>
+                <% end %>
+                <div class='singleInfo'><span>Person</span></div>
+            </div>
+        <% elsif @user.organization? %>
+            <div class='rightProfileContainer'>
+                <h1 class='nameSurname'><%= @user.organization.name %></h1>
+                <div class='singleInfo'><span>Organization</span></div>
+            </div>
+        <% end %>
+    </div>
+</div>
+    <% if @user.person? && @user.person.about.present? %>
+        <div class='profileForm'>
+            <h1 class='paragraphProfileTitle'>About me</h1>
+            <p class='aboutUser singleInfo'><%= @user.person.about %></p>
+        </div>
+    <% elsif @user.organization? &&  @user.organization.about.present? %>
+        <div class='profileForm'>
+            <h1 class='paragraphProfileTitle'>About us</h1>
+            <p class='aboutUser singleInfo'><%= @user.organization.about %></p>
+        </div>
+     <% end %>
 <%# 
     Будет какой-то блок, в котором будет хранится или только блок отзывов, или блок отзывов и блок вакансий. 
     Нужно через js сделать переключение между ними 

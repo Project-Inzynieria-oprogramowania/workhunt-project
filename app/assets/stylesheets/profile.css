@@ -1,238 +1,131 @@
-.editForm
+.iconPlaceholder
 {
-    width: 80%;
-    margin: 0 auto;
-    margin-bottom: 20px;
+    width: 140px;
+    height: 140px;
+    background-color:aliceblue;
+    border-radius: 30px;
+    box-shadow: 6px 8px 8px 1px rgba(0,0,0,0.4);
     display: block;
-    min-width: 300px;
-    max-width: 900px;
+}
+.singleInfo
+{
+    font-size: 16px;
+    display: inline-block;
+    /*border: 3px dashed cornflowerblue;*/
+    border: 3px dashed #663C7B;
     text-align: center;
-    height: min-content;
-    padding-bottom: 20px;
+    color: #E7E7E7;
+    background-color: #262229;
+    padding: 10px 10px;
     border-radius: 10px;
-    box-shadow: 0px 8px 10px 2px rgba(0, 0, 0, 0.300);
-    background-image: linear-gradient(#302A33,  #3b2e43);
-}
-.editForm h2
-{
-    text-align: left;
-    margin-left: 10%;
-    padding-top: 6px;
-    font-size: 22px;
-    color:#E7E7E7;
-    text-shadow: 0px 1px 3px rgba(231, 231, 231, 0.3);
-}
-.formField input[type=date]
-{
-    font-size: 16px;
-    background-color: #262229;
-    color: #bcbcbc;
-    font-style: normal;
-    border: 3px solid #262229;
-    padding-left: 10px;
-    width: calc(100% - 10px);
-    min-width: 140px;
-    outline: none;
-    height: 36px;
-    border-radius: 6px;
-    transition-duration: 0.4s;
-}
-.formField input[type=date]:hover
-{
-    color: #E7E7E7;
-    background-color: #221f25;
-    border-color: #221f25;
-}
-.formField input[type=date]:active
-{
-    color: #E7E7E7;
-    border-color:  #A343D3;
-    background-color: #221f25;
-}
-.formField textarea
-{
-    font-size: 16px;
-    background-color: #262229;
-    color: #bcbcbc;
-    font-style: normal;
-    border: 3px solid #262229;
-    outline: none;
-    border-radius: 6px;
-    transition-duration: 0.4s;
-    resize: none;
-    padding-left: 10px;
-    padding-top: 10px;
-    width: calc(80% - 10px);
-    min-width: 200px;
-    height: 200px;
-}
-.formField textarea:hover
-{
-    color: #E7E7E7;
-    background-color: #221f25;
-    border-color: #221f25;
-}
-.formField textarea:focus
-{
-    color: #E7E7E7;
-    border-color:  #A343D3;
-    background-color: #221f25;
-    transition-duration: 0.4s;
-}
-.selectbox
-{
-    font-size: 16px;
-    background-color: #262229;
-    color: #bcbcbc;
-    border: 3px solid #262229;
-    border-radius: 6px;
-    padding: 8px;
-    width: calc(100% + 5px); /*idk*/
-    transition-duration: 0.4s;
-}
-.selectbox:hover
-{
-    background-color: #221f25;
-    color: #E7E7E7;
-    border-color: #221f25;
-}
-.selectbox:focus
-{
-    border-color:  #A343D3;
-    background-color: #221f25;
-    transition-duration: 0.4s;
-    outline: none;
-}
-.editButtons
-{
-    margin: 0 auto;
     margin-top: 20px;
-    width: 80%;
-    max-width: 700px;
-    min-width: 300px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
+    margin-right: 5%;
+    max-width: 95%;
 }
-.deleteButton {
-    background-color: #dd182c;
-    color: #E7E7E7;
-}
-.deleteButton:hover {
-    background-color: #f51e34;
-    color: rgb(255, 255, 255);
-    box-shadow: 0px 0px 10px 6px rgb(220, 58, 58);
-}
-.deleteButton:active {
-    background-color: #c9192a;
-    color: #c2c1c1;
-    box-shadow: 0px 0px 10px 6px rgb(168, 23, 35);
-}
-@media only screen and (max-width: 900px) {
-    .editButtons .button
-    {
-        max-width: 180px;
-        font-size: 14px;
-        min-width: 150px;
-    }
- }
- @media only screen and (max-width: 400px) {
-    .editButtons
-    {
-        display: block;
-        align-items: center;
-        text-align: center;
-    }
-    .deleteButton
-    {
-        margin-top: 20px;
-    }
- }
- .pairEditContainer
- {
-    align-items: top;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 0 auto;
-    width: 80%;
-    /*border: 3px dashed blue;*/
- }
- .leftEditContainer
- {
-    display: block;
-    /*border: 3px dashed yellow;*/
-    width: 45%;
-    padding-right: 20px;
- }
- .leftEditContainer input.textbox
- {
-    width: calc(100% - 10px);
- }
- .rightEditContainer
- {
-    display: block;
-    /*border: 3px dashed orange;*/
-    width: 45%;
- }
- .rightEditContainer input.textbox
- {
-    width: calc(100% - 10px);
- }
- @media only screen and (max-width: 985px) {
-    .leftEditContainer
-    {
-       width: 100%;
-       padding-right: 0px;
-    }
-    .rightEditContainer
-    {
-        width: 100%;
-    }
- }
- .editTitle
+.singleInfo span
 {
-    font-size: 35px;
+    font-size: 13px;
     color: #F4D18C;
-    text-align: left;
-    display: block;
-    transition-duration: 0.4s;
 }
- .pageTitle
- {
-    margin: 0 auto;
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-    justify-items: left;
-    width: 80%;
-    max-width: 900px;
-    min-width: 300px;
- }
- .pageTitle img
- {
-    position: relative;
-    width: 50px;
-    height: 50px;
-    filter: brightness(150%);
- }
- @media only screen and (max-width: 610px)
+.nameSurname
 {
-    .editTitle
+    display: block;
+    position: relative;
+    font-size: 20px;
+    padding-right: 10%;
+}
+.pairProfileContainer {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-right: 20px;
+    margin-left: 20px;
+    /*border: 3px dashed orange;*/
+}
+.leftProfileContainer {
+    position: relative;
+    display: block;
+    width: fit-content;
+    margin-top: 20px;
+}
+.rightProfileContainer {
+    position: relative;
+    margin-top: 20px;
+    margin-left: 20px;
+    display: block;
+    flex-grow: 1;
+    text-align: left;
+}
+ .aboutUser
+ {
+    text-align: left;
+    position: relative;
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    border: none;
+ }
+ .paragraphProfileTitle
+ {
+    font-size: 25px;
+    text-align: left;
+    padding: 2% 4%;
+    color: #F4D18C;
+ }
+ .cornerLink {
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    z-index: 2;
+    height: auto;
+ }
+ .cornerLink img {
+    width: 30px;
+    height: 30px;
+    filter: brightness(90%);
+    transition-duration: 0.4s;
+ }
+ .cornerLink:hover img
+ {
+    width: 32px;
+    height: 32px;
+    top: 6px;
+    filter: brightness(120%) drop-shadow(0px 0px 10px rgba(244, 209, 140, 0.5));
+    transition-duration: 0.4s;
+ }
+ @media only screen and (max-width: 600px) {
+    .iconPlaceholder
     {
-        margin-left: 10%;
-        font-size: 20px;
-        transition-duration: 0.4s;
-        text-align: center;
+        width: 80px;
+        height: 80px;
     }
-    .pageTitle img
-    {
-       width: 25px;
-       height: 25px;
-    }
-    .editForm h2
+    .nameSurname
     {
         font-size: 14px;
+        background-color: none;
+        margin-top: 0px;
+        margin-right: 10%;
+        max-width: 80%;
+        height: auto;
     }
-}
+    .singleInfo
+    {
+        font-size: 12px;
+        margin-right: 3%;
+    }
+    .aboutUser
+    {
+       width: 80%;
+       margin: 0 auto;
+    }
+    .paragraphProfileTitle
+    {
+       font-size: 18px;
+       padding: 3% 9%;
+    }
+    .singleInfo span
+    {
+       font-size: 10px;
+    }
+ }

@@ -13,7 +13,8 @@ class SessionsController < ApplicationController
             redirect_to root_path
         else
             @user = User.new(login: params[:user][:login])
-            @user.errors.add(:password, "Invalid login or password")
+            @user.errors.add(:login, "or password is invalid")
+            flash[:error] = "Login failed, try again"
             render :new, status: :unprocessable_entity
         end
     end

@@ -1,0 +1,16 @@
+<div class='sliderField', id='sliderField'>
+    <div class='greatingsContainer'>
+        <div class='welcomeMessage'>
+            <p class='largeTitle'>Welcome to the WorkHunt</p>
+            <p class='subTitle'>The newest job search service!</p>
+        </div>
+        <div class='startButtonContainer'>
+                <% if user_signed_in? %>
+                    <%= link_to 'TO THE HUNT!', vacancies_path, class: ['largeButton'] %>
+                <% else %>
+                    <%= link_to 'START NOW', login_path, class: ['largeButton'] %>
+                <% end %>  
+        </div>
+    </div>
+</div>
+<%= javascript_include_tag 'slider_resizing' %>
