@@ -59,6 +59,7 @@
 }
  .aboutUser
  {
+    text-align: left;
     position: relative;
     display: block;
     width: 90%;

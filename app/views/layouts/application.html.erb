@@ -15,15 +15,17 @@
 
   <body>
     <%= render 'shared/flash' %>
-          <% if controller_name == 'sessions' || controller_name == 'users' && action_name != 'edit' && action_name != 'show' %>
-              <%= render 'shared/header' %>
-          <% elsif controller_name != 'home' %>
-              <%= render 'shared/headerAlt' %>
-          <% else %>
-            <% if user_signed_in? %>
-              <%= render 'shared/headerAlt' %>
-            <% end %>
-          <% end %>
+        <% if controller_name == 'sessions' %> 
+            <%= render 'shared/header' %> 
+        <% elsif controller_name == 'home' %> 
+          <% if user_signed_in? %> 
+            <%= render 'shared/headerAlt' %> 
+          <% end %> 
+        <% elsif !(controller_name == 'users' && (action_name == 'new' || action_name == 'create')) %> 
+          <%= render 'shared/headerAlt' %> 
+        <% else %>
+          <%= render 'shared/header' %> 
+        <% end %>
     <%= yield %>
   </body>
 </html>

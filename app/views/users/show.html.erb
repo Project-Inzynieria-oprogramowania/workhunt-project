@@ -19,9 +19,13 @@
                     <%= image_tag 'menuIcons/edit.png' %>
                 <% end %>
             <% else %>
-                <div class='cornerLink'><%= image_tag 'menuIcons/writeToPlaceholder.png' %></div>
-                <%# кнопка "написать сообщение"/"добавить в избранное"?  %>
-                <%# может нужно сделать потом, что если пользователь не вошёл, то эта кнопка либо выбрасывает флеш либо кидает на логин пейдж %>
+                <% if user_signed_in? %>
+                    <div class='cornerLink'><%= image_tag 'menuIcons/writeToPlaceholder.png' %></div>
+                <% else %>
+                    <%= link_to login_path do %>
+                        <div class='cornerLink'><%= image_tag 'menuIcons/writeToPlaceholder.png' %></div>
+                    <% end %>
+                <% end %>
             <% end %>
             <div class='leftProfileContainer'>
                 <div class='iconPlaceholder'></div>
@@ -45,16 +49,17 @@
         <% end %>
     </div>
 </div>
-<div class='profileForm'>
-    <% if @user.person? %>
-        <h1 class='paragraphProfileTitle'>About us</h1>
-        <p class='aboutUser singleInfo'><%= @user.person.about %></p>
-    <% elsif @user.organization? %>
-        <h1 class='paragraphProfileTitle'>About us</h1>
-        <p class='aboutUser singleInfo'><%= @user.organization.about %></p>
-    <% end %>
-</div>
-
+    <% if @user.person? && @user.person.about.present? %>
+        <div class='profileForm'>
+            <h1 class='paragraphProfileTitle'>About me</h1>
+            <p class='aboutUser singleInfo'><%= @user.person.about %></p>
+        </div>
+    <% elsif @user.organization? &&  @user.organization.about.present? %>
+        <div class='profileForm'>
+            <h1 class='paragraphProfileTitle'>About us</h1>
+            <p class='aboutUser singleInfo'><%= @user.organization.about %></p>
+        </div>
+     <% end %>
 <%# 
     Будет какой-то блок, в котором будет хранится или только блок отзывов, или блок отзывов и блок вакансий. 
     Нужно через js сделать переключение между ними 
