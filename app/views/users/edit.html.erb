@@ -58,14 +58,14 @@
                     </div>
                 </div>
                 <div class='pairEditContainer'>
-                    <div class='leftEditContainer'>
+                    <div class='editContainer'>
                         <div class='formField'>
                             <%= person_fields.label :sex, "Select gender" %>
                             <%= person_fields.collection_select :sex, Person.sexes.keys, :to_s, :to_s, { selected: @user.person&.sex || 'unspecified' } %>
                             <%= render 'shared/form_error', locals: {model: @user.person, parametr: :sex} %>
                         </div>
                     </div>
-                    <div class='rightEditContainer'>
+                    <div class='editContainer'>
                         <div class='formField'>
                             <%= person_fields.label :DOB, 'Date of birthday' %>
                             <%= person_fields.date_field :DOB, placeholder: 'Enter date of birthday...' %>
