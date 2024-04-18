@@ -90,5 +90,6 @@
         <%= form.select :status, options_for_select(STATUS, @vacancy.status), {}, { selected: @vacancy.status } %>
         <%= render 'shared/form_error', locals: {model: @vacancy, parametr: :status} %>
     </div>
-    <%= form.submit 'Confirm' %>
+    <%= form.submit 'Confirm', class: 'button disable', disabled: true %>
 <% end %>
+<%= javascript_include_tag 'disable_submit', async: true %>
