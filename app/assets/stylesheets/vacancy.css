@@ -19,7 +19,7 @@
 .vacancyInfo {
     padding: 10px 15px;
     display: block;
-    width: 70%;
+    width: 80%;
     position: relative;
     /*border: 3px dashed blue;*/
 }
@@ -30,23 +30,23 @@
     text-align: left;
     color: #F4D18C;
 }
-.vacancy p:first-of-type, .vacancy p:first-of-type a {
+.vacancyInfo p:first-of-type, .vacancy p:first-of-type a {
     color: #E0ACFA;
     font-weight: bold;
     font-size: 18px;
     margin: 5px 0px;
 }
-.vacancy p:first-of-type img {
+.vacancyInfo p:first-of-type img {
     height: auto;
     width: 2%;
     min-width: 12px;
 }
-.vacancy p 
+.vacancyInfo p 
 {
     font-size: 14px;
     color: #A343D3;
 }
-.vacancy .salaryField
+.vacancyInfo .salaryField
 {
     font-size: 16px;
     font-weight: bold;
@@ -60,28 +60,31 @@
     margin-left: 10px;
 }
 .vacancyButtons {
-    display: inline-flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     height: min-content;
+    /*border: 3px solid red;*/
 }
 .vacancyButtons > *
 {
-    display: block;
+    display: flex;
     text-align: center;
 }
-.vacancyButtons a:nth-child(2){
+.vacancyButtons a{
     margin-left: 15px;
 }
 .vacancyButtons button {
+    display: flex;
     background: none;
     border: none;
     font: inherit;
     cursor: pointer;
     outline: none;
-    margin: 0;
 }
 .vacancyButtons button img {
+    width: 24px;
+    height: 24px;
     filter: brightness(80%);
 }
 .vacancyButtons a img {
@@ -168,4 +171,34 @@
         width: 16px;
         height: 16px;
     }
+}
+.vacancyDetailedField {
+    font-size: 16px;
+    max-width: 90%;
+    display: inline-block;
+    border: 3px dashed #663C7B;
+    color: #E7E7E7;
+    background-color: #262229;
+    padding: 10px 10px;
+    border-radius: 10px;
+    margin: 1% 1%;
+    overflow: auto;
+}
+.vacancyDetailedField span{
+    display: inline-block;
+    font-size: 14px;
+    color: #F4D18C;
+}
+.vacancyDetailedField p{
+    display: inline-block;
+    font-size: 14px !important;
+    padding: 0;
+}
+.status.vacancyInfo {
+    margin: 0 auto;
+    width: 100%;
+    min-width: 300px;
+    max-width: 900px; 
+    padding: 0px 0px;
+    margin-top: 2vh;
 }

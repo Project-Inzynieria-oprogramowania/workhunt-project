@@ -18,6 +18,10 @@
 {
     background-image: none;
     box-shadow: none;
+    text-shadow: none;
+}
+.profileForm.removeStyle h2 {
+    text-shadow: none;
 }
 .profileForm h2 {
     text-align: left;

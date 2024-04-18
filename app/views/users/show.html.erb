@@ -66,6 +66,7 @@
 %>
 <% if @user.organization? %>
         <div class='profileForm removeStyle'>
+            <%= link_to "Create new offer", vacancy_new_path, class: 'button profile' %>
             <%= render Vacancy.where(organization_id: @user.organization.id) %>
         </div>
 <% end %>

@@ -122,3 +122,23 @@
        font-size: 10px;
     }
  }
+ .profile.button
+ {
+    height: auto;
+    display: block;
+    text-align: center;
+    width: 30%;
+    padding: 10px 5px;
+ }
+ .profile.button:hover {
+    font-size: unset;
+}
+@media only screen and (max-width: 600px) {
+    .profile.button
+    {
+       display: inline-block;
+       width: auto;
+       margin: 0 auto;
+       padding: 10px 5px;
+    }
+}
