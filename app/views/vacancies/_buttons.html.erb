@@ -1,6 +1,14 @@
-<% if current_user&.organization? %>
-    <% if current_user.organization.id == locals[:vacancy].organization_id %>
-        <%= button_to "Delete", vacancy_destroy_path(locals[:vacancy]), method: :delete, confirm: 'Are you sure you want to delete vacancy?' %>
-        <%= link_to "Edit", vacancy_edit_path(locals[:vacancy]) %>
+<div class='vacancyButtons'>
+    <% if current_user&.organization? %>
+        <% if current_user.organization.id == locals[:vacancy].organization_id %>
+            <%= button_to vacancy_destroy_path(locals[:vacancy]), method: :delete, data: { confirm: 'Are you sure you want to delete vacancy?' } do %>
+                <%= button_to vacancy_destroy_path(locals[:vacancy]), method: :delete, data: { confirm: 'Are you sure you want to delete vacancy?' } do %>
+                    <%= image_tag 'menuIcons/deleteCross.png' %>
+                <% end %>
+            <% end %>
+            <%= link_to vacancy_edit_path(locals[:vacancy]) do%>
+                    <%= image_tag 'menuIcons/edit.png' %>
+            <% end %>
+        <% end %>
     <% end %>
-<% end %>
+</div>

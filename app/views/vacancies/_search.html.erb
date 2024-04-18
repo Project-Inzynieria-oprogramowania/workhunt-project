@@ -1,11 +1,12 @@
 <% require_relative "../../assets/config/initializers/work_constants.rb"  
 %>
 <%= search_form_for @q do | form | %>
-    <div id='search-form-default'>
+    <div id='search-form-default' class='formField'>
         <%= form.label :title_or_description_cont, "Enter what you want to find" %>
-        <%= form.search_field :title_or_description_cont, placeholder: "Enter what you want to find" %>
-        
-        <%= form.submit "Search" %>
+        <div class='searchField'>
+            <%= form.search_field :title_or_description_cont, placeholder: "Enter what you want to find" %>
+            <%= form.submit "Search" %>
+        </div>
     </div>
     <div id="search-drop-block" style="display: none;"> 
         <%# 

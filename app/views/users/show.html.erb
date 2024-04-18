@@ -27,11 +27,11 @@
                 <% end %>
             <% end %>
         <% end %>
-        <div class='leftProfileContainer'>
+        <div class='profileContainer'>
             <div class='iconPlaceholder'></div>
         </div>
         <% if @user.person? %>
-            <div class='rightProfileContainer'>
+            <div class='profileContainer'>
                 <h1 class='nameSurname'><%= @user.person.name %> <%= @user.person.surname %></h1>
                 <p class='singleInfo'><span>Gender:</span> <%= @user.person.sex %></p>
                 <% if @user.person.DOB.present? %>
@@ -42,7 +42,7 @@
                 <div class='singleInfo'><span>Person</span></div>
             </div>
         <% elsif @user.organization? %>
-            <div class='rightProfileContainer'>
+            <div class='profileContainer'>
                 <h1 class='nameSurname'><%= @user.organization.name %></h1>
                 <div class='singleInfo'><span>Organization</span></div>
             </div>
@@ -65,5 +65,7 @@
     Нужно через js сделать переключение между ними 
 %>
 <% if @user.organization? %>
-    <%= render Vacancy.where(organization_id: @user.organization.id) %>
+        <div class='profileForm removeStyle'>
+            <%= render Vacancy.where(organization_id: @user.organization.id) %>
+        </div>
 <% end %>

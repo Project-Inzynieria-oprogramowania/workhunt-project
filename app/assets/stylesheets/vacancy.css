@@ -1,0 +1,171 @@
+.vacancy {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: left;
+    /*display: block;*/
+    margin: 2vh auto;
+    width: 100%;
+    min-width: 300px;
+    max-width: 900px;
+    border-radius: 30px;
+    box-shadow: 0px 8px 10px 2px rgba(0, 0, 0, 0.300);
+    background-image: url('pattern 2.png'),linear-gradient(#302A33, #3b2e43);
+    background-size: contain;
+    background-position: bottom;
+    background-repeat: repeat-x;
+}
+.vacancyInfo {
+    padding: 10px 15px;
+    display: block;
+    width: 70%;
+    position: relative;
+    /*border: 3px dashed blue;*/
+}
+.vacancy h2
+{
+    margin: 0;
+    font-size: 22px;
+    text-align: left;
+    color: #F4D18C;
+}
+.vacancy p:first-of-type, .vacancy p:first-of-type a {
+    color: #E0ACFA;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 5px 0px;
+}
+.vacancy p:first-of-type img {
+    height: auto;
+    width: 2%;
+    min-width: 12px;
+}
+.vacancy p 
+{
+    font-size: 14px;
+    color: #A343D3;
+}
+.vacancy .salaryField
+{
+    font-size: 16px;
+    font-weight: bold;
+    color: #F4D18C;
+    margin: 5px 0px;
+}
+.vacancy .iconPlaceholder {
+    align-items: content;
+    width: 100px;
+    height: 100px;
+    margin-left: 10px;
+}
+.vacancyButtons {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: min-content;
+}
+.vacancyButtons > *
+{
+    display: block;
+    text-align: center;
+}
+.vacancyButtons a:nth-child(2){
+    margin-left: 15px;
+}
+.vacancyButtons button {
+    background: none;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    outline: none;
+    margin: 0;
+}
+.vacancyButtons button img {
+    filter: brightness(80%);
+}
+.vacancyButtons a img {
+    width: 24px;
+    height: 24px;
+}
+.vacancyButtons button:hover img {
+    filter: brightness(130%) drop-shadow(0px 0px 10px rgb(255, 53, 53));
+}
+.vacancyButtons a:hover img {
+    filter: brightness(130%) drop-shadow(0px 0px 10px rgba(244, 209, 140, 0.5));
+}
+.topLineContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.topLineElement {
+    display: block;
+    /*border: 3px solid gold;*/
+}
+@media only screen and (max-width: 900px) {
+    .vacancy .iconPlaceholder {
+        width: 60px;
+        height: 60px;
+    }
+    .vacancyInfo {
+        padding: 5px 10px;
+    }
+    .vacancy h2
+    {
+        font-size: 18px;
+    }
+    .vacancy p:first-of-type, .vacancy p:first-of-type a {
+        font-size: 14px;
+        margin: 2px 0px;
+    }
+    .vacancy p 
+    {
+        font-size: 12px;
+    }
+    .vacancy .salaryField
+    {
+        font-size: 14px;
+        margin: 3px 0px;
+    }
+    .vacancyButtons a img {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .vacancy .iconPlaceholder {
+        width: 60px;
+        height: 60px;
+    }
+    .vacancyInfo {
+        padding: 5px 10px;
+    }
+    .vacancy h2
+    {
+        margin: 0;
+        font-size: 15px;
+    }
+    .vacancy p:first-of-type, .vacancy p:first-of-type a {
+        font-size: 12px;
+        margin: 2px 0px;
+    }
+    .vacancy p 
+    {
+        font-size: 10px;
+    }
+    .vacancy .salaryField
+    {
+        font-size: 12px;
+        margin: 3px 0px;
+    }
+    .vacancyButtons button img {
+        width: 12px;
+        height: 12px;
+    }
+    .vacancyButtons a img {
+        width: 16px;
+        height: 16px;
+    }
+}

@@ -7,10 +7,10 @@
         <h2>Account information:</h2>
         <div class='pairEditContainer'>
             
-            <div class='leftEditContainer'>
+            <div class='editContainer'>
                  <div class='iconPlaceholder formField'></div>
             </div>
-            <div class='rightEditContainer'>
+            <div class='editContainer'>
                 <div class='formField'>
                     <%= form.label :login, 'Login' %>
                     <%= form.text_field :login, placeholder: 'Enter login...' %>
@@ -42,14 +42,14 @@
             <%# Пользователь %>
             <%= form.fields_for :person do |person_fields| %>
                 <div class='pairEditContainer'>
-                    <div class='leftEditContainer'>
+                    <div class='editContainer'>
                         <div class='formField'>
                             <%= person_fields.label :name, 'Name' %>
                             <%= person_fields.text_field :name, placeholder: 'Enter name...' %>
                             <%= render 'shared/form_error', locals: {model: @user.person, parametr: :name} %>
                         </div>
                     </div>
-                    <div class='rightEditContainer'>
+                    <div class='editContainer'>
                         <div class='formField'>
                             <%= person_fields.label :surname, 'Surname' %>
                             <%= person_fields.text_field :surname, placeholder: 'Enter surname...' %>
