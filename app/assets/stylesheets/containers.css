@@ -13,3 +13,13 @@
     margin-left: 20px;
     text-align: left;
 }
+.top-line-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.top-line-element {
+    text-align: left;
+    display: block;
+}

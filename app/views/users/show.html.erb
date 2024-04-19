@@ -12,41 +12,12 @@
         <% end %>
     <% end %>
 </div>
-<div class='form profile'>
-    <div class='pair-container'>
-        <% if current_user.present? && @user.id == current_user.id %>
-            <%= link_to user_settings_path, class: 'corner-link' do %>
-                <%= image_tag 'menuIcons/edit.png' %>
-            <% end %>
-        <% else %>
-            <% if user_signed_in? %>
-                <div class='corner-link'><%= image_tag 'menuIcons/writeToPlaceholder.png' %></div>
-            <% else %>
-                <%= link_to login_path do %>
-                    <div class='corner-link'><%= image_tag 'menuIcons/writeToPlaceholder.png' %></div>
-                <% end %>
-            <% end %>
-        <% end %>
-        <div class='pair-single-container'>
-            <div class='icon-placeholder'></div>
-        </div>
-        <% if @user.person? %>
-            <div class='pair-single-container profile'>
-                <h1><%= @user.person.name %> <%= @user.person.surname %></h1>
-                <p class='detailed-tag-info'><span>Gender:</span> <%= @user.person.sex %></p>
-                <% if @user.person.DOB.present? %>
-                    <div class='detailed-tag-info'><span>DOB:</span> <%= @user.person.DOB %></div>
-                <% else %>
-                    <div class='detailed-tag-info'><span>DOB:</span> no data</div>
-                <% end %>
-                <div class='detailed-tag-info'><span>Person</span></div>
-            </div>
-        <% elsif @user.organization? %>
-            <div class='pair-single-container profile'>
-                <h1><%= @user.organization.name %></h1>
-                <div class='detailed-tag-info'><span>Organization</span></div>
-            </div>
-        <% end %>
+<div class='form profile remove-padding'>
+    <div class='pair-container profile'>
+    <div class='icon-placeholder'></div>
+        <div class='pair-single-container profile'>
+            <%= render 'users/info' %>
+        </div>  
     </div>
 </div>
     <% if @user.person? && @user.person.about.present? %>

@@ -1,4 +1,5 @@
 .top-banner {
+    display: flex;
     width: 100%;
     min-width: 300px;
     min-height: 50px;
@@ -8,6 +9,7 @@
     top: 0;
     text-align: center;
     align-content: center;
+    justify-content: center;
     z-index: 5;
 }
 .logo-link {
@@ -179,6 +181,9 @@
     }
     .small-button {
         display: inline-block;
+    }
+    .top-banner {
+        padding: 1vh 0;
     }
 }
 @media (max-width: 350px) {
