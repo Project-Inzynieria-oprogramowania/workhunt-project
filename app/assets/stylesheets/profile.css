@@ -1,56 +1,12 @@
-.iconPlaceholder
+.pair-single-container.profile h1
 {
-    width: 140px;
-    height: 140px;
-    background-color:aliceblue;
-    border-radius: 30px;
-    box-shadow: 6px 8px 8px 1px rgba(0,0,0,0.4);
-    display: block;
+   color: #E7E7E7;
+   display: block;
+   position: relative;
+   font-size: 20px;
+   padding-right: 10%;
 }
-.singleInfo
-{
-    font-size: 16px;
-    display: inline-block;
-    /*border: 3px dashed cornflowerblue;*/
-    border: 3px dashed #663C7B;
-    text-align: center;
-    color: #E7E7E7;
-    background-color: #262229;
-    padding: 10px 10px;
-    border-radius: 10px;
-    margin-top: 20px;
-    margin-right: 5%;
-    max-width: 95%;
-}
-.singleInfo span
-{
-    font-size: 13px;
-    color: #F4D18C;
-}
-.nameSurname
-{
-    display: block;
-    position: relative;
-    font-size: 20px;
-    padding-right: 10%;
-}
-.pairProfileContainer {
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    margin-right: 20px;
-    /*border: 3px dashed orange;*/
-}
-.profileContainer {
-    position: relative;
-    display: block;
-    width: fit-content;
-    margin-top: 20px;
-    margin-left: 20px;
-    text-align: left;
-}
- .aboutUser
+ .about-user
  {
     text-align: left;
     position: relative;
@@ -59,27 +15,27 @@
     margin: 0 auto;
     border: none;
  }
- .paragraphProfileTitle
+ .paragraph-profile-title
  {
     font-size: 25px;
     text-align: left;
     padding: 2% 4%;
     color: #F4D18C;
  }
- .cornerLink {
+ .corner-link {
     position: absolute;
     top: 10px;
     right: 0px;
     z-index: 2;
     height: auto;
  }
- .cornerLink img {
+ .corner-link img {
     width: 30px;
     height: 30px;
     filter: brightness(90%);
     transition-duration: 0.4s;
  }
- .cornerLink:hover img
+ .corner-link:hover img
  {
     width: 32px;
     height: 32px;
@@ -88,38 +44,20 @@
     transition-duration: 0.4s;
  }
  @media only screen and (max-width: 600px) {
-    .iconPlaceholder
+    .icon-placeholder
     {
         width: 80px;
         height: 80px;
     }
-    .nameSurname
-    {
-        font-size: 14px;
-        background-color: none;
-        margin-top: 0px;
-        margin-right: 10%;
-        max-width: 80%;
-        height: auto;
-    }
-    .singleInfo
-    {
-        font-size: 12px;
-        margin-right: 3%;
-    }
-    .aboutUser
+    .about-user
     {
        width: 80%;
        margin: 0 auto;
     }
-    .paragraphProfileTitle
+    .paragraph-profile-title
     {
        font-size: 18px;
        padding: 3% 9%;
-    }
-    .singleInfo span
-    {
-       font-size: 10px;
     }
  }
  .profile.button
@@ -129,6 +67,7 @@
     text-align: center;
     width: 30%;
     padding: 10px 5px;
+    min-width: 130px;
  }
  .profile.button:hover {
     font-size: unset;
@@ -136,9 +75,10 @@
 @media only screen and (max-width: 600px) {
     .profile.button
     {
+      font-size: 15px;
        display: inline-block;
        width: auto;
        margin: 0 auto;
-       padding: 10px 5px;
+       padding: 6px 3px;
     }
 }

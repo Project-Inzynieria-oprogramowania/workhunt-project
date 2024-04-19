@@ -1,10 +1,10 @@
 <%= form_with model: @user, url: sessions_path, id: 'LoginForm'  do | form | %>
-    <div class='formField'>
+    <div class='form-field'>
         <%= form.label :login, 'Login' %>
         <%= form.text_field :login, placeholder: 'Enter login...' %>
         <%= render 'shared/form_error', locals: {model: @user, parametr: :login} %>
     </div>
-    <div class='formField'>
+    <div class='form-field'>
         <%= form.label :password, 'Password' %>
         <%= form.password_field :password, placeholder: 'Enter password...' %>
         <%= render 'shared/form_error', locals: {model: @user, parametr: :password} %>

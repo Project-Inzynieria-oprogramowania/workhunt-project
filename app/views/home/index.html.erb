@@ -1,20 +1,20 @@
 <% provide :page_title, 'Main' %>
 <%= render 'shared/slider' %>
-<div class='limitationContainer'>
-    <h1 class='paragraphTitle'>About WorkHunt</h1>
+<div class='limitation-container'>
+    <h1 class='paragraph-title'>About WorkHunt</h1>
 </div>
 <div class='paragraph'>
-    <div class='paragraphElement aboutWH'>
+    <div class='paragraph-element about-workhunt'>
         <div class='description'>
             <p>Workhunt is a free recruitment service.</p>
             <p>Here you can find a job that suits your preferences or find workers for your business.</p>
         </div>
     </div>
-        <%= image_tag 'Screen.png', class: ['paragraphElement aboutImg']%>
+        <%= image_tag 'Screen.png', class: ['paragraph-element about-image']%>
 </div>
-<div class='colorContainer'>
-    <div class='limitationContainer'>
-    <h1 class='paragraphTitle'>Functionality</h1>
+<div class='color-container'>
+    <div class='limitation-container'>
+    <h1 class='paragraph-title'>Functionality</h1>
         <div class='advantages'>
             <%= image_tag("icons/Convenientsearch.png") %> <span>Find interesting job offers using a convenient and functional search.</span>
         </div>
@@ -33,21 +33,21 @@
         </div>
     </div>
 </div>
-<div class='limitationContainer encouragementContainer'>
+<div class='limitation-container encouragement-container'>
     <div class='logo'>
-        <%= image_tag 'logo.png', class: 'mainLogo' %>
-        <%= content_tag :span, "WorkHunt", class: 'workhuntHeader' %>
+        <%= image_tag 'logo.png' %>
+        <%= content_tag :span, "WorkHunt" %>
     </div>
     <p>Hunt down your future work right now!</p>  
     There are <%= Vacancy.count %> job offers in the database.
-    <div class='startButtonContainer'>
-        <%= link_to 'TO THE HUNT!', vacancies_path, class: ['largeButton'] %>
+    <div class='start-button-container'>
+        <%= link_to 'TO THE HUNT!', vacancies_path, class: ['large-button'] %>
      </div>
 </div>
-<div class='colorContainer'>
-    <footer class='limitationContainer startPageFooter'>
+<div class='color-container'>
+    <footer class='limitation-container start-page-footer'>
         Created by:
-        <ul class='listOfNonames'>
+        <ul>
             <li>Sadouski Andrei - database</li>
             <li>Miranchuk Krystsina - backend</li>
             <li>Vereshchahin Mark - frontend</li>

@@ -1,22 +1,22 @@
-.radioField {
+.radio-field {
     display: inline-flex;
     padding-left: 20px;
     padding-right: 20px;
 }
-.radioField input[type="radio"] {
+.radio-field input[type="radio"] {
     margin-right: 10px;
 }
-.radioField input[type="radio"] + label{
+.radio-field input[type="radio"] + label{
     color: #E7E7E7;
     font-size: 18px;
     font-weight: 550;
     transition-duration: 0.4s;
 }
-.radioField input[type="radio"]:checked + label {
+.radio-field input[type="radio"]:checked + label {
     color: #E0ACFA;
     text-shadow: 0 0 10px rgb(223, 170, 250);
 }
-.clarificationMessage {
+.clarification-message {
     font-style: italic;
     font-size: 13px;
     color: #978e9b;
@@ -24,13 +24,13 @@
     height: 30px;
 }
 @media only screen and (max-width: 600px) {
-    .radioField input[type="radio"] + label{
+    .radio-field input[type="radio"] + label{
         font-size: 14px;
         transition-duration: 0.4s;
     }
  }
  @media only screen and (max-width: 500px) {
-    .clarificationMessage {
+    .clarification-message {
         width: 80%;
         margin: 0 auto;
         height: 40px;

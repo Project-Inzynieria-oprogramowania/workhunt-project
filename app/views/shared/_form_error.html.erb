@@ -1,5 +1,5 @@
 <% if locals[:model].errors[locals[:parametr]].any? %> 
     <% locals[:model].errors.full_messages_for(locals[:parametr]).each do | message | %> 
-        <p class="formError"><%= message %></p>  
+        <p class="form-error"><%= message %></p>  
     <% end %> 
 <% end %>

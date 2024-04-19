@@ -1,4 +1,4 @@
-.profileForm {
+.profile.form {
     position: relative;
     width: 80%;
     margin: 0 auto;
@@ -7,23 +7,17 @@
     min-width: 300px;
     max-width: 900px;
     text-align: center;
-    height: min-content;
     padding-bottom: 20px;
     border-radius: 30px;
-    box-shadow: 0px 8px 10px 2px rgba(0, 0, 0, 0.300);
-    background-image: linear-gradient(#302A33,  #3b2e43);
     /*border: 3px dashed blue;*/
 }
-.removeStyle
+.profile.form.remove-style, .profile.form.remove-style h2
 {
     background-image: none;
     box-shadow: none;
     text-shadow: none;
 }
-.profileForm.removeStyle h2 {
-    text-shadow: none;
-}
-.profileForm h2 {
+.profile.form h2 {
     text-align: left;
     margin-left: 10%;
     padding-top: 6px;
@@ -31,124 +25,87 @@
     color:#E7E7E7;
     text-shadow: 0px 1px 3px rgba(231, 231, 231, 0.3);
 }
-.editButtons {
+.pair-container.control-buttons {
     margin: 0 auto;
-    margin-top: 20px;
     width: 80%;
     max-width: 700px;
     min-width: 300px;
-    display: flex;
-    flex-wrap: wrap;
-    /*justify-content: space-between;*/
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
 }
-.deleteButton {
+.delete-button {
     background-color: #dd182c;
     color: #E7E7E7;
 }
-.deleteButton:hover {
+.delete-button:hover {
     background-color: #f51e34;
     color: rgb(255, 255, 255);
     box-shadow: 0px 0px 10px 6px rgb(220, 58, 58);
 }
-.deleteButton:active {
+.delete-button:active {
     background-color: #c9192a;
     color: #c2c1c1;
     box-shadow: 0px 0px 10px 6px rgb(168, 23, 35);
 }
 @media only screen and (max-width: 900px) {
-    .editButtons .button
+    .pair-container.control-buttons .button
     {
         max-width: 180px;
         font-size: 14px;
         min-width: 150px;
     }
 }
-@media only screen and (max-width: 400px) {
-    .editButtons {
+@media only screen and (max-width: 500px) {
+    .pair-container.control-buttons {
         display: block;
         align-items: center;
         text-align: center;
     }
-    .deleteButton {
+    .delete-button {
         margin-top: 20px;
     }
 }
-.pairEditContainer {
+.pair-container.edit {
     align-items: center;
-    display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     margin: 0 10%;
     /*border: 3px dashed blue;*/
 }
-.pairEditContainer .formField{
+.pair-container.edit .form-field{
     margin-left: 0;
     margin-right: 0;
 }
-.editContainer {
+.pair-single-container.edit {
     display: block;
+    margin: 0;
     /*border: 3px dashed yellow;*/
     width: 45%;
 }
 @media only screen and (max-width: 985px) {
-    .leftEditContainer {
-       width: 100%;
-       padding-right: 0px;
-    }
-    .editContainer {
+    .pair-single-container.edit {
         width: 100%;
     }
 }
-.editTitle {
-    font-size: 35px;
-    color: #F4D18C;
-    text-align: left;
-    display: block;
-}
-.pageTitle {
-    margin: 0 auto;
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-    justify-items: left;
-    width: 80%;
-    max-width: 900px;
-    min-width: 300px;
-}
-.pageTitle img {
-    position: relative;
-    width: 50px;
-    height: 50px;
-    filter: brightness(150%);
-}
-.editContainer .iconPlaceholder {
+.pair-single-container.edit .icon-placeholder {
     width: 180px;
     height: 180px;
 }
 @media only screen and (max-width: 610px) {
-    .pageTitle {
-        justify-content: center; 
-    }
-    .editTitle {
-        font-size: 20px;
-        text-align: center;
-    }
-    .pageTitle img {
-        width: 25px;
-        height: 25px;
-    }
-    .profileForm h2 {
+    .profile.form h2 {
         font-size: 14px;
         text-align: center;
         margin-left: 0px;
         margin-bottom: 5px;
     }
-    .editContainer .iconPlaceholder {
+    .pair-single-container.edit .icon-placeholder {
         display: inline-block;
         text-align: center;
         width: 100px;
+        margin-top: 0px;
         height: 100px;
+    }
+    .pair-single-container.edit.icon {
+        display: flex;
+        justify-content: center;
     }
 }

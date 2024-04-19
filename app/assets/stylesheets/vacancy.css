@@ -4,7 +4,6 @@
     align-items: center;
     justify-content: space-evenly;
     text-align: left;
-    /*display: block;*/
     margin: 2vh auto;
     width: 100%;
     min-width: 300px;
@@ -16,65 +15,65 @@
     background-position: bottom;
     background-repeat: repeat-x;
 }
-.vacancyInfo {
+.vacancy-info {
     padding: 10px 15px;
     display: block;
     width: 80%;
     position: relative;
     /*border: 3px dashed blue;*/
 }
-.vacancy h2
+.vacancy h2, .profile.form .vacancy h2 
 {
     margin: 0;
     font-size: 22px;
     text-align: left;
     color: #F4D18C;
 }
-.vacancyInfo p:first-of-type, .vacancy p:first-of-type a {
+.vacancy-info p:first-of-type, .vacancy p:first-of-type a {
     color: #E0ACFA;
     font-weight: bold;
     font-size: 18px;
     margin: 5px 0px;
 }
-.vacancyInfo p:first-of-type img {
+.vacancy-info p:first-of-type img {
     height: auto;
     width: 2%;
-    min-width: 12px;
+    min-width: 8px;
 }
-.vacancyInfo p 
+.vacancy-info p 
 {
     font-size: 14px;
     color: #A343D3;
 }
-.vacancyInfo .salaryField
+.vacancy-info .salary-field
 {
     font-size: 16px;
     font-weight: bold;
     color: #F4D18C;
     margin: 5px 0px;
 }
-.vacancy .iconPlaceholder {
+.vacancy .icon-placeholder {
     align-items: content;
     width: 100px;
     height: 100px;
     margin-left: 10px;
 }
-.vacancyButtons {
+.vacancy-buttons {
     display: flex;
     justify-content: center;
     align-items: center;
     height: min-content;
     /*border: 3px solid red;*/
 }
-.vacancyButtons > *
+.vacancy-buttons > *
 {
     display: flex;
     text-align: center;
 }
-.vacancyButtons a{
+.vacancy-buttons a{
     margin-left: 15px;
 }
-.vacancyButtons button {
+.vacancy-buttons button {
     display: flex;
     background: none;
     border: none;
@@ -82,39 +81,39 @@
     cursor: pointer;
     outline: none;
 }
-.vacancyButtons button img {
+.vacancy-buttons button img {
     width: 24px;
     height: 24px;
     filter: brightness(80%);
 }
-.vacancyButtons a img {
+.vacancy-buttons a img {
     width: 24px;
     height: 24px;
 }
-.vacancyButtons button:hover img {
+.vacancy-buttons button:hover img {
     filter: brightness(130%) drop-shadow(0px 0px 10px rgb(255, 53, 53));
 }
-.vacancyButtons a:hover img {
+.vacancy-buttons a:hover img {
     filter: brightness(130%) drop-shadow(0px 0px 10px rgba(244, 209, 140, 0.5));
 }
-.topLineContainer {
+.top-line-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.topLineElement {
+.top-line-element {
     display: block;
     /*border: 3px solid gold;*/
 }
 @media only screen and (max-width: 900px) {
-    .vacancy .iconPlaceholder {
+    .vacancy .icon-placeholder {
         width: 60px;
         height: 60px;
     }
-    .vacancyInfo {
+    .vacancy-info {
         padding: 5px 10px;
     }
-    .vacancy h2
+    .vacancy h2, .profile.form .vacancy h2 
     {
         font-size: 18px;
     }
@@ -126,26 +125,39 @@
     {
         font-size: 12px;
     }
-    .vacancy .salaryField
+    .vacancy .salary-field
     {
         font-size: 14px;
         margin: 3px 0px;
     }
-    .vacancyButtons a img {
+    .vacancy-buttons a img {
         width: 20px;
         height: 20px;
     }
 }
-
+.detailed-tag-info.vacancy-tag {
+    max-width: 90%;
+    margin: 0;
+    margin: 1% 1%;
+}
+.vacancy-info.status {
+    margin: 0 auto;
+    width: 100%;
+    min-width: 300px;
+    max-width: 900px; 
+    padding: 0px 0px;
+    margin-top: 2vh;
+}
 @media only screen and (max-width: 500px) {
-    .vacancy .iconPlaceholder {
+    .vacancy .icon-placeholder {
         width: 60px;
         height: 60px;
+        margin-top: 5px;
     }
-    .vacancyInfo {
+    .vacancy-info {
         padding: 5px 10px;
     }
-    .vacancy h2
+    .vacancy h2, .profile.form .vacancy h2 
     {
         margin: 0;
         font-size: 15px;
@@ -158,47 +170,17 @@
     {
         font-size: 10px;
     }
-    .vacancy .salaryField
+    .vacancy .salary-field
     {
         font-size: 12px;
         margin: 3px 0px;
     }
-    .vacancyButtons button img {
+    .vacancy-buttons button img {
         width: 12px;
         height: 12px;
     }
-    .vacancyButtons a img {
+    .vacancy-buttons a img {
         width: 16px;
         height: 16px;
     }
-}
-.vacancyDetailedField {
-    font-size: 16px;
-    max-width: 90%;
-    display: inline-block;
-    border: 3px dashed #663C7B;
-    color: #E7E7E7;
-    background-color: #262229;
-    padding: 10px 10px;
-    border-radius: 10px;
-    margin: 1% 1%;
-    overflow: auto;
-}
-.vacancyDetailedField span{
-    display: inline-block;
-    font-size: 14px;
-    color: #F4D18C;
-}
-.vacancyDetailedField p{
-    display: inline-block;
-    font-size: 14px !important;
-    padding: 0;
-}
-.status.vacancyInfo {
-    margin: 0 auto;
-    width: 100%;
-    min-width: 300px;
-    max-width: 900px; 
-    padding: 0px 0px;
-    margin-top: 2vh;
 }

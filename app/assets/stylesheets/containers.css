@@ -1,0 +1,15 @@
+.pair-container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-right: 20px;
+}
+.pair-single-container {
+    position: relative;
+    display: block;
+    width: fit-content;
+    margin-top: 20px;
+    margin-left: 20px;
+    text-align: left;
+}

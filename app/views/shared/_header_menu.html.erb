@@ -1,21 +1,21 @@
-<div class="topBanner">
-    <div class="headerLimit">
-        <div class="headerElement">
-            <%= link_to root_path, class: 'logoLink' do %>
-                <%= image_tag 'logo.png', id: 'mainLogo'%>
-                <%= content_tag :span, "WorkHunt", id: "workhuntHeader"%>
+<div class="top-banner">
+    <div class="header-limit">
+        <div class="header-element" >
+            <%= link_to root_path, class: 'logo-link' do %>
+                <%= image_tag 'logo.png'%>
+                <%= content_tag :span, "WorkHunt"%>
             <% end %>
         </div>
-        <div class="headerElement">
+        <div class="header-element">
             <% if user_signed_in? %>
                 <div class="dropdown">
-                    <span class="accountButton"><%= current_user[:login] %></span>
-                    <span class="smallButtton">...</span>
-                    <ul class="accountMenu">
-                        <li class="smallWidthMenu">
+                    <span class="account-button"><%= current_user[:login] %></span>
+                    <span class="small-button">...</span>
+                    <ul class="account-menu">
+                        <li class="small-width-menu">
                             <%= current_user[:login] %>
                         </li>
-                        <li class="smallWidthMenu">
+                        <li class="small-width-menu">
                             <hr>
                         </li> 
                         <li>
@@ -31,9 +31,9 @@
                             <% end %>
                         </li>
 
-                        <li><hr class="divisionLine"></li>
+                        <li><hr class="division-line"></li>
 
-                        <li><%= button_to logout_path, method: :delete, class: "logoutButton" do %>
+                        <li><%= button_to logout_path, method: :delete, class: "logout-button" do %>
                             <%= image_tag "menuIcons/poweroff.png" %>
                             Log out
                         <% end %></li>
@@ -42,8 +42,8 @@
             <% else %>
                 <div class="dropdown">
                     <%= link_to login_path do %>
-                            <span class="accountButton">You are not logged in</span>
-                            <span class="smallButtton">Log In</span>
+                            <span class="account-button">You are not logged in</span>
+                            <span class="small-button">Log In</span>
                     <% end %>
                 </div>
             <% end %>    

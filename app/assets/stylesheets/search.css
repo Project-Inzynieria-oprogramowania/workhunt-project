@@ -2,6 +2,7 @@
 {
     display: block;
     width: 80%;
+    max-width: 1920px;
     min-width: 260px;
     padding: 20px 20px;
     margin: 0 auto;
@@ -9,15 +10,15 @@
     box-shadow: 0px 8px 10px 2px rgba(0, 0, 0, 0.300);
     border-radius: 10px;
 }
-.searchField {
+.search-field {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.searchField input{
+.search-field input{
     width: 80%;
 }
-.searchField input[type="submit"] {
+.search-field input[type="submit"] {
     font-size: 16px;
     width: 20%;
     background-color: #663C7B;
@@ -30,7 +31,7 @@
     margin-left: 10px;
     min-width: 120px;
 }
-.searchField input[type="submit"]:hover {
+.search-field input[type="submit"]:hover {
     background-color: #844da0;
     color: #e7bdfc;
     border:hidden;
@@ -38,7 +39,7 @@
     box-shadow: 0px 0px 10px 2px rgb(157, 92, 189);
     transition-duration: 0.4s;
 }
-.searchField input[type="submit"]:active {
+.search-field input[type="submit"]:active {
     background-color: #663C7B;
     color: #e0aef9;
     border:hidden;
@@ -57,15 +58,15 @@
     min-width: 260px;
 }
 @media only screen and (max-width: 500px) {
-    .searchField {
+    .search-field {
         display: block;
     }
-    .searchField input[type="submit"] {
+    .search-field input[type="submit"] {
         margin-left: 0px;
         margin-top: 10px;
         display: inline-block;
     }
-    .searchField input{
+    .search-field input{
         width: 100%;
     }
 }

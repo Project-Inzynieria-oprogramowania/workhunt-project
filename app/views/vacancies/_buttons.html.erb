@@ -1,4 +1,4 @@
-<div class='vacancyButtons'>
+<div class='vacancy-buttons'>
     <% if current_user&.organization? %>
         <% if current_user.organization.id == locals[:vacancy].organization_id %>
             <%= button_to vacancy_destroy_path(locals[:vacancy]), method: :delete, data: { confirm: 'Are you sure you want to delete vacancy?' } do %>
