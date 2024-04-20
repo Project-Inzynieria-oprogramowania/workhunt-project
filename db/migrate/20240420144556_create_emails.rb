@@ -6,5 +6,7 @@ class CreateEmails < ActiveRecord::Migration[7.1]
 
       t.timestamps
     end
+    
+    add_index :emails, [:address, :user_id], unique: true
   end
 end
