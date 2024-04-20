@@ -30,8 +30,6 @@
             <%=" #{@vacancy.country}, #{@vacancy.city}" %>
         </p>
         <p><%= @vacancy.description %></p>
-        <p><%= @vacancy.skills_mandatory %></p>
-        <p><%= @vacancy.skills_optional %></p>
         <p class='salary-field'>
             Salary:
             <% if @vacancy.salary_min_cents.present? && @vacancy.salary_max_cents.present? %>

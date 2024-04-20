@@ -104,7 +104,11 @@ html {
     }
     .detailed-tag-info span
     {
-       font-size: 10px;
+       font-size: 10px; 
+    }
+    .detailed-tag-info
+    {
+       font-size: 10px; 
     }
  }
  hr.division-line {

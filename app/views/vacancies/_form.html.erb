@@ -1,6 +1,6 @@
 <% require_relative "../../../app/assets/config/initializers/work_constants.rb" 
 %>
-<div class='vacancy'>
+<div class='form edit_vacancy'>
 <%= form_with model: @vacancy, url: locals[:address] do | form | %>
     <div class='form-field'>
         <%= form.label :title %>
@@ -12,31 +12,82 @@
         <%= form.text_area :description %>
         <%= render 'shared/form_error', locals: {model: @vacancy, parametr: :description} %>
     </div>
-    <div class='form-field'>
-        <%= form.label :salary_min %>
-        <%= form.number_field :salary_min %>
-        <%= render 'shared/form_error', locals: {model: @vacancy, parametr: :salary_min} %>
+    <div class='pair-container location'>
+        <div class='form-field'>
+            <%= form.label :country %>
+            <%= form.text_field :country %>
+            <%= render 'shared/form_error', locals: {model: @vacancy, parametr: :country} %>
+        </div>
+        <div class='form-field'>
+            <%= form.label :city %>
+            <%= form.text_field :city %>
+            <%= render 'shared/form_error', locals: {model: @vacancy, parametr: :city} %>
+        </div>
     </div>
-    <div class='form-field'>
-        <%= form.label :salary_max %>
-        <%= form.number_field :salary_max %>
-        <%= render 'shared/form_error', locals: {model: @vacancy, parametr: :salary_max} %>
+    <hr class='division-line'>
+    <div class='pair-container filters'>
+        <div class='form-field'>
+            <%= form.label :salary_min %>
+            <%= form.number_field :salary_min %>
+            <%= render 'shared/form_error', locals: {model: @vacancy, parametr: :salary_min} %>
+        </div>
+        <div class='form-field'>
+            <%= form.label :salary_max %>
+            <%= form.number_field :salary_max %>
+            <%= render 'shared/form_error', locals: {model: @vacancy, parametr: :salary_max} %>
+        </div>
+        <div class='form-field'>
+            <%= form.label :currency %>
+            <%= form.select :currency, Money::Currency.all.map { |currency| [currency.iso_code, currency.id] }, { selected: 'USD' } %>
+            <%= render 'shared/form_error', locals: {model: @vacancy, parametr: :currency} %>
+        </div>
     </div>
-    <div class='form-field'>
-        <%= form.label :currency %>
-        <%= form.select :currency, Money::Currency.all.map { |currency| [currency.iso_code, currency.id] }, { selected: 'USD' } %>
-        <%= render 'shared/form_error', locals: {model: @vacancy, parametr: :currency} %>
+    <hr class='division-line'>
+    <div class='pair-container filters'>
+        <div class='form-field'>
+            <%= form.label :job_category, "Job category" %>
+            <%= form.select :job_category, options_for_select(JOB_TYPES.keys, @vacancy.job_category), {}, { id: 'job-category-select' } %>
+        </div>
+        <div class='form-field'>
+            <%= form.label :job_type, "Job subcategory" %>
+            <%= form.select :job_type, options_for_select(JOB_TYPES.values.flatten, @vacancy.job_type), {}, { id: 'job-type-select' } %>
+            <%= render 'shared/form_error', locals: {model: @vacancy, parametr: :job_type} %>
+        </div>
+        <div class='form-field'>
+            <%= form.label :work_type %>
+            <%= form.select :work_type, options_for_select(WORK_TYPE, @vacancy.work_type), {}, { selected: @vacancy.work_type } %>
+            <%= render 'shared/form_error', locals: {model: @vacancy, parametr: :work_type} %>
+        </div>
     </div>
-    <div class='form-field'>
-        <%= form.label :country %>
-        <%= form.text_field :country %>
-        <%= render 'shared/form_error', locals: {model: @vacancy, parametr: :country} %>
+    <hr class='division-line'>
+    <div class='pair-container filters'>
+        <div class='form-field'>
+        <%= form.label :experience, "Experience in years"%>
+            <%= form.number_field :experience %>
+            <%= render 'shared/form_error', locals: {model: @vacancy, parametr: :experience} %>
+        </div>
+        <div class='form-field'>
+            <%= form.label :education %>
+            <%= form.select :education, options_for_select(EDUCATION, @vacancy.education) %>
+            <%= render 'shared/form_error', locals: {model: @vacancy, parametr: :education} %>
+        </div>
+        <div class='form-field'>
+            <%= form.label :subordination_level %>
+            <%= form.select :subordination_level, options_for_select(SUBORDINATION_LEVEL, @vacancy.subordination_level) %>
+            <%= render 'shared/form_error', locals: {model: @vacancy, parametr: :subordination_level} %>
+        </div>
+        <div class='form-field'>
+        <%= form.label :contract_type %>
+            <%= form.select :contract_type, options_for_select(CONTRACT_TYPE, @vacancy.contract_type) %>
+            <%= render 'shared/form_error', locals: {model: @vacancy, parametr: :contract_type} %>
+        </div>
+        <div class='form-field'>
+            <%= form.label :working_time %>
+            <%= form.select :working_time, options_for_select(WORKING_TIME, @vacancy.working_time) %>
+            <%= render 'shared/form_error', locals: {model: @vacancy, parametr: :working_time} %>
+        </div>
     </div>
-    <div class='form-field'>
-        <%= form.label :city %>
-        <%= form.text_field :city %>
-        <%= render 'shared/form_error', locals: {model: @vacancy, parametr: :city} %>
-    </div>
+    <hr class='division-line'>
     <div class='form-field'>
         <%= form.label :skills_mandatory %>
         <%= form.text_area :skills_mandatory %>
@@ -46,45 +97,6 @@
         <%= form.label :skills_optional %>
         <%= form.text_area :skills_optional %>
         <%= render 'shared/form_error', locals: {model: @vacancy, parametr: :skills_optional} %>
-    </div>
-    <div class='form-field'>
-        <%= form.label :experience, "Required work experience from... (years)"%>
-        <%= form.number_field :experience %>
-        <%= render 'shared/form_error', locals: {model: @vacancy, parametr: :experience} %>
-    </div>
-    <div class='form-field'>
-        <%= form.label :job_category, "Job category" %>
-        <%= form.select :job_category, options_for_select(JOB_TYPES.keys, @vacancy.job_category), {}, { id: 'job-category-select' } %>
-    </div>
-    <div class='form-field'>
-        <%= form.label :job_type, "Job subcategory" %>
-        <%= form.select :job_type, options_for_select(JOB_TYPES.values.flatten, @vacancy.job_type), {}, { id: 'job-type-select' } %>
-        <%= render 'shared/form_error', locals: {model: @vacancy, parametr: :job_type} %>
-    </div>
-    <div class='form-field'>
-        <%= form.label :work_type %>
-        <%= form.select :work_type, options_for_select(WORK_TYPE, @vacancy.work_type), {}, { selected: @vacancy.work_type } %>
-        <%= render 'shared/form_error', locals: {model: @vacancy, parametr: :work_type} %>
-    </div>
-    <div class='form-field'>
-        <%= form.label :education %>
-        <%= form.select :education, options_for_select(EDUCATION, @vacancy.education) %>
-        <%= render 'shared/form_error', locals: {model: @vacancy, parametr: :education} %>
-    </div>
-    <div class='form-field'>
-        <%= form.label :subordination_level %>
-        <%= form.select :subordination_level, options_for_select(SUBORDINATION_LEVEL, @vacancy.subordination_level) %>
-        <%= render 'shared/form_error', locals: {model: @vacancy, parametr: :subordination_level} %>
-    </div>
-    <div class='form-field'>
-        <%= form.label :contract_type %>
-        <%= form.select :contract_type, options_for_select(CONTRACT_TYPE, @vacancy.contract_type) %>
-        <%= render 'shared/form_error', locals: {model: @vacancy, parametr: :contract_type} %>
-    </div>
-    <div class='form-field'>
-        <%= form.label :working_time %>
-        <%= form.select :working_time, options_for_select(WORKING_TIME, @vacancy.working_time) %>
-        <%= render 'shared/form_error', locals: {model: @vacancy, parametr: :working_time} %>
     </div>
     <div class='form-field'>
         <%= form.label :status %>

@@ -190,3 +190,21 @@ label {
         margin-top: 2vh;
     }
 }
+.form-field select:hover option:checked {
+    background-color:  #1e1b22;
+    color: #F4D18C;
+}
+.form-field select option {
+    color: #d2d2d2;
+    font-size: 14px;
+}
+.form-field select option:checked {
+    background-color:  #221f25;
+    color: #F4D18C;
+    padding: 2px;
+    font-size: 15px;
+}
+.form-field select option:hover {
+    color: #fffefb;
+    background-color:  #1e1b22;
+}
