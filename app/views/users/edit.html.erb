@@ -100,3 +100,10 @@
         </div>
     </div>
 <% end %>
+
+<% @user.emails.each do | email | %>
+    <% if email.id %>
+        <%= render 'emails/email', email: email %>
+    <% end %>
+<% end %>
+<%= render 'emails/form', email: @email ||= Email.new(user_id: @user.id)%>

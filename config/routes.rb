@@ -14,15 +14,18 @@ Rails.application.routes.draw do
   get '/user/settings', to: 'users#edit'
   patch '/user/update', to: 'users#update'
   delete '/user/destroy', to: 'users#destroy'
-  get '/user/:id', to: 'users#show', as: 'user' 
+  get '/user/:id', to: 'users#show', as: 'user'
+
+  post '/user/settings/emails/create', to: 'emails#create', as: 'email_create'
+  delete '/user/settings/emails/:id/destroy', to: 'emails#destroy', as: 'email_destroy'
 
   # Vacancies Bissness Cards
-  get '/vacancy/new', to: 'vacancies#new'
-  post '/vacancy/create', to: 'vacancies#create'
+  get '/vacancies/new', to: 'vacancies#new'
+  post '/vacancies/create', to: 'vacancies#create'
   get '/vacancies', to: 'vacancies#index'
-  get '/vacancy/:id', to: 'vacancies#show', as: 'vacancy'
-  get '/vacancy/:id/edit', to: 'vacancies#edit', as: 'vacancy_edit'
-  patch '/vacancy/:id/update', to: 'vacancies#update', as: 'vacancy_update'
-  delete '/vacancy/:id/destroy', to: 'vacancies#destroy', as: 'vacancy_destroy'
+  get '/vacancies/:id', to: 'vacancies#show', as: 'vacancy'
+  get '/vacancies/:id/edit', to: 'vacancies#edit', as: 'vacancy_edit'
+  patch '/vacancies/:id/update', to: 'vacancies#update', as: 'vacancy_update'
+  delete '/vacancies/:id/destroy', to: 'vacancies#destroy', as: 'vacancy_destroy'
   
 end

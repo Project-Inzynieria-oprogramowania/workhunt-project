@@ -1,0 +1,6 @@
+<div class='formField'>
+    <%= email.address %>
+    <% if !defined?(locals[:new]) || !locals[:new] %>
+        <%= button_to "Delete", email_destroy_path(email), type: 'button', class: 'button', method: :delete, confirm: 'Are you sure you want to delete email?' %>
+    <% end %>
+</div>
