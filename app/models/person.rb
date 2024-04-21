@@ -1,5 +1,6 @@
 class Person < ApplicationRecord
     belongs_to :user, foreign_key: 'user_id'
+    has_one :cv, dependent: :destroy
 
     enum sex: { unspecified: 'unspecified', male: 'male', female: 'female', other: 'other' }
     validates :name, presence: true

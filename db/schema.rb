@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_21_173640) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_21_181309) do
+  create_table "cvs", force: :cascade do |t|
+    t.integer "person_id", null: false
+    t.text "about", null: false
+    t.text "skills"
+    t.string "country"
+    t.string "city"
+    t.text "interests"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["person_id"], name: "index_cvs_on_person_id"
+  end
+
   create_table "emails", force: :cascade do |t|
     t.string "address", null: false
     t.integer "user_id", null: false
@@ -93,6 +105,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_21_173640) do
     t.index ["organization_id"], name: "index_vacancies_on_organization_id"
   end
 
+  add_foreign_key "cvs", "people"
   add_foreign_key "emails", "users"
   add_foreign_key "links", "users"
   add_foreign_key "organizations", "users"
