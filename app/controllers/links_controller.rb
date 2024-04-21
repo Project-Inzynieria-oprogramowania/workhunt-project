@@ -5,10 +5,10 @@ class LinksController < ApplicationController
     def create
         @link = @user.links.build(link_params)
         if @link.save
-            flash[:success] = "Link added successfully."
+            flash[:success] = "Link added successfully"
             redirect_to user_settings_path
         else
-            flash[:error] = "Failed to create link."
+            flash[:error] = "Failed to create link"
             render 'users/edit', status: :unprocessable_entity
         end
     end
@@ -16,7 +16,7 @@ class LinksController < ApplicationController
     def destroy
         @link = @user.links.find(params[:id])
         @link.destroy
-        flash[:success] = "Link deleted successfully."
+        flash[:success] = "Link deleted successfully"
         redirect_to user_settings_path
     end
 

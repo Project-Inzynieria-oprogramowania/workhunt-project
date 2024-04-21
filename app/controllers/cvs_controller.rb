@@ -2,6 +2,7 @@ class CvsController < ApplicationController
     before_action :check_authenticate, only: [:new, :create, :edit, :update, :destroy]
     before_action :check_profile_person, only: [:new, :create, :edit, :update, :destroy]
     before_action :check_profile, only: [:edit, :update, :destroy]
+    before_action :check_cv_exists, only: [:new, :create]
     before_action :get_cv, only: [:edit, :update, :destroy]
 
     def new
@@ -42,7 +43,7 @@ class CvsController < ApplicationController
 
     def destroy
         @cv.destroy
-        flash[:success] = "CV deleted successfully."
+        flash[:success] = "CV deleted successfully"
         redirect_to user_path(current_user)
     end
 
@@ -59,8 +60,15 @@ class CvsController < ApplicationController
     def check_profile
         cv = Cv.find(current_user.person.cv.id)
         return if current_user.person.id == cv.person_id
-        flash[:warning] = "You are not authorized to perform this action."
+        flash[:warning] = "You are not authorized to perform this action"
         redirect_back fallback_location: root_path
+    end
+
+    def check_cv_exists
+        cv = current_user.person.cv
+        return unless current_user.person.cv.present?
+        flash[:warning] = "You already have a CV"
+        redirect_to cv_show_path(cv)
     end
 
     def get_cv

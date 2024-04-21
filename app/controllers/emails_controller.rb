@@ -5,7 +5,7 @@ class EmailsController < ApplicationController
     def create
         @email = @user.emails.build(email_params)
         if @email.save
-            flash[:success] = "Email #{params[:email][:address]} added successfully."
+            flash[:success] = "Email #{params[:email][:address]} added successfully"
             redirect_to user_settings_path
         else
             flash[:error] = "Failed to create email."
@@ -16,7 +16,7 @@ class EmailsController < ApplicationController
     def destroy
         @email = @user.emails.find(params[:id])
         @email.destroy
-        flash[:success] = "Email deleted successfully."
+        flash[:success] = "Email deleted successfully"
         redirect_to user_settings_path
     end
 

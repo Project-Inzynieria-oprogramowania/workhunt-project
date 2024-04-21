@@ -53,7 +53,7 @@ class VacanciesController < ApplicationController
 
     def destroy
         @vacancy.destroy
-        flash[:success] = "Vacancy deleted successfully."
+        flash[:success] = "Vacancy deleted successfully"
         redirect_to vacancies_path
     end
 
@@ -72,7 +72,7 @@ class VacanciesController < ApplicationController
     def check_profile
         @vacancy = Vacancy.find(params[:id])
         return if current_user.organization.id == @vacancy.organization_id
-        flash[:warning] = "You are not authorized to perform this action."
+        flash[:warning] = "You are not authorized to perform this action"
         redirect_back fallback_location: root_path
     end
 
