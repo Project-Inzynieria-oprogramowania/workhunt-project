@@ -40,4 +40,5 @@ Rails.application.routes.draw do
   patch '/vacancies/:id/update', to: 'vacancies#update', as: 'vacancy_update'
   delete '/vacancies/:id/destroy', to: 'vacancies#destroy', as: 'vacancy_destroy'
   
+  get '*unmatched_route', to: 'home#routing_error'
 end

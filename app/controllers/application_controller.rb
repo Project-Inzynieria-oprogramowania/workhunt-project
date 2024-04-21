@@ -19,25 +19,25 @@ class ApplicationController < ActionController::Base
     def check_authenticate
         return if current_user.present?
         flash[:warning] = "You are no signed in"
-        redirect_to root_path
+        redirect_to login_path
     end
 
     def check_no_authenticate
         return if !current_user.present?
         flash[:warning] = "You are already signed in"
-        redirect_to root_path
+        redirect_back fallback_location: root_path
     end
 
     def check_profile_organization
         return if current_user.present? && current_user.organization?
         flash[:warning] = "You do not have access to this page non-organizational user."
-        redirect_to root_path
+        redirect_back fallback_location: root_path
     end
 
     def check_profile_person
         return if current_user.present? && current_user.person?
         flash[:warning] = "You do not have access to this page non-personal user."
-        redirect_to root_path
+        redirect_back fallback_location: root_path
     end
 
     def sign_in( user )
