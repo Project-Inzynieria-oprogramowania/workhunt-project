@@ -102,6 +102,14 @@
 <%= javascript_include_tag 'disable_submit', async: true %>
 
 <div class='form profile'>
+    <% @user.telephones.each do | telephone | %>
+        <% if telephone.id %>
+            <%= render 'telephones/telephone', telephone: telephone %>
+        <% end %>
+    <% end %>
+    <%= render 'telephones/form', telephone: @telephone ||= Telephone.new(user_id: @user.id)%>
+</div>
+<div class='form profile'>
     <% @user.emails.each do | email | %>
         <% if email.id %>
             <%= render 'emails/email', email: email %>
