@@ -17,13 +17,13 @@
                 <h2><%= @vacancy.title %></h2>
             </div>
             <div class='top-line-element'>
-                <%= render 'buttons', locals: {vacancy: @vacancy} %>
+                <%= render 'buttons', vacancy: @vacancy %>
             </div>
         </div>
         <p>
-        <% 
-            organization = Organization.find(@vacancy.organization_id)
-            user = User.find(organization.user_id)
+            <% 
+                organization = Organization.find(@vacancy.organization_id)
+                user = User.find(organization.user_id)
             %>
             <%= link_to "#{organization.name}", user_path(user) %>
             <%= image_tag 'menuIcons/locationIcon.png' %>
@@ -100,4 +100,3 @@
         </div>
     </div>
 </div>
-<!--<p><%= @vacancy.inspect %></p>--!>

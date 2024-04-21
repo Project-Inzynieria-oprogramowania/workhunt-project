@@ -2,7 +2,7 @@
     <div class='form-field'>
         <%= form.label :address, 'Add email' %>
         <%= form.email_field :address, placeholder: 'Enter email' %>
-        <%= render 'shared/form_error', locals: {model: email, parametr: :address} %>
+        <%= render 'shared/form_error', model: email, parametr: :address %>
     </div>
     <%= form.submit 'Confirm', class: 'button' %>
 <% end %>

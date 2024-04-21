@@ -13,17 +13,17 @@
                 <div class='form-field'>
                     <%= form.label :login, 'Login' %>
                     <%= form.text_field :login, placeholder: 'Enter login...' %>
-                    <%= render 'shared/form_error', locals: {model: @user, parametr: :login} %>
+                    <%= render 'shared/form_error', model: @user, parametr: :login %>
                 </div>
                 <div class='form-field'>
                     <%= form.label :password, 'New password' %>
                     <%= form.password_field :password, placeholder: 'Enter new password...' %>
-                    <%= render 'shared/form_error', locals: {model: @user, parametr: :password} %>
+                    <%= render 'shared/form_error', model: @user, parametr: :password %>
                 </div>
                 <div class='form-field'>
                     <%= form.label :password_confirmation, 'Confirm new password' %>
                     <%= form.password_field :password_confirmation, placeholder: 'Confirm new password...' %>
-                    <%= render 'shared/form_error', locals: {model: @user, parametr: :password_confirmation} %>
+                    <%= render 'shared/form_error', model: @user, parametr: :password_confirmation %>
                 </div>
             </div>
         </div>
@@ -31,7 +31,7 @@
         <div class='form-field'>
             <%= form.label :old_password, 'Enter password to confirm changes' %>
             <%= form.password_field :old_password, placeholder: 'Enter password...' %>
-            <%= render 'shared/form_error', locals: {model: @user, parametr: :old_password} %>
+            <%= render 'shared/form_error', model: @user, parametr: :old_password %>
         </div>
     </div>
 
@@ -45,14 +45,14 @@
                         <div class='form-field'>
                             <%= person_fields.label :name, 'Name' %>
                             <%= person_fields.text_field :name, placeholder: 'Enter name...' %>
-                            <%= render 'shared/form_error', locals: {model: @user.person, parametr: :name} %>
+                            <%= render 'shared/form_error', model: @user.person, parametr: :name %>
                         </div>
                     </div>
                     <div class='pair-single-container edit'>
                         <div class='form-field'>
                             <%= person_fields.label :surname, 'Surname' %>
                             <%= person_fields.text_field :surname, placeholder: 'Enter surname...' %>
-                            <%= render 'shared/form_error', locals: {model: @user.person, parametr: :surname} %>
+                            <%= render 'shared/form_error', model: @user.person, parametr: :surname %>
                         </div>
                     </div>
                 </div>
@@ -61,21 +61,21 @@
                         <div class='form-field'>
                             <%= person_fields.label :sex, "Select gender" %>
                             <%= person_fields.collection_select :sex, Person.sexes.keys, :to_s, :to_s, { selected: @user.person&.sex || 'unspecified' } %>
-                            <%= render 'shared/form_error', locals: {model: @user.person, parametr: :sex} %>
+                            <%= render 'shared/form_error', model: @user.person, parametr: :sex %>
                         </div>
                     </div>
                     <div class='pair-single-container edit'>
                         <div class='form-field'>
                             <%= person_fields.label :DOB, 'Date of birthday' %>
                             <%= person_fields.date_field :DOB, placeholder: 'Enter date of birthday...' %>
-                            <%= render 'shared/form_error', locals: {model: @user.person, parametr: :DOB} %>
+                            <%= render 'shared/form_error', model: @user.person, parametr: :DOB %>
                         </div>
                     </div>
                 </div>
                 <div class='form-field'>
                     <%= person_fields.label :about, 'About' %>
                     <%= person_fields.text_area :about, placeholder: 'Tell about yourself...' %>
-                    <%= render 'shared/form_error', locals: {model: @user.person, parametr: :about} %>
+                    <%= render 'shared/form_error', model: @user.person, parametr: :about %>
                 </div>
             <% end %>
         <% elsif @user.organization? %>
@@ -84,12 +84,12 @@
                 <div class='form-field'>
                     <%= organization_fields.label :name, 'Name' %>
                     <%= organization_fields.text_field :name, placeholder: 'Enter name...' %>
-                    <%= render 'shared/form_error', locals: {model: @user.organization, parametr: :name} %>
+                    <%= render 'shared/form_error', model: @user.organization, parametr: :name %>
                 </div>
                 <div class='form-field'>
                     <%= organization_fields.label :about, 'About' %>
                     <%= organization_fields.text_area :about, placeholder: 'Tell about...' %>
-                    <%= render 'shared/form_error', locals: {model: @user.organization, parametr: :about} %>
+                    <%= render 'shared/form_error', model: @user.organization, parametr: :about %>
                 </div>
             <% end %>
         <% end %>
@@ -107,7 +107,7 @@
             <%= render 'telephones/telephone', telephone: telephone %>
         <% end %>
     <% end %>
-    <%= render 'telephones/form', telephone: @telephone ||= Telephone.new(user_id: @user.id)%>
+    <%= render 'telephones/form', telephone: @telephone ||= Telephone.new(user_id: @user.id) %>
 </div>
 <div class='form profile'>
     <% @user.emails.each do | email | %>
@@ -115,7 +115,7 @@
             <%= render 'emails/email', email: email %>
         <% end %>
     <% end %>
-    <%= render 'emails/form', email: @email ||= Email.new(user_id: @user.id)%>
+    <%= render 'emails/form', email: @email ||= Email.new(user_id: @user.id) %>
 </div>
 <div class='form profile'>
     <% @user.links.each do | link | %>
@@ -123,5 +123,5 @@
             <%= render 'links/link', link: link %>
         <% end %>
     <% end %>
-    <%= render 'links/form', link: @link ||= Link.new(user_id: @user.id)%>
+    <%= render 'links/form', link: @link ||= Link.new(user_id: @user.id) %>
 </div>

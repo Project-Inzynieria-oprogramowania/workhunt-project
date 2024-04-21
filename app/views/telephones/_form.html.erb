@@ -1,8 +1,8 @@
 <%= form_with model: telephone, url: telephone_create_path do | form | %>
     <div class='form-field'>
         <%= form.label :number, 'Add telephone' %>
-        <%= form.telephone_field :number, placeholder: 'Enter tel number (example: +1 (123) 456-7890)' %>
-        <%= render 'shared/form_error', locals: {model: telephone, parametr: :number} %>
+        <%= form.telephone_field :number, placeholder: 'Enter tel number' %>
+        <%= render 'shared/form_error', model: telephone, parametr: :number %>
     </div>
     <%= form.submit 'Confirm', class: 'button' %>
 <% end %>

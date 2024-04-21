@@ -1,4 +1,5 @@
 class EmailsController < ApplicationController
+    before_action :check_authenticate
     before_action :set_user
 
     def create

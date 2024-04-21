@@ -1,6 +1,6 @@
 class VacanciesController < ApplicationController
     before_action :check_profile_organization, only: [:new, :create, :edit, :update, :destroy]
-    before_action :check_organization, only: [:edit, :update, :destroy]
+    before_action :check_profile, only: [:edit, :update, :destroy]
     before_action :get_vacancy, only: [:show, :edit, :update, :destroy]
     
     def new
@@ -13,9 +13,9 @@ class VacanciesController < ApplicationController
         
         if @vacancy.save
             flash[:success] = "Job vacancy successfully created"
-            redirect_to vacancies_path
+            redirect_to vacancy_path(@vacancy)
         else
-            flash[:error] = "Cannot be save. Some errors in form"
+            flash[:error] = "Unable to save"
             render :new, status: :unprocessable_entity
         end
     end
@@ -46,13 +46,14 @@ class VacanciesController < ApplicationController
             flash[:success] = "Job vacancy successfully updated"
             redirect_to vacancy_path(@vacancy)
         else
-            flash[:error] = "Cannot be save. Some errors in form"
+            flash[:error] = "Unable to update"
             render :edit, status: :unprocessable_entity
         end
     end
 
     def destroy
         @vacancy.destroy
+        flash[:success] = "Vacancy deleted successfully."
         redirect_to vacancies_path
     end
 
@@ -68,15 +69,14 @@ class VacanciesController < ApplicationController
             :work_type, :status, :organization_id)
     end
 
-    def check_organization
+    def check_profile
         @vacancy = Vacancy.find(params[:id])
-        unless current_user.organization.id == @vacancy.organization_id
-            flash[:warning] = "You are not authorized to perform this action."
-            redirect_back fallback_location: root_path
-        end
+        return if current_user.organization.id == @vacancy.organization_id
+        flash[:warning] = "You are not authorized to perform this action."
+        redirect_back fallback_location: root_path
     end
 
     def get_vacancy
-        @vacancy = Vacancy.find(params[:id])
+        @vacancy ||= Vacancy.find(params[:id])
     end
 end

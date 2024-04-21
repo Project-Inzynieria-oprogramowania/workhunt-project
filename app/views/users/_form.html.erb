@@ -2,17 +2,17 @@
     <div class='form-field'>
         <%= form.label :login, 'Login' %>
         <%= form.text_field :login, placeholder: 'Enter login...' %>
-        <%= render 'shared/form_error', locals: {model: @user, parametr: :login} %>
+        <%= render 'shared/form_error', model: @user, parametr: :login %>
     </div>
     <div class='form-field'>
         <%= form.label :password, 'Password' %>
         <%= form.password_field :password, placeholder: 'Enter password...' %>
-        <%= render 'shared/form_error', locals: {model: @user, parametr: :password} %>
+        <%= render 'shared/form_error', model: @user, parametr: :password %>
     </div>
     <div class='form-field'>
         <%= form.label :password_confirmation, 'Confirm password' %>
         <%= form.password_field :password_confirmation, placeholder: 'Confirm password...' %>
-        <%= render 'shared/form_error', locals: {model: @user, parametr: :password_confirmation} %>
+        <%= render 'shared/form_error', model: @user, parametr: :password_confirmation %>
     </div>
     <div class='radio-buttons'>
         <div class='radio-field'>
@@ -24,6 +24,5 @@
             <%= form.label :account_type_organization, 'Organization' %>
         </div>
     </div>
-
     <%= form.submit 'Confirm', class: 'button' %>
 <% end %>
