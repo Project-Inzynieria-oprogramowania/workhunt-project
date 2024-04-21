@@ -2,6 +2,7 @@ class User < ApplicationRecord
     enum account_type: { person: 0, organization: 1 }
     
     has_many :emails, dependent: :destroy
+    has_many :links, dependent: :destroy
     has_one :person, ->(user) { where(user_id: user.id) }, dependent: :destroy, foreign_key: :user_id, inverse_of: :user
     has_one :organization, ->(user) { where(user_id: user.id) }, dependent: :destroy, foreign_key: :user_id, inverse_of: :user
     accepts_nested_attributes_for :person, :organization
