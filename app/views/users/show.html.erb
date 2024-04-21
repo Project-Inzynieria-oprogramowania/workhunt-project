@@ -17,7 +17,18 @@
     <div class='icon-placeholder'></div>
         <div class='pair-single-container profile'>
             <%= render 'users/info' %>
-        </div>  
+        </div>
+        <% if @user.person? %>
+            <% if @user.person.cv.present? %>
+                <div class='pair-single-container profile'>
+                    <%= link_to 'Show CV', cv_show_path(@user.person.cv) %>
+                </div>
+            <% elsif user_signed_in? && @user.id == current_user.id %>
+                <div class='pair-single-container profile'>
+                    <%= link_to 'Create CV', cv_new_path %>
+                </div>
+            <% end %>
+        <% end %>
     </div>
 </div>
     <% if @user.person? && @user.person.about.present? %>

@@ -1,0 +1,30 @@
+<div class='form'>
+<%= form_with model: @cv, url: address do | form | %>
+    <div class='form-field'>
+        <%= form.label :about, 'Tell about' %>
+        <%= form.text_area :about, placeholder: 'Tell about...' %>
+        <%= render 'shared/form_error', locals: {model: @cv, parametr: :about} %>
+    </div>
+    <div class='form-field'>
+        <%= form.label :skills %>
+        <%= form.text_area :skills, placeholder: 'Describe your skills' %>
+        <%= render 'shared/form_error', locals: {model: @cv, parametr: :skills} %>
+    </div>
+    <div class='form-field'>
+        <%= form.label :country %>
+        <%= form.text_field :country, placeholder: 'Country...' %>
+        <%= render 'shared/form_error', locals: {model: @cv, parametr: :country} %>
+    </div>
+    <div class='form-field'>
+        <%= form.label :city %>
+        <%= form.text_field :city, placeholder: 'City...' %>
+        <%= render 'shared/form_error', locals: {model: @cv, parametr: :city} %>
+    </div>
+    <div class='form-field'>
+        <%= form.label :interests %>
+        <%= form.text_area :interests, placeholder: 'Tell about your interests' %>
+        <%= render 'shared/form_error', locals: {model: @cv, parametr: :interests} %>
+    </div>
+    <%= form.submit 'Confirm', class: 'button' %>
+<% end %>
+</div>

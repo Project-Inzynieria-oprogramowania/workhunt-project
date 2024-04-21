@@ -23,9 +23,17 @@ Rails.application.routes.draw do
   post '/user/settings/telephones/create', to: 'telephones#create', as: 'telephone_create'
   delete '/user/settings/telephones/:id/destroy', to: 'telephones#destroy', as: 'telephone_destroy'
 
+  # Person CV
+  get '/cv/new', to: 'cvs#new', as: 'cv_new'
+  post '/cv/update', to: 'cvs#create', as: 'cv_create'
+  get '/cv/edit', to: 'cvs#edit', as: 'cv_edit'
+  patch '/cv/update', to: 'cvs#update', as: 'cv_update'
+  delete '/cv/destroy', to: 'cvs#destroy', as: 'cv_destroy'
+  get '/cv/:id', to: 'cvs#show', as: 'cv_show'
+
   # Vacancies Bissness Cards
-  get '/vacancies/new', to: 'vacancies#new'
-  post '/vacancies/create', to: 'vacancies#create'
+  get '/vacancies/new', to: 'vacancies#new', as: 'vacancy_new'
+  post '/vacancies/create', to: 'vacancies#create', as: 'vacancy_create'
   get '/vacancies', to: 'vacancies#index'
   get '/vacancies/:id', to: 'vacancies#show', as: 'vacancy'
   get '/vacancies/:id/edit', to: 'vacancies#edit', as: 'vacancy_edit'
