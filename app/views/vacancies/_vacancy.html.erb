@@ -1,25 +1,38 @@
-<%= link_to vacancy_path(vacancy) do %>
-    <h2><%= vacancy.title %></h2>
-    <p>
-        <% 
-            organization = Organization.find(vacancy.organization_id)
-            user = User.find(organization.user_id)
-        %>
-        <%= link_to "#{organization.name}", user_path(user) %> <%=" | #{vacancy.country}, #{vacancy.city}" %>
-    </p>
-    <p><%= truncate vacancy.description, length: 100 %></p>
-    <p><b>
-        <% if vacancy.salary_min_cents.present? && vacancy.salary_max_cents.present? %>
-            <%= Money.from_cents(vacancy.salary_min_cents, vacancy.currency).format %> - 
-            <%= Money.from_cents(vacancy.salary_max_cents, vacancy.currency).format %>
-        <% elsif vacancy.salary_min_cents.present? %>
-            from <%= Money.from_cents(vacancy.salary_min_cents, vacancy.currency).format %>
-        <% elsif vacancy.salary_max_cents.present? %>
-            up to <%= Money.from_cents(vacancy.salary_max_cents, vacancy.currency).format %>
-        <% else %>
-            Negotiated
+<div class='vacancy'>
+    <div class='icon-placeholder'></div>
+    <div class='vacancy-info'>
+        <%= link_to vacancy_path(vacancy) do %>
+            <div class='top-line-container'>
+                <div class='top-line-element'>
+                    <h2><%= vacancy.title %></h2>
+                </div>
+                <div class='top-line-element'>
+                    <%= render 'vacancies/buttons', locals: {vacancy: vacancy} %>
+                </div>
+            </div>
+            <p>
+                <% 
+                    organization = Organization.find(vacancy.organization_id)
+                    user = User.find(organization.user_id)
+                %>
+                <%= link_to "#{organization.name}", user_path(user) %>
+                <%= image_tag 'menuIcons/locationIcon.png' %>
+                <%=" #{vacancy.country}, #{vacancy.city}" %>
+            </p>
+            <p><%= truncate vacancy.description, length: 100 %></p>
+            <p class='salary-field'>
+                Salary:
+                <% if vacancy.salary_min_cents.present? && vacancy.salary_max_cents.present? %>
+                    <%= Money.from_cents(vacancy.salary_min_cents, vacancy.currency).format %> - 
+                    <%= Money.from_cents(vacancy.salary_max_cents, vacancy.currency).format %>
+                <% elsif vacancy.salary_min_cents.present? %>
+                    from <%= Money.from_cents(vacancy.salary_min_cents, vacancy.currency).format %>
+                <% elsif vacancy.salary_max_cents.present? %>
+                    up to <%= Money.from_cents(vacancy.salary_max_cents, vacancy.currency).format %>
+                <% else %>
+                    Negotiated
+                <% end %>       
+            </p>
         <% end %>
-        
-    </b></p>
-<% end %>
-<%= render 'vacancies/buttons', locals: {vacancy: vacancy} %><br><br>
+    </div>
+</div>

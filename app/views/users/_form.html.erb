@@ -1,25 +1,25 @@
 <%= form_with model: @user, id: 'LoginForm' do | form | %>
-    <div class='formField'>
+    <div class='form-field'>
         <%= form.label :login, 'Login' %>
         <%= form.text_field :login, placeholder: 'Enter login...' %>
         <%= render 'shared/form_error', locals: {model: @user, parametr: :login} %>
     </div>
-    <div class='formField'>
+    <div class='form-field'>
         <%= form.label :password, 'Password' %>
         <%= form.password_field :password, placeholder: 'Enter password...' %>
         <%= render 'shared/form_error', locals: {model: @user, parametr: :password} %>
     </div>
-    <div class='formField'>
+    <div class='form-field'>
         <%= form.label :password_confirmation, 'Confirm password' %>
         <%= form.password_field :password_confirmation, placeholder: 'Confirm password...' %>
         <%= render 'shared/form_error', locals: {model: @user, parametr: :password_confirmation} %>
     </div>
-    <div class='radioButtons'>
-        <div class='radioField'>
+    <div class='radio-buttons'>
+        <div class='radio-field'>
             <%= form.radio_button :account_type, 'person', checked: true %>
             <%= form.label :account_type_person, 'Person' %>
         </div>
-        <div class='radioField'>
+        <div class='radio-field'>
             <%= form.radio_button :account_type, 'organization' %>
             <%= form.label :account_type_organization, 'Organization' %>
         </div>

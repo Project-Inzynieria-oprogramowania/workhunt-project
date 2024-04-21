@@ -4,4 +4,5 @@
 //= link_tree ../../../vendor/javascript .js
 //= link flash_messages.js
 //= link search_form_drop.js
+//= link disable_submit.js
 //= link slider_resizing.js

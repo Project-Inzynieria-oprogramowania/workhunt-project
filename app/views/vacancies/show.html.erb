@@ -1,23 +1,103 @@
 <% provide :page_title, "Vacancy: #{@vacancy.title}" %>
-<div><%= @vacancy.inspect %></div><br><br>
-
-<h2><%= @vacancy.title %></h2>
-<p><%= @vacancy.description %></p>
-<p><%= @vacancy.skills_mandatory %></p>
-<p><%= @vacancy.skills_optional %></p>
-<p>
-    <b>
-        <% if @vacancy.salary_min_cents.present? && @vacancy.salary_max_cents.present? %>
-            <%= Money.from_cents(@vacancy.salary_min_cents, @vacancy.currency).format %> - 
-            <%= Money.from_cents(@vacancy.salary_max_cents, @vacancy.currency).format %>
-        <% elsif @vacancy.salary_min_cents.present? %>
-            from <%= Money.from_cents(@vacancy.salary_min_cents, @vacancy.currency).format %>
-        <% elsif @vacancy.salary_max_cents.present? %>
-            up to <%= Money.from_cents(@vacancy.salary_max_cents, @vacancy.currency).format %>
-        <% else %>
-            Negotiated
-        <% end %>
-    </b>
-</p>
-
-<%= render 'buttons', locals: {vacancy: @vacancy} %>
+<div class='vacancy-info status'>
+    <div class='detailed-tag-info vacancy-tag'>
+        <p>Vacancy status:</p>
+        <span><%= @vacancy.status %></span>
+    </div>
+    <div class='detailed-tag-info vacancy-tag'>
+        <p>Created at:</p>
+        <span><%= @vacancy.created_at %></span>
+    </div>
+</div>
+<div class='vacancy'>
+    <div class='icon-placeholder'></div>
+    <div class='vacancy-info'>
+        <div class='top-line-container'>
+            <div class='top-line-element'>
+                <h2><%= @vacancy.title %></h2>
+            </div>
+            <div class='top-line-element'>
+                <%= render 'buttons', locals: {vacancy: @vacancy} %>
+            </div>
+        </div>
+        <p>
+        <% 
+            organization = Organization.find(@vacancy.organization_id)
+            user = User.find(organization.user_id)
+            %>
+            <%= link_to "#{organization.name}", user_path(user) %>
+            <%= image_tag 'menuIcons/locationIcon.png' %>
+            <%=" #{@vacancy.country}, #{@vacancy.city}" %>
+        </p>
+        <p><%= @vacancy.description %></p>
+        <p class='salary-field'>
+            Salary:
+            <% if @vacancy.salary_min_cents.present? && @vacancy.salary_max_cents.present? %>
+                <%= Money.from_cents(@vacancy.salary_min_cents, @vacancy.currency).format %> - 
+                <%= Money.from_cents(@vacancy.salary_max_cents, @vacancy.currency).format %>
+            <% elsif @vacancy.salary_min_cents.present? %>
+                from <%= Money.from_cents(@vacancy.salary_min_cents, @vacancy.currency).format %>
+            <% elsif @vacancy.salary_max_cents.present? %>
+                up to <%= Money.from_cents(@vacancy.salary_max_cents, @vacancy.currency).format %>
+            <% else %>
+                Negotiated
+            <% end %>
+        </p>
+    </div>
+</div>
+<div class='vacancy'>
+    <div class='vacancy-info'>
+        <p>About the job:</p>
+        <div class='detailed-tag-info vacancy-tag'>
+            <p>Job type:</p>
+            <span><%= @vacancy.job_type %></span>
+        </div>
+        <div class='detailed-tag-info vacancy-tag'>
+            <p>Contract type:</p>
+            <span><%= @vacancy.contract_type %></span>
+        </div>
+        <div class='detailed-tag-info vacancy-tag'>
+            <p>Working time:</p>
+            <span><%= @vacancy.working_time %></span>
+        </div>
+        <div class='detailed-tag-info vacancy-tag'>
+            <p>Work type:</p>
+            <span><%= @vacancy.work_type %></span>
+        </div>
+    </div>
+    <div class='vacancy-info'>
+        <p>Education and experience:</p>
+        <div class='detailed-tag-info vacancy-tag'>
+            <p>Experience:</p>
+            <span>
+            <% if @vacancy.experience == 0 %>
+                none
+            <% elsif  @vacancy.experience == 1%>
+                <%= @vacancy.experience %> year
+            <% else %>
+                <%= @vacancy.experience %> years
+            <% end %>
+            </span>
+        </div>
+        <div class='detailed-tag-info vacancy-tag'>
+            <p>Education:</p>
+            <span><%= @vacancy.education %></span>
+         </div>
+         <div class='detailed-tag-info vacancy-tag'>
+            <p>Subordination level:</p>
+            <span><%= @vacancy.subordination_level %></span>
+        </div>
+     </div>
+     <div class='vacancy-info'>
+        <p>Skills:</p>
+        <div class='detailed-tag-info vacancy-tag'>
+            <p>Optional skills:</p>
+            <span><%= @vacancy.skills_optional %></span>
+        </div>
+        <div class='detailed-tag-info vacancy-tag'>
+            <p>Mandatory skills:</p>
+            <span><%= @vacancy.skills_mandatory %></span>
+        </div>
+    </div>
+</div>
+<!--<p><%= @vacancy.inspect %></p>--!>

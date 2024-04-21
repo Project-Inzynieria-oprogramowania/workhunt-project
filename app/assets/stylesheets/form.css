@@ -12,15 +12,15 @@
 label {
     font-size: 18px;
 }
-.formField, .radioButtons {
+.form-field, .radio-buttons {
     /*border: 3px solid red;*/
     margin: 20px 10% 0;
     display: block;
 }
-.formField{
+.form-field{
     text-align: left;
 }
-.formField input, .formField textarea, .formField select {
+.form-field input, .form-field textarea, .form-field select {
     display: block;
     font-size: 16px;
     background-color: #262229;
@@ -34,31 +34,31 @@ label {
     border-radius: 6px;
     transition-duration: 0.4s;
 }
-.formField textarea {
+.form-field textarea {
     resize: none;
     min-width: 200px;
     height: 200px;
 }
-.formField select{
+.form-field select{
     /* width: calc(100% + 5px); idk */
     width: 100%;
 }
-.formField input:hover, .formField textarea:hover, .formField select:hover {
+.form-field input:hover, .form-field textarea:hover, .form-field select:hover {
     background-color: #221f25;
     border-color: #221f25;
 }
-.formField input:focus, .formField textarea:focus, .formField select:focus {
+.form-field input:focus, .form-field textarea:focus, .form-field select:focus {
     border-color: #A343D3;
     background-color: #221f25;
     transition-duration: 0.4s;
     outline: none;
 }
-.formField input:-webkit-autofill, 
-.formField input:-webkit-autofill:focus,
-.formField textarea:-webkit-autofill, 
-.formField textarea:-webkit-autofill:focus,
-.formField select:-webkit-autofill, 
-.formField select:-webkit-autofill:focus {
+.form-field input:-webkit-autofill, 
+.form-field input:-webkit-autofill:focus,
+.form-field textarea:-webkit-autofill, 
+.form-field textarea:-webkit-autofill:focus,
+.form-field select:-webkit-autofill, 
+.form-field select:-webkit-autofill:focus {
     transition-duration: 0.4s;
     -webkit-box-shadow: 0 0 0 1000px #221f25 inset;
     -webkit-text-fill-color: #E7E7E7;
@@ -97,7 +97,19 @@ label {
     background-size: 216px, 384px, cover;
     transition-duration: 0.2s;
 }
-.anotherOption {
+.button.disable,
+.button.disable:hover,
+.button.disable:active{
+    font-size: 16px;
+    background-color: #6d507b;
+    color: #e1c1f1;
+    box-shadow: 0px 4px 8px 4px rgba(0, 0, 0, 0.2);
+    background-image: url(20prlines.png);
+    background-attachment: fixed;
+    background-size: 216px, 384px, cover;
+    transform: none;
+}
+.another-option {
     margin-top: 60px;
     font-family: sans-serif;
     font-size: 18px;
@@ -107,24 +119,18 @@ label {
     display: block;
     height: 40px;
 }
-.anotherOption:hover {
+.another-option:hover {
     color: #e6bdfa;
     text-shadow: 0 0 10px rgb(223, 170, 250);
 }
-hr.divisionLine {
-    display: block;
-    border: 0;
-    border-top: 5px dashed #262229;
-    margin: 1em 0;
-}
-.formHeader {
+.form-header {
     color: #F4D18C;
     font-size: 38px;
     text-align: center;
     display: inline-block;
     margin-top: 20px;
 }
-.formError {
+.form-error {
     text-align: left;
     color: #aa2424;
     font-style: italic;
@@ -138,7 +144,7 @@ hr.divisionLine {
         width: 80%;
     }
 }
-.backgroundSet {
+.background-set {
     position: absolute;
     top: calc(400px + 3vh);
     left: 50%;
@@ -153,13 +159,13 @@ hr.divisionLine {
     background-size: contain;
 }
 @media only screen and (max-width: 1120px) {
-    .backgroundSet {
+    .background-set {
       opacity: 0;
       transition-duration: 0.4s;
     }
  }
  @media only screen and (max-width: 1080px) {
-    .backgroundSet {
+    .background-set {
       display: none;
     }
  }
@@ -168,22 +174,37 @@ hr.divisionLine {
     .label {
         font-size: 14px;
     }
-    .formField, .radioButtons {
+    .form-field, .radio-buttons {
         margin-top: 5px;
     }
-    .anotherOption{
+    .another-option{
         margin-top: 10px;
         font-size: 14px;
         height: 30px;
     }
-    .formHeader{
+    .form-header{
         font-size: 30px;
         margin-top: 10px;
-    }
-    hr.divisionLine {
-        margin: 0.5em 0;
     }
     .form {
         margin-top: 2vh;
     }
+}
+.form-field select:hover option:checked {
+    background-color:  #1e1b22;
+    color: #F4D18C;
+}
+.form-field select option {
+    color: #d2d2d2;
+    font-size: 14px;
+}
+.form-field select option:checked {
+    background-color:  #221f25;
+    color: #F4D18C;
+    padding: 2px;
+    font-size: 15px;
+}
+.form-field select option:hover {
+    color: #fffefb;
+    background-color:  #1e1b22;
 }

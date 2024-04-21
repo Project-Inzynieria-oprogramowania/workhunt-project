@@ -1,30 +1,124 @@
 /*File which defines styles for common elements*/
-*
-{
+* {
     margin: 0px;
     padding: 0px;
     font-size: 18px;
     color: #A6884E;
     font-family: sans-serif;
     text-decoration: none;
+    word-wrap: break-word;
 }
-body
-{
+h1,h2,h3 {
+    word-break: break-all;
+    display: block;
+    min-width: 100px;
+}
+body {
     background-image: url(20prlines.png);
     background-attachment: fixed;
     background-size: 216px, 384px, cover;
     background-color: #302A33;
     height: 100%;
 }
-.showDebugBorders /*Class for debugging*/
-{
-    border: 4px dotted blue;
-}
-h1
-{
-    color: #E7E7E7;
-    text-align: left;
-}
 html {
     height: 100%;
+}
+/*page title*/
+.page-title {
+    margin: 0 auto;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-items: left;
+    width: 80%;
+    max-width: 900px;
+    min-width: 300px;
+}
+.page-title h1 {
+    font-size: 35px;
+    color: #F4D18C;
+    text-align: left;
+    display: block;
+}
+.page-title img {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    filter: brightness(150%);
+}
+@media only screen and (max-width: 610px) {
+    .page-title {
+        justify-content: center; 
+    }
+    .page-title h1 {
+        font-size: 20px;
+        text-align: center;
+    }
+    .page-title img {
+        width: 25px;
+        height: 25px;
+    }
+}
+/*tags for vacancy and profile pages*/
+.icon-placeholder
+{
+    width: 100px;
+    height: 100px;
+    background-color:aliceblue;
+    border-radius: 30px;
+    box-shadow: 6px 8px 8px 1px rgba(0,0,0,0.4);
+    display: block;
+}
+.detailed-tag-info
+{
+    font-size: 16px;
+    display: inline-block;
+    border: 3px dashed #663C7B;
+    color: #E7E7E7;
+    background-color: #262229;
+    padding: 10px 10px;
+    border-radius: 10px;
+    overflow: auto;
+    margin-top: 20px;
+    margin-right: 5%;
+    max-width: 95%;
+    text-align: center;
+}
+.detailed-tag-info span{
+    display: inline-block;
+    font-size: 14px;
+    color: #F4D18C;
+}
+.detailed-tag-info p{
+    display: inline-block;
+    font-size: 14px !important;
+    padding: 0;
+}
+@media only screen and (max-width: 600px) {
+    .detailed-tag-info
+    {
+        margin-right: 3%;
+    }
+    .detailed-tag-info p {
+        font-size: 10px !important;
+    }
+    .detailed-tag-info span
+    {
+       font-size: 10px; 
+    }
+    .detailed-tag-info
+    {
+       font-size: 10px; 
+    }
+ }
+ hr.division-line {
+    display: block;
+    border: 0;
+    border-top: 5px dashed #262229;
+    margin: 1em 0;
+}
+@media only screen and (max-width: 500px) {
+    hr.division-line {
+        margin: 0.5em 0;
+    }
 }

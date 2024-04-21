@@ -1,42 +1,58 @@
 <% require_relative "../../assets/config/initializers/work_constants.rb"  
 %>
 <%= search_form_for @q do | form | %>
-    <div id='search-form-default'>
-        <%= form.label :title_or_description_cont, "Enter what you want to find" %>
-        <%= form.search_field :title_or_description_cont, placeholder: "Enter what you want to find" %>
-        
-        <%= form.submit "Search" %>
+    <div class='search-form'>
+        <div class='form-field'>
+            <%= form.label :title_or_description_cont, "Enter what you want to find" %>
+            <div class='search-field'>
+                <%= form.search_field :title_or_description_cont, placeholder: "Enter what you want to find" %>
+                <%= form.submit "Search" %>
+            </div>
+        </div>
+        <div id='search-form-default' class='button open-drop'>search filters</div>
     </div>
+    <%# 
+    Теги, которые появляются при расширенном поиске. 
+    Потом переделаешь, что в каком блоке будет лежать, я лишь выделила поля фильтров в отдельный div для наглядности 
+    Возможно, для каждой формы select сделать check-buttons, которые появляются при открытии фильтра
+    Например, в первоначальном виде есть только лейбл, а по нажатию на него открываются опции
+    %>
     <div id="search-drop-block" style="display: none;"> 
-        <%# 
-            Теги, которые появляются при расширенном поиске. 
-            Потом переделаешь, что в каком блоке будет лежать, я лишь выделила поля фильтров в отдельный div для наглядности 
-            Возможно, для каждой формы select сделать check-buttons, которые появляются при открытии фильтра
-            Например, в первоначальном виде есть только лейбл, а по нажатию на него открываются опции
-        %>
-        <%= form.label :job_type_in, "Job Type" %>
-        <%= form.select :job_type_in, options_for_select(JOB_TYPES.values.flatten, params[:q]&.fetch(:job_type_in, nil)), {}, multiple: true %>
-
-        <%= form.label :work_type_in, "Work Type" %>
-        <%= form.select :work_type_in, options_for_select(WORK_TYPE, params[:q]&.fetch(:work_type_in, nil)), {}, multiple: true %>
-
-        <%= form.label :education_in, "Education" %>
-        <%= form.select :education_in, options_for_select(EDUCATION, params[:q]&.fetch(:education_in, nil)), {}, multiple: true %>
-
-        <%= form.label :subordination_level_in, "Subordination Level" %>
-        <%= form.select :subordination_level_in, options_for_select(SUBORDINATION_LEVEL, params[:q]&.fetch(:subordination_level_in, nil)), {}, multiple: true %>
-    
-        <%= form.label :contract_type_in %>
-        <%= form.select :contract_type_in, options_for_select(CONTRACT_TYPE, params[:q]&.fetch(:contract_type_in, nil)), {}, multiple: true %>
-
-        <%= form.label :working_time_in %>
-        <%= form.select :working_time_in, options_for_select(WORKING_TIME, params[:q]&.fetch(:working_time_in, nil)), {}, multiple: true %>
-
-        <%= form.label :salary_min_cents_gteq, "Minimal salary" %> 
-        <%= form.number_field :salary_min_cents_gteq, value: params[:q]&.fetch(:salary_min_cents_gteq, nil) %> 
-
-        <%= form.label :currency_in %>
-        <%= form.select :currency_in, options_for_select(Money::Currency.all, params[:q]&.fetch(:currency_in, nil)), {}, multiple: true %>
+        <div class='pair-container filters'>
+            <div class="form-field"> 
+            <%= form.label :job_type_in, "Job Type" %>
+            <%= form.select :job_type_in, options_for_select(JOB_TYPES.values.flatten, params[:q]&.fetch(:job_type_in, nil)), {}, multiple: true %>
+            </div>
+            <div class="form-field"> 
+            <%= form.label :work_type_in, "Work Type" %>
+            <%= form.select :work_type_in, options_for_select(WORK_TYPE, params[:q]&.fetch(:work_type_in, nil)), {}, multiple: true %>
+            </div>
+            <div class="form-field"> 
+            <%= form.label :education_in, "Education" %>
+            <%= form.select :education_in, options_for_select(EDUCATION, params[:q]&.fetch(:education_in, nil)), {}, multiple: true %>
+            </div>
+            <div class="form-field"> 
+            <%= form.label :subordination_level_in, "Subordination Level" %>
+            <%= form.select :subordination_level_in, options_for_select(SUBORDINATION_LEVEL, params[:q]&.fetch(:subordination_level_in, nil)), {}, multiple: true %>
+            </div>
+            <div class="form-field"> 
+            <%= form.label :contract_type_in %>
+            <%= form.select :contract_type_in, options_for_select(CONTRACT_TYPE, params[:q]&.fetch(:contract_type_in, nil)), {}, multiple: true %>
+            </div>
+            <div class="form-field"> 
+            <%= form.label :working_time_in %>
+            <%= form.select :working_time_in, options_for_select(WORKING_TIME, params[:q]&.fetch(:working_time_in, nil)), {}, multiple: true %>
+            </div>
+            <div class="form-field"> 
+            <%= form.label :salary_min_cents_gteq, "Minimal salary" %> 
+            <%= form.number_field :salary_min_cents_gteq, value: params[:q]&.fetch(:salary_min_cents_gteq, nil) %> 
+            </div>
+            <div class="form-field"> 
+            <%= form.label :currency_in %>
+            <%= form.select :currency_in, options_for_select(Money::Currency.all, params[:q]&.fetch(:currency_in, nil)), {}, multiple: true %>
+            </div>
+        </div>
     </div>
 <% end %>
+
 <%= javascript_include_tag 'search_form_drop', 'data-turbolinks-track': 'reload', async: true %>
