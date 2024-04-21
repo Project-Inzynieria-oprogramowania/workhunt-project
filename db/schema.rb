@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_21_154258) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_21_173640) do
   create_table "emails", force: :cascade do |t|
     t.string "address", null: false
     t.integer "user_id", null: false
@@ -51,6 +51,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_21_154258) do
     t.check_constraint "sex IN ('unspecified', 'male', 'female', 'other')"
   end
 
+  create_table "telephones", force: :cascade do |t|
+    t.string "number", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "number"], name: "index_telephones_on_user_id_and_number", unique: true
+    t.index ["user_id"], name: "index_telephones_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "login", null: false
     t.string "password_digest", null: false
@@ -88,5 +97,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_21_154258) do
   add_foreign_key "links", "users"
   add_foreign_key "organizations", "users"
   add_foreign_key "people", "users"
+  add_foreign_key "telephones", "users"
   add_foreign_key "vacancies", "organizations"
 end

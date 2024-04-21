@@ -48,6 +48,9 @@ gem 'money-rails', '~> 1.12'
 # Help easily add searching to application, without any additional dependencies.
 gem 'ransack'
 
+# Used for validation, formatting, normalization and country identification of telephone numbers
+gem 'phonelib'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
