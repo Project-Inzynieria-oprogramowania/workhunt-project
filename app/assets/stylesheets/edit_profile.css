@@ -7,7 +7,7 @@
     min-width: 300px;
     max-width: 900px;
     text-align: center;
-    padding-bottom: 20px;
+    padding: 20px 0;
     border-radius: 30px;
     /*border: 3px dashed blue;*/
 }

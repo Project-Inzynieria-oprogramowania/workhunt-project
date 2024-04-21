@@ -1,5 +1,5 @@
 <%= form_with model: email, url: email_create_path do | form | %>
-    <div class='formField'>
+    <div class='form-field'>
         <%= form.label :address, 'Add email' %>
         <%= form.email_field :address, placeholder: 'Enter email' %>
         <%= render 'shared/form_error', locals: {model: email, parametr: :address} %>

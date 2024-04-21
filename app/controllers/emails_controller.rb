@@ -4,7 +4,7 @@ class EmailsController < ApplicationController
     def create
         @email = @user.emails.build(email_params)
         if @email.save
-            flash[:success] = "Email #{params[:email][:address]} created successfully."
+            flash[:success] = "Email #{params[:email][:address]} added successfully."
             redirect_to user_settings_path
         else
             flash[:error] = "Failed to create email."

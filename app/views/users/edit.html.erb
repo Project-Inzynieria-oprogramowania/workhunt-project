@@ -101,16 +101,19 @@
 <% end %>
 <%= javascript_include_tag 'disable_submit', async: true %>
 
-<% @user.emails.each do | email | %>
-    <% if email.id %>
-        <%= render 'emails/email', email: email %>
+<div class='form profile'>
+    <% @user.emails.each do | email | %>
+        <% if email.id %>
+            <%= render 'emails/email', email: email %>
+        <% end %>
     <% end %>
-<% end %>
-<%= render 'emails/form', email: @email ||= Email.new(user_id: @user.id)%>
-
-<% @user.links.each do | link | %>
-    <% if link.id %>
-        <%= render 'links/link', link: link %>
+    <%= render 'emails/form', email: @email ||= Email.new(user_id: @user.id)%>
+</div>
+<div class='form profile'>
+    <% @user.links.each do | link | %>
+        <% if link.id %>
+            <%= render 'links/link', link: link %>
+        <% end %>
     <% end %>
-<% end %>
-<%= render 'links/form', link: @link ||= Link.new(user_id: @user.id)%>
+    <%= render 'links/form', link: @link ||= Link.new(user_id: @user.id)%>
+</div>
