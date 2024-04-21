@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   post '/user/settings/emails/create', to: 'emails#create', as: 'email_create'
   delete '/user/settings/emails/:id/destroy', to: 'emails#destroy', as: 'email_destroy'
+  post '/user/settings/links/create', to: 'links#create', as: 'link_create'
+  delete '/user/settings/links/:id/destroy', to: 'links#destroy', as: 'link_destroy'
 
   # Vacancies Bissness Cards
   get '/vacancies/new', to: 'vacancies#new'

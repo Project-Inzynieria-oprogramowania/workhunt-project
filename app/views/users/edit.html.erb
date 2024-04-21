@@ -107,3 +107,10 @@
     <% end %>
 <% end %>
 <%= render 'emails/form', email: @email ||= Email.new(user_id: @user.id)%>
+
+<% @user.links.each do | link | %>
+    <% if link.id %>
+        <%= render 'links/link', link: link %>
+    <% end %>
+<% end %>
+<%= render 'links/form', link: @link ||= Link.new(user_id: @user.id)%>
