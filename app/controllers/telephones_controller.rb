@@ -6,7 +6,7 @@ class TelephonesController < ApplicationController
         @telephone = @user.telephones.build(telephone_params)
         if @telephone.save
             flash[:success] = "Telephone added successfully"
-            redirect_to user_settings_path
+            redirect_to edit_user_path
         else
             flash[:error] = "Failed to create telephone"
             render 'users/edit', status: :unprocessable_entity
@@ -17,7 +17,7 @@ class TelephonesController < ApplicationController
         @telephone = @user.telephones.find(params[:id])
         @telephone.destroy
         flash[:success] = "Telephone deleted successfully"
-        redirect_to user_settings_path
+        redirect_to edit_user_path
     end
 
     private
@@ -27,6 +27,6 @@ class TelephonesController < ApplicationController
     end
 
     def set_user
-        @user = current_user
+        @user ||= current_user
     end
 end

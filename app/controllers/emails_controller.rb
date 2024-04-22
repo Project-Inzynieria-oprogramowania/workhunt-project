@@ -6,7 +6,7 @@ class EmailsController < ApplicationController
         @email = @user.emails.build(email_params)
         if @email.save
             flash[:success] = "Email #{params[:email][:address]} added successfully"
-            redirect_to user_settings_path
+            redirect_to edit_user_path
         else
             flash[:error] = "Failed to create email."
             render 'users/edit', status: :unprocessable_entity
@@ -17,7 +17,7 @@ class EmailsController < ApplicationController
         @email = @user.emails.find(params[:id])
         @email.destroy
         flash[:success] = "Email deleted successfully"
-        redirect_to user_settings_path
+        redirect_to edit_user_path
     end
 
     private
@@ -27,6 +27,6 @@ class EmailsController < ApplicationController
     end
 
     def set_user
-        @user = current_user
+        @user ||= current_user
     end
 end

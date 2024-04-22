@@ -1,7 +1,7 @@
 <% require_relative "../../../app/assets/config/initializers/work_constants.rb" 
 %>
 <div class='form edit_vacancy'>
-<%= form_with model: @vacancy, url: address do | form | %>
+<%= form_with model: @vacancy, url: address, method: method do | form | %>
     <div class='form-field'>
         <%= form.label :title %>
         <%= form.text_field :title %>

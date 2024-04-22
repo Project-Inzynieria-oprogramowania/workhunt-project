@@ -1,4 +1,4 @@
 <div class='form-field'>
     <%= telephone.number %>
-    <%= button_to "Delete", telephone_destroy_path(telephone), type: 'button', class: 'button', method: :delete, confirm: 'Are you sure you want to delete telephone?' %>
+    <%= button_to "Delete", user_telephone_path(telephone), method: :delete, type: 'button', class: 'button', confirm: 'Are you sure you want to delete telephone?' %>
 </div>

@@ -1,4 +1,4 @@
-<%= form_with model: @user, url: sessions_path, id: 'LoginForm'  do | form | %>
+<%= form_with model: @user, url: sessions_path, method: :post, id: 'LoginForm' do | form | %>
     <div class='form-field'>
         <%= form.label :login, 'Login' %>
         <%= form.text_field :login, placeholder: 'Enter login...' %>

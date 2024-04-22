@@ -1,5 +1,5 @@
 <div class='form'>
-<%= form_with model: @cv, url: address do | form | %>
+<%= form_with model: @cv, url: cv_path, method: method do | form | %>
     <div class='form-field'>
         <%= form.label :about, 'Tell about' %>
         <%= form.text_area :about, placeholder: 'Tell about...' %>

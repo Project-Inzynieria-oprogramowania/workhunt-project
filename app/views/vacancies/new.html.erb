@@ -2,4 +2,4 @@
 <div class='page-title'>
     <h1>Create a vacancy</h1><%= image_tag 'menuIcons/gear.png' %>
 </div>
-<%= render 'form', address: vacancy_create_path %>
+<%= render 'form', address: vacancies_path, method: :post %>

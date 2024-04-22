@@ -19,13 +19,13 @@
                             <hr>
                         </li> 
                         <li>
-                            <%= link_to user_path(current_user) do %>
+                            <%= link_to show_users_path(current_user) do %>
                                 <%= image_tag 'menuIcons/human.png' %>
                                 My Profile
                             <% end %>
                         </li>
                         <li>
-                            <%= link_to user_settings_path do %>
+                            <%= link_to edit_user_path do %>
                                 <%= image_tag 'menuIcons/gear.png' %>
                                 Edit Account
                             <% end %>
@@ -33,7 +33,7 @@
 
                         <li><hr class="division-line"></li>
 
-                        <li><%= button_to logout_path, method: :delete, class: "logout-button" do %>
+                        <li><%= button_to sessions_path, method: :delete, class: "logout-button" do %>
                             <%= image_tag "menuIcons/poweroff.png" %>
                             Log out
                         <% end %></li>
@@ -41,7 +41,7 @@
                 </div>
             <% else %>
                 <div class="dropdown">
-                    <%= link_to login_path do %>
+                    <%= link_to new_sessions_path do %>
                             <span class="account-button">You are not logged in</span>
                             <span class="small-button">Log In</span>
                     <% end %>

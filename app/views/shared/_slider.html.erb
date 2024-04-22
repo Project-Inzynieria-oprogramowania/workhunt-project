@@ -5,11 +5,11 @@
             <p class='subtitle'>The newest job search service!</p>
         </div>
         <div class='start-button-container'>
-                <% if user_signed_in? %>
-                    <%= link_to 'TO THE HUNT!', vacancies_path, class: ['large-button'] %>
-                <% else %>
-                    <%= link_to 'START NOW', login_path, class: ['large-button'] %>
-                <% end %>  
+            <% if user_signed_in? %>
+                <%= link_to 'TO THE HUNT!', vacancies_path, class: ['large-button'] %>
+            <% else %>
+                <%= link_to 'START NOW', new_sessions_path, class: ['large-button'] %>
+            <% end %>  
         </div>
     </div>
 </div>

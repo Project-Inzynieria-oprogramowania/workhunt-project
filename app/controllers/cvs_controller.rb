@@ -15,7 +15,7 @@ class CvsController < ApplicationController
         @cv.person_id = current_user.person.id
         if @cv.save
             flash[:success] = "CV successfully created"
-            redirect_to cv_show_path(@cv)
+            redirect_to cv_path(@cv)
         else
             flash[:error] = "Unable to save"
             render :new, status: :unprocessable_entity
@@ -35,7 +35,7 @@ class CvsController < ApplicationController
     def update
         if @cv.update(cv_params_all)
             flash[:success] = "CV successfully updated"
-            redirect_to cv_show_path(@cv)
+            redirect_to cv_path(@cv)
         else
             flash[:error] = "Unable to update"
             render :edit, status: :unprocessable_entity
@@ -69,7 +69,7 @@ class CvsController < ApplicationController
         cv = current_user.person.cv
         return unless current_user.person.cv.present?
         flash[:warning] = "You already have a CV"
-        redirect_to cv_show_path(cv)
+        redirect_to cv_path(cv)
     end
 
     def get_cv

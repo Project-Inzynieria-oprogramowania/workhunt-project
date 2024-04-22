@@ -54,7 +54,7 @@ class VacanciesController < ApplicationController
     def destroy
         @vacancy.destroy
         flash[:success] = "Vacancy deleted successfully"
-        redirect_to vacancies_path
+        redirect_to show_users_path(current_user)
     end
 
     private 

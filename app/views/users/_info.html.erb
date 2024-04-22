@@ -1,51 +1,51 @@
-        <% if @user.person? %>
-                <div class='top-line-container'>
-                    <div class='top-line-element profile'>
-                        <h1><%= @user.person.name %> <%= @user.person.surname %></h1>
-                    </div>
-                    <div class='top-line-element'>
-                        <% if current_user.present? && @user.id == current_user.id %>
-                            <%= link_to user_settings_path, class: 'corner-link' do %>
-                                <%= image_tag 'menuIcons/edit.png' %>
-                            <% end %>
-                            <% else %>
-                            <% if user_signed_in? %>
-                                <div class='corner-link'><%= image_tag 'menuIcons/writeToPlaceholder.png' %></div>
-                            <% else %>
-                                <%= link_to login_path do %>
-                                    <div class='corner-link'><%= image_tag 'menuIcons/writeToPlaceholder.png' %></div>
-                                <% end %>
-                            <% end %>
-                        <% end %>
-                    </div>
-                </div>
-                <p class='detailed-tag-info'><span>Gender:</span> <%= @user.person.sex %></p>
-                <% if @user.person.DOB.present? %>
-                    <div class='detailed-tag-info'><span>DOB:</span> <%= @user.person.DOB %></div>
-                <% else %>
-                    <div class='detailed-tag-info'><span>DOB:</span> no data</div>
+<% if @user.person? %>
+    <div class='top-line-container'>
+        <div class='top-line-element profile'>
+            <h1><%= @user.person.name %> <%= @user.person.surname %></h1>
+        </div>
+        <div class='top-line-element'>
+            <% if user_signed_in? && @user.id == current_user.id %>
+                <%= link_to edit_user_path, class: 'corner-link' do %>
+                    <%= image_tag 'menuIcons/edit.png' %>
                 <% end %>
-                <div class='detailed-tag-info'><span>Person</span></div>
-        <% elsif @user.organization? %>
-                <div class='top-line-container'>
-                    <div class='top-line-element'>
-                        <h1><%= @user.organization.name %></h1>
-                    </div>
-                    <div class='top-line-element'>
-                        <% if current_user.present? && @user.id == current_user.id %>
-                            <%= link_to user_settings_path, class: 'corner-link' do %>
-                                <%= image_tag 'menuIcons/edit.png' %>
-                            <% end %>
-                            <% else %>
-                            <% if user_signed_in? %>
-                                <div class='corner-link'><%= image_tag 'menuIcons/writeToPlaceholder.png' %></div>
-                            <% else %>
-                                <%= link_to login_path do %>
-                                    <div class='corner-link'><%= image_tag 'menuIcons/writeToPlaceholder.png' %></div>
-                                <% end %>
-                            <% end %>
-                        <% end %>
-                    </div>
-                </div>
-                <div class='detailed-tag-info'><span>Organization</span></div>
+            <% else %>
+                <% if user_signed_in? %>
+                    <div class='corner-link'><%= image_tag 'menuIcons/writeToPlaceholder.png' %></div>
+                <% else %>
+                    <%# <%= link_to  do %> <a>
+                        <div class='corner-link'><%= image_tag 'menuIcons/writeToPlaceholder.png' %></div>
+                    <%# <% end %> </a>
+                <% end %>
+            <% end %>
+        </div>
+    </div>
+    <p class='detailed-tag-info'><span>Gender:</span> <%= @user.person.sex %></p>
+        <% if @user.person.DOB.present? %>
+            <div class='detailed-tag-info'><span>DOB:</span> <%= @user.person.DOB %></div>
+        <% else %>
+            <div class='detailed-tag-info'><span>DOB:</span> no data</div>
         <% end %>
+    <div class='detailed-tag-info'><span>Person</span></div>
+<% elsif @user.organization? %>
+    <div class='top-line-container'>
+        <div class='top-line-element'>
+            <h1><%= @user.organization.name %></h1>
+        </div>
+        <div class='top-line-element'>
+            <% if current_user.present? && @user.id == current_user.id %>
+                <%= link_to edit_user_path, class: 'corner-link' do %>
+                    <%= image_tag 'menuIcons/edit.png' %>
+                <% end %>
+            <% else %>
+                <% if user_signed_in? %>
+                    <div class='corner-link'><%= image_tag 'menuIcons/writeToPlaceholder.png' %></div>
+                <% else %>
+                    <%= link_to new_sessions_path do %>
+                        <div class='corner-link'><%= image_tag 'menuIcons/writeToPlaceholder.png' %></div>
+                    <% end %>
+                <% end %>
+            <% end %>
+        </div>
+    </div>
+    <div class='detailed-tag-info'><span>Organization</span></div>
+<% end %>

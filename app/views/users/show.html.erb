@@ -21,11 +21,11 @@
         <% if @user.person? %>
             <% if @user.person.cv.present? %>
                 <div class='pair-single-container profile'>
-                    <%= link_to 'Show CV', cv_show_path(@user.person.cv) %>
+                    <%= link_to 'Show CV', show_cvs_path(@user.person.cv) %>
                 </div>
             <% elsif user_signed_in? && @user.id == current_user.id %>
                 <div class='pair-single-container profile'>
-                    <%= link_to 'Create CV', cv_new_path %>
+                    <%= link_to 'Create CV', new_cv_path %>
                 </div>
             <% end %>
         <% end %>
@@ -49,7 +49,7 @@
 <% if @user.organization? %>
         <div class='form profile remove-style'>
         <% if current_user.present? && @user.id == current_user.id %>
-            <%= link_to "Create new offer", vacancy_new_path, class: 'button profile' %>
+            <%= link_to "Create new offer", new_vacancy_path, class: 'button profile' %>
         <% end %>
             <%= render Vacancy.where(organization_id: @user.organization.id) %>
         </div>

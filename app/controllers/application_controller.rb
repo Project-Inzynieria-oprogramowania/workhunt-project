@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
     def check_authenticate
         return if current_user.present?
         flash[:warning] = "You are no signed in"
-        redirect_to login_path
+        redirect_to new_session_path
     end
 
     def check_no_authenticate
