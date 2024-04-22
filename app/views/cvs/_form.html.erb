@@ -20,11 +20,18 @@
         <%= form.text_field :city, placeholder: 'City...' %>
         <%= render 'shared/form_error', model: @cv, parametr: :city %>
     </div>
+    
+    <% @cv.educations.each do | education | %>
+        <%= render 'educations/form', form: form, education: education %>
+    <% end %>
+    <button type="button" class="add-education">Add Education</button>
+
     <div class='form-field'>
         <%= form.label :interests %>
         <%= form.text_area :interests, placeholder: 'Tell about your interests' %>
         <%= render 'shared/form_error', model: @cv, parametr: :interests %>
     </div>
-    <%= form.submit 'Confirm', class: 'button' %>
+    <%= form.submit 'Confirm', class: 'button', cv: @cv %>
 <% end %>
+<%= javascript_include_tag 'dinamic_forms_cv', async: true %>
 </div>

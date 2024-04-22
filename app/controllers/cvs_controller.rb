@@ -7,6 +7,7 @@ class CvsController < ApplicationController
 
     def new
         @cv ||= Cv.new
+        @cv.educations.build
     end
 
     def create
@@ -45,15 +46,15 @@ class CvsController < ApplicationController
         @cv.destroy
         flash[:success] = "CV deleted successfully"
         redirect_to user_path(current_user)
-    end
+    end    
 
     private
 
     def cv_params_all
         params.require(:cv).permit(
-            :about, :skills, :country, :city, :interests
-            #person_attributes: [],
-            #organization_attributes: []
+            :about, :skills, :country, :city, :interests,
+            educations_attributes: [:start_date, :end_date, :institution, :direction, :specialization, :education_level] 
+            #, :_destroy
         )
     end
 
