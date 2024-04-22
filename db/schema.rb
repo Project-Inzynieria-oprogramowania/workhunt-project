@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_21_181309) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_21_230142) do
   create_table "cvs", force: :cascade do |t|
     t.integer "person_id", null: false
     t.text "about", null: false
@@ -21,6 +21,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_21_181309) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["person_id"], name: "index_cvs_on_person_id"
+  end
+
+  create_table "educations", force: :cascade do |t|
+    t.integer "cv_id", null: false
+    t.date "start_date", null: false
+    t.date "end_date"
+    t.string "institution", null: false
+    t.string "direction", null: false
+    t.string "specialization", null: false
+    t.string "education_level", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cv_id"], name: "index_educations_on_cv_id"
   end
 
   create_table "emails", force: :cascade do |t|
@@ -106,6 +119,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_21_181309) do
   end
 
   add_foreign_key "cvs", "people"
+  add_foreign_key "educations", "cvs"
   add_foreign_key "emails", "users"
   add_foreign_key "links", "users"
   add_foreign_key "organizations", "users"
