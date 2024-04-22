@@ -19,7 +19,7 @@ class User < ApplicationRecord
     validate :password_presence
     validate :correct_old_password, on: :update
     
-    before_save :downcase_login
+    before_validation :downcase_login
 
     private 
 
