@@ -32,8 +32,6 @@ class CvsController < ApplicationController
     end
 
     def update
-        puts "\n=========================\n#{params.inspect}\n==========================\n"
-        puts "\n=========================\n#{cv_params_all.inspect}\n==========================\n"
         if @cv.update(cv_params_all)
             flash[:success] = "CV successfully updated"
             redirect_to show_cvs_path(@cv)
@@ -50,14 +48,13 @@ class CvsController < ApplicationController
     end    
 
     def add_education
-        @cv = current_user.person.cv || Cv.new(cv_params_all)
-        index = @cv.educations.count
+        @cv = current_user.person.cv || Cv.new
         @education = @cv.educations.build
-        render partial: 'educations/form', locals: {index: index, education: @education}
+        render partial: 'educations/form', locals: {index: params[:index].to_i, education: @education}
     end
 
     def remove_education
-        @education = Education.find_by(id: params[:id])
+        @education = Education.find_by(id: params[:id]) if params[:id].present?
         @education.destroy if @education.present?
     end
 
