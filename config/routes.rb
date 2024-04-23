@@ -18,6 +18,10 @@ Rails.application.routes.draw do
     member do
       get 'education/add', to: 'cvs#add_education', as: 'add_education'
       delete 'education/remove', to: 'cvs#remove_education', as: 'remove_education'
+      get 'experience/add', to: 'cvs#add_experience', as: 'add_experience'
+      delete 'experience/remove', to: 'cvs#remove_experience', as: 'remove_experience'
+      get 'language/add', to: 'cvs#add_language', as: 'add_language'
+      delete 'language/remove', to: 'cvs#remove_language', as: 'remove_language'
     end
   end
   resources :cvs, except: [:index, :create, :new, :edit, :show, :update, :destroy] do

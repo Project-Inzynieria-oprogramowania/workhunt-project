@@ -21,12 +21,20 @@
         <%= render 'shared/form_error', model: @cv, parametr: :city %>
     </div>
     
-    <div id='education-fields'>
-        <% @cv.educations.each.with_index do | education, index | %>
-            <%= render 'educations/form', education: education, index: index %>
-        <% end %>        
-    </div>
+    <% @cv.educations.each.with_index do | education, index | %>
+        <%= render 'educations/form', education: education, index: index %>
+    <% end %>
     <button type="button" class='button add-fields-button' id="add-education">Add Education</button>
+
+    <% @cv.experiences.each.with_index do | experience, index | %>
+        <%= render 'experiences/form', experience: experience, index: index %>
+    <% end %>
+    <button type="button" class='button add-fields-button' id="add-experience">Add Experience</button>
+
+    <% @cv.languages.each.with_index do | language, index | %>
+        <%= render 'languages/form', language: language, index: index %>
+    <% end %>
+    <button type="button" class='button add-fields-button' id="add-language">Add Language</button>
 
     <div class='form-field'>
         <%= form.label :interests %>

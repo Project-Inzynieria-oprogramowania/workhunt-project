@@ -4,6 +4,7 @@ class CvsController < ApplicationController
     before_action :check_profile, only: [:edit, :update, :destroy]
     before_action :check_cv_exists, only: [:new, :create]
     before_action :get_cv, only: [:edit, :update, :destroy]
+    before_action :set_cv, only: [:add_education, :add_experience, :add_language]
 
     def new
         @cv ||= Cv.new
@@ -48,7 +49,6 @@ class CvsController < ApplicationController
     end    
 
     def add_education
-        @cv = current_user.person.cv || Cv.new
         @education = @cv.educations.build
         render partial: 'educations/form', locals: {index: params[:index].to_i, education: @education}
     end
@@ -58,12 +58,34 @@ class CvsController < ApplicationController
         @education.destroy if @education.present?
     end
 
+    def add_experience
+        @experience = @cv.experiences.build
+        render partial: 'experiences/form', locals: {index: params[:index].to_i, experience: @experience}
+    end
+
+    def remove_experience
+        @experience = Experience.find_by(id: params[:id]) if params[:id].present?
+        @experience.destroy if @experience.present?
+    end
+
+    def add_language
+        @language = @cv.languages.build
+        render partial: 'languages/form', locals: {index: params[:index].to_i, language: @language}
+    end
+
+    def remove_language
+        @language = Language.find_by(id: params[:id]) if params[:id].present?
+        @language.destroy if @language.present?
+    end
+
     private
 
     def cv_params_all
         params.require(:cv).permit(
             :about, :skills, :country, :city, :interests,
-            educations_attributes: [:id, :start_date, :end_date, :institution, :direction, :specialization, :education_level]
+            educations_attributes: [:id, :start_date, :end_date, :institution, :direction, :specialization, :education_level],
+            experiences_attributes: [:id, :start_date, :end_date, :position, :country, :city, :company, :outline, :responsibilities, :achievements],
+            languages_attributes: [:id, :name, :level, :certificates]
         )
     end
 
@@ -83,5 +105,9 @@ class CvsController < ApplicationController
 
     def get_cv
         @cv ||= current_user.person.cv
+    end
+
+    def set_cv
+        @cv = current_user.person.cv || Cv.new
     end
 end
