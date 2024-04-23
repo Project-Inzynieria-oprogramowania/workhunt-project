@@ -15,17 +15,17 @@ class Education < ApplicationRecord
     private 
 
     def start_date_validate
-        return if start_date.to_i < DateTime.now.to_i
-        errors.add :start_date, 'must be older than the current time'
+        return if start_date < DateTime.now
+        errors.add :start_date, 'must be in the past'
     end
     
     def end_date_validate
-        return if end_date.to_i < DateTime.now.to_i
-        errors.add :end_date, 'must be older than the current time'
+        return if end_date < DateTime.now
+        errors.add :end_date, 'must be in the past'
     end
 
     def dates_compare
-        return if end_date.to_i > start_date.to_i
-        errors.add :end_date, 'must be older than the start date'
+        return if end_date > start_date
+        errors.add :end_date, 'must be after the start date'
     end
 end
