@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_21_230142) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_23_202325) do
   create_table "cvs", force: :cascade do |t|
     t.integer "person_id", null: false
     t.text "about", null: false
@@ -43,6 +43,32 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_21_230142) do
     t.datetime "updated_at", null: false
     t.index ["address", "user_id"], name: "index_emails_on_address_and_user_id", unique: true
     t.index ["user_id"], name: "index_emails_on_user_id"
+  end
+
+  create_table "experiences", force: :cascade do |t|
+    t.integer "cv_id", null: false
+    t.date "start_date", null: false
+    t.date "end_date"
+    t.string "position", null: false
+    t.string "country"
+    t.string "city"
+    t.string "company"
+    t.text "outline", null: false
+    t.text "responsibilities"
+    t.text "achievements"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cv_id"], name: "index_experiences_on_cv_id"
+  end
+
+  create_table "languages", force: :cascade do |t|
+    t.integer "cv_id", null: false
+    t.string "name", null: false
+    t.string "level", null: false
+    t.string "certificates"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cv_id"], name: "index_languages_on_cv_id"
   end
 
   create_table "links", force: :cascade do |t|
@@ -121,6 +147,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_21_230142) do
   add_foreign_key "cvs", "people"
   add_foreign_key "educations", "cvs"
   add_foreign_key "emails", "users"
+  add_foreign_key "experiences", "cvs"
+  add_foreign_key "languages", "cvs"
   add_foreign_key "links", "users"
   add_foreign_key "organizations", "users"
   add_foreign_key "people", "users"
