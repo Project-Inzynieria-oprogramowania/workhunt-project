@@ -1,4 +1,5 @@
-<%= @cv.inspect %>
+<%= @cv.inspect %><br><br>
+<%= @cv.educations.inspect %>
 <% if user_signed_in? && current_user.person.id == @cv.person_id %>
     <%= link_to 'Edit', edit_cv_path, class: 'button' %>
     <%= button_to "Delete", cv_path, method: :delete, type: 'button', class: 'button', confirm: 'Are you sure you want to delete CV?' %>

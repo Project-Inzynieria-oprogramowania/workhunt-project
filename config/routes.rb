@@ -16,12 +16,13 @@ Rails.application.routes.draw do
   
   resource :cv, except: [:index] do
     member do
-      get 'educations/add', to: 'educations#add', as: 'add_educations'
+      get 'education/add', to: 'cvs#add_education', as: 'add_education'
+      delete 'education/remove', to: 'cvs#remove_education', as: 'remove_education'
     end
   end
   resources :cvs, except: [:index, :create, :new, :edit, :show, :update, :destroy] do
     collection do
-      get get '/:id', to: 'cvs#show', as: 'show'
+      get '/:id', to: 'cvs#show', as: 'show'
     end
   end
 

@@ -1,9 +1,7 @@
 <% require_relative "../../assets/config/initializers/work_constants.rb" 
 %>
-<div class='form education-form'>
-<%= form.fields_for :education, education do | education_fields | %>
-<%# <%= form.object.inspect %>
-<%# <%= education_fields.object.inspect %> 
+<div class='education-form'><hr>
+<%= fields_for "cv[educations_attributes][#{index}]", education do | education_fields | %>
     <div class="form-field">
         <%= education_fields.label :start_date %>
         <%= education_fields.date_field :start_date %>
@@ -34,6 +32,9 @@
         <%= education_fields.select :education_level, options_for_select(EDUCATION) %>
         <%= render 'shared/form_error', model: education_fields.object, parametr: :education_level %>
     </div>
-    <button type="button" class="remove-education">Remove</button>
+    
+    <button type="button" class='button remove-fields-button remove-education'>
+        <%= education_fields.hidden_field :id %>Remove
+    </button>
 <% end %>
-</div>
+<hr></div>

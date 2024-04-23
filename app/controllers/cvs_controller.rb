@@ -7,7 +7,6 @@ class CvsController < ApplicationController
 
     def new
         @cv ||= Cv.new
-        @cv.educations.build
     end
 
     def create
@@ -15,7 +14,7 @@ class CvsController < ApplicationController
         @cv.person_id = current_user.person.id
         if @cv.save
             flash[:success] = "CV successfully created"
-            redirect_to cv_path(@cv)
+            redirect_to show_cvs_path(@cv)
         else
             flash[:error] = "Unable to save"
             render :new, status: :unprocessable_entity
@@ -33,9 +32,11 @@ class CvsController < ApplicationController
     end
 
     def update
+        puts "\n=========================\n#{params.inspect}\n==========================\n"
+        puts "\n=========================\n#{cv_params_all.inspect}\n==========================\n"
         if @cv.update(cv_params_all)
             flash[:success] = "CV successfully updated"
-            redirect_to cv_path(@cv)
+            redirect_to show_cvs_path(@cv)
         else
             flash[:error] = "Unable to update"
             render :edit, status: :unprocessable_entity
@@ -48,13 +49,24 @@ class CvsController < ApplicationController
         redirect_to user_path(current_user)
     end    
 
+    def add_education
+        @cv = current_user.person.cv || Cv.new(cv_params_all)
+        index = @cv.educations.count
+        @education = @cv.educations.build
+        render partial: 'educations/form', locals: {index: index, education: @education}
+    end
+
+    def remove_education
+        @education = Education.find_by(id: params[:id])
+        @education.destroy if @education.present?
+    end
+
     private
 
     def cv_params_all
         params.require(:cv).permit(
             :about, :skills, :country, :city, :interests,
-            educations_attributes: [:start_date, :end_date, :institution, :direction, :specialization, :education_level] 
-            #, :_destroy
+            educations_attributes: [:id, :start_date, :end_date, :institution, :direction, :specialization, :education_level]
         )
     end
 

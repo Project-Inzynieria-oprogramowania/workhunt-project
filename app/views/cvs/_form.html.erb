@@ -21,10 +21,12 @@
         <%= render 'shared/form_error', model: @cv, parametr: :city %>
     </div>
     
-    <% @cv.educations.each do | education | %>
-        <%= render 'educations/form', form: form, education: education %>
-    <% end %>
-    <button type="button" class="add-education">Add Education</button>
+    <div id='education-fields'>
+        <% @cv.educations.each.with_index do | education, index | %>
+            <%= render 'educations/form', education: education, index: index %>
+        <% end %>        
+    </div>
+    <button type="button" class='button add-fields-button' id="add-education">Add Education</button>
 
     <div class='form-field'>
         <%= form.label :interests %>
@@ -33,5 +35,5 @@
     </div>
     <%= form.submit 'Confirm', class: 'button', cv: @cv %>
 <% end %>
-<%= javascript_include_tag 'dinamic_forms_cv', async: true %>
+<%= javascript_include_tag 'dynamic_forms_cv', async: true %>
 </div>
