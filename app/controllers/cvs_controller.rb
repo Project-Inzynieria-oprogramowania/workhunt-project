@@ -2,7 +2,8 @@ class CvsController < ApplicationController
     before_action :check_authenticate, only: [:new, :create, :edit, :update, :destroy]
     before_action :check_profile_person, only: [:new, :create, :edit, :update, :destroy]
     before_action :check_profile, only: [:edit, :update, :destroy]
-    before_action :check_cv_exists, only: [:new, :create]
+    before_action :check_cv_not_exists, only: [:new, :create]
+    before_action :check_cv_exists, only: [:edit, :update, :destroy]
     before_action :get_cv, only: [:edit, :update, :destroy]
     before_action :set_cv, only: [:add_education, :add_experience, :add_language]
 
@@ -96,11 +97,18 @@ class CvsController < ApplicationController
         redirect_back fallback_location: root_path
     end
 
-    def check_cv_exists
+    def check_cv_not_exists
         cv = current_user.person.cv
         return unless current_user.person.cv.present?
         flash[:warning] = "You already have a CV"
         redirect_to cv_path(cv)
+    end
+
+    def check_cv_exists
+        cv = current_user.person.cv
+        return if current_user.person.cv.present?
+        flash[:warning] = "You dont have a CV"
+        redirect_to new_cv_path
     end
 
     def get_cv
