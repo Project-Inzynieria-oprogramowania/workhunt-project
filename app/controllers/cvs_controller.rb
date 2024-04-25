@@ -99,9 +99,10 @@ class CvsController < ApplicationController
     end
 
     def check_cv_not_exists
-        return unless current_user.person.cv.present?
+        cv = current_user.person.cv
+        return unless cv.present?
         flash[:warning] = "You already have a CV"
-        redirect_to cv_path(cv)
+        redirect_to show_cvs_path(cv)
     end
 
     def check_cv_exists
