@@ -1,16 +1,24 @@
+.link-block, .link-block span {
+   color: #E7E7E7;
+}
+.link-block .hidden {
+   visibility: hidden;
+   margin: 0 10px;
+}
+.link-block:hover .hidden {
+   visibility: visible;
+}
 .profile.form.remove-padding {
    padding: 5px 0px;
    width: calc(80%);
 }
-.profile.form.remove-style, .profile.form.remove-style h2
-{
-    background-image: none;
-    box-shadow: none;
-    text-shadow: none;
-    padding: 0;
+.profile.form.remove-style, .profile.form.remove-style h2 {
+   background-image: none;
+   box-shadow: none;
+   text-shadow: none;
+   padding: 0;
 }
-.pair-single-container.profile h1
-{
+.pair-single-container.profile h1 {
    color: #E7E7E7;
    display: block;
    position: relative;
@@ -18,65 +26,60 @@
    padding-right: 10%;
    width: 100%;
 }
-.pair-single-container.profile
-{
+.pair-single-container.profile {
    padding: 10px 15px;
    display: block;
    width: 80%;
    margin: 0;
    margin-left: 10px;
 }
-.pair-container.profile
-{
+.pair-container.profile {
    align-items: center;
    justify-content: space-evenly;
    margin: 2vh auto;
    width: 98%;
 }
- .about-user
- {
-    text-align: left;
-    position: relative;
-    display: block;
-    width: 90%;
-    margin: 0 auto;
-    margin-top: 2%;
-    border: none;
- }
- .paragraph-profile-title
- {
-    font-size: 25px;
-    text-align: left;
-    padding: 0 4%;
-    color: #F4D18C;
- }
- .corner-link {
-    position: relative;
-    height: auto;
- }
- .corner-link img {
-    width: 30px;
-    height: 30px;
-    filter: brightness(90%);
-    transition-duration: 0.4s;
- }
- .corner-link:hover img
- {
-    filter: brightness(120%) drop-shadow(0px 0px 10px rgba(244, 209, 140, 0.5));
-    transition-duration: 0.4s;
- }
- .profile.button
- {
-    height: auto;
-    display: block;
-    text-align: center;
-    width: 30%;
-    padding: 10px 5px;
-    min-width: 130px;
-    margin: 0;
- }
- .profile.button:hover {
-    font-size: unset;
+.about-user {
+   text-align: left;
+   position: relative;
+   display: block;
+   width: 90%;
+   margin: 0 auto;
+   margin-top: 2%;
+   border: none;
+}
+.paragraph-profile-title {
+   font-size: 25px;
+   text-align: left;
+   padding: 0 4%;
+   color: #F4D18C;
+}
+.corner-link {
+   position: relative;
+   height: auto;
+}
+.corner-link img {
+   width: 30px;
+   height: 30px;
+   filter: brightness(90%);
+   transition-duration: 0.4s;
+}
+.corner-link:hover img {
+   filter: brightness(120%) drop-shadow(0px 0px 10px rgba(244, 209, 140, 0.5));
+   transition-duration: 0.4s;
+}
+.profile.button
+{
+   height: auto;
+   display: block;
+   text-align: center;
+   width: 30%;
+   padding: 10px 5px;
+   min-width: 130px;
+   margin: 0;
+}
+.profile.button:hover {
+   font-size: unset;
 }
 
 @media only screen and (max-width: 600px) {

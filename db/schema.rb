@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_23_202325) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_25_142517) do
   create_table "cvs", force: :cascade do |t|
     t.integer "person_id", null: false
     t.text "about", null: false
@@ -76,6 +76,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_23_202325) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title"
     t.index ["address", "user_id"], name: "index_links_on_address_and_user_id", unique: true
     t.index ["user_id"], name: "index_links_on_user_id"
   end

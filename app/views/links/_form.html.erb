@@ -4,5 +4,10 @@
         <%= form.text_field :address, placeholder: 'Enter link' %>
         <%= render 'shared/form_error', model: link, parametr: :address %>
     </div>
+    <div class='form-field'>
+        <%= form.label :title %>
+        <%= form.text_field :title, placeholder: 'Enter title of link' %>
+        <%= render 'shared/form_error', model: link, parametr: :title %>
+    </div>
     <%= form.submit 'Confirm', class: 'button' %>
 <% end %>

@@ -1,7 +1,11 @@
 <div class='form-field'>
     <div class='top-line-container contacts'>
         <div class='top-line-element contacts'>
-            <p><%= link.address %></p>
+            <% if link.title.present? %>
+                <a class='link-block'><span><%= link.title %></span><span class='hidden'><%= link.address %></span></a>
+            <% else %>
+                <a class='link-block'><span><%= link.address %></span></a>
+            <% end %>
         </div>
         <% if current_user.present? && @user.id == current_user.id %>
             <div class='top-line-element contacts'>
