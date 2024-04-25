@@ -180,6 +180,7 @@
 }
 .color-container {
     border-top: 5px dashed #262229;
+    border-bottom: 5px dashed #262229;
     outline-offset: -5px;
     width: 100%;
     min-width: 300px;
@@ -287,4 +288,7 @@
     font-size: 12px;
     padding-left: 10px;
     padding-right: 10px;
+}
+footer.color-container {
+    border-bottom: none;
 }

@@ -23,17 +23,6 @@
         <div class='pair-single-container profile'>
             <%= render 'users/info' %>
         </div>
-        <% if @user.person? %>
-            <% if @user.person.cv.present? %>
-                <div class='pair-single-container profile'>
-                    <%= link_to 'Show CV', show_cvs_path(@user.person.cv) %>
-                </div>
-            <% elsif user_signed_in? && @user.id == current_user.id %>
-                <div class='pair-single-container profile'>
-                    <%= link_to 'Create CV', new_cv_path %>
-                </div>
-            <% end %>
-        <% end %>
     </div>
 </div>
     <% if @user.person? && @user.person.about.present? %>
@@ -51,6 +40,36 @@
     Будет какой-то блок, в котором будет хранится или только блок отзывов, или блок отзывов и блок вакансий. 
     Нужно через js сделать переключение между ними 
 %>
+
+
+
+<div class='form profile'>
+    <h1 class='paragraph-profile-title'>Contact info</h1>
+    <% @user.telephones.each do | telephone | %>
+        <% if telephone.id %>
+            <%= render 'telephones/telephone', telephone: telephone %>
+        <% end %>
+    <% end %>
+    <% @user.telephones.each do | telephone | %>
+        <% if telephone.id %>
+            <%= render 'telephones/telephone', telephone: telephone %>
+        <% end %>
+    <% end %>
+    <% @user.emails.each do | email | %>
+        <% if email.id %>
+            <%= render 'emails/email', email: email %>
+        <% end %>
+    <% end %>
+    <% @user.links.each do | link | %>
+        <% if link.id %>
+            <%= render 'links/link', link: link %>
+        <% end %>
+    <% end %>
+</div>
+
+
+
+
 <% if @user.organization? %>
         <div class='form profile remove-style'>
         <% if current_user.present? && @user.id == current_user.id %>

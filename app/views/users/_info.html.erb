@@ -20,11 +20,20 @@
         </div>
     </div>
     <p class='detailed-tag-info'><span>Gender:</span> <%= @user.person.sex %></p>
-        <% if @user.person.DOB.present? %>
-            <div class='detailed-tag-info'><span>DOB:</span> <%= @user.person.DOB %></div>
-        <% else %>
-            <div class='detailed-tag-info'><span>DOB:</span> no data</div>
+    <% if @user.person.DOB.present? %>
+        <div class='detailed-tag-info'><span>DOB:</span> <%= @user.person.DOB %></div>
+    <% else %>
+        <div class='detailed-tag-info'><span>DOB:</span> no data</div>
+    <% end %>
+    <% if @user.person.cv.present? %>
+        <%= link_to show_cvs_path(@user.person.cv), class:'detailed-tag-info' do %>
+            <span>Show CV</span>
         <% end %>
+    <% elsif user_signed_in? && @user.id == current_user.id %>
+        <%= link_to new_cv_path, class:'detailed-tag-info' do %>
+            <span>Create CV</span>
+        <% end %>
+    <% end %>
 <% elsif @user.organization? %>
     <div class='top-line-container'>
         <div class='top-line-element'>
