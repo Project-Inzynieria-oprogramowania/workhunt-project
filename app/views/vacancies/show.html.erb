@@ -90,13 +90,13 @@
      </div>
      <div class='vacancy-info'>
         <p>Skills:</p>
-        <div class='detailed-tag-info vacancy-tag'>
-            <p>Optional skills:</p>
-            <span><%= @vacancy.skills_optional %></span>
-        </div>
-        <div class='detailed-tag-info vacancy-tag'>
+        <div class='detailed-tag-info vacancy-tag skill'>
             <p>Mandatory skills:</p>
             <span><%= @vacancy.skills_mandatory %></span>
+        </div>
+        <div class='detailed-tag-info vacancy-tag skill'>
+            <p>Optional skills:</p>
+            <span><%= @vacancy.skills_optional %></span>
         </div>
     </div>
 </div>

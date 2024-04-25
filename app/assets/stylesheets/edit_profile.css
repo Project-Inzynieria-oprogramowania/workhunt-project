@@ -11,12 +11,6 @@
     border-radius: 30px;
     /*border: 3px dashed blue;*/
 }
-.profile.form.remove-style, .profile.form.remove-style h2
-{
-    background-image: none;
-    box-shadow: none;
-    text-shadow: none;
-}
 .profile.form h2 {
     text-align: left;
     margin-left: 10%;

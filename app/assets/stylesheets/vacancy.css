@@ -10,10 +10,7 @@
     max-width: 900px;
     border-radius: 30px;
     box-shadow: 0px 8px 10px 2px rgba(0, 0, 0, 0.300);
-    background-image: url('pattern 2.png'),linear-gradient(#302A33, #3b2e43);
-    background-size: contain;
-    background-position: bottom;
-    background-repeat: repeat-x;
+    background-image: linear-gradient(#302A33, #3b2e43);
 }
 .vacancy-info {
     padding: 10px 15px;
@@ -129,6 +126,10 @@
     max-width: 90%;
     margin: 0;
     margin: 1% 1%;
+}
+.detailed-tag-info.vacancy-tag.skill {
+    display: block;
+    text-align: left;
 }
 .vacancy-info.status {
     margin: 0 auto;
