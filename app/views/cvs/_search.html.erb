@@ -1,0 +1,17 @@
+<%= search_form_for @q do | form | %>
+    <div class='search-form'>
+        <div class='form-field'>
+            <%= form.label :name, "Enter what you want to find" %>
+            <div class='search-field'>
+                <%= form.search_field :name, placeholder: "Enter what you want to find" %>
+                <%= form.submit "Search" %>
+            </div>
+        </div>
+        <div id='search-form-default' class='button open-drop'>\/</div>
+    </div>
+    <div id="search-drop-block" style="display: none;"> 
+        <%# Доп опции %>
+    </div>
+<% end %>
+
+<%= javascript_include_tag 'search_form_drop', 'data-turbolinks-track': 'reload', async: true %>

@@ -28,6 +28,7 @@ class CvsController < ApplicationController
     end
 
     def index
+        @cv = Cv.all
     end
 
     def edit
@@ -98,14 +99,12 @@ class CvsController < ApplicationController
     end
 
     def check_cv_not_exists
-        cv = current_user.person.cv
         return unless current_user.person.cv.present?
         flash[:warning] = "You already have a CV"
         redirect_to cv_path(cv)
     end
 
     def check_cv_exists
-        cv = current_user.person.cv
         return if current_user.person.cv.present?
         flash[:warning] = "You dont have a CV"
         redirect_to new_cv_path

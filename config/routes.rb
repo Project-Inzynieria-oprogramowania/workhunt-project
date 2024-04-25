@@ -24,7 +24,7 @@ Rails.application.routes.draw do
       delete 'language/remove', to: 'cvs#remove_language', as: 'remove_language'
     end
   end
-  resources :cvs, except: [:index, :create, :new, :edit, :show, :update, :destroy] do
+  resources :cvs, except: [:create, :new, :edit, :show, :update, :destroy] do
     collection do
       get '/:id', to: 'cvs#show', as: 'show'
     end
