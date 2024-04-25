@@ -21,21 +21,30 @@
         <%= render 'shared/form_error', model: @cv, parametr: :city %>
     </div>
     
-    <% @cv.educations.each.with_index do | education, index | %>
-        <%= render 'educations/form', education: education, index: index %>
-    <% end %>
-    <button type="button" class='button add-fields-button' id="add-education">Add Education</button>
-
-    <% @cv.experiences.each.with_index do | experience, index | %>
-        <%= render 'experiences/form', experience: experience, index: index %>
-    <% end %>
-    <button type="button" class='button add-fields-button' id="add-experience">Add Experience</button>
-
-    <% @cv.languages.each.with_index do | language, index | %>
-        <%= render 'languages/form', language: language, index: index %>
-    <% end %>
-    <button type="button" class='button add-fields-button' id="add-language">Add Language</button>
-
+    <div>
+        <% @cv.educations.each.with_index do | education, index | %>
+            <div class='education-form-block'>
+                <%= render 'educations/form', education: education, index: index %>
+            </div>
+        <% end %>
+        <button type="button" class='button add-fields-button' id="add-education">Add Education</button>
+    </div>
+    <div>
+        <% @cv.experiences.each.with_index do | experience, index | %>
+            <div class='experience-form-block'>
+                <%= render 'experiences/form', experience: experience, index: index %>
+            </div>
+        <% end %>
+        <button type="button" class='button add-fields-button' id="add-experience">Add Experience</button>
+    </div>
+    <div>
+        <% @cv.languages.each.with_index do | language, index | %>
+            <div class='language-form-block'>
+                <%= render 'languages/form', language: language, index: index %>
+            </div>
+        <% end %>
+        <button type="button" class='button add-fields-button' id="add-language">Add Language</button>
+    </div>
     <div class='form-field'>
         <%= form.label :interests %>
         <%= form.text_area :interests, placeholder: 'Tell about your interests' %>
