@@ -102,6 +102,7 @@
 <%= javascript_include_tag 'disable_submit', async: true %>
 
 <div class='form profile'>
+    <h2>Phone numbers:</h2>
     <% @user.telephones.each do | telephone | %>
         <% if telephone.id %>
             <%= render 'telephones/telephone', telephone: telephone %>
@@ -110,6 +111,7 @@
     <%= render 'telephones/form', telephone: @telephone ||= Telephone.new(user_id: @user.id) %>
 </div>
 <div class='form profile'>
+    <h2>Email addresses:</h2>
     <% @user.emails.each do | email | %>
         <% if email.id %>
             <%= render 'emails/email', email: email %>
@@ -118,6 +120,7 @@
     <%= render 'emails/form', email: @email ||= Email.new(user_id: @user.id) %>
 </div>
 <div class='form profile'>
+    <h2>Links:</h2>
     <% @user.links.each do | link | %>
         <% if link.id %>
             <%= render 'links/link', link: link %>

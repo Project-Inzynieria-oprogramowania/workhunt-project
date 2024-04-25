@@ -1,4 +1,14 @@
 <div class='form-field'>
-    <%= link.address %>
-    <%= button_to "Delete", user_link_path(link), method: :delete, type: 'button', class: 'button', confirm: 'Are you sure you want to delete link?' %>
+    <div class='top-line-container contacts'>
+        <div class='top-line-element contacts'>
+            <p><%= link.address %></p>
+        </div>
+        <% if current_user.present? && @user.id == current_user.id %>
+            <div class='top-line-element contacts'>
+                <%= button_to user_link_path(link), method: :delete, type: 'button', confirm: 'Are you sure you want to delete link?' do %>
+                    <%= image_tag 'menuIcons/delete-info-cross.png' %>
+                <% end %>
+            </div>
+        <% end %>
+    </div>
 </div>
