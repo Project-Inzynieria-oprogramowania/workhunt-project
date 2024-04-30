@@ -5,7 +5,6 @@ class CvsController < ApplicationController
     before_action :check_cv_not_exists, only: [:new, :create]
     before_action :check_cv_exists, only: [:edit, :update, :destroy]
     before_action :get_cv, only: [:edit, :update, :destroy]
-    before_action :set_cv, only: [:add_education, :add_experience, :add_language]
 
     def new
         @cv ||= Cv.new
@@ -48,36 +47,6 @@ class CvsController < ApplicationController
         @cv.destroy
         flash[:success] = "CV deleted successfully"
         redirect_to user_path(current_user)
-    end    
-
-    def add_education
-        @education = @cv.educations.build
-        render partial: 'educations/form', locals: {index: params[:index].to_i, education: @education}
-    end
-
-    def remove_education
-        @education = Education.find_by(id: params[:id]) if params[:id].present?
-        @education.destroy if @education.present?
-    end
-
-    def add_experience
-        @experience = @cv.experiences.build
-        render partial: 'experiences/form', locals: {index: params[:index].to_i, experience: @experience}
-    end
-
-    def remove_experience
-        @experience = Experience.find_by(id: params[:id]) if params[:id].present?
-        @experience.destroy if @experience.present?
-    end
-
-    def add_language
-        @language = @cv.languages.build
-        render partial: 'languages/form', locals: {index: params[:index].to_i, language: @language}
-    end
-
-    def remove_language
-        @language = Language.find_by(id: params[:id]) if params[:id].present?
-        @language.destroy if @language.present?
     end
 
     private
@@ -113,9 +82,5 @@ class CvsController < ApplicationController
 
     def get_cv
         @cv ||= current_user.person.cv
-    end
-
-    def set_cv
-        @cv = current_user.person.cv || Cv.new
     end
 end

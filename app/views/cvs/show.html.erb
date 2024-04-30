@@ -1,13 +1,13 @@
 <%= @cv.inspect %><br><br>
 
 <% @cv.educations.each do | education | %>
-    <%= render 'educations/education', education: education %>
+    <%= render 'educations/education', education: education %><br>
 <% end %><br><br>
 <% @cv.experiences.each do | experience | %>
-    <%= render 'experiences/experience', experience: @cv.experiences %>
+    <%= render 'experiences/experience', experience: experience %><br>
 <% end %><br><br>
 <% @cv.languages.each do | language | %>
-    <%= render 'languages/language', language: @cv.languages %>
+    <%= render 'languages/language', language: language %><br>
 <% end %>
 <%# Убери потом <br><br> %>
 <% if user_signed_in? && current_user.person.id == @cv.person_id %>

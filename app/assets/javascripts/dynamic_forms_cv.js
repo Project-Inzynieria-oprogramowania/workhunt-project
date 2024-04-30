@@ -5,7 +5,7 @@ var addLanguageButton = document.querySelector('#add-language');
 
 addEducationButton.addEventListener('click', function() {
     var index = document.getElementsByClassName('education-form').length
-    fetch(`/cv/education/add?index=${index}`)
+    fetch(`/cv/education/new?index=${index}`)
         .then(response => response.text())
         .then(html => {
             const formsContainer = addEducationButton.closest('div')
@@ -19,7 +19,7 @@ addEducationButton.addEventListener('click', function() {
 
 addExperienceButton.addEventListener('click', function() {
     var index = document.getElementsByClassName('experience-form').length
-    fetch(`/cv/experience/add?index=${index}`)
+    fetch(`/cv/experience/new?index=${index}`)
         .then(response => response.text())
         .then(html => {
             const formsContainer = addExperienceButton.closest('div')
@@ -33,7 +33,7 @@ addExperienceButton.addEventListener('click', function() {
 
 addLanguageButton.addEventListener('click', function() {
     var index = document.getElementsByClassName('language-form').length
-    fetch(`/cv/language/add?index=${index}`)
+    fetch(`/cv/language/new?index=${index}`)
         .then(response => response.text())
         .then(html => {
             const formsContainer = addLanguageButton.closest('div')
@@ -49,7 +49,7 @@ addLanguageButton.addEventListener('click', function() {
 document.addEventListener('click', function(event) {
     var indetificator = event.target.querySelector('input').value
     if (event.target.classList.contains('remove-education')) {
-        var url = indetificator ? `/cv/education/remove?id=${indetificator}` : `/cv/education/remove`
+        var url = indetificator ? `/cv/education?id=${indetificator}` : `/cv/education/remove`
         fetch(url, {method: 'DELETE'})
             .then(response => response.text())
             .then(html => {
@@ -57,7 +57,7 @@ document.addEventListener('click', function(event) {
                 formToRemove.remove()
         });
     } else if (event.target.classList.contains('remove-experience')) {
-        var url = indetificator ? `/cv/experience/remove?id=${indetificator}` : `/cv/experience/remove`
+        var url = indetificator ? `/cv/experience?id=${indetificator}` : `/cv/experience/remove`
         fetch(url, {method: 'DELETE'})
             .then(response => response.text())
             .then(html => {
@@ -65,7 +65,7 @@ document.addEventListener('click', function(event) {
                 formToRemove.remove()
         });
     } else if (event.target.classList.contains('remove-language')) {
-        var url = indetificator ? `/cv/language/remove?id=${indetificator}` : `/cv/language/remove`
+        var url = indetificator ? `/cv/language?id=${indetificator}` : `/cv/language/remove`
         fetch(url, {method: 'DELETE'})
             .then(response => response.text())
             .then(html => {

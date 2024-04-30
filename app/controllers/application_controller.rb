@@ -40,6 +40,10 @@ class ApplicationController < ActionController::Base
         redirect_back fallback_location: root_path
     end
 
+    def set_cv_for_current
+        @cv = current_user.person.cv || Cv.new
+    end
+    
     def sign_in( user )
         session[:user_id] = user.id
     end
