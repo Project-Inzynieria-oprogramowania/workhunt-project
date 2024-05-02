@@ -58,11 +58,9 @@
     display: block;
     padding: 20px 20px;
     padding-top: 5px;
-    border: 3px dotted blue;
 }
 .pair-container .cv.pair-single-container:nth-child(2) > div:first-of-type {
     padding-top: 10px;
-    border: 3px solid red;
 }
 .cv.profile.form h1 {
     color: #262229;
@@ -85,6 +83,7 @@
     padding-bottom: 5px;
     padding-top: 0px;
     margin: 0;
+    text-align: left;
 }
 .cv.profile.form h5 {
     font-size: 18px;
@@ -96,18 +95,14 @@
     font-weight: 800;
     font-size: 15px;
 }
-.pair-container .cv.pair-single-container:nth-child(2) div:nth-of-type(2) > div {
-    padding-top: 15px;
-    border: 3px solid green;
-}
 .pair-container .cv.pair-single-container:nth-child(2) div:nth-of-type(3) > div {
-    padding-top: 25px;
-    border: 3px solid orange;
+    padding-top: 15px;
 }
-.pair-container .cv.pair-single-container:nth-child(2) div:nth-of-type(2) div:first-of-type,
-.pair-container .cv.pair-single-container:nth-child(2) div:nth-of-type(3) div:first-of-type {
+.pair-container .cv.pair-single-container:nth-child(2) div:nth-of-type(4) > div {
+    padding-top: 25px;
+}
+.pair-container .cv.pair-single-container:nth-child(2) div.cv-content-div {
     padding-top: 5px;
-    border: 3px dashed olive;
 }
 .pair-container .cv.pair-single-container:nth-child(2) p:first-of-type{
     color: #A6884E;
@@ -119,28 +114,25 @@
 }
 .pair-container .cv.pair-single-container:nth-child(2) p:nth-of-type(3){
     color: #A343D3;
+    font-weight: 500;
 }
-.pair-container .pair-single-container:nth-child(2) > div:nth-of-type(4) p {
+.pair-container .pair-single-container:nth-child(2) > div:nth-of-type(5) p {
     color: #262229 !important;
     font-size: 16px !important;
     font-weight: 600 !important;
-    border: 6px dashed yellow;
 }
 .pair-container .pair-single-container:last-child > div:first-child p {
     color: #262229 !important;
     font-size: 16px !important;
     font-weight: 600 !important;
-    border: 6px dashed orangered
 }
 .pair-container .pair-single-container:last-child > div:first-child p:last-of-type {
     color: #A6884E!important;
     font-weight: 800!important;
     font-size: 16px!important;
-    border: 6px dashed aquamarine;
 }
 .pair-container .pair-single-container:last-child > div:first-child p:first-of-type {
     margin-top: 10px;
-    border: 6px dashed seagreen;
 }
 .pair-container .pair-single-container:nth-child(2) > span:last-child {
     display: block;
@@ -181,7 +173,7 @@
         font-weight: 700;
         font-size: 15px;
     }
-    .pair-container .pair-single-container:nth-child(2) > div:nth-of-type(4) p {
+    .pair-container .pair-single-container:nth-child(2) > div:nth-of-type(5) p {
         font-size: 14px !important;
         font-weight: 500 !important;
     }
@@ -243,7 +235,7 @@
         font-weight: 600;
         font-size: 13px;
     }
-    .pair-container .pair-single-container:nth-child(2) > div:nth-of-type(4) p {
+    .pair-container .pair-single-container:nth-child(2) > div:nth-of-type(5) p {
         font-size: 12px !important;
         font-weight: 500 !important;
     }
@@ -271,4 +263,36 @@
     .pair-container .cv.pair-single-container:nth-child(2) hr {
         border-top: 2px solid #663C7B;
     }
+}
+.cv.pair-single-container .contacts.top-line-element{
+    margin: 0;
+}
+.cv.pair-single-container .flex-container-contacts .contacts.top-line-container{
+    padding: 0 !important;
+    background: none !important;
+}
+.cv.pair-single-container .flex-container-contacts div, 
+.cv.pair-single-container .flex-container-contacts a, 
+.cv.pair-single-container .flex-container-contacts p, 
+.cv.pair-single-container .flex-container-contacts span{
+    margin: 0 !important;
+    font-weight: 600 !important;
+    color: #675A41!important;
+    width: 100%;
+}
+.cv.pair-single-container h4 {
+    text-align: left !important;
+    word-break: normal;
+    word-wrap:  normal;
+    padding-right: 30px;
+}
+.cv.pair-single-container .flex-container-contacts .has-title span:nth-of-type(2){
+    display: block;
+}
+.cv.pair-single-container .flex-container-contacts .has-title span:nth-of-type(1){
+    display: none;
+}
+.cv.pair-single-container .cv-content-div p:last-of-type {
+    color: #A343D3;
+    font-weight: 600;
 }

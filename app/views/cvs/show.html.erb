@@ -29,12 +29,9 @@
                 <% end %>
                 <p><%= @cv.country %>, <%= @cv.city %></p>
             </div>
-
-
-
-
-        <!--
+            <hr>
             <div>
+                <h2>CONTACTS:</h2>
                 <% 
                 person = Person.find(@cv.person_id) 
                 user = User.find(person.user_id)
@@ -69,26 +66,21 @@
                         <% end %>
                     </div>
                 </div>
-            </div>
-                        --!>
-
-
-
-
+            </div>                   
             <hr>
-            <div>
+            <div class='cv-content-div'>
                 <h2>EDUCATION:</h2>
                 <% @cv.educations.each do | education | %>
                     <div>
                         <p><%= education.start_date %> - <%= education.end_date %></p>
                         <p><%= education.institution %></p>
                         <p><%= education.specialization %>, <%= education.direction %></p>
-                        <p><%= education.education_level %></p>
+                        <p>Education level: <%= education.education_level %></p>
                     </div>
                 <% end %>
             </div>
             <hr>
-            <div>
+            <div class='cv-content-div'>
                 <h2>EXPERIENCE:</h2>
                 <% @cv.experiences.each do | experience | %>
                     <div>
@@ -106,7 +98,7 @@
                 <% end %>
             </div>
             <hr>
-            <div>
+            <div class='cv-content-div'>
                 <h2>LANGUAGES:</h2>
                 <% @cv.languages.each do | language | %>
                     <p><%= language.name %> - <span><%= language.level %></span> - <%= language.certificates %></p>
