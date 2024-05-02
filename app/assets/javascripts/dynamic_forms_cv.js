@@ -46,27 +46,47 @@ addLanguageButton.addEventListener('click', function() {
 });
 
 // Destroing
+const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+
 document.addEventListener('click', function(event) {
     var indetificator = event.target.querySelector('input').value
     if (event.target.classList.contains('remove-education')) {
-        var url = indetificator ? `/cv/education?id=${indetificator}` : `/cv/education/remove`
-        fetch(url, {method: 'DELETE'})
+        var url = indetificator ? `/cv/education?id=${indetificator}` : `/cv/education`
+        fetch(url, {
+            method: 'DELETE', 
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': csrfToken,
+            },
+        })
             .then(response => response.text())
             .then(html => {
                 const formToRemove = event.target.closest('div.education-form-block')
                 formToRemove.remove()
         });
     } else if (event.target.classList.contains('remove-experience')) {
-        var url = indetificator ? `/cv/experience?id=${indetificator}` : `/cv/experience/remove`
-        fetch(url, {method: 'DELETE'})
+        var url = indetificator ? `/cv/experience?id=${indetificator}` : `/cv/experience`
+        fetch(url, {
+            method: 'DELETE', 
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': csrfToken,
+            },
+        })
             .then(response => response.text())
             .then(html => {
                 const formToRemove = event.target.closest('div.experience-form-block')
                 formToRemove.remove()
         });
     } else if (event.target.classList.contains('remove-language')) {
-        var url = indetificator ? `/cv/language?id=${indetificator}` : `/cv/language/remove`
-        fetch(url, {method: 'DELETE'})
+        var url = indetificator ? `/cv/language?id=${indetificator}` : `/cv/language`
+        fetch(url, {
+            method: 'DELETE', 
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': csrfToken,
+            },
+        })
             .then(response => response.text())
             .then(html => {
                 const formToRemove = event.target.closest('div.language-form-block')
