@@ -1,16 +1,126 @@
-<%= @cv.inspect %><br><br>
+<div class='page-title'>
+    <h1><%= @cv.person.name %> <%= @cv.person.surname %>'s CV</h1>
+    <%= image_tag 'menuIcons/cv-icon.png' %>
+    <% provide :page_title, "#{@cv.person.name} #{@cv.person.surname}'s CV".html_safe %>
+</div>
+<div class='form profile cv'>
+    <div class='pair-container'>
+        <div class='pair-single-container cv'>
+            <div class='icon-placeholder'></div>
+            <hr>
+            <h3>ABOUT ME:</h3>
+            <p><%= @cv.about %></p><br>
+            <hr>
+            <h3>SKILLS:</h3>
+            <p><%= @cv.skills %></p><br>
+            <hr>
+            <h3>INTERESTS:</h3>
+            <p><%= @cv.interests %></p><br>
+        </div>
+        <div class='pair-single-container cv'>
+            <div>
+                <h1><%= @cv.person.name %></h1>
+                <h1><%= @cv.person.surname %></h1>
+                <p>Sex: <%= @cv.person.sex %></p>
+                <% if @cv.person.DOB.present? %>
+                    <p>DOB: <%= @cv.person.DOB %></p>
+                <% else %>
+                    <p>DOB: unknown</p>
+                <% end %>
+                <p><%= @cv.country %>, <%= @cv.city %></p>
+            </div>
 
-<% @cv.educations.each do | education | %>
-    <%= render 'educations/education', education: education %><br>
-<% end %><br><br>
-<% @cv.experiences.each do | experience | %>
-    <%= render 'experiences/experience', experience: experience %><br>
-<% end %><br><br>
-<% @cv.languages.each do | language | %>
-    <%= render 'languages/language', language: language %><br>
-<% end %>
-<%# Убери потом <br><br> %>
-<% if user_signed_in? && current_user.person.id == @cv.person_id %>
-    <%= link_to 'Edit', edit_cv_path, class: 'button' %>
-    <%= button_to "Delete", cv_path, method: :delete, type: 'button', class: 'button', confirm: 'Are you sure you want to delete CV?' %>
-<% end %>
+
+
+
+        <!--
+            <div>
+                <% 
+                person = Person.find(@cv.person_id) 
+                user = User.find(person.user_id)
+                %>
+                <div class='flex-container-contacts'>
+                    <h4>Phone numbers</h4>
+                    <div class='sub-container'>
+                        <% user.telephones.each do | telephone | %>
+                            <% if telephone.id %>
+                                <%= render 'telephones/telephone', telephone: telephone %>
+                            <% end %>
+                        <% end %>
+                    </div>
+                </div>
+                <div class='flex-container-contacts'>
+                    <h4>Emails</h4>
+                    <div class='sub-container'>
+                        <% user.emails.each do | email | %>
+                            <% if email.id %>
+                                <%= render 'emails/email', email: email %>
+                            <% end %>
+                        <% end %>
+                    </div>
+                </div>
+                <div class='flex-container-contacts'>
+                    <h4>Links</h4>
+                    <div class='sub-container'>
+                        <% user.links.each do | link | %>
+                            <% if link.id %>
+                                <%= render 'links/link', link: link %>
+                            <% end %>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+                        --!>
+
+
+
+
+            <hr>
+            <div>
+                <h2>EDUCATION:</h2>
+                <% @cv.educations.each do | education | %>
+                    <div>
+                        <p><%= education.start_date %> - <%= education.end_date %></p>
+                        <p><%= education.institution %></p>
+                        <p><%= education.specialization %>, <%= education.direction %></p>
+                        <p><%= education.education_level %></p>
+                    </div>
+                <% end %>
+            </div>
+            <hr>
+            <div>
+                <h2>EXPERIENCE:</h2>
+                <% @cv.experiences.each do | experience | %>
+                    <div>
+                        <p><%= experience.start_date %> - <%= experience.end_date %></p>
+                        <p><%= experience.company %></p>
+                        <p><%= experience.position %></p>
+                        <h5>Outline:</h5>
+                        <p><%= experience.outline %></p>
+                        <h5>Responsibilities:</h5>
+                        <p><%= experience.responsibilities %></p>
+                        <h5>Achievements:</h5>
+                        <p><%= experience.achievements %></p>
+                        <p><%= experience.country %>, <%= experience.city %></p>
+                    </div>
+                <% end %>
+            </div>
+            <hr>
+            <div>
+                <h2>LANGUAGES:</h2>
+                <% @cv.languages.each do | language | %>
+                    <p><%= language.name %> - <span><%= language.level %></span> - <%= language.certificates %></p>
+                <% end %>
+            </div>
+            <span>*I hereby consent to the processing of my personal information for the purposes of this application.</span>
+        </div>
+    </div>
+</div>
+
+
+<div class='pair-container control-buttons'>
+    <% if user_signed_in? && current_user.person.id == @cv.person_id %>
+        <%= link_to 'Edit', edit_cv_path, class: 'button' %>
+        <%= button_to "Delete", cv_path, method: :delete, type: 'button', class: 'button', confirm: 'Are you sure you want to delete CV?' %>
+    <% end %>
+</div>

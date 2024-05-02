@@ -19,52 +19,64 @@
 </div>
 <div class='form profile remove-padding'>
     <div class='pair-container profile'>
-    <div class='icon-placeholder'></div>
+        <div class='icon-placeholder'></div>
         <div class='pair-single-container profile'>
             <%= render 'users/info' %>
         </div>
     </div>
-</div>
     <% if @user.person? && @user.person.about.present? %>
-        <div class='form profile'>
+
             <h1 class='paragraph-profile-title'>About me</h1>
             <p class='about-user detailed-tag-info'><%= @user.person.about %></p>
-        </div>
+     
     <% elsif @user.organization? &&  @user.organization.about.present? %>
-        <div class='form profile'>
+  
             <h1 class='paragraph-profile-title'>About us</h1>
             <p class='about-user detailed-tag-info'><%= @user.organization.about %></p>
-        </div>
+
      <% end %>
 <%# 
     Будет какой-то блок, в котором будет хранится или только блок отзывов, или блок отзывов и блок вакансий. 
     Нужно через js сделать переключение между ними 
 %>
 
-
-
-<div class='form profile'>
     <h1 class='paragraph-profile-title'>Contact info</h1>
-    <% @user.telephones.each do | telephone | %>
-        <% if telephone.id %>
-            <%= render 'telephones/telephone', telephone: telephone %>
-        <% end %>
-    <% end %>
-    <% @user.telephones.each do | telephone | %>
-        <% if telephone.id %>
-            <%= render 'telephones/telephone', telephone: telephone %>
-        <% end %>
-    <% end %>
-    <% @user.emails.each do | email | %>
-        <% if email.id %>
-            <%= render 'emails/email', email: email %>
-        <% end %>
-    <% end %>
-    <% @user.links.each do | link | %>
-        <% if link.id %>
-            <%= render 'links/link', link: link %>
-        <% end %>
-    <% end %>
+    <div class='limitation'>
+        <hr class='division-line'>
+        <div class='flex-container-contacts'>
+            <h4>Phone numbers</h4>
+            <div class='sub-container'>
+                <% @user.telephones.each do | telephone | %>
+                    <% if telephone.id %>
+                        <%= render 'telephones/telephone', telephone: telephone %>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
+        <hr class='division-line'>
+        <div class='flex-container-contacts'>
+            <h4>Emails</h4>
+            <div class='sub-container'>
+                <% @user.emails.each do | email | %>
+                    <% if email.id %>
+                        <%= render 'emails/email', email: email %>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
+        <hr class='division-line'>
+        <div class='flex-container-contacts'>
+            <h4>Links</h4>
+            <div class='sub-container'>
+                <% @user.links.each do | link | %>
+                    <% if link.id %>
+                        <%= render 'links/link', link: link %>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
+        <hr class='division-line'>
+    </div>
 </div>
 
 

@@ -208,3 +208,14 @@ label {
     color: #fffefb;
     background-color:  #1e1b22;
 }
+@media only screen and (max-width: 600px)
+{
+    .form-field input, .form-field textarea, .form-field select
+    {
+        font-size: 12px;
+    }
+    .form-field label
+    {
+        font-size: 14px;
+    }
+}

@@ -1,15 +1,37 @@
 .link-block, .link-block span {
    color: #E7E7E7;
+   font-size: 16px;
+   font-weight: 600;
 }
-.link-block .hidden {
-   visibility: hidden;
-   margin: 0 10px;
+.link-block.has-title :nth-child(1){
+   overflow: hidden;
 }
-.link-block:hover .hidden {
-   visibility: visible;
+.link-block.has-title:hover :nth-child(1) {
+   overflow: hidden;
+   display: none;
+}
+.link-block.has-title :nth-child(2){
+   display: none;
+}
+.link-block.has-title:hover :nth-child(2) {
+   display: block;
+   overflow: hidden;
+   margin: 0;
+}
+@media only screen and (max-width: 900px) {
+   .link-block, .link-block span {
+      font-size: 12px;
+      font-weight: 400;
+   }
+}
+@media only screen and (max-width: 400px) {
+   .link-block, .link-block span {
+      font-size: 10px;
+      font-weight: 300;
+   }
 }
 .profile.form.remove-padding {
-   padding: 5px 0px;
+   padding: 1% 0px;
    width: calc(80%);
 }
 .profile.form.remove-style, .profile.form.remove-style h2 {
@@ -39,47 +61,42 @@
    margin: 2vh auto;
    width: 98%;
 }
-.about-user {
-   text-align: left;
-   position: relative;
-   display: block;
-   width: 90%;
-   margin: 0 auto;
-   margin-top: 2%;
-   border: none;
-}
-.paragraph-profile-title {
-   font-size: 25px;
-   text-align: left;
-   padding: 0 4%;
-   color: #F4D18C;
-}
-.corner-link {
-   position: relative;
-   height: auto;
-}
-.corner-link img {
-   width: 30px;
-   height: 30px;
-   filter: brightness(90%);
-   transition-duration: 0.4s;
-}
-.corner-link:hover img {
-   filter: brightness(120%) drop-shadow(0px 0px 10px rgba(244, 209, 140, 0.5));
-   transition-duration: 0.4s;
-}
-.profile.button
-{
-   height: auto;
-   display: block;
-   text-align: center;
-   width: 30%;
-   padding: 10px 5px;
-   min-width: 130px;
-   margin: 0;
-}
-.profile.button:hover {
-   font-size: unset;
+ .about-user
+ {
+    text-align: left;
+    position: relative;
+    display: block;
+    width: 90%;
+    margin: 2% auto;
+    border: none;
+ }
+ .corner-link {
+    position: relative;
+    height: auto;
+ }
+ .corner-link img {
+    width: 30px;
+    height: 30px;
+    filter: brightness(90%);
+    transition-duration: 0.4s;
+ }
+ .corner-link:hover img
+ {
+    filter: brightness(120%) drop-shadow(0px 0px 10px rgba(244, 209, 140, 0.5));
+    transition-duration: 0.4s;
+ }
+ .profile.button
+ {
+    height: auto;
+    display: block;
+    text-align: center;
+    width: 30%;
+    padding: 10px 5px;
+    min-width: 130px;
+    margin: 0;
+ }
+ .profile.button:hover {
+    font-size: unset;
 }
 
 @media only screen and (max-width: 600px) {
@@ -93,11 +110,6 @@
       width: 80%;
       margin: 0 auto;
       margin-top: 2%;
-   }
-   .paragraph-profile-title
-   {
-      font-size: 18px;
-      padding: 0 9%;
    }
    .profile.button
    {

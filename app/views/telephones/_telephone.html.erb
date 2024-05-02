@@ -3,7 +3,7 @@
         <div class='top-line-element contacts'>
             <p><%= telephone.number %></p>
         </div>
-        <% if current_user.present? && @user.id == current_user.id %>
+        <% if current_user.present? && @user.present? && @user.id == current_user.id %>
             <div class='top-line-element contacts'>
                 <%= button_to user_telephone_path(telephone), method: :delete, type: 'button', confirm: 'Are you sure you want to delete telephone?' do %>
                     <%= image_tag 'menuIcons/delete-info-cross.png' %>

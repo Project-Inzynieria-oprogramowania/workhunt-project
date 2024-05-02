@@ -30,7 +30,19 @@
                                 Edit Account
                             <% end %>
                         </li>
-
+                        <li>
+                            <% if current_user.person.cv.present? %>
+                                <%= link_to show_cvs_path(current_user.person.cv) do %>
+                                    <%= image_tag 'menuIcons/cv-icon.png' %>
+                                    My CV
+                                <% end %>
+                            <% elsif user_signed_in? && current_user.person? %>
+                                <%= link_to new_cv_path do %>
+                                    <%= image_tag 'menuIcons/cv-icon.png' %>
+                                    Create CV
+                                <% end %>
+                             <% end %>
+                        </li>
                         <li><hr class="division-line"></li>
 
                         <li><%= button_to sessions_path, method: :delete, class: "logout-button" do %>

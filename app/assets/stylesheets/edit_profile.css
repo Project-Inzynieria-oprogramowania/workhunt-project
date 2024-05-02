@@ -103,55 +103,12 @@
         justify-content: center;
     }
 }
-.top-line-container.contacts {
-    padding: 5px 5px ;
-    width: calc(100% - 10px);
-    background-color: #221f2576;
-    border-radius: 5px;
-    justify-content: space-between;
+.pair-container.control-buttons a{
+    text-align: center;
+    height: auto;
+    padding-top: 9px;
+    padding-bottom: 9px;
 }
-.top-line-container.contacts :nth-child(1) {
-    display: flex;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: auto;
-    flex-grow: 1;  
-}
-.top-line-element.contacts p {
-    overflow: auto;
-    font-size: 16px;
-    color: #E7E7E7;
-    font-weight: 600;
-    transition-duration: 0.4s;
-}
-.top-line-element.contacts button{
-    display: flex;
-    background: none;
-    border: none;
-    font: inherit;
-    cursor: pointer;
-    outline: none;
-    margin: 0;
-}
-.top-line-element.contacts button img{
-    width: 15px;
-    height: 15px;
-    transition-duration: 0.4s;
-    filter: brightness(70%);
-}
-.top-line-element.contacts button:hover img {
-    transition-duration: 0.4s;
-    filter: brightness(120%) drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.5));
-}
-@media only screen and (max-width: 900px) {
-    .top-line-element.contacts p {
-        font-size: 12px;
-        font-weight: 400;
-    }
-}
-@media only screen and (max-width: 400px) {
-    .top-line-element.contacts p {
-        font-size: 10px;
-        font-weight: 300;
-    }
+.pair-container.control-buttons {
+    padding-bottom: 1%;
 }
