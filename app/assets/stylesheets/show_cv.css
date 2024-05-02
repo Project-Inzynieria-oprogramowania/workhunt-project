@@ -264,27 +264,36 @@
         border-top: 2px solid #663C7B;
     }
 }
-.cv.pair-single-container .contacts.top-line-element{
-    margin: 0;
+.cv.pair-single-container .cv-content-div p:last-of-type {
+    color: #A343D3;
+    font-weight: 600;
 }
-.cv.pair-single-container .flex-container-contacts .contacts.top-line-container{
+
+.cv.pair-single-container .flex-container-contacts {
     padding: 0 !important;
     background: none !important;
+    text-align: left;
+    align-content: center;
 }
-.cv.pair-single-container .flex-container-contacts div, 
+.cv.pair-single-container .flex-container-contacts .sub-container {
+    padding: 0 !important;
+    padding-right: 40px !important;
+}
 .cv.pair-single-container .flex-container-contacts a, 
-.cv.pair-single-container .flex-container-contacts p, 
-.cv.pair-single-container .flex-container-contacts span{
+.cv.pair-single-container .flex-container-contacts li {
     margin: 0 !important;
     font-weight: 600 !important;
     color: #675A41!important;
     width: 100%;
+    font-size: 14px;
 }
-.cv.pair-single-container h4 {
-    text-align: left !important;
-    word-break: normal;
-    word-wrap:  normal;
-    padding-right: 30px;
+.cv.pair-single-container .flex-container-contacts img {
+    width: 25px;
+    height: auto;
+    transition-duration: 0.2s;
+}
+.cv.pair-single-container .flex-container-contacts {
+   margin-bottom: 20px;
 }
 .cv.pair-single-container .flex-container-contacts .has-title span:nth-of-type(2){
     display: block;
@@ -292,7 +301,22 @@
 .cv.pair-single-container .flex-container-contacts .has-title span:nth-of-type(1){
     display: none;
 }
-.cv.pair-single-container .cv-content-div p:last-of-type {
-    color: #A343D3;
-    font-weight: 600;
+@media only screen and (max-width: 650px) {
+    .cv.pair-single-container .flex-container-contacts .sub-container {
+        padding-right: 0px !important;
+    }
+    .cv.pair-single-container .flex-container-contacts a, 
+    .cv.pair-single-container .flex-container-contacts li {
+        font-size: 10px;
+    }
+}
+@media only screen and (max-width: 610px) {
+    .cv.pair-single-container .flex-container-contacts a, 
+    .cv.pair-single-container .flex-container-contacts li {
+        font-size: 8px;
+    }
+    .cv.pair-single-container .flex-container-contacts img {
+        width: 15px;
+        height: auto;
+    }
 }

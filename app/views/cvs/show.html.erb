@@ -36,40 +36,58 @@
                 person = Person.find(@cv.person_id) 
                 user = User.find(person.user_id)
                 %>
-                <div class='flex-container-contacts'>
-                    <h4>Phone numbers</h4>
-                    <div class='sub-container'>
-                        <% user.telephones.each do | telephone | %>
-                            <% if telephone.id %>
-                                <%= render 'telephones/telephone', telephone: telephone %>
-                            <% end %>
-                        <% end %>
+                <% if user.telephones.count == 0 && user.emails.count == 0 && user.links.count == 0%>
+                    <span>None</span>
+                <%end%>
+                <% if user.telephones.count > 0 %>
+                    <div class='flex-container-contacts'>
+                        <%= image_tag 'icons/phone-icon.png' %>
+                        <div class='sub-container'>
+                            <ul>
+                                <% user.telephones.each do | telephone | %>
+                                    <% if telephone.id %>
+                                        <li><%= telephone.number %></li>
+                                    <% end %>
+                                <% end %>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div class='flex-container-contacts'>
-                    <h4>Emails</h4>
-                    <div class='sub-container'>
-                        <% user.emails.each do | email | %>
-                            <% if email.id %>
-                                <%= render 'emails/email', email: email %>
-                            <% end %>
-                        <% end %>
+                <% end %>
+                <% if user.emails.count > 0 %>
+                    <div class='flex-container-contacts'>
+                        <%= image_tag 'icons/email-icon.png' %>
+                        <div class='sub-container'>
+                            <ul>
+                                <% user.emails.each do | email | %>
+                                    <% if email.id %>
+                                        <li><%= email.address %></li>
+                                    <% end %>
+                                <% end %> 
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div class='flex-container-contacts'>
-                    <h4>Links</h4>
-                    <div class='sub-container'>
-                        <% user.links.each do | link | %>
-                            <% if link.id %>
-                                <%= render 'links/link', link: link %>
+                <% end %>
+                <% if user.emails.count > 0 %>
+                    <div class='flex-container-contacts'>
+                        <%= image_tag 'icons/link-icon.png' %>
+                        <div class='sub-container'>
+                            <ul>
+                            <% user.links.each do | link | %>
+                                <% if link.id %>
+                                    <li><a href="<%= link.address %>"><%= truncate link.address , length: 40 %></a></li>
+                                <% end %>
                             <% end %>
-                        <% end %>
+                            </ul>
+                        </div>
                     </div>
-                </div>
+                <% end %>
             </div>                   
             <hr>
             <div class='cv-content-div'>
                 <h2>EDUCATION:</h2>
+                <% if @cv.educations.count == 0%>
+                    <span>None</span>
+                <%end%>
                 <% @cv.educations.each do | education | %>
                     <div>
                         <p><%= education.start_date %> - <%= education.end_date %></p>
@@ -82,6 +100,9 @@
             <hr>
             <div class='cv-content-div'>
                 <h2>EXPERIENCE:</h2>
+                <% if @cv.experiences.count == 0%>
+                    <span>None</span>
+                <%end%>
                 <% @cv.experiences.each do | experience | %>
                     <div>
                         <p><%= experience.start_date %> - <%= experience.end_date %></p>
@@ -100,6 +121,9 @@
             <hr>
             <div class='cv-content-div'>
                 <h2>LANGUAGES:</h2>
+                <% if @cv.languages.count == 0%>
+                    <span>None</span>
+                <%end%>
                 <% @cv.languages.each do | language | %>
                     <p><%= language.name %> - <span><%= language.level %></span> - <%= language.certificates %></p>
                 <% end %>

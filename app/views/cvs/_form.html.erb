@@ -25,26 +25,26 @@
         <hr class='division-line'>
         <div>
             <h1  class='paragraph-profile-title cv-info'>Education:</h1>
-            <button type="button" class='button add-fields-button' id="add-education"><%= image_tag 'menuIcons/add-cross.png' %></button>
             <% @cv.educations.each.with_index do | education, index | %>
                 <%= render 'educations/form', education: education, index: index %>
             <% end %>
+            <button type="button" class='button add-fields-button' id="add-education"><%= image_tag 'menuIcons/add-cross.png' %></button>
         </div>
         <hr class='division-line'>
         <h1 class='paragraph-profile-title cv-info'>Experience:</h1>
         <div>
-            <button type="button" class='button add-fields-button' id="add-experience"><%= image_tag 'menuIcons/add-cross.png' %></button>
             <% @cv.experiences.each.with_index do | experience, index | %>
                 <%= render 'experiences/form', experience: experience, index: index %>
             <% end %>
+            <button type="button" class='button add-fields-button' id="add-experience"><%= image_tag 'menuIcons/add-cross.png' %></button>
         </div>
         <hr class='division-line'>
         <div>
             <h1  class='paragraph-profile-title cv-info'>Languages:</h1>
-            <button type="button" class='button add-fields-button' id="add-language"><%= image_tag 'menuIcons/add-cross.png' %></button>
             <% @cv.languages.each.with_index do | language, index | %>
                 <%= render 'languages/form', language: language, index: index %>
             <% end %>
+            <button type="button" class='button add-fields-button' id="add-language"><%= image_tag 'menuIcons/add-cross.png' %></button>
         </div>
         <hr class='division-line'>
         <div class='form-field wider'>
