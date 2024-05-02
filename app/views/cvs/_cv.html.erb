@@ -3,4 +3,28 @@
         Фото, Фамилия Имя, контактные данные. 
     При нажатии на ЛЮБУЮ ЧАСТЬ ЭТОЙ ОБЛАСТИ появляется страница cvs/show с полной информацией
     Максимум из кнопок: для добавления в избранное 
+
+    Добавь вывод обрезанной информации из cv.about с использованием truncate
+    Т.к. дизайн практически идентичен визитке с вакансией, переименуй класс для визитки с
+    вакансией на 'визитка', 'визитка-инфо' и т.д.
+    Комменты удали по мере выполнения
 %>
+<%= link_to show_cvs_path(cv) do %>
+    <div class='vacancy'>
+        <div class='icon-placeholder'></div>
+        <div class='top-line-container'>
+            <div class='top-line-element'>
+                <% 
+                    person = Person.find(cv.person_id) 
+                    user = User.find(person.user_id)
+                %>
+                <h2><%= link_to "#{person.name} #{person.surname}", show_users_path(user) %></h2>
+            </div>
+            <%# 
+                кнопки? хз нужны ли
+                если что сделай файл по примеру 
+                _vacancy.html.erb и _buttons.html.erb 
+            %>
+        </div>
+    </div>
+<% end %>

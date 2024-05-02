@@ -12,7 +12,15 @@ class Education < ApplicationRecord
     validates :specialization, presence: true
     validates :education_level, presence: true, inclusion: { in: EDUCATION, message: "is not valid" }
 
-    private 
+    private
+
+    def self.ransackable_attributes(auth_object = nil)
+        ["education_level"]
+    end
+
+    def self.ransackable_associations(auth_object = nil)
+        ["cv"]
+    end
 
     def start_date_validate
         return if start_date < DateTime.now

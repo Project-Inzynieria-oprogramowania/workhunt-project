@@ -27,7 +27,8 @@ class CvsController < ApplicationController
     end
 
     def index
-        @cv = Cv.all
+        @q = Cv.all.ransack(params[:q])
+        @cvs = @q.result(distinct: true).includes(:educations)
     end
 
     def edit
