@@ -1,0 +1,109 @@
+.form.cv-form{
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    display: block;
+    min-width: 300px;
+    max-width: 900px;
+    text-align: center;
+    padding: 20px 0;
+    border-radius: 30px;
+    height: fit-content;
+}
+.form.cv-form .wider {
+    width: 92%;
+    margin: 0 auto;
+}
+.form.cv-form button {
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.paragraph-profile-title.cv-info {
+    padding: 0;
+    margin: 0 auto;
+    text-align: center;
+}
+.add-fields-button.button img{
+    width: 25px;
+    height: 25px;
+}
+.add-fields-button.button{
+    display: flex;
+    background: none;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    outline: none;
+    min-width: 0;
+    width: auto;
+    height: auto;
+    margin: 0;
+    margin-right: 10%;
+}
+.add-fields-button.button:hover{
+    filter: brightness(120%) drop-shadow(0px 0px 6px rgba(244, 209, 140, 0.5));
+}
+.add-fields-button.button:hover {
+    box-shadow: none;
+}
+.add-fields-button.button:active {
+    box-shadow: none;
+}
+.remove-fields-button{
+    display: flex;
+    background: none;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    outline: none;
+    margin: 0;
+    padding: 10px 10px;
+    min-height: 0;
+    min-width: 0;
+    height: fit-content;
+    width: auto;
+    z-index: 5;
+    box-shadow: none;
+    background-image: url(menuIcons/delete-info-cross.png) !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px, 20px, contain;
+    margin-right:10px;
+}
+.remove-fields-button:hover {
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+}
+.remove-fields-button:active {
+    background-color: none;
+    box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5);
+    transform: translateY(4px);
+    background-size: 40px, 40px, cover;
+    transition-duration: 0.1s;
+}
+.language-form, .experience-form, .education-form {
+    background-color: rgba(0, 0, 0, 0.04);
+    padding: 10px 0;
+    margin: 1vh 0;
+    transition-duration: 0.2s;
+}
+.language-form:hover, .experience-form:hover, .education-form:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+}
+.experience-form textarea {
+    height: 100px;
+}
+.experience-form .top-line-container .fields.pair-container{
+    width: calc(82% - 10px);
+    display: block;
+    margin-left: 4%;
+    margin-right: 4% !important;
+}
+.experience-form .top-line-container .fields.pair-container > div {
+    margin-left: 0px;
+    width: 100%;
+}
+.experience-form .top-line-container .fields.pair-container {
+    margin-right:10px;
+}

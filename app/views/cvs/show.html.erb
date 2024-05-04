@@ -1,0 +1,142 @@
+<div class='page-title'>
+    <h1><%= @cv.person.name %> <%= @cv.person.surname %>'s CV</h1>
+    <%= image_tag 'menuIcons/cv-icon.png' %>
+    <% provide :page_title, "#{@cv.person.name} #{@cv.person.surname}'s CV".html_safe %>
+</div>
+<div class='form profile cv'>
+    <div class='pair-container'>
+        <div class='pair-single-container cv'>
+            <div class='icon-placeholder'></div>
+            <hr>
+            <h3>ABOUT ME:</h3>
+            <p><%= @cv.about %></p><br>
+            <hr>
+            <h3>SKILLS:</h3>
+            <p><%= @cv.skills %></p><br>
+            <hr>
+            <h3>INTERESTS:</h3>
+            <p><%= @cv.interests %></p><br>
+        </div>
+        <div class='pair-single-container cv'>
+            <div>
+                <h1><%= @cv.person.name %></h1>
+                <h1><%= @cv.person.surname %></h1>
+                <p>Sex: <%= @cv.person.sex %></p>
+                <% if @cv.person.DOB.present? %>
+                    <p>DOB: <%= @cv.person.DOB %></p>
+                <% else %>
+                    <p>DOB: unknown</p>
+                <% end %>
+                <p><%= @cv.country %>, <%= @cv.city %></p>
+            </div>
+            <hr>
+            <div>
+                <h2>CONTACTS:</h2>
+                <% 
+                person = Person.find(@cv.person_id) 
+                user = User.find(person.user_id)
+                %>
+                <% if user.telephones.count == 0 && user.emails.count == 0 && user.links.count == 0%>
+                    <span>None</span>
+                <%end%>
+                <% if user.telephones.count > 0 %>
+                    <div class='flex-container-contacts'>
+                        <%= image_tag 'icons/phone-icon.png' %>
+                        <div class='sub-container'>
+                            <ul>
+                                <% user.telephones.each do | telephone | %>
+                                    <% if telephone.id %>
+                                        <li><%= telephone.number %></li>
+                                    <% end %>
+                                <% end %>
+                            </ul>
+                        </div>
+                    </div>
+                <% end %>
+                <% if user.emails.count > 0 %>
+                    <div class='flex-container-contacts'>
+                        <%= image_tag 'icons/email-icon.png' %>
+                        <div class='sub-container'>
+                            <ul>
+                                <% user.emails.each do | email | %>
+                                    <% if email.id %>
+                                        <li><%= email.address %></li>
+                                    <% end %>
+                                <% end %> 
+                            </ul>
+                        </div>
+                    </div>
+                <% end %>
+                <% if user.emails.count > 0 %>
+                    <div class='flex-container-contacts'>
+                        <%= image_tag 'icons/link-icon.png' %>
+                        <div class='sub-container'>
+                            <ul>
+                            <% user.links.each do | link | %>
+                                <% if link.id %>
+                                    <li><a href="<%= link.address %>"><%= truncate link.address , length: 40 %></a></li>
+                                <% end %>
+                            <% end %>
+                            </ul>
+                        </div>
+                    </div>
+                <% end %>
+            </div>                   
+            <hr>
+            <div class='cv-content-div'>
+                <h2>EDUCATION:</h2>
+                <% if @cv.educations.count == 0%>
+                    <span>None</span>
+                <%end%>
+                <% @cv.educations.each do | education | %>
+                    <div>
+                        <p><%= education.start_date %> - <%= education.end_date %></p>
+                        <p><%= education.institution %></p>
+                        <p><%= education.specialization %>, <%= education.direction %></p>
+                        <p>Education level: <%= education.education_level %></p>
+                    </div>
+                <% end %>
+            </div>
+            <hr>
+            <div class='cv-content-div'>
+                <h2>EXPERIENCE:</h2>
+                <% if @cv.experiences.count == 0%>
+                    <span>None</span>
+                <%end%>
+                <% @cv.experiences.each do | experience | %>
+                    <div>
+                        <p><%= experience.start_date %> - <%= experience.end_date %></p>
+                        <p><%= experience.company %></p>
+                        <p><%= experience.position %></p>
+                        <h5>Outline:</h5>
+                        <p><%= experience.outline %></p>
+                        <h5>Responsibilities:</h5>
+                        <p><%= experience.responsibilities %></p>
+                        <h5>Achievements:</h5>
+                        <p><%= experience.achievements %></p>
+                        <p><%= experience.country %>, <%= experience.city %></p>
+                    </div>
+                <% end %>
+            </div>
+            <hr>
+            <div class='cv-content-div'>
+                <h2>LANGUAGES:</h2>
+                <% if @cv.languages.count == 0%>
+                    <span>None</span>
+                <%end%>
+                <% @cv.languages.each do | language | %>
+                    <p><%= language.name %> - <span><%= language.level %></span> - <%= language.certificates %></p>
+                <% end %>
+            </div>
+            <span>*I hereby consent to the processing of my personal information for the purposes of this application.</span>
+        </div>
+    </div>
+</div>
+
+
+<div class='pair-container control-buttons'>
+    <% if user_signed_in? && current_user.person.id == @cv.person_id %>
+        <%= link_to 'Edit', edit_cv_path, class: 'button' %>
+        <%= button_to "Delete", cv_path, method: :delete, type: 'button', class: 'button', confirm: 'Are you sure you want to delete CV?' %>
+    <% end %>
+</div>

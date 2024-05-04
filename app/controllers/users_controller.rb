@@ -19,9 +19,9 @@ class UsersController < ApplicationController
         if @user.save
             sign_in(@user)
             flash[:success] = "Successful registration"
-            redirect_to user_settings_path
+            redirect_to edit_user_path
         else
-            flash[:error] = "Cannot be create: some errors in form"
+            flash[:error] = "Unable to save"
             render :new, status: :unprocessable_entity
         end
     end
@@ -50,9 +50,9 @@ class UsersController < ApplicationController
 
         if @user.update(current_params)
             flash[:success] = "Data changed successfully"
-            redirect_to user_settings_path
+            redirect_to show_users_path(@user)
         else
-            flash[:error] = "Cannot be update: some errors in form"
+            flash[:error] = "Unable to update"
             render :edit, status: :unprocessable_entity
         end
     end

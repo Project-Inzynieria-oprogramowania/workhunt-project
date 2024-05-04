@@ -1,0 +1,62 @@
+<div class='experience-form'>
+    <%= fields_for "cv[experiences_attributes][#{index}]", experience do | experience_fields | %>
+        <div class='top-line-container'>
+            <div class='pair-container fields'>
+                <div class='pair-container equal-fields'>
+                    <div class="form-field">
+                        <%= experience_fields.label :start_date %>
+                        <%= experience_fields.date_field :start_date %>
+                        <%= render 'shared/form_error', model: experience_fields.object, parametr: :start_date %>
+                    </div>
+                    <div class='form-field'>
+                        <%= experience_fields.label :end_date %>
+                        <%= experience_fields.date_field :end_date %>
+                        <%= render 'shared/form_error', model: experience_fields.object, parametr: :end_date %>
+                    </div>
+                </div>
+                <div class='pair-container equal-fields fields-with-text'>
+                    <div class='form-field'>    
+                        <%= experience_fields.label :position %>
+                        <%= experience_fields.text_field :position %>
+                        <%= render 'shared/form_error', model: experience_fields.object, parametr: :position %>
+                    </div>
+                    <div class='form-field'>    
+                        <%= experience_fields.label :company %>
+                        <%= experience_fields.text_field :company %>
+                        <%= render 'shared/form_error', model: experience_fields.object, parametr: :company %>
+                    </div>
+                </div>
+                <div class='form-field'>    
+                    <%= experience_fields.label :outline %>
+                    <%= experience_fields.text_area :outline %>
+                    <%= render 'shared/form_error', model: experience_fields.object, parametr: :outline %>
+                </div>
+                <div class='form-field'>    
+                    <%= experience_fields.label :responsibilities %>
+                    <%= experience_fields.text_area :responsibilities %>
+                    <%= render 'shared/form_error', model: experience_fields.object, parametr: :responsibilities %>
+                </div>
+                <div class='form-field'>    
+                    <%= experience_fields.label :achievements %>
+                    <%= experience_fields.text_area :achievements %>
+                    <%= render 'shared/form_error', model: experience_fields.object, parametr: :achievements %>
+                </div>
+                <div class='pair-container location'>
+                    <div class='form-field'>    
+                        <%= experience_fields.label :country %>
+                        <%= experience_fields.text_field :country %>
+                        <%= render 'shared/form_error', model: experience_fields.object, parametr: :country %>
+                    </div>
+                    <div class='form-field'>    
+                        <%= experience_fields.label :city %>
+                        <%= experience_fields.text_field :city %>
+                        <%= render 'shared/form_error', model: experience_fields.object, parametr: :city %>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class='button remove-fields-button remove-experience'>
+                <%= experience_fields.hidden_field :id %>
+            </button>
+        </div>
+    <% end %>
+</div>

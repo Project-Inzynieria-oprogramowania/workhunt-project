@@ -1,0 +1,99 @@
+.form.edit_vacancy {
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+    min-width: calc(300px - 6px);
+    max-width: calc(900px - 6px);
+    border: 3px dashed #473753;
+    transition-duration: 0.4s;
+}
+.pair-container.location,
+.pair-container.filters,
+.pair-container.equal-fields {
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+}
+.pair-container.location {
+    margin-top: 20px;
+}
+.pair-container.location .form-field:last-child {
+    margin-left: 0px;
+    width: 60%;
+}
+.pair-container.location .form-field:first-child {
+    padding-right: 10px;
+}
+.pair-container.location .form-field,
+.pair-container.filters .form-field,
+.pair-container.equal-fields .form-field {
+    margin: 0;
+}
+.pair-container.equal-fields .form-field {
+    width: 40%;
+    margin: 0;
+}
+.pair-container.filters .form-field input,
+.pair-container.filters .form-field select  {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    padding-right: 0px;
+    margin: 0;
+    width: 200px;
+}
+.pair-container.filters .form-field {
+    min-width: 200px;
+    margin-top: 5px;
+}
+.pair-container.equal-fields .form-field *
+{
+    width: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    min-width: 80px;
+}
+@media only screen and (max-width: 930px) {
+    .pair-container.location .form-field,
+    .pair-container.location .form-field:last-child {
+        margin-left: 0px;
+        width: 100%;
+    }
+    .pair-container.equal-fields.fields-with-text .form-field {
+        width: 100%;
+    }
+    .pair-container.location .form-field:first-child {
+        padding-right: 0px;
+    }
+}
+@media only screen and (max-width: 630px) {
+    .pair-container.filters .form-field  {
+        width: 100%;
+    }
+    .pair-container.filters .form-field input,
+    .pair-container.filters .form-field select  {
+        width: 100%;
+    }
+    .form.edit_vacancy .form-field label{
+        font-size: 16px;
+    }
+    .form.edit_vacancy .form-field input, 
+    .form.edit_vacancy .form-field textarea, 
+    .form.edit_vacancy .form-field select
+    {
+        font-size: 12px;
+    }
+    .pair-container.location {
+        margin-top: 5px;
+    }
+}
+@media only screen and (max-width: 300px) {
+    .form.edit_vacancy {
+        border-radius: 2px;
+        transition-duration: 0.4s;
+    }
+}
+.form.edit_vacancy .button {
+    margin-bottom: 20px;
+}

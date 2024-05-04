@@ -1,15 +1,15 @@
-<div class='sliderField', id='sliderField'>
-    <div class='greatingsContainer'>
-        <div class='welcomeMessage'>
-            <p class='largeTitle'>Welcome to the WorkHunt</p>
-            <p class='subTitle'>The newest job search service!</p>
+<div class='slider-field', id='slider-field'>
+    <div class='greatings-container'>
+        <div class='welcome-message'>
+            <p class='large-title'>Welcome to the WorkHunt</p>
+            <p class='subtitle'>The newest job search service!</p>
         </div>
-        <div class='startButtonContainer'>
-                <% if user_signed_in? %>
-                    <%= link_to 'TO THE HUNT!', vacancies_path, class: ['largeButton'] %>
-                <% else %>
-                    <%= link_to 'START NOW', login_path, class: ['largeButton'] %>
-                <% end %>  
+        <div class='start-button-container'>
+            <% if user_signed_in? %>
+                <%= link_to 'TO THE HUNT!', vacancies_path, class: ['large-button'] %>
+            <% else %>
+                <%= link_to 'START NOW', new_sessions_path, class: ['large-button'] %>
+            <% end %>  
         </div>
     </div>
 </div>

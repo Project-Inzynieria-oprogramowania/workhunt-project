@@ -1,0 +1,136 @@
+.link-block, .link-block span {
+   color: #E7E7E7;
+   font-size: 16px;
+   font-weight: 600;
+}
+.link-block.has-title :nth-child(1){
+   overflow: hidden;
+}
+.link-block.has-title:hover :nth-child(1) {
+   overflow: hidden;
+   display: none;
+}
+.link-block.has-title :nth-child(2){
+   display: none;
+}
+.link-block.has-title:hover :nth-child(2) {
+   display: block;
+   overflow: hidden;
+   margin: 0;
+}
+@media only screen and (max-width: 900px) {
+   .link-block, .link-block span {
+      font-size: 12px;
+      font-weight: 400;
+   }
+}
+@media only screen and (max-width: 400px) {
+   .link-block, .link-block span {
+      font-size: 10px;
+      font-weight: 300;
+   }
+}
+.profile.form.remove-padding {
+   padding: 1% 0px;
+   width: calc(80%);
+}
+.profile.form.remove-style, .profile.form.remove-style h2 {
+   background-image: none;
+   box-shadow: none;
+   text-shadow: none;
+   padding: 0;
+}
+.pair-single-container.profile h1 {
+   color: #E7E7E7;
+   display: block;
+   position: relative;
+   font-size: 20px;
+   padding-right: 10%;
+   width: 100%;
+}
+.pair-single-container.profile {
+   padding: 10px 15px;
+   display: block;
+   width: 80%;
+   margin: 0;
+   margin-left: 10px;
+}
+.pair-container.profile {
+   align-items: center;
+   justify-content: space-evenly;
+   margin: 2vh auto;
+   width: 98%;
+}
+ .about-user
+ {
+    text-align: left;
+    position: relative;
+    display: block;
+    width: 90%;
+    margin: 2% auto;
+    border: none;
+ }
+ .corner-link {
+    position: relative;
+    height: auto;
+ }
+ .corner-link img {
+    width: 30px;
+    height: 30px;
+    filter: brightness(90%);
+    transition-duration: 0.4s;
+ }
+ .corner-link:hover img
+ {
+    filter: brightness(120%) drop-shadow(0px 0px 10px rgba(244, 209, 140, 0.5));
+    transition-duration: 0.4s;
+ }
+ .profile.button
+ {
+    height: auto;
+    display: block;
+    text-align: center;
+    width: 30%;
+    padding: 10px 5px;
+    min-width: 130px;
+    margin: 0;
+ }
+ .profile.button:hover {
+    font-size: unset;
+}
+
+@media only screen and (max-width: 600px) {
+   .icon-placeholder
+   {
+       width: 80px;
+       height: 80px;
+   }
+   .about-user
+   {
+      width: 80%;
+      margin: 0 auto;
+      margin-top: 2%;
+   }
+   .profile.button
+   {
+     font-size: 15px;
+      display: inline-block;
+      width: auto;
+      margin: 0 auto;
+      padding: 6px 3px;
+   }
+   .pair-single-container.profile h1
+   {
+     font-size: 14px !important;
+   }
+   .corner-link img {
+     width: 20px;
+     height: 20px;
+  }
+}
+@media only screen and (max-width: 400px) {
+   .pair-single-container.profile h1
+   {
+     font-size: 12px !important;
+   }
+}

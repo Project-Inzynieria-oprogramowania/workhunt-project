@@ -1,4 +1,4 @@
-.sliderField {
+.slider-field {
     display: block;
     position: relative;
     background-image: url(placeholder.png);
@@ -11,7 +11,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.greatingsContainer {
+.greatings-container {
     display: flex;
     margin-top: 50px;
     width: 100%;
@@ -26,7 +26,7 @@
     align-items: center;
     flex-direction: column;
 }
-.welcomeMessage {
+.welcome-message {
     display: block;
     width: 100%;
     padding-top: 60px;
@@ -34,24 +34,24 @@
     background-color: rgba(13, 13, 13, 0.278);
     margin-bottom: 10px;
 }
-.largeTitle{
+.large-title{
     color: #E7E7E7;
     text-shadow: 0px 4px 4px rgba(231, 231, 231, 0.5);
     font-family: 'Segoe UI';
     font-weight: bold;
     font-size: 50px;
 }
-.subTitle {
+.subtitle {
     font-size: 30px;
     letter-spacing: 4px;
     color: #F4D18C;
 }
-.startButtonContainer {
+.start-button-container {
     display: block;
     margin-top: 40px;
     max-height: 40px;
 }
-.largeButton {
+.large-button {
     display: block;
     font-size: 31px;
     font-weight: bold;
@@ -68,7 +68,7 @@
     padding: 20px 40px 20px 40px;
     box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.3);
 }
-.largeButton:hover {
+.large-button:hover {
     font-size: 32px;
     background-color: #8b7956;
     color: #f5d9a0;
@@ -76,7 +76,7 @@
     background-size: 242px, 412px, cover;
     transition-duration: 0.4s;
 }
-.largeButton:active 
+.large-button:active 
 {
     background-color: #77684a;
     color: #d7be8b;
@@ -97,7 +97,7 @@
     max-width: 900px;
     min-width: 200px;
 }
-.paragraphElement {
+.paragraph-element {
     display: inline-block;
     width: 400px;
     min-width: 250px;
@@ -106,7 +106,7 @@
     position: relative;
     margin: 0px 5% 0px 5%;
 }
-.paragraphElement .description {
+.paragraph-element .description {
     padding: 20px 20px 20px 20px;
     height: auto;
     background-image: linear-gradient(to right,#302A33, #5b2775);
@@ -117,29 +117,29 @@
     color: #d0d0d0e4;
     font-size: 18px;
 }
-.paragraphTitle {
+.paragraph-title {
     margin-top: 20px;
     font-size: 35px;
     color: #F4D18C;
     margin-left: 10px;
     transition-duration: 0.4s;
 }
-.aboutWH {
+.about-workhunt {
     width: 600px;
     min-width: 200px; 
     height: 100px;
 }
 @media only screen and (max-width: 850px) 
 {
-    .aboutWH {
+    .about-workhunt {
         height: auto;
         margin-left: 10px;
         margin-right: 0px;
     }
-    .aboutImg {
+    .about-image {
         display: none;
     }
-    .paragraphElement .description
+    .paragraph-element .description
     {
         width: 90%;
         min-width: 260px;
@@ -158,7 +158,7 @@
     height: 70px;
     transition-duration: 0.4s;
 }
-.limitationContainer {
+.limitation-container {
     display: block;
     width: 100%;
     max-width: 800px;
@@ -178,8 +178,9 @@
     font-size: 18px;
     transition-duration: 0.4s;
 }
-.colorContainer {
+.color-container {
     border-top: 5px dashed #262229;
+    border-bottom: 5px dashed #262229;
     outline-offset: -5px;
     width: 100%;
     min-width: 300px;
@@ -189,12 +190,11 @@
     padding: 20px 0px 20px 0px;
     margin-top: 20px;
 }
-.encouragementContainer {
+.encouragement-container {
     margin-top: 25px;
     margin-bottom: 60px;
     font-size: 15px;
     color: #E0ACFA;
-
     display: flex;
     text-align: center;
     justify-content: center;
@@ -217,7 +217,7 @@
     width: 75px;
     height: 75px
 }
-.encouragementContainer p {
+.encouragement-container p {
     font-size: 30px;
     font-weight: bold;
     font-style: italic;
@@ -235,18 +235,18 @@
         height: 45px;
         transition-duration: 0.2s;
     }
-    .largeButton {
+    .large-button {
         padding: 10px 10px 10px 10px;
         width: 200px;
         font-size: 25px;
     }
-    .largeButton:hover {
+    .large-button:hover {
         font-size: 26px;
     }
-    .encouragementContainer p {
+    .encouragement-container p {
         font-size: 20px;
     }
-    .paragraphTitle{
+    .paragraph-title{
         font-size: 25px;
         margin-top: 10px;
         transition-duration: 0.4s;
@@ -261,7 +261,7 @@
         transition-duration: 0.4s;
     }
 }
-.startPageFooter {
+.start-page-footer {
     display: flex;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -275,17 +275,20 @@
     flex-direction: column;
     height: auto;
 }
-.startPageFooter li {
+.start-page-footer li {
     display: inline-block;
     padding-left: 10px;
     color: #9f62be;
     font-size: 14px;
 }
-.startPageFooter p {
+.start-page-footer p {
     display: inline-flex;
     margin-top: 20px;
     color: #675A41;
     font-size: 12px;
     padding-left: 10px;
     padding-right: 10px;
+}
+footer.color-container {
+    border-bottom: none;
 }

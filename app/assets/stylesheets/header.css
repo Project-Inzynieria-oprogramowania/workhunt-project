@@ -1,4 +1,5 @@
-.topBanner {
+.top-banner {
+    display: flex;
     width: 100%;
     min-width: 300px;
     min-height: 50px;
@@ -8,19 +9,20 @@
     top: 0;
     text-align: center;
     align-content: center;
+    justify-content: center;
     z-index: 5;
 }
-.logoLink {
+.logo-link {
     align-items: center;
     justify-content: center;
     display: inline-flex;
 }
-#mainLogo {
+.logo-link img {
     width:60px;
     height:60px;
     transition-duration: 0.4s;
 }
-#workhuntHeader {
+.logo-link span {
     font-size: 50px;
     font-weight: bold;
     color: #E7E7E7;
@@ -28,13 +30,13 @@
     padding: 5px 10px 5px 10px;
     transition-duration: 0.4s;
 }
-.logoLink:hover #workhuntHeader {
+.logo-link:hover span {
     text-shadow: 0px 6px 10px rgba(241, 241, 241, 0.7);
 }
-.logoLink:hover #mainLogo {
+.logo-link:hover img {
     filter: saturate(150%)  drop-shadow(0px 0px 10px rgba(231, 231, 231, 0.5));
 }
-.accountButton {
+.account-button {
     display: inline-block;
     font-size: 16px;
     font-weight: bold;
@@ -51,8 +53,7 @@
     border: 5px dashed #d7b064;
     color: #d7b064;
 }
-
-.accountMenu {
+.account-menu {
     display: none;
     position: absolute;
     background-color: #E7E7E7;
@@ -67,38 +68,38 @@
     display: inline-block;
     justify-content: center;
 }
-.dropdown:hover .accountMenu {
+.dropdown:hover .account-menu {
     display: block;
 }
-.dropdown:hover .accountButton {
+.dropdown:hover .account-button {
     background-color: #8b7956;
     color: #F4D18C;
     box-shadow: 0px 0px 10px 6px rgb(172, 151, 108, 0.6);
     transition-duration: 0.4s;
 }
-.accountMenu li a, .logoutButton {
+.account-menu li a, .logout-button {
     display: flex;
     justify-content: left;
     align-items: center;
 }
-.accountMenu li a {
+.account-menu li a {
     font-size: 14px;
     padding: 10px 15px;
     cursor: pointer;
 }
-.accountMenu li a img{
+.account-menu li a img{
     width: 22%;
     height: 22%;
     margin-right: 10px;
 }
-.accountMenu li a:hover {
+.account-menu li a:hover {
     background-color: #c9c9c9 ;
 }
-.accountMenu li hr.divisionLine {
+.account-menu li hr.division-line {
     border: 1px dashed #9f62be;
     margin: 10px 0px 10px 0px;
 }
-.logoutButton {
+.logout-button {
     font-size: 14px;
     width: 100%;
     padding: 10px 15px;
@@ -107,21 +108,19 @@
     background-color: #E7E7E7;
     color: #9f62be;
 }
-.logoutButton img{
+.logout-button img{
     width: 22%;
     height: 22%;
     margin-right: 10px;
 }
-.logoutButton:hover {
+.logout-button:hover {
     background-color:#c9c9c9 ;
 }
-.accountMenu {
+.account-menu {
     top: 100%;
     right: 2%;
 }
-
-
-.headerLimit {
+.header-limit {
     width: 100%;
     max-width: 1600px;
     min-width: 300px;
@@ -130,21 +129,21 @@
     display: flex;
     justify-content: space-between;
 }
-.headerElement {
+.header-element {
     display: inline-flex;
     position: relative;
     margin-left: 20px;
     margin-right: 20px;
 }
 
-.smallWidthMenu {
+.small-width-menu {
     display: none;
 }
-.smallWidthMenu hr {
+.small-width-menu hr {
     border: 1px dashed #8b7956;
     margin: 10px 0px 10px 0px;
 }
-.smallButtton {
+.small-button {
     display: none;
     font-size: 16px;
     font-weight: bold;
@@ -164,33 +163,31 @@
 
 @media only screen and (max-width: 600px) 
 {
-    #mainLogo {
+    .logo-link img {
         width:30px;
         height:30px;
         transition-duration: 0.4s;
     }
-    #workhuntHeader {
+    .logo-link span {
         font-size: 25px;
         padding: 2px 5px 2px 5px;
         transition-duration: 0.4s;
     }
-    .smallWidthMenu {
+    .small-width-menu {
         display: block;
     }
-    .accountButton {
+    .account-button {
         display: none;
     }
-    .smallButtton {
+    .small-button {
         display: inline-block;
     }
-}
-/*@media (max-width: 600px) {
-    .accountMenu {
-        transform: translateX(-80%);
+    .top-banner {
+        padding: 1vh 0;
     }
-}*/
+}
 @media (max-width: 350px) {
-    .smallButtton {
+    .small-Button {
         font-size: 10px;
     }
 }

@@ -10,7 +10,77 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_07_172238) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_25_142517) do
+  create_table "cvs", force: :cascade do |t|
+    t.integer "person_id", null: false
+    t.text "about", null: false
+    t.text "skills"
+    t.string "country"
+    t.string "city"
+    t.text "interests"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["person_id"], name: "index_cvs_on_person_id"
+  end
+
+  create_table "educations", force: :cascade do |t|
+    t.integer "cv_id", null: false
+    t.date "start_date", null: false
+    t.date "end_date"
+    t.string "institution", null: false
+    t.string "direction", null: false
+    t.string "specialization", null: false
+    t.string "education_level", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cv_id"], name: "index_educations_on_cv_id"
+  end
+
+  create_table "emails", force: :cascade do |t|
+    t.string "address", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address", "user_id"], name: "index_emails_on_address_and_user_id", unique: true
+    t.index ["user_id"], name: "index_emails_on_user_id"
+  end
+
+  create_table "experiences", force: :cascade do |t|
+    t.integer "cv_id", null: false
+    t.date "start_date", null: false
+    t.date "end_date"
+    t.string "position", null: false
+    t.string "country"
+    t.string "city"
+    t.string "company"
+    t.text "outline", null: false
+    t.text "responsibilities"
+    t.text "achievements"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cv_id"], name: "index_experiences_on_cv_id"
+  end
+
+  create_table "languages", force: :cascade do |t|
+    t.integer "cv_id", null: false
+    t.string "name", null: false
+    t.string "level", null: false
+    t.string "certificates"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cv_id"], name: "index_languages_on_cv_id"
+  end
+
+  create_table "links", force: :cascade do |t|
+    t.string "address", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title"
+    t.index ["address", "user_id"], name: "index_links_on_address_and_user_id", unique: true
+    t.index ["user_id"], name: "index_links_on_user_id"
+  end
+
   create_table "organizations", force: :cascade do |t|
     t.string "name", null: false
     t.text "about"
@@ -31,6 +101,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_07_172238) do
     t.integer "user_id"
     t.index ["user_id"], name: "index_people_on_user_id"
     t.check_constraint "sex IN ('unspecified', 'male', 'female', 'other')"
+  end
+
+  create_table "telephones", force: :cascade do |t|
+    t.string "number", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "number"], name: "index_telephones_on_user_id_and_number", unique: true
+    t.index ["user_id"], name: "index_telephones_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -66,7 +145,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_07_172238) do
     t.index ["organization_id"], name: "index_vacancies_on_organization_id"
   end
 
+  add_foreign_key "cvs", "people"
+  add_foreign_key "educations", "cvs"
+  add_foreign_key "emails", "users"
+  add_foreign_key "experiences", "cvs"
+  add_foreign_key "languages", "cvs"
+  add_foreign_key "links", "users"
   add_foreign_key "organizations", "users"
   add_foreign_key "people", "users"
+  add_foreign_key "telephones", "users"
   add_foreign_key "vacancies", "organizations"
 end

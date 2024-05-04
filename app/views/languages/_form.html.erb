@@ -1,0 +1,26 @@
+<div class='language-form'>
+    <%= fields_for "cv[languages_attributes][#{index}]", language do | language_fields | %>
+        <div class='top-line-container'>
+            <div class='pair-container filters'>
+                <div class='form-field'>    
+                    <%= language_fields.label :name %>
+                    <%= language_fields.text_field :name %>
+                    <%= render 'shared/form_error', model: language_fields.object, parametr: :name %>
+                </div>
+                <div class='form-field'>    
+                    <%= language_fields.label :level %>
+                    <%= language_fields.text_field :level %>
+                    <%= render 'shared/form_error', model: language_fields.object, parametr: :level %>
+                </div>
+                <div class='form-field'>    
+                    <%= language_fields.label :certificates %>
+                    <%= language_fields.text_field :certificates %>
+                    <%= render 'shared/form_error', model: language_fields.object, parametr: :certificates %>
+                </div>
+            </div>
+            <button type="button" class='button remove-fields-button remove-language'>
+                    <%= language_fields.hidden_field :id %>
+            </button>
+        </div>
+    <% end %>
+</div>

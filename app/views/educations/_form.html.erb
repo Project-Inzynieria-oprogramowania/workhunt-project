@@ -1,0 +1,43 @@
+<% require_relative "../../assets/config/initializers/work_constants.rb" 
+%>
+<div class='education-form'>
+    <%= fields_for "cv[educations_attributes][#{index}]", education do | education_fields | %>
+        <div class='top-line-container'>
+            <div class='pair-container filters'>
+                <div class="form-field">
+                    <%= education_fields.label :start_date %>
+                    <%= education_fields.date_field :start_date %>
+                    <%= render 'shared/form_error', model: education_fields.object, parametr: :start_date %>
+                </div>
+                <div class='form-field'>
+                    <%= education_fields.label :end_date %>
+                    <%= education_fields.date_field :end_date %>
+                    <%= render 'shared/form_error', model: education_fields.object, parametr: :end_date %>
+                </div>
+                <div class='form-field'>    
+                    <%= education_fields.label :institution %>
+                    <%= education_fields.text_field :institution %>
+                    <%= render 'shared/form_error', model: education_fields.object, parametr: :institution %>
+                </div>
+                <div class='form-field'>    
+                    <%= education_fields.label :direction %>
+                    <%= education_fields.text_field :direction %>
+                    <%= render 'shared/form_error', model: education_fields.object, parametr: :direction %>
+                </div>
+                <div class='form-field'>    
+                    <%= education_fields.label :specialization %>
+                    <%= education_fields.text_field :specialization %>
+                    <%= render 'shared/form_error', model: education_fields.object, parametr: :specialization %>
+                </div>
+                <div class='form-field'>    
+                    <%= education_fields.label :education_level %>
+                    <%= education_fields.select :education_level, options_for_select(EDUCATION) %>
+                    <%= render 'shared/form_error', model: education_fields.object, parametr: :education_level %>
+                </div>
+            </div>
+            <button type="button" class='button remove-fields-button remove-education'>
+                <%= education_fields.hidden_field :id %>
+            </button>
+        </div>
+    <% end %>
+</div>

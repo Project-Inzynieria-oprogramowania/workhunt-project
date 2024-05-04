@@ -1,0 +1,8 @@
+<%= form_with model: email, url: user_emails_path do | form | %>
+    <div class='form-field'>
+        <%= form.label :address, 'Add email' %>
+        <%= form.email_field :address, placeholder: 'Enter email' %>
+        <%= render 'shared/form_error', model: email, parametr: :address %>
+    </div>
+    <%= form.submit 'Confirm', class: 'button' %>
+<% end %>

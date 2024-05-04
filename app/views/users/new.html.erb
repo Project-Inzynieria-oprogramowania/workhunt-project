@@ -1,10 +1,10 @@
 <% provide :page_title, 'Sign Up' %>
 <div class='form'>
-        <h1 class='formHeader'>SIGN UP</h1>
-        <hr class='divisionLine'>
+        <h1 class='form-header'>SIGN UP</h1>
+        <hr class='division-line'>
         <%= render 'form' %>
-        <%= link_to "I already have an account", login_path, class: 'anotherOption' %>
+        <%= link_to "I already have an account", new_sessions_path, class: 'another-option' %>
 
-        <p class='clarificationMessage'>*You will be able to add additional information on your profile page</p>
-        <div class='backgroundSet'></div>
+        <p class='clarification-message'>*You will be able to add additional information on your profile page</p>
+        <div class='background-set'></div>
 </div>

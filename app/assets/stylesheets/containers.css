@@ -1,0 +1,119 @@
+.pair-container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-right: 20px;
+}
+.pair-single-container {
+    position: relative;
+    display: block;
+    width: fit-content;
+    margin-top: 20px;
+    margin-left: 20px;
+    text-align: left;
+}
+.top-line-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.top-line-element {
+    text-align: left;
+    display: block;
+}
+
+
+.top-line-container.contacts {
+    padding: 10px 10px ;
+    width: calc(100% - 20px);
+    background-color: #221f2576;
+    border-radius: 5px;
+    justify-content: space-between;
+    transition-duration: 0.4s;
+}
+.top-line-container.contacts:hover {
+    background-color: #19171c76;
+}
+.top-line-container.contacts :nth-child(1) {
+    display: flex;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: auto;
+    flex-grow: 1;  
+}
+.top-line-element.contacts p {
+    overflow: auto;
+    font-size: 16px;
+    color: #E7E7E7;
+    font-weight: 600;
+    transition-duration: 0.4s;
+}
+.top-line-element.contacts button{
+    display: flex;
+    background: none;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    outline: none;
+    margin: 0;
+}
+.top-line-element.contacts button img{
+    width: 15px;
+    height: 15px;
+    transition-duration: 0.4s;
+    filter: brightness(70%);
+}
+.top-line-element.contacts button:hover img {
+    transition-duration: 0.4s;
+    filter: brightness(120%) drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.5));
+}
+@media only screen and (max-width: 900px) {
+    .top-line-element.contacts p {
+        font-size: 12px;
+        font-weight: 400;
+    }
+}
+@media only screen and (max-width: 400px) {
+    .top-line-element.contacts p {
+        font-size: 10px;
+        font-weight: 300;
+    }
+}
+
+.flex-container-contacts {
+    display: flex;
+    flex-wrap: nowrap;
+    text-align: center;
+    /*margin-bottom: 10px;*/
+    justify-content: space-between;
+    align-items: center;
+}
+.flex-container-contacts h4 {
+    color: #E0ACFA;
+    text-align: center;
+    font-size: 18px;
+	width: 18%;
+    margin: 0 !important;
+    /*margin-bottom: 10px !important;*/
+}
+.flex-container-contacts .sub-container {
+    display: block;
+	width: 72%;
+    max-width: 70%;
+}
+.flex-container-contacts .sub-container * {
+    margin: 0;
+}
+.flex-container-contacts .form-field {
+    margin-bottom: 10px;
+}
+.flex-container-contacts .form-field:last-child {
+    margin-bottom: 0px;
+}
+.limitation {
+    display: block;
+    width: 92%;
+    margin: 20px auto;
+}

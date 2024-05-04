@@ -1,28 +1,31 @@
 Rails.application.routes.draw do
   root :to => "home#index"
 
-  # Registration
-  get '/registration', to: 'users#new'
-  post '/users', to: 'users#create'
+  resource :user, except: [:index, :destroy, :show] do    
+    resources :emails, only: [:create, :destroy]
+    resources :telephones, only: [:create, :destroy]
+    resources :links, only: [:create, :destroy]
+  end
+  resources :users, except: [:index, :create, :new, :edit, :show, :update, :destroy] do
+    collection do
+      get '/:id', to: 'users#show', as: 'show'
+    end
+  end
 
-  # Log In - Out
-  get '/login', to: 'sessions#new'
-  post '/sessions', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
+  resource :sessions, only: [:new, :create, :destroy]
   
-  # User information
-  get '/user/settings', to: 'users#edit'
-  patch '/user/update', to: 'users#update'
-  delete '/user/destroy', to: 'users#destroy'
-  get '/user/:id', to: 'users#show', as: 'user' 
+  resource :cv, except: [:index] do
+    resource :education, only: [:new, :destroy]
+    resource :experience, only: [:new, :destroy]
+    resource :language, only: [:new, :destroy]
+  end
+  resources :cvs, except: [:create, :new, :edit, :show, :update, :destroy] do
+    collection do
+      get '/:id', to: 'cvs#show', as: 'show'
+    end
+  end
 
-  # Vacancies Bissness Cards
-  get '/vacancy/new', to: 'vacancies#new'
-  post '/vacancy/create', to: 'vacancies#create'
-  get '/vacancies', to: 'vacancies#index'
-  get '/vacancy/:id', to: 'vacancies#show', as: 'vacancy'
-  get '/vacancy/:id/edit', to: 'vacancies#edit', as: 'vacancy_edit'
-  patch '/vacancy/:id/update', to: 'vacancies#update', as: 'vacancy_update'
-  delete '/vacancy/:id/destroy', to: 'vacancies#destroy', as: 'vacancy_destroy'
+  resources :vacancies
   
+  get '*unmatched_route', to: 'home#routing_error'
 end

@@ -1,0 +1,58 @@
+<div class='form cv-form'>
+    <%= form_with model: @cv, url: cv_path, method: method do | form | %>
+        <div class='form-field wider'>
+            <%= form.label :about, 'Tell about' %>
+            <%= form.text_area :about, placeholder: 'Tell about...' %>
+            <%= render 'shared/form_error', model: @cv, parametr: :about %>
+        </div>
+        <div class='form-field wider'>
+            <%= form.label :skills %>
+            <%= form.text_area :skills, placeholder: 'Describe your skills' %>
+            <%= render 'shared/form_error', model: @cv, parametr: :skills %>
+        </div>
+        <div class='pair-container location wider'>
+            <div class='form-field'>
+                <%= form.label :country %>
+                <%= form.text_field :country, placeholder: 'Country...' %>
+                <%= render 'shared/form_error', model: @cv, parametr: :country %>
+            </div>
+            <div class='form-field'>
+                <%= form.label :city %>
+                <%= form.text_field :city, placeholder: 'City...' %>
+                <%= render 'shared/form_error', model: @cv, parametr: :city %>
+            </div>
+        </div>
+        <hr class='division-line'>
+        <div>
+            <h1  class='paragraph-profile-title cv-info'>Education:</h1>
+            <% @cv.educations.each.with_index do | education, index | %>
+                <%= render 'educations/form', education: education, index: index %>
+            <% end %>
+            <button type="button" class='button add-fields-button' id="add-education"><%= image_tag 'menuIcons/add-cross.png' %></button>
+        </div>
+        <hr class='division-line'>
+        <h1 class='paragraph-profile-title cv-info'>Experience:</h1>
+        <div>
+            <% @cv.experiences.each.with_index do | experience, index | %>
+                <%= render 'experiences/form', experience: experience, index: index %>
+            <% end %>
+            <button type="button" class='button add-fields-button' id="add-experience"><%= image_tag 'menuIcons/add-cross.png' %></button>
+        </div>
+        <hr class='division-line'>
+        <div>
+            <h1  class='paragraph-profile-title cv-info'>Languages:</h1>
+            <% @cv.languages.each.with_index do | language, index | %>
+                <%= render 'languages/form', language: language, index: index %>
+            <% end %>
+            <button type="button" class='button add-fields-button' id="add-language"><%= image_tag 'menuIcons/add-cross.png' %></button>
+        </div>
+        <hr class='division-line'>
+        <div class='form-field wider'>
+            <%= form.label :interests %>
+            <%= form.text_area :interests, placeholder: 'Tell about your interests' %>
+            <%= render 'shared/form_error', model: @cv, parametr: :interests %>
+        </div>
+        <%= form.submit 'Confirm', class: 'button', cv: @cv %>
+    <% end %>
+    <%= javascript_include_tag 'dynamic_forms_cv', async: true %>
+</div>
