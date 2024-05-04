@@ -1,7 +1,7 @@
 // Adding 
-var addEducationButton = document.querySelector('#add-education');
-var addExperienceButton = document.querySelector('#add-experience');
-var addLanguageButton = document.querySelector('#add-language');
+var addEducationButton = document.querySelector('#add-education')
+var addExperienceButton = document.querySelector('#add-experience')
+var addLanguageButton = document.querySelector('#add-language')
 
 addEducationButton.addEventListener('click', function() {
     var index = document.getElementsByClassName('education-form').length
@@ -14,8 +14,8 @@ addEducationButton.addEventListener('click', function() {
             newForm.innerHTML = html
 
             formsContainer.insertBefore(newForm, addEducationButton)
-    });
-});
+    })
+})
 
 addExperienceButton.addEventListener('click', function() {
     var index = document.getElementsByClassName('experience-form').length
@@ -28,8 +28,8 @@ addExperienceButton.addEventListener('click', function() {
             newForm.innerHTML = html
 
             formsContainer.insertBefore(newForm, addExperienceButton)
-    });
-});
+    })
+})
 
 addLanguageButton.addEventListener('click', function() {
     var index = document.getElementsByClassName('language-form').length
@@ -42,8 +42,8 @@ addLanguageButton.addEventListener('click', function() {
             newForm.innerHTML = html
 
             formsContainer.insertBefore(newForm, addLanguageButton)
-    });
-});
+    })
+})
 
 // Destroing
 const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
@@ -63,7 +63,7 @@ document.addEventListener('click', function(event) {
             .then(html => {
                 const formToRemove = event.target.closest('div.education-form-block')
                 formToRemove.remove()
-        });
+        })
     } else if (event.target.classList.contains('remove-experience')) {
         var url = indetificator ? `/cv/experience?id=${indetificator}` : `/cv/experience`
         fetch(url, {
@@ -77,7 +77,7 @@ document.addEventListener('click', function(event) {
             .then(html => {
                 const formToRemove = event.target.closest('div.experience-form-block')
                 formToRemove.remove()
-        });
+        })
     } else if (event.target.classList.contains('remove-language')) {
         var url = indetificator ? `/cv/language?id=${indetificator}` : `/cv/language`
         fetch(url, {
@@ -91,6 +91,6 @@ document.addEventListener('click', function(event) {
             .then(html => {
                 const formToRemove = event.target.closest('div.language-form-block')
                 formToRemove.remove()
-        });
+        })
     }
-});
+})

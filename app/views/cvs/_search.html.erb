@@ -1,12 +1,12 @@
 <% require_relative "../../assets/config/initializers/work_constants.rb"  
 %>
-<%= search_form_for @q do | form | %>
+<%= search_form_for @q, class: 'search' do | form | %>
     <div class='search-form'>
         <div class='form-field'>
             <%= form.label :about_or_skills_cont, "Enter what you want to find" %>
             <div class='search-field'>
                 <%= form.search_field :about_or_skills_cont, placeholder: "Enter what you want to find" %>
-                <%= form.submit "Search" %>
+                <%= form.submit "Search", id: 'cvs-search-submit' %>
             </div>
         </div>
         <div id='search-form-default' class='button open-drop'>\/</div>
@@ -19,8 +19,8 @@
             </div>
 
             <div class="form-field"> 
-                <%= form.label :experiences_experience_time_gteq, "Minimal experience" %> 
-                <%= form.number_field :experiences_experience_time_gteq, step: 0.25 %> 
+                <%# <%= form.label :experiences_experience_time_gteq, "Minimal experience" %>
+                <%# <%= form.number_field :experiences_experience_time_gteq, step: 1 %>
             </div>
         </div>
     </div>

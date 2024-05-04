@@ -10,10 +10,16 @@ class Experience < ApplicationRecord
 
     ransacker :experience_time do
         Arel.sql(
-            "((CAST(strftime('%Y', COALESCE(end_date, CURRENT_DATE)) AS INTEGER) - \
-                CAST(strftime('%Y', start_date) AS INTEGER)) * 12) + \
-            (CAST(strftime('%m', COALESCE(end_date, CURRENT_DATE)) AS INTEGER) - \
-                CAST(strftime('%m', start_date) AS INTEGER))")
+            # "EXTRACT(YEAR FROM COALESCE(end_date, CURRENT_DATE)) - EXTRACT(YEAR FROM start_date)"
+
+            # "TO_CHAR(COALESCE(end_date, CURRENT_DATE), 'YYYY') - \
+            # TO_CHAR(start_date, 'YYYY')"
+
+            # "((CAST(strftime('%Y', COALESCE(end_date, CURRENT_DATE)) AS INTEGER) - \
+            #     CAST(strftime('%Y', start_date) AS INTEGER)) * 12) + \
+            # (CAST(strftime('%m', COALESCE(end_date, CURRENT_DATE)) AS INTEGER) - \
+            #     CAST(strftime('%m', start_date) AS INTEGER))"
+        )
     end
     
     private 

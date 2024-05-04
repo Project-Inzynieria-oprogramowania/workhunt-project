@@ -36,6 +36,20 @@ class VacanciesController < ApplicationController
         @vacancies = @q.result(distinct: true)
     end
 
+    def search
+        @vacancies = Vacancy.where(status: 'Opened')
+        if params[:q].present? && params[:q][:salary_min_cents_gteq].present?
+            min_salary = params[:q][:salary_min_cents_gteq].to_i * 100
+            @vacancies = @vacancies.where(
+                'salary_min_cents >= ? OR (salary_min_cents IS NULL AND (salary_max_cents >= ? OR salary_max_cents IS NULL))',
+                min_salary, min_salary
+            )
+        end
+        @q = @vacancies.ransack(params[:q])
+        @vacancies = @q.result(distinct: true)
+        render partial: 'vacancies/vacancy', collection: @vacancies
+    end
+
     def edit
     end
 

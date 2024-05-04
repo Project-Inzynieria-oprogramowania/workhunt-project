@@ -21,11 +21,16 @@ Rails.application.routes.draw do
   end
   resources :cvs, except: [:create, :new, :edit, :show, :update, :destroy] do
     collection do
+      post '/search', to: 'cvs#search', as: 'search'
       get '/:id', to: 'cvs#show', as: 'show'
     end
   end
 
-  resources :vacancies
+  resources :vacancies do
+    collection do
+      post '/search', to: 'vacancies#search', as: 'search'
+    end
+  end
   
   get '*unmatched_route', to: 'home#routing_error'
 end

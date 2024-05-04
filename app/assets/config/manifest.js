@@ -7,3 +7,4 @@
 //= link disable_submit.js
 //= link slider_resizing.js
 //= link dynamic_forms_cv.js
+//= link dynamic_search.js

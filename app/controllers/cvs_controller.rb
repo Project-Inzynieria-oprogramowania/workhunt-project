@@ -31,6 +31,12 @@ class CvsController < ApplicationController
         @cvs = @q.result(distinct: true).includes(:educations)
     end
 
+    def search
+        @q = Cv.all.ransack(params[:q])
+        @cvs = @q.result(distinct: true).includes(:educations)
+        render partial: 'cvs/cv', collection: @cvs
+    end
+
     def edit
     end
 
