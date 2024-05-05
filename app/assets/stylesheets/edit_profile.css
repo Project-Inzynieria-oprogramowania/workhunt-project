@@ -103,12 +103,3 @@
         justify-content: center;
     }
 }
-.pair-container.control-buttons a{
-    text-align: center;
-    height: auto;
-    padding-top: 9px;
-    padding-bottom: 9px;
-}
-.pair-container.control-buttons {
-    padding-bottom: 1%;
-}

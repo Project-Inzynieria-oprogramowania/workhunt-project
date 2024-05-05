@@ -1,5 +1,9 @@
 <% provide :page_title, 'Vacancies' %>
 <%= render 'vacancies/search' %>
+<div class='pair-container control-buttons'>
+    <a class='button disable'  title='You are here'>Search Vacancies</a>
+    <%= link_to 'Search CVs', cvs_path, class: 'button' %>
+</div>
 <div id='search-results'>
     <%= render @vacancies %>
 </div>

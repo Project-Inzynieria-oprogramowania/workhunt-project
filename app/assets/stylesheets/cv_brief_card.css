@@ -1,0 +1,30 @@
+.cv-info.brief-card-info p {
+    color: #A343D3;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+.cv-info.brief-card-info .detailed-tag-info p {
+    color: #E7E7E7;
+}
+.cv-info.brief-card-info a {
+    color: #F4D18C;
+}
+.cv-info.brief-card-info h4 {
+    color: #E0ACFA;
+    font-weight: 600;
+    font-size: 16px;
+}
+@media only screen and (max-width: 610px) {
+    .cv-info.brief-card-info p {
+        font-size: 12px;
+    }
+    .cv-info.brief-card-info .detailed-tag-info  {
+       margin-top: 10px;
+    }
+    .cv-info.brief-card-info .detailed-tag-info img {
+        min-width: 6px;
+        height: auto;
+    }
+}

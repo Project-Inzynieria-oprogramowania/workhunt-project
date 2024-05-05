@@ -9,22 +9,36 @@
     вакансией на 'визитка', 'визитка-инфо' и т.д.
     Комменты удали по мере выполнения
 %>
-<%= link_to show_cvs_path(cv) do %>
-    <div class='vacancy'>
+    <div class='brief-card'>
         <div class='icon-placeholder'></div>
-        <div class='top-line-container'>
-            <div class='top-line-element'>
-                <% 
-                    person = Person.find(cv.person_id) 
-                    user = User.find(person.user_id)
-                %>
-                <h2><%= link_to "#{person.name} #{person.surname}", show_users_path(user) %></h2>
+        <div class='brief-card-info cv-info'>
+            <div class='top-line-container'>
+                <div class='top-line-element'>
+                    <% 
+                        person = Person.find(cv.person_id) 
+                        user = User.find(person.user_id)
+                    %>
+                    <h2><%= link_to "#{person.name} #{person.surname}", show_users_path(user) %></h2>
+                </div>
+                <div class='brief-card-buttons'>
+                    <% if user_signed_in? && current_user.id != cv.person_id %>
+                        <a><div class='corner-link'><%= image_tag 'menuIcons/add-to-favourites.png' %></div></a>
+                    <% end %>
+                    <%= link_to show_cvs_path(cv) do %>
+                        <div class='corner-link'><%= image_tag 'menuIcons/loop-icon.png' %></div>
+                    <% end %>
+                </div>
             </div>
-            <%# 
-                кнопки? хз нужны ли
-                если что сделай файл по примеру 
-                _vacancy.html.erb и _buttons.html.erb 
-            %>
+            <div class='detailed-tag-info'>
+                <span>Location:</span><p><%= image_tag 'menuIcons/locationIcon.png' %><%=" #{cv.country}, #{cv.city}" %></p>
+            </div>
+            <div class='detailed-tag-info'><span>Sex:</span> <p><%= person.sex %></p></div>
+            <div class='detailed-tag-info'><span>DOB:</span> <p><%= person.DOB %></p></div>
+            <h4>About me:</h4>
+            <p><%= truncate cv.about , length: 120 %></p>
+            <h4>Skills:</h4>
+            <p><%= truncate cv.skills , length: 120 %></p>
+            <h4>Interests:</h4>
+            <p><%= truncate cv.interests , length: 120 %></p>
         </div>
     </div>
-<% end %>

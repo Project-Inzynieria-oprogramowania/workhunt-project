@@ -1,4 +1,4 @@
-<div class='vacancy-buttons'>
+<div class='brief-card-buttons'>
     <% if current_user&.organization? %>
         <% if current_user.organization.id == vacancy.organization_id %>
             <%= button_to vacancy_path(vacancy), method: :delete, data: { confirm: 'Are you sure you want to delete vacancy?' } do %>
@@ -8,5 +8,7 @@
                 <%= image_tag 'menuIcons/edit.png' %>
             <% end %>
         <% end %>
+    <% else %>
+        <a><div class='corner-link'><%= image_tag 'menuIcons/add-to-favourites.png' %></div></a>
     <% end %>
 </div>

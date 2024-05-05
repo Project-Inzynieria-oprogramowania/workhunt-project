@@ -1,5 +1,5 @@
 <% provide :page_title, "Vacancy: #{@vacancy.title}" %>
-<div class='vacancy-info status'>
+<div class='brief-card-info status'>
     <div class='detailed-tag-info vacancy-tag'>
         <p>Vacancy status:</p>
         <span><%= @vacancy.status %></span>
@@ -9,9 +9,9 @@
         <span><%= @vacancy.created_at %></span>
     </div>
 </div>
-<div class='vacancy'>
+<div class='brief-card'>
     <div class='icon-placeholder'></div>
-    <div class='vacancy-info'>
+    <div class='brief-card-info'>
         <div class='top-line-container'>
             <div class='top-line-element'>
                 <h2><%= @vacancy.title %></h2>
@@ -45,8 +45,8 @@
         </p>
     </div>
 </div>
-<div class='vacancy'>
-    <div class='vacancy-info'>
+<div class='brief-card'>
+    <div class='brief-card-info'>
         <p>About the job:</p>
         <div class='detailed-tag-info vacancy-tag'>
             <p>Job type:</p>
@@ -65,7 +65,7 @@
             <span><%= @vacancy.work_type %></span>
         </div>
     </div>
-    <div class='vacancy-info'>
+    <div class='brief-card-info'>
         <p>Education and experience:</p>
         <div class='detailed-tag-info vacancy-tag'>
             <p>Experience:</p>
@@ -88,7 +88,7 @@
             <span><%= @vacancy.subordination_level %></span>
         </div>
      </div>
-     <div class='vacancy-info'>
+     <div class='brief-card-info'>
         <p>Skills:</p>
         <div class='detailed-tag-info vacancy-tag skill'>
             <p>Mandatory skills:</p>
