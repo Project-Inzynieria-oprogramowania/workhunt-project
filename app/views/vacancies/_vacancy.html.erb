@@ -16,8 +16,15 @@
                     user = User.find(organization.user_id)
                 %>
                 <%= link_to "#{organization.name}", show_users_path(user) %>
-                <%= image_tag 'menuIcons/locationIcon.png' %>
-                <%=" #{vacancy.country}, #{vacancy.city}" %>
+                <% if vacancy.country.present? || vacancy.city.present? %>
+                    <%= image_tag 'menuIcons/locationIcon.png' %>
+                    <% if vacancy.country.present? %>
+                        <%= vacancy.country %><% if vacancy.city.present? %>,<% end %>
+                    <% end %>
+                    <% if vacancy.city.present? %>
+                        <%= vacancy.city %>
+                    <% end %>
+                <% end %>
             </p>
             <p><%= truncate vacancy.description, length: 100 %></p>
             <p class='salary-field'>

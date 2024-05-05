@@ -23,7 +23,7 @@
     <% if @user.person.DOB.present? %>
         <div class='detailed-tag-info'><span>DOB:</span> <%= @user.person.DOB %></div>
     <% else %>
-        <div class='detailed-tag-info'><span>DOB:</span> no data</div>
+        <div class='detailed-tag-info'><span>DOB:</span> unknown</div>
     <% end %>
     <% if @user.person.cv.present? %>
         <%= link_to show_cvs_path(@user.person.cv), class:'detailed-tag-info' do %>

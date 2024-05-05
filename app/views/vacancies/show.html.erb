@@ -26,8 +26,15 @@
                 user = User.find(organization.user_id)
             %>
             <%= link_to "#{organization.name}", show_users_path(user) %>
-            <%= image_tag 'menuIcons/locationIcon.png' %>
-            <%=" #{@vacancy.country}, #{@vacancy.city}" %>
+            <% if @vacancy.country.present? || @vacancy.city.present? %>
+                <%= image_tag 'menuIcons/locationIcon.png' %>
+                <% if @vacancy.country.present? %>
+                    <%= @vacancy.country %><% if @vacancy.city.present? %>,<% end %>
+                <% end %>
+                <% if @vacancy.city.present? %>
+                    <%= @vacancy.city %>
+                <% end %>
+            <% end %>
         </p>
         <p><%= @vacancy.description %></p>
         <p class='salary-field'>
@@ -92,11 +99,19 @@
         <p>Skills:</p>
         <div class='detailed-tag-info vacancy-tag skill'>
             <p>Mandatory skills:</p>
-            <span><%= @vacancy.skills_mandatory %></span>
+            <% if @vacancy.skills_mandatory.present? %>  
+                <span><%= @vacancy.skills_mandatory %></span>
+            <% else %>
+                <span>None</span>
+            <% end %>
         </div>
         <div class='detailed-tag-info vacancy-tag skill'>
             <p>Optional skills:</p>
-            <span><%= @vacancy.skills_optional %></span>
+            <% if @vacancy.skills_optional.present? %>  
+                <span><%= @vacancy.skills_optional %></span>
+            <% else %>
+                <span>None</span>
+            <% end %>
         </div>
     </div>
 </div>

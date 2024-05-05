@@ -27,7 +27,14 @@
                 <% else %>
                     <p>DOB: unknown</p>
                 <% end %>
-                <p><%= @cv.country %>, <%= @cv.city %></p>
+                <p>
+                    <% if @cv.country.present? %>
+                        <%= @cv.country %><% if @cv.city.present? %>, <% end %>
+                    <% end %>
+                    <% if @cv.city.present? %>
+                        <%= @cv.city %>
+                    <% end %>
+                </p>
             </div>
             <hr>
             <div>
