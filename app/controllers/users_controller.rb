@@ -50,7 +50,7 @@ class UsersController < ApplicationController
 
         if @user.update(current_params)
             flash[:success] = "Data changed successfully"
-            redirect_to show_users_path(@user)
+            redirect_to show_user_path(@user)
         else
             flash[:error] = "Unable to update"
             render :edit, status: :unprocessable_entity

@@ -48,6 +48,9 @@ gem 'money-rails', '~> 1.12'
 # Help easily add searching to application, without any additional dependencies.
 gem 'ransack'
 
+# Prawn Handler for Rails. Handles and registers pdf formats.
+gem 'prawn'
+
 # Used for validation, formatting, normalization and country identification of telephone numbers
 gem 'phonelib'
 

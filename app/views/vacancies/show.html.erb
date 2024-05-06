@@ -25,7 +25,7 @@
                 organization = Organization.find(@vacancy.organization_id)
                 user = User.find(organization.user_id)
             %>
-            <%= link_to "#{organization.name}", show_users_path(user) %>
+            <%= link_to "#{organization.name}", show_user_path(user) %>
             <% if @vacancy.country.present? || @vacancy.city.present? %>
                 <%= image_tag 'menuIcons/locationIcon.png' %>
                 <% if @vacancy.country.present? %>

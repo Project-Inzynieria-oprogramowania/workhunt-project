@@ -19,7 +19,7 @@
                             <hr>
                         </li> 
                         <li>
-                            <%= link_to show_users_path(current_user) do %>
+                            <%= link_to show_user_path(current_user) do %>
                                 <%= image_tag 'menuIcons/human.png' %>
                                 My Profile
                             <% end %>
@@ -32,7 +32,7 @@
                         </li>
                         <li>
                             <% if current_user.person.cv.present? %>
-                                <%= link_to show_cvs_path(current_user.person.cv) do %>
+                                <%= link_to show_cv_path(current_user.person.cv) do %>
                                     <%= image_tag 'menuIcons/cv-icon.png' %>
                                     My CV
                                 <% end %>

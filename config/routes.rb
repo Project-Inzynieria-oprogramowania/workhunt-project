@@ -7,8 +7,8 @@ Rails.application.routes.draw do
     resources :links, only: [:create, :destroy]
   end
   resources :users, except: [:index, :create, :new, :edit, :show, :update, :destroy] do
-    collection do
-      get '/:id', to: 'users#show', as: 'show'
+    member do
+      get '/', to: 'users#show', as: 'show'
     end
   end
 
@@ -22,7 +22,11 @@ Rails.application.routes.draw do
   resources :cvs, except: [:create, :new, :edit, :show, :update, :destroy] do
     collection do
       post '/search', to: 'cvs#search', as: 'search'
-      get '/:id', to: 'cvs#show', as: 'show'
+    end
+
+    member do
+      get '/', to: 'cvs#show', as: 'show', defaults: { format: :html }
+      get '/pdf', to: 'cvs#show', defaults: { format: :pdf }
     end
   end
 

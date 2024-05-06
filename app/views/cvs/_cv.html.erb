@@ -1,67 +1,56 @@
-<%# 
-    CV в кратком виде (как вакансии при поиске): 
-        Фото, Фамилия Имя, контактные данные. 
-    При нажатии на ЛЮБУЮ ЧАСТЬ ЭТОЙ ОБЛАСТИ появляется страница cvs/show с полной информацией
-    Максимум из кнопок: для добавления в избранное 
-
-    Добавь вывод обрезанной информации из cv.about с использованием truncate
-    Т.к. дизайн практически идентичен визитке с вакансией, переименуй класс для визитки с
-    вакансией на 'визитка', 'визитка-инфо' и т.д.
-    Комменты удали по мере выполнения
-%>
-    <div class='brief-card'>
-        <div class='icon-placeholder'></div>
-        <div class='brief-card-info cv-info'>
-            <div class='top-line-container'>
-                <div class='top-line-element'>
-                    <% 
-                        person = Person.find(cv.person_id) 
-                        user = User.find(person.user_id)
-                    %>
-                    <h2><%= link_to "#{person.name} #{person.surname}", show_users_path(user) %></h2>
-                </div>
-                <div class='brief-card-buttons'>
-                    <% if user_signed_in? && current_user.id != cv.person_id %>
-                        <a><div class='corner-link'><%= image_tag 'menuIcons/add-to-favourites.png' %></div></a>
-                    <% end %>
-                    <%= link_to show_cvs_path(cv) do %>
-                        <div class='corner-link'><%= image_tag 'menuIcons/loop-icon.png' %></div>
-                    <% end %>
-                </div>
+<div class='brief-card'>
+    <div class='icon-placeholder'></div>
+    <div class='brief-card-info cv-info'>
+        <div class='top-line-container'>
+            <div class='top-line-element'>
+                <% 
+                    person = Person.find(cv.person_id) 
+                    user = User.find(person.user_id)
+                %>
+                <h2><%= link_to "#{person.name} #{person.surname}", show_user_path(user) %></h2>
             </div>
-            <% if cv.city.present? || cv.country.present?%>
-                <div class='detailed-tag-info'>
-                    <span>Location:</span><p>
-                    <%= image_tag 'menuIcons/locationIcon.png' %>
-                    <% if cv.country.present? %>
-                        <%= cv.country %><% if cv.city.present? %>, <% end %>
-                    <% end %>
-                    <% if cv.city.present? %>
-                        <%= cv.city %>
-                    <% end %>
-                    </p>
-                </div>
-            <% end %>
-            <div class='detailed-tag-info'><span>Sex:</span> <p><%= person.sex %></p></div>
+            <div class='brief-card-buttons'>
+                <% if user_signed_in? && current_user.id != cv.person_id %>
+                    <a><div class='corner-link'><%= image_tag 'menuIcons/add-to-favourites.png' %></div></a>
+                <% end %>
+                <%= link_to show_cv_path(cv) do %>
+                    <div class='corner-link'><%= image_tag 'menuIcons/loop-icon.png' %></div>
+                <% end %>
+            </div>
+        </div>
+        <% if cv.city.present? || cv.country.present?%>
             <div class='detailed-tag-info'>
-                <span>DOB:</span> 
-                <p>
-                <% if person.DOB.present? %>
-                    <%= person.DOB %>
-                <% else %>
-                    unknown
+                <span>Location:</span><p>
+                <%= image_tag 'menuIcons/locationIcon.png' %>
+                <% if cv.country.present? %>
+                    <%= cv.country %><% if cv.city.present? %>, <% end %>
+                <% end %>
+                <% if cv.city.present? %>
+                    <%= cv.city %>
                 <% end %>
                 </p>
             </div>
-            <h4>About me:</h4>
-            <p><%= truncate cv.about , length: 120 %></p>
-            <% if cv.skills.present? %>
-                <h4>Skills:</h4>
-                <p><%= truncate cv.skills , length: 120 %></p>
+        <% end %>
+        <div class='detailed-tag-info'><span>Sex:</span> <p><%= person.sex %></p></div>
+        <div class='detailed-tag-info'>
+            <span>DOB:</span> 
+            <p>
+            <% if person.DOB.present? %>
+                <%= person.DOB %>
+            <% else %>
+                unknown
             <% end %>
-            <% if cv.interests.present? %>
-                <h4>Interests:</h4>
-                <p><%= truncate cv.interests , length: 120 %></p>
-            <% end %>
+            </p>
         </div>
+        <h4>About me:</h4>
+        <p><%= truncate cv.about , length: 120 %></p>
+        <% if cv.skills.present? %>
+            <h4>Skills:</h4>
+            <p><%= truncate cv.skills , length: 120 %></p>
+        <% end %>
+        <% if cv.interests.present? %>
+            <h4>Interests:</h4>
+            <p><%= truncate cv.interests , length: 120 %></p>
+        <% end %>
     </div>
+</div>

@@ -15,7 +15,7 @@ class CvsController < ApplicationController
         @cv.person_id = current_user.person.id
         if @cv.save
             flash[:success] = "CV successfully created"
-            redirect_to show_cvs_path(@cv)
+            redirect_to show_cv_path(@cv)
         else
             flash[:error] = "Unable to save"
             render :new, status: :unprocessable_entity
@@ -24,6 +24,23 @@ class CvsController < ApplicationController
 
     def show
         @cv = Cv.find(params[:id])
+        
+        respond_to do | format |
+            format.html
+            format.pdf do
+                begin
+                    #pdf_content = CvsReport.new(@cv).to_pdf
+                    pdf_content = CvsReport.new.to_pdf(@cv)
+                    send_data pdf_content,
+                        filename: "CV_#{Time.now.strftime("%Y%m%d-%H%M%S")}.pdf",
+                        type: 'application/pdf',
+                        disposition: 'inline'
+                rescue => e
+                    Rails.logger.error("Ошибка в экшене show: #{e.message}")
+                    render plain: "Произошла ошибка при рендеринге PDF", status: :internal_server_error
+                end
+            end
+        end
     end
 
     def index
@@ -43,7 +60,7 @@ class CvsController < ApplicationController
     def update
         if @cv.update(cv_params_all)
             flash[:success] = "CV successfully updated"
-            redirect_to show_cvs_path(@cv)
+            redirect_to show_cv_path(@cv)
         else
             flash[:error] = "Unable to update"
             render :edit, status: :unprocessable_entity
@@ -78,7 +95,7 @@ class CvsController < ApplicationController
         cv = current_user.person.cv
         return unless cv.present?
         flash[:warning] = "You already have a CV"
-        redirect_to show_cvs_path(cv)
+        redirect_to show_cv_path(cv)
     end
 
     def check_cv_exists

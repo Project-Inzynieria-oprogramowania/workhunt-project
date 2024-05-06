@@ -26,7 +26,7 @@
         <div class='detailed-tag-info'><span>DOB:</span> unknown</div>
     <% end %>
     <% if @user.person.cv.present? %>
-        <%= link_to show_cvs_path(@user.person.cv), class:'detailed-tag-info' do %>
+        <%= link_to show_cv_path(@user.person.cv), class:'detailed-tag-info' do %>
             <span>Show CV</span>
         <% end %>
     <% elsif user_signed_in? && @user.id == current_user.id %>
