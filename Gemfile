@@ -50,6 +50,7 @@ gem 'ransack'
 
 # Prawn Handler for Rails. Handles and registers pdf formats.
 gem 'prawn'
+gem 'prawn-table'
 
 # Used for validation, formatting, normalization and country identification of telephone numbers
 gem 'phonelib'
