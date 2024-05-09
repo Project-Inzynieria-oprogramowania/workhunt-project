@@ -95,9 +95,6 @@
 #search-drop-block .form-field {
     width: 25%;
 }
-#search-results .brief-card:first-of-type {
-    margin-top: 0px;
-}
 .button.open-drop img {
     height: 8px;
     width: auto;

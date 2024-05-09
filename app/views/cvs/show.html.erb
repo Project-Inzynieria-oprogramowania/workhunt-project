@@ -19,8 +19,7 @@
         </div>
         <div class='pair-single-container cv'>
             <div>
-                <h1><%= @cv.person.name %></h1>
-                <h1><%= @cv.person.surname %></h1>
+                <h1><%= @cv.person.name %> <%= @cv.person.surname %></h1>
                 <p>Sex: <%= @cv.person.sex %></p>
                 <% if @cv.person.DOB.present? %>
                     <p>DOB: <%= @cv.person.DOB %></p>
@@ -74,7 +73,7 @@
                         </div>
                     </div>
                 <% end %>
-                <% if user.emails.count > 0 %>
+                <% if user.links.count > 0 %>
                     <div class='flex-container-contacts'>
                         <%= image_tag 'icons/link-icon.png' %>
                         <div class='sub-container'>
@@ -97,7 +96,13 @@
                 <%end%>
                 <% @cv.educations.each do | education | %>
                     <div>
-                        <p><%= education.start_date %> - <%= education.end_date %></p>
+                        <p>
+                        <% if education.end_date.present? %>
+                            <%= education.start_date %> - <%= education.end_date %>
+                        <% else %>
+                            <%= education.start_date %> - continue
+                        <% end %>
+                        </p>
                         <p><%= education.institution %></p>
                         <p><%= education.specialization %>, <%= education.direction %></p>
                         <p>Education level: <%= education.education_level %></p>
@@ -112,16 +117,37 @@
                 <%end%>
                 <% @cv.experiences.each do | experience | %>
                     <div>
-                        <p><%= experience.start_date %> - <%= experience.end_date %></p>
-                        <p><%= experience.company %></p>
+                        <p>
+                            <% if experience.end_date.present? %>
+                                <%= experience.start_date %> - <%= experience.end_date %>
+                            <% else %>
+                                <%= experience.start_date %> - continue
+                            <% end %>
+                        </p>
+                        <% if experience.company.present? %>
+                            <p><%= experience.company %></p>
+                        <% else %>
+                            <p>Freelance/Contract Work</p>
+                        <% end %>
                         <p><%= experience.position %></p>
                         <h5>Outline:</h5>
                         <p><%= experience.outline %></p>
-                        <h5>Responsibilities:</h5>
-                        <p><%= experience.responsibilities %></p>
-                        <h5>Achievements:</h5>
-                        <p><%= experience.achievements %></p>
-                        <p><%= experience.country %>, <%= experience.city %></p>
+                        <% if experience.responsibilities.present? %>
+                            <h5>Responsibilities:</h5>
+                            <p><%= experience.responsibilities %></p>
+                        <% end %>
+                        <% if experience.achievements.present? %>
+                            <h5>Achievements:</h5>
+                            <p><%= experience.achievements %></p>
+                        <% end %>
+                        <p>
+                        <% if experience.country.present? %>
+                            <%= experience.country %><% if experience.city.present? %>, <% end %>
+                        <% end %>
+                        <% if experience.city.present? %>
+                            <%= experience.city %>
+                        <% end %>
+                        </p>
                     </div>
                 <% end %>
             </div>
@@ -132,7 +158,13 @@
                     <span>None</span>
                 <%end%>
                 <% @cv.languages.each do | language | %>
-                    <p><%= language.name %> - <span><%= language.level %></span> - <%= language.certificates %></p>
+                    <p>
+                    <% if language.certificates.present? %>
+                        <%= language.name %> - <span><%= language.level %></span> - <%= language.certificates %>
+                    <% else %>
+                        <%= language.name %> - <span><%= language.level %></span>
+                    </p>
+                    <% end %>
                 <% end %>
             </div>
             <span>*I hereby consent to the processing of my personal information for the purposes of this application.</span>
@@ -145,5 +177,6 @@
     <% if user_signed_in? && current_user.person.id == @cv.person_id %>
         <%= link_to 'Edit', edit_cv_path, class: 'button' %>
         <%= button_to "Delete", cv_path, method: :delete, type: 'button', class: 'button', confirm: 'Are you sure you want to delete CV?' %>
+        <%= link_to 'To PDF', pdf_cv_path , class: 'button' %>
     <% end %>
 </div>

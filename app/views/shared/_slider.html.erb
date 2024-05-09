@@ -6,7 +6,11 @@
         </div>
         <div class='start-button-container'>
             <% if user_signed_in? %>
-                <%= link_to 'TO THE HUNT!', vacancies_path, class: ['large-button'] %>
+                <% if current_user.person? %>
+                    <%= link_to 'TO THE HUNT!', vacancies_path, class: ['large-button'] %>
+                <% else %>
+                    <%= link_to 'TO THE HUNT!', cvs_path, class: ['large-button'] %>
+                <% end %>
             <% else %>
                 <%= link_to 'START NOW', new_sessions_path, class: ['large-button'] %>
             <% end %>  

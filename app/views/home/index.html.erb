@@ -40,7 +40,15 @@
     <p>Hunt down your future work right now!</p>  
     There are <%= Vacancy.count %> job offers in the database.
     <div class='start-button-container'>
-        <%= link_to 'TO THE HUNT!', vacancies_path, class: ['large-button'] %>
+        <% if user_signed_in? %>
+            <% if current_user.person? %>
+                <%= link_to 'TO THE HUNT!', vacancies_path, class: ['large-button'] %>
+            <% elsif current_user.organization? %>
+                <%= link_to 'TO THE HUNT!', cvs_path, class: ['large-button'] %>
+            <% end %>
+        <% else %>
+            <%= link_to 'TO THE HUNT!', vacancies_path, class: ['large-button'] %>
+        <% end %>
      </div>
 </div>
 <footer class='color-container'>
