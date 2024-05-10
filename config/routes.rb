@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :emails, only: [:create, :destroy]
     resources :telephones, only: [:create, :destroy]
     resources :links, only: [:create, :destroy]
+    resources :responses, only: [:index]
   end
   resources :users, except: [:index, :create, :new, :edit, :show, :update, :destroy] do
     member do
@@ -34,7 +35,10 @@ Rails.application.routes.draw do
     collection do
       post '/search', to: 'vacancies#search', as: 'search'
     end
+    resources :responses, only: [:index]
   end
-  
+
+  resources :responses, except: [:index, :new, :edit]
+
   get '*unmatched_route', to: 'home#routing_error'
 end

@@ -195,6 +195,7 @@ class CvsReport < Prawn::Document
             end
             experience_data.map { |text| text.merge!(text: "#{text[:text]}\n") }
         end
+        formatted_data
     end
     
 
