@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_25_142517) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_10_130951) do
   create_table "cvs", force: :cascade do |t|
     t.integer "person_id", null: false
     t.text "about", null: false
@@ -145,6 +145,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_25_142517) do
     t.index ["organization_id"], name: "index_vacancies_on_organization_id"
   end
 
+  create_table "vacancy_responses", force: :cascade do |t|
+    t.integer "person_id", null: false
+    t.integer "vacancy_id", null: false
+    t.string "status", null: false
+    t.text "comments"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["person_id", "vacancy_id"], name: "index_vacancy_responses_on_person_id_and_vacancy_id", unique: true
+    t.index ["person_id"], name: "index_vacancy_responses_on_person_id"
+    t.index ["vacancy_id"], name: "index_vacancy_responses_on_vacancy_id"
+    t.check_constraint "status IN ('sent', 'under consideration', 'in reserve', 'interview scheduled', 'internship offered', 'accepted', 'rejected')"
+  end
+
   add_foreign_key "cvs", "people"
   add_foreign_key "educations", "cvs"
   add_foreign_key "emails", "users"
@@ -155,4 +168,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_25_142517) do
   add_foreign_key "people", "users"
   add_foreign_key "telephones", "users"
   add_foreign_key "vacancies", "organizations"
+  add_foreign_key "vacancy_responses", "people"
+  add_foreign_key "vacancy_responses", "vacancies"
 end
