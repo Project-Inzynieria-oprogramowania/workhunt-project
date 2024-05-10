@@ -3,6 +3,7 @@ require_relative '../../app/assets/config/initializers/work_constants.rb'
 class Vacancy < ApplicationRecord
     belongs_to :organization, foreign_key: 'organization_id'
     has_many :vacancy_responses, dependent: :destroy
+    has_many :people, through: :vacancy_responses
     
     attr_accessor :job_category
     validates :title, presence: true
