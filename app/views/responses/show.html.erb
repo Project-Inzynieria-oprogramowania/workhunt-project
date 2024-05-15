@@ -1,11 +1,10 @@
-<%= render Vacancy.find(@response.vacancy_id) %>
+<%= render @response.vacancy %>
 
 <% if current_user.organization? %>
-    <% person = Person.find(@response.person_id) %>
-    <% if person.cv.present? %>
-        <%= render person.cv %>
+    <% if @response.person.cv.present? %>
+        <%= render @response.person.cv %>
     <% else %>
-        <%# Нужно как-то дать ссылку на страницу пользователя или краткое инфо %>
+        <%= render @response.person %>
     <% end %>
 <% end %>
 
@@ -24,4 +23,5 @@
 <% else %>
     Comments: <% if @response.comments.present? %> <%= @response.comments %> <% else %> No comments <% end %>
     Status: <%= @response.status %>
+    <%= button_to "Remove response", response_path, method: :delete, class: "button" %>
 <% end %>

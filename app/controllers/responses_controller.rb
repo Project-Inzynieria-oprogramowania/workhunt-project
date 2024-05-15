@@ -2,17 +2,18 @@ class ResponsesController < ApplicationController
     before_action :check_authenticate
     before_action :get_response, only: [:show, :update, :destroy]
     before_action :check_authenticate_access, only: [:show]
+    before_action :check_authenticate_access_all, only: [:index]
     before_action :check_profile_organization, only: [:update]
     before_action :check_organization, only: [:update]
     before_action :check_profile_person, only: [:create]
     before_action :check_person, only: [:destroy]
 
     def index
-        # if params[:vacancy_id]
-        #     @responses = VacancyResponses.find_by(vacancy_id: params[:vacancy_id])
-        # else
-        #     @responses = VacancyResponses.find_by(user_id: user.person.id)
-        # end
+        if current_user.person?
+            @responses = current_user.person.vacancy_responses
+        else 
+            @responses = VacancyResponse.where(vacancy_id: params[:vacancy_id])
+        end
     end
 
     def create
@@ -34,7 +35,6 @@ class ResponsesController < ApplicationController
     end
 
     def show
-        
     end
 
     def update
@@ -52,7 +52,9 @@ class ResponsesController < ApplicationController
     end
 
     def destroy
-
+        @response.destroy
+        flash[:success] = "Response deleted successfully"
+        redirect_to user_responses_path
     end
 
     private
@@ -62,14 +64,13 @@ class ResponsesController < ApplicationController
     end
 
     def check_organization
-        organization = Organization.find(Vacancy.find(@response.vacancy_id).organization_id)
-        return if current_user.organization == organization
+        return if current_user.organization == @response.vacancy.organization
         flash[:error] = "You do not have access to this page"
         redirect_to root_path
     end
 
     def check_person
-        return if current_user.person == Person.find(@response.person_id)
+        return if current_user.person == @response.person
         flash[:error] = "You do not have access to this page"
         redirect_to root_path
     end
@@ -79,6 +80,23 @@ class ResponsesController < ApplicationController
             check_person
         else 
             check_organization
+        end
+    end
+
+    def check_authenticate_access_all
+        if current_user.organization? 
+            if params[:vacancy_id].present?
+                return if current_user.organization == Vacancy.find(params[:vacancy_id]).organization
+                flash[:error] = "You do not have access to this page"
+                redirect_to root_path
+            else 
+                flash[:error] = "You do not have access to this page"
+                redirect_to root_path
+            end
+        else
+            return if !params[:vacancy_id].present?
+            flash[:error] = "You do not have access to this page"
+            redirect_to root_path
         end
     end
 end

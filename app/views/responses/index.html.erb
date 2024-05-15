@@ -1,0 +1,28 @@
+<% if params[:vacancy_id].present? %>
+    <%= render Vacancy.find(params[:vacancy_id]) %>
+    <hr class="division-line">
+<% end %>
+
+<% if current_user.organization? %>
+    <% @responses.each do | response | %>
+        <div class="brief-card">
+            <% if response.person.cv.present? %>
+                <%= render response.person.cv %>
+            <% else %>
+                <%= render response.person %>
+            <% end %>
+
+            Status: <%= response.status %>
+            <%= link_to "Show", response_path(response), class: 'button' %>
+        </div>
+    <% end %>
+<% else %>
+    <% @responses.each do | response | %>
+        <div class="brief-card">
+            <%= render response.vacancy %>
+
+            Status: <%= response.status %>
+            <%= link_to "Show", response_path(response), class: 'button' %>
+        </div>
+    <% end %>
+<% end %>

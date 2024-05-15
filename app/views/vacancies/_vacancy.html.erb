@@ -12,8 +12,8 @@
             </div>
             <p>
                 <% 
-                    organization = Organization.find(vacancy.organization_id)
-                    user = User.find(organization.user_id)
+                    organization = vacancy.organization
+                    user = organization.user
                 %>
                 <%= link_to "#{organization.name}", show_user_path(user) %>
                 <% if vacancy.country.present? || vacancy.city.present? %>

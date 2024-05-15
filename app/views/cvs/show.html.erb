@@ -39,8 +39,8 @@
             <div>
                 <h2>CONTACTS:</h2>
                 <% 
-                person = Person.find(@cv.person_id) 
-                user = User.find(person.user_id)
+                person = @cv.person
+                user = @cv.person.user
                 %>
                 <% if user.telephones.count == 0 && user.emails.count == 0 && user.links.count == 0%>
                     <span>None</span>
