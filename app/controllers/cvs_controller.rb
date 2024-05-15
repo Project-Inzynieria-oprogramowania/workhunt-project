@@ -29,7 +29,6 @@ class CvsController < ApplicationController
             format.html
             format.pdf do
                 begin
-                    #pdf_content = CvsReport.new(@cv).to_pdf
                     pdf_content = CvsReport.new.to_pdf(@cv)
                     send_data pdf_content,
                         filename: "CV_#{Time.now.strftime("%Y%m%d-%H%M%S")}.pdf",

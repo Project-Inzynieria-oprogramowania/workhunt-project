@@ -1,0 +1,27 @@
+<%= render Vacancy.find(@response.vacancy_id) %>
+
+<% if current_user.organization? %>
+    <% person = Person.find(@response.person_id) %>
+    <% if person.cv.present? %>
+        <%= render person.cv %>
+    <% else %>
+        <%# Нужно как-то дать ссылку на страницу пользователя или краткое инфо %>
+    <% end %>
+<% end %>
+
+<% if current_user.organization? %>
+    <%= form_with model: @response, url: response_path, method: :patch do | form | %>
+        <div class='form-field'>
+            <%= form.label :comments %>
+            <%= form.text_area :comments %>
+        </div>
+        <div class='form-field'>
+            <%= form.label :status %>
+            <%= form.collection_select :status, VacancyResponse.statuses.keys, :to_s, :to_s, { selected: @response.status }  %>
+        </div>
+        <%= form.submit "Update info", class: 'button' %>
+    <% end %>
+<% else %>
+    Comments: <% if @response.comments.present? %> <%= @response.comments %> <% else %> No comments <% end %>
+    Status: <%= @response.status %>
+<% end %>

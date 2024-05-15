@@ -114,4 +114,12 @@
             <% end %>
         </div>
     </div>
+    <% if user_signed_in? && current_user.person? %>
+        <% response = VacancyResponse.find_by(person_id: current_user.person.id, vacancy_id: params[:id]) %>
+        <% if response.present? %>
+            <%= button_to 'Cancel reply', response_path(response), method: :delete, class: 'button' %>
+        <% else %>
+            <%= button_to 'Response', vacancy_responses_path(@vacancy), method: :post, class: 'button' %>
+        <% end %>
+    <% end %>
 </div>

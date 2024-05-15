@@ -30,13 +30,13 @@ class ApplicationController < ActionController::Base
 
     def check_profile_organization
         return if current_user.present? && current_user.organization?
-        flash[:warning] = "You do not have access to this page non-organizational user."
+        flash[:warning] = "You do not have access to this page non-organizational user"
         redirect_back fallback_location: root_path
     end
 
     def check_profile_person
         return if current_user.present? && current_user.person?
-        flash[:warning] = "You do not have access to this page non-personal user."
+        flash[:warning] = "You do not have access to this page non-personal user"
         redirect_back fallback_location: root_path
     end
 

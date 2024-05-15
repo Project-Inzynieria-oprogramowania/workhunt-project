@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     collection do
       post '/search', to: 'vacancies#search', as: 'search'
     end
-    resources :responses, only: [:index]
+    resources :responses, only: [:index, :create]
   end
 
   resources :responses, except: [:index, :new, :edit]
