@@ -10,4 +10,6 @@ class VacancyResponse < ApplicationRecord
     internship_offered: 'internship offered', 
     accepted: 'accepted', 
     rejected: 'rejected' }
+
+  validates :person_id, uniqueness: { scope: :vacancy_id, message: "has already responded to this vacancy" }
 end
