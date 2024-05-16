@@ -158,13 +158,6 @@
     height: 70px;
     transition-duration: 0.4s;
 }
-.limitation-container {
-    display: block;
-    width: 100%;
-    max-width: 800px;
-    min-width: 300px;
-    margin: 0 auto;
-}
 .advantages {
     text-align: left;
     align-items: center;

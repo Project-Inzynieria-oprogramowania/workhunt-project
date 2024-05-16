@@ -94,17 +94,29 @@ html {
     font-size: 14px !important;
     padding: 0;
 }
+
+a.detailed-tag-info {
+    background-color: #523063;
+    border: 3px dashed #a260c3;
+    border-radius: 20px;
+    transition-duration: 0.4s;
+}
+a.detailed-tag-info:hover {
+    background-color: #613975;
+    border: 3px dashed #aa65cd;
+}
 a.detailed-tag-info span {
     font-weight: 600;
+    color: #ffde9c;
 }
 a.detailed-tag-info:hover span {
     color: #ffde9c;
     text-shadow: 0px 0px 6px #f4d18c8b;
 }
-a.detailed-tag-info:hover {
-    border: 3px dashed #7d4a97;
-    background-color: #2d2931;
+a.detailed-tag-info:active {
+    transform: translateY(4px);
 }
+
 @media only screen and (max-width: 600px) {
     .detailed-tag-info
     {

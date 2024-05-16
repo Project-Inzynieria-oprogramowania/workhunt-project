@@ -39,6 +39,9 @@ class CvsReport < Prawn::Document
             table_arr << ["Emails"] + [@user.emails.pluck(:address).join("\n")]
             # table_arr << ["Emails", make_table(@user.emails.pluck(:address).map { |address| [address] })]
         end
+        if @user.links.present?
+            table_arr << ["Links"] + [@user.links.pluck(:address).join("\n")]
+        end
         table_arr
     end
 
@@ -209,28 +212,18 @@ class CvsReport < Prawn::Document
         
         font "Inter"
 
-        #
-        #bounding_box([0, bounds.height], width: bounds.width*0.3, height: bounds.height) do
-        #    fill_color 'A343D3'
-        #    fill_rectangle [bounds.left, bounds.top], bounds.width, bounds.height
-        #    fill_color '000000'
-        #end
-        #bounding_box([bounds.width*0.3, bounds.height], width: bounds.width*0.7, height: bounds.height) do
-        #    text "This text will flow in a very narrow box starting" +
-        #     "from xxxxx. The pointer will then be moved to [100, 200]" +
-        #     "and return to the margin_box"
-        #end
-        #
-
-        text "#{@user.person.name} #{@user.person.surname}", size: 22, style: :bold
-        
-        table_for_info(person_info_data)
-        if (@user.telephones.present? || @user.emails.present?)
-            move_down 10
-            table_for_info(person_contacts_data)
+        bounding_box([0, bounds.height], width: bounds.width*0.7) do
+            text "#{@user.person.name} #{@user.person.surname}", size: 22, style: :bold
+            table_for_info(person_info_data)
+            if (@user.telephones.present? || @user.emails.present?)
+                move_down 10
+                table_for_info(person_contacts_data)
+            end
         end
-
-        move_down 20
+        bounding_box([bounds.width*0.7, bounds.height], width: bounds.width*0.3) do
+            image "#{Rails.root}/app/assets/images/icons/Profile.png", width: 150, height: 150
+        end
+        
         stroke_horizontal_rule
 
         if (@cv.about.present? || @cv.skills.present?)

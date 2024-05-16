@@ -44,10 +44,10 @@
                              <% end %>
                         </li>
                         <li>
-                            <% if current_user.person.cv.present? %>
-                                <%= link_to pdf_cv_path(current_user.person.cv) do %>
-                                    <%= image_tag 'menuIcons/export-as-pdf.png' %>
-                                    CV to PDF
+                            <% if user_signed_in? && current_user.person? %>
+                                <%= link_to user_responses_path do %>
+                                    <%= image_tag 'menuIcons/responses-icon.png' %>
+                                    Responses
                                 <% end %>
                             <% end %>
                         </li>

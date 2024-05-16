@@ -9,19 +9,25 @@
 <% end %>
 
 <% if current_user.organization? %>
-    <%= form_with model: @response, url: response_path, method: :patch do | form | %>
-        <div class='form-field'>
-            <%= form.label :comments %>
-            <%= form.text_area :comments %>
-        </div>
-        <div class='form-field'>
-            <%= form.label :status %>
-            <%= form.collection_select :status, VacancyResponse.statuses.keys, :to_s, :to_s, { selected: @response.status }  %>
-        </div>
-        <%= form.submit "Update info", class: 'button' %>
-    <% end %>
+    <div class='limitation-container' >
+        <%= form_with model: @response, url: response_path, method: :patch do | form | %>
+            <div class='form-field'>
+                <%= form.label :comments %>
+                <%= form.text_area :comments %>
+            </div>
+            <div class='form-field'>
+                <%= form.label :status %>
+                <%= form.collection_select :status, VacancyResponse.statuses.keys, :to_s, :to_s, { selected: @response.status }  %>
+            </div>
+            <%= form.submit "Update info", class: 'button' %>
+        <% end %>
+    </div>
 <% else %>
-    Comments: <% if @response.comments.present? %> <%= @response.comments %> <% else %> No comments <% end %>
-    Status: <%= @response.status %>
-    <%= button_to "Remove response", response_path, method: :delete, class: "button" %>
+    <div class='limitation-container' >
+        <div class='top-line-container'>
+            <p>Status: <%= @response.status %></p>
+            <%= button_to "Remove response", response_path, method: :delete, class: "button" %>
+        </div>
+        <p>Comments: <% if @response.comments.present? %> <%= @response.comments %> <% else %> No comments <% end %></p>
+    </div>
 <% end %>

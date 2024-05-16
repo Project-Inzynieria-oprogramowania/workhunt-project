@@ -1,10 +1,15 @@
 <div class='brief-card-buttons'>
     <% if current_user&.organization? %>
         <% if current_user.organization.id == vacancy.organization_id %>
+            <% if show_link_to_responses %>
+                <%= button_to vacancy_responses_path(vacancy), method: :get do %>
+                    <%= image_tag 'menuIcons/writeToPlaceholder.png' %>
+                <% end %>
+            <% end %>
             <%= button_to vacancy_path(vacancy), method: :delete, data: { confirm: 'Are you sure you want to delete vacancy?' } do %>
                 <%= image_tag 'menuIcons/deleteCross.png' %>
             <% end %>
-            <%= link_to edit_vacancy_path(vacancy) do %>
+            <%= button_to edit_vacancy_path(vacancy), method: :get do %>
                 <%= image_tag 'menuIcons/edit.png' %>
             <% end %>
         <% end %>

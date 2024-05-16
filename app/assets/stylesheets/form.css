@@ -87,6 +87,12 @@ label {
     box-shadow: 0px 0px 10px 6px rgb(157, 92, 189);
     transition-duration: 0.4s;
 }
+a.button {
+    text-align: center;
+    height: auto;
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
 .button:active {
     background-color: #663C7B;
     color: #e0aef9;
@@ -218,4 +224,7 @@ label {
     {
         font-size: 14px;
     }
+}
+input[type=submit] {
+    cursor: pointer;
 }

@@ -63,6 +63,7 @@
     font-size: 12px;
     text-align: center;
     z-index: 5;
+    cursor: pointer;
 }
 .button.open-drop:hover{
     background-color: #844da0;
@@ -95,7 +96,3 @@
 #search-drop-block .form-field {
     width: 25%;
 }
-.button.open-drop img {
-    height: 8px;
-    width: auto;
- }
