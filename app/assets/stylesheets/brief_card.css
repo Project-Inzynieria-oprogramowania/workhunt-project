@@ -24,6 +24,7 @@
     font-size: 22px;
     text-align: left;
     color: #F4D18C;
+    display: block;
 }
 .brief-card-info p:first-of-type, .brief-card p:first-of-type a {
     color: #E0ACFA;

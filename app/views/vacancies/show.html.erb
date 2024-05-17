@@ -17,7 +17,7 @@
                 <h2><%= @vacancy.title %></h2>
             </div>
             <div class='top-line-element'>
-                <%= render 'buttons', vacancy: @vacancy, show_link_to_responses: true %>
+                <%= render 'buttons', vacancy: @vacancy %>
             </div>
         </div>
         <p>
@@ -117,9 +117,9 @@
     <% if user_signed_in? && current_user.person? %>
         <% response = VacancyResponse.find_by(person_id: current_user.person.id, vacancy_id: params[:id]) %>
         <% if response.present? %>
-            <%= button_to 'Cancel reply', response_path(response), method: :delete, class: 'button' %>
+            <%= button_to 'Withdraw application', response_path(response), method: :delete, class: 'button' %>
         <% else %>
-            <%= button_to 'Response', vacancy_responses_path(@vacancy), method: :post, class: 'button' %>
+            <%= button_to 'Apply', vacancy_responses_path(@vacancy), method: :post, class: 'button' %>
         <% end %>
     <% end %>
 </div>

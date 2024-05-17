@@ -7,13 +7,15 @@
                     person = Person.find(cv.person_id) 
                     user = User.find(person.user_id)
                 %>
-                <h2><%= link_to "#{person.name} #{person.surname}", show_user_path(user) %></h2>
+                <%= link_to show_cv_path(cv) do %>
+                    <h2><%= person.name %> <%= person.surname %></h2>
+                <% end %>
             </div>
             <div class='brief-card-buttons'>
-                <% if user_signed_in? && current_user.id != cv.person_id %>
+                <% if user_signed_in? && current_user.organization? || current_user.id != cv.person_id %>
                     <a><div class='corner-link'><%= image_tag 'menuIcons/add-to-favourites.png' %></div></a>
                 <% end %>
-                <%= link_to show_cv_path(cv) do %>
+                <%= link_to show_user_path(user) do %>
                     <div class='corner-link'><%= image_tag 'menuIcons/loop-icon.png' %></div>
                 <% end %>
             </div>

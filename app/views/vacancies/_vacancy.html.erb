@@ -1,13 +1,14 @@
 <div class='brief-card'>
     <div class='icon-placeholder'></div>
     <div class='brief-card-info'>
-        <%= link_to vacancy_path(vacancy) do %>
             <div class='top-line-container'>
+                <%= link_to vacancy_path(vacancy) do %>
+                    <div class='top-line-element'>
+                        <h2><%= vacancy.title %></h2>
+                    </div>
+                <% end %>
                 <div class='top-line-element'>
-                    <h2><%= vacancy.title %></h2>
-                </div>
-                <div class='top-line-element'>
-                    <%= render 'vacancies/buttons', vacancy: vacancy, show_link_to_responses: false %>
+                    <%= render 'vacancies/buttons', vacancy: vacancy %>
                 </div>
             </div>
             <p>
@@ -40,6 +41,5 @@
                     Negotiated
                 <% end %>       
             </p>
-        <% end %>
     </div>
 </div>
