@@ -1,96 +1,55 @@
-// Adding 
 var addEducationButton = document.querySelector('#add-education')
 var addExperienceButton = document.querySelector('#add-experience')
 var addLanguageButton = document.querySelector('#add-language')
 
-addEducationButton.addEventListener('click', function() {
-    var index = document.getElementsByClassName('education-form').length
-    fetch(`/cv/education/new?index=${index}`)
+var csrfToken = document.querySelector('meta[name="csrf-token"]').content
+
+var addFormFields = function(model_name, button){ return function(){
+    var index = document.getElementsByClassName(`${model_name}-form`).length
+    var url = `/cv/${model_name}/new?index=${index}`
+    fetch(url, {
+        method: 'GET',
+        headers: {
+          'X-CSRF-Token': csrfToken
+        }
+    })
         .then(response => response.text())
         .then(html => {
-            const formsContainer = addEducationButton.closest('div')
-            const newForm = document.createElement('div')
-            newForm.classList += 'education-form-block'
+            var formsContainer = button.closest('div')
+            var newForm = document.createElement('div')
+            newForm.classList += `${model_name}-form-block`
             newForm.innerHTML = html
 
-            formsContainer.insertBefore(newForm, addEducationButton)
+            formsContainer.insertBefore(newForm, button)
     })
-})
+}}
 
-addExperienceButton.addEventListener('click', function() {
-    var index = document.getElementsByClassName('experience-form').length
-    fetch(`/cv/experience/new?index=${index}`)
+var deleteFormFields = function(model_name, event, indetificator){
+    var url = `/cv/${model_name}`
+    url = indetificator ? url + `?id=${indetificator}` : url
+    fetch(url, {
+        method: 'DELETE', 
+        headers: {
+            'X-CSRF-Token': csrfToken,
+        }
+    })
         .then(response => response.text())
         .then(html => {
-            const formsContainer = addExperienceButton.closest('div')
-            const newForm = document.createElement('div')
-            newForm.classList += 'experience-form-block'
-            newForm.innerHTML = html
-
-            formsContainer.insertBefore(newForm, addExperienceButton)
+            var block_name = `div.${model_name}-form`
+            const formToRemove = event.target.closest(block_name)
+            formToRemove.remove()
     })
-})
+}
 
-addLanguageButton.addEventListener('click', function() {
-    var index = document.getElementsByClassName('language-form').length
-    fetch(`/cv/language/new?index=${index}`)
-        .then(response => response.text())
-        .then(html => {
-            const formsContainer = addLanguageButton.closest('div')
-            const newForm = document.createElement('div')
-            newForm.classList += 'language-form-block'
-            newForm.innerHTML = html
+addEducationButton.addEventListener('click', addFormFields('education', addEducationButton))
+addExperienceButton.addEventListener('click', addFormFields('experience', addExperienceButton))
+addLanguageButton.addEventListener('click', addFormFields('language', addLanguageButton))
 
-            formsContainer.insertBefore(newForm, addLanguageButton)
-    })
-})
+document.addEventListener('click', function(event){
+    var indetificator_block = event.target.closest('div').querySelector('input[type="hidden"]')
+    var indetificator = indetificator_block ? indetificator_block.value : null
 
-// Destroing
-const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
-
-document.addEventListener('click', function(event) {
-    var indetificator = event.target.querySelector('input').value
-    if (event.target.classList.contains('remove-education')) {
-        var url = indetificator ? `/cv/education?id=${indetificator}` : `/cv/education`
-        fetch(url, {
-            method: 'DELETE', 
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-Token': csrfToken,
-            },
-        })
-            .then(response => response.text())
-            .then(html => {
-                const formToRemove = event.target.closest('div.education-form-block')
-                formToRemove.remove()
-        })
-    } else if (event.target.classList.contains('remove-experience')) {
-        var url = indetificator ? `/cv/experience?id=${indetificator}` : `/cv/experience`
-        fetch(url, {
-            method: 'DELETE', 
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-Token': csrfToken,
-            },
-        })
-            .then(response => response.text())
-            .then(html => {
-                const formToRemove = event.target.closest('div.experience-form-block')
-                formToRemove.remove()
-        })
-    } else if (event.target.classList.contains('remove-language')) {
-        var url = indetificator ? `/cv/language?id=${indetificator}` : `/cv/language`
-        fetch(url, {
-            method: 'DELETE', 
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-Token': csrfToken,
-            },
-        })
-            .then(response => response.text())
-            .then(html => {
-                const formToRemove = event.target.closest('div.language-form-block')
-                formToRemove.remove()
-        })
-    }
+    if (event.target.classList.contains('remove-education')) { deleteFormFields('education', event, indetificator) }
+    else if (event.target.classList.contains('remove-experience')) { deleteFormFields('experience', event, indetificator) }
+    else if (event.target.classList.contains('remove-language')) { deleteFormFields('language', event, indetificator) }
 })
