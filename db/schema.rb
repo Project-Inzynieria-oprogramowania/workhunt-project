@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_10_130951) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_17_180822) do
+  create_table "avatars", force: :cascade do |t|
+    t.string "image"
+    t.string "imageable_type", null: false
+    t.integer "imageable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["imageable_type", "imageable_id"], name: "index_avatars_on_imageable"
+  end
+
   create_table "cvs", force: :cascade do |t|
     t.integer "person_id", null: false
     t.text "about", null: false
