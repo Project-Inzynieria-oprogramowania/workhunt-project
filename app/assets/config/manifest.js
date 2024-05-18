@@ -9,3 +9,4 @@
 //= link slider_resizing.js
 //= link dynamic_forms_cv.js
 //= link dynamic_search.js
+//= link auto_slider.js

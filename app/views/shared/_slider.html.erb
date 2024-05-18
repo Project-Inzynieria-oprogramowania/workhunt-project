@@ -1,20 +1,45 @@
-<div class='slider-field', id='slider-field'>
-    <div class='greatings-container'>
-        <div class='welcome-message'>
-            <p class='large-title'>Welcome to the WorkHunt</p>
-            <p class='subtitle'>The newest job search service!</p>
+
+<div class='slider' id='slider-field'>
+    <div class='slides'>
+        <input type="radio" name="radio-button" id="sr1">
+        <input type="radio" name="radio-button" id="sr2">
+        <input type="radio" name="radio-button" id="sr3">
+        <input type="radio" name="radio-button" id="sr4">
+        <div class='slide first'></div>
+        <div class='slide'></div>
+        <div class='slide'></div>
+        <div class='slide'></div>
+        <div class='auto-navigation'>
+            <div class='auto-1'></div>
+            <div class='auto-2'></div>
+            <div class='auto-3'></div>
+            <div class='auto-4'></div>
         </div>
-        <div class='start-button-container'>
-            <% if user_signed_in? %>
-                <% if current_user.person? %>
-                    <%= link_to 'TO THE HUNT!', vacancies_path, class: ['large-button'] %>
+        <div class='manual-navigation'>
+            <label for='sr1' class='manual'></label>
+            <label for='sr2' class='manual'></label>
+            <label for='sr3' class='manual'></label>
+            <label for='sr4' class='manual'></label>
+        </div>
+        <div class='greatings-container'>
+            <div class='welcome-message'>
+                <p class='large-title'>Welcome to the WorkHunt</p>
+                <p class='subtitle'>The newest job search service!</p>
+            </div>
+            <div class='start-button-container'>
+                <% if user_signed_in? %>
+                    <% if current_user.person? %>
+                        <%= link_to 'TO THE HUNT!', vacancies_path, class: ['large-button'] %>
+                    <% else %>
+                        <%= link_to 'TO THE HUNT!', cvs_path, class: ['large-button'] %>
+                    <% end %>
                 <% else %>
-                    <%= link_to 'TO THE HUNT!', cvs_path, class: ['large-button'] %>
-                <% end %>
-            <% else %>
-                <%= link_to 'START NOW', new_sessions_path, class: ['large-button'] %>
-            <% end %>  
+                    <%= link_to 'START NOW', new_sessions_path, class: ['large-button'] %>
+                <% end %>  
+            </div>
         </div>
     </div>
 </div>
+
 <%= javascript_include_tag 'slider_resizing' %>
+<%= javascript_include_tag 'auto_slider' %>
