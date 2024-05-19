@@ -23,8 +23,9 @@ class User < ApplicationRecord
     
     before_validation :downcase_login
 
-    def notify(message)
-        notifications.create(message: message)
+    def notify(message, path)
+        url = Rails.application.routes.url_helpers.send(path)
+        notifications.create(message: message, link: url)
     end
     
     private 
