@@ -7,6 +7,7 @@ class User < ApplicationRecord
     has_one :person, ->(user) { where(user_id: user.id) }, dependent: :destroy, foreign_key: :user_id, inverse_of: :user
     has_one :organization, ->(user) { where(user_id: user.id) }, dependent: :destroy, foreign_key: :user_id, inverse_of: :user
     has_one :avatar, as: :imageable, dependent: :destroy
+    has_many :notifications, dependent: :destroy
     accepts_nested_attributes_for :person, :organization, :avatar
 
     attr_accessor :old_password
@@ -22,6 +23,10 @@ class User < ApplicationRecord
     
     before_validation :downcase_login
 
+    def notify(message)
+        notifications.create(message: message)
+    end
+    
     private 
 
     def downcase_login

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_17_180822) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_19_150413) do
   create_table "avatars", force: :cascade do |t|
     t.string "image"
     t.string "imageable_type", null: false
@@ -88,6 +88,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_17_180822) do
     t.string "title"
     t.index ["address", "user_id"], name: "index_links_on_address_and_user_id", unique: true
     t.index ["user_id"], name: "index_links_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "message", null: false
+    t.boolean "read", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -173,6 +182,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_17_180822) do
   add_foreign_key "experiences", "cvs"
   add_foreign_key "languages", "cvs"
   add_foreign_key "links", "users"
+  add_foreign_key "notifications", "users"
   add_foreign_key "organizations", "users"
   add_foreign_key "people", "users"
   add_foreign_key "telephones", "users"
