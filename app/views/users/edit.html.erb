@@ -7,7 +7,16 @@
         <h2>Account information:</h2>
         <div class='pair-container edit'>
             <div class='pair-single-container edit icon'>
-                 <div class='icon-placeholder form-field'></div>
+                <%= form.fields_for :avatar, @user.avatar do | avatar_fields | %>
+                    <%= avatar_fields.label :image %>
+                    <div class='icon-placeholder form-field'>
+                        <% if @user.avatar.image.present? %>
+                            <%= image_tag @user.avatar.image.url %>
+                        <% end %>
+                    </div>
+                    <%= avatar_fields.file_field :image %>
+                    <%= render 'shared/form_error', model: @user.avatar, parametr: :image %>
+                <% end %>
             </div>
             <div class='pair-single-container edit'>
                 <div class='form-field'>

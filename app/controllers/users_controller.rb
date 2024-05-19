@@ -31,8 +31,9 @@ class UsersController < ApplicationController
     end
     
     def edit
-        @user.build_person unless @user.person
-        @user.build_organization unless @user.organization
+        @user.build_avatar unless @user.avatar.present?
+        @user.build_person if @user.person? && !@user.person.present?
+        @user.build_organization if @user.organization? && !@user.organization.present?
     end
 
     def update
@@ -47,6 +48,8 @@ class UsersController < ApplicationController
                 current_params.except(:password_confirmation, :old_password)
             end
         end
+
+        @user.build_avatar if @user.avatar.present?
 
         if @user.update(current_params)
             flash[:success] = "Data changed successfully"
@@ -71,7 +74,8 @@ class UsersController < ApplicationController
         params.require(:user).permit(
             :login, :password, :password_confirmation, :old_password,
             person_attributes: [:id, :name, :surname, :sex, :DOB, :about],
-            organization_attributes: [:id, :name, :about]
+            organization_attributes: [:id, :name, :about],
+            avatar_attributes: [:image]
         )
     end
 
