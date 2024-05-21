@@ -75,15 +75,45 @@
     /*border: 3px dashed yellow;*/
     width: 45%;
 }
+.pair-single-container.edit.icon {
+    display: block;
+}
+.pair-single-container.edit.icon :not(:first-child) {
+    margin-top: 5px;
+}
+.pair-single-container.edit.icon input[type=file]{
+    transition-duration: 0.4s;
+    border-radius: 10px;
+}
+.pair-single-container.edit.icon input[type=file]:hover{
+    background-color: #1e1b2242;
+}
+
 @media only screen and (max-width: 985px) {
     .pair-single-container.edit {
         width: 100%;
     }
+    .pair-single-container.edit.icon {
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .pair-single-container.edit.icon *{
+        font-size: 16px;
+    }
 }
-.pair-single-container.edit .icon-placeholder {
+.pair-single-container.edit .icon-container img {
     width: 180px;
     height: 180px;
 }
+
+.pair-single-container.edit .icon-container {
+    width: 180px;
+    height: 180px;
+}
+
 @media only screen and (max-width: 610px) {
     .profile.form h2 {
         font-size: 14px;
@@ -91,15 +121,28 @@
         margin-left: 0px;
         margin-bottom: 5px;
     }
-    .pair-single-container.edit .icon-placeholder {
+    .pair-single-container.edit .icon-container img {
         display: inline-block;
         text-align: center;
         width: 100px;
         margin-top: 0px;
         height: 100px;
     }
+
+    .pair-single-container.edit .icon-container {
+        display: inline-block;
+        text-align: center;
+        width: 100px;
+        margin-top: 0px;
+        height: 100px;
+    }
+
     .pair-single-container.edit.icon {
         display: flex;
         justify-content: center;
+    }
+
+    .pair-single-container.edit.icon *{
+        font-size: 12px;
     }
 }

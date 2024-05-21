@@ -9,9 +9,11 @@
             <div class='pair-single-container edit icon'>
                 <%= form.fields_for :avatar, @user.avatar do | avatar_fields | %>
                     <%= avatar_fields.label :image %>
-                    <div class='icon-placeholder form-field'>
-                        <% if @user.avatar.image.present? %>
+                    <div class='icon-container'>
+                        <% if @user.avatar.present? %>
                             <%= image_tag @user.avatar.image.url %>
+                        <% else %>
+                            <%= image_tag 'icons/Profile.png' %>
                         <% end %>
                     </div>
                     <%= avatar_fields.file_field :image %>

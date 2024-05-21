@@ -1,12 +1,18 @@
+<% 
+person = Person.find(cv.person_id) 
+user = User.find(person.user_id)
+%>
 <div class='brief-card'>
-    <div class='icon-placeholder'></div>
+    <div class='icon-container'>
+        <% if user.avatar.present? %>
+            <%= image_tag user.avatar.image.url %>
+        <% else %>
+            <%= image_tag 'icons/Profile.png' %>
+        <% end %>
+    </div>
     <div class='brief-card-info cv-info'>
         <div class='top-line-container'>
             <div class='top-line-element'>
-                <% 
-                    person = Person.find(cv.person_id) 
-                    user = User.find(person.user_id)
-                %>
                 <h2><%= link_to "#{person.name} #{person.surname}", show_user_path(user) %></h2>
             </div>
             <div class='brief-card-buttons'>

@@ -1,4 +1,8 @@
 <% provide :page_title, "Vacancy: #{@vacancy.title}" %>
+<% 
+organization = Organization.find(@vacancy.organization_id)
+user = User.find(organization.user_id)
+%>
 <div class='brief-card-info status'>
     <div class='detailed-tag-info vacancy-tag'>
         <p>Vacancy status:</p>
@@ -10,7 +14,13 @@
     </div>
 </div>
 <div class='brief-card'>
-    <div class='icon-placeholder'></div>
+    <div class='icon-container'>
+        <% if user.avatar.present? %>
+            <%= image_tag user.avatar.image.url if user.avatar.present? %>
+        <% else %>
+            <%= image_tag 'icons/Profile.png' %>
+        <% end %>
+    </div>
     <div class='brief-card-info'>
         <div class='top-line-container'>
             <div class='top-line-element'>
@@ -21,10 +31,6 @@
             </div>
         </div>
         <p>
-            <% 
-                organization = Organization.find(@vacancy.organization_id)
-                user = User.find(organization.user_id)
-            %>
             <%= link_to "#{organization.name}", show_user_path(user) %>
             <% if @vacancy.country.present? || @vacancy.city.present? %>
                 <%= image_tag 'menuIcons/locationIcon.png' %>

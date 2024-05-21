@@ -100,7 +100,7 @@
 }
 
 @media only screen and (max-width: 600px) {
-   .icon-placeholder
+   .icon-container img
    {
        width: 80px;
        height: 80px;
