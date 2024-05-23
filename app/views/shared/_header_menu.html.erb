@@ -8,6 +8,18 @@
         </div>
         <div class="header-element">
             <% if user_signed_in? %>
+                <div class="notifications-button" id="notifications-button">
+                    <%# Класс можешь менять, id не трогай %>
+                    <%# Добавить иконку и поверх иконки число, если не равно 0 %>
+                    <%# Получить число: %>
+                    <% if current_user.notifications.where(read: false).count > 0 %>
+                        <span><%= current_user.notifications.where(read: false).count %></span>
+                    <% end %>
+                </div>
+                <div class="account-menu" id="notifications-container" style="display: none">
+                    <%= render current_user.notifications.order(created_at: :desc) %>
+                </div>
+                <%= javascript_include_tag 'notifications', async: true %>
                 <div class="dropdown">
                     <span class="account-button"><%= current_user[:login] %></span>
                     <span class="small-button">...</span>
@@ -56,16 +68,6 @@
                             Log out
                         <% end %></li>
                     </ul>
-                    <span class="notifications-button" id="notifications-button">
-                        <%# Класс можешь менять, id не трогай %>
-                        <%# Добавить иконку и поверх иконки число, если не равно 0 %>
-                        <%# Получить число: %>
-                        <%= current_user.notifications.where(read: false).count %>
-                    </span>
-                    <div class="account-menu" id="notifications-container" style="display: none">
-                        <%= render current_user.notifications.order(created_at: :desc) %>
-                    </div>
-                    <%= javascript_include_tag 'notifications', async: true %>
                 </div>
             <% else %>
                 <div class="dropdown">

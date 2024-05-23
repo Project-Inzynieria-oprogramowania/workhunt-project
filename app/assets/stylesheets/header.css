@@ -134,6 +134,7 @@
     position: relative;
     margin-left: 20px;
     margin-right: 20px;
+    align-items: center;
 }
 
 .small-width-menu {
@@ -160,7 +161,36 @@
     border: 3px dashed #d7b064;
     color: #d7b064;
 }
-
+/* */
+.notifications-button {
+    width: 40px;
+    height: 40px;
+    background-image: url(menuIcons/notification.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment:local;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition-duration: 0.4s;
+    margin-right: 10px;
+}
+.notifications-button:hover{
+    filter: brightness(1.2);
+}
+.notifications-button span {
+    font-weight: 600;
+}
+.header-limit .header-element:last-of-type {
+    margin-right: 15px;
+    margin-left: 15px;
+}
+#notifications-container.account-menu {
+    top: 100%;
+    right: 60%;
+}
+/* */
 @media only screen and (max-width: 600px) 
 {
     .logo-link img {
@@ -184,6 +214,10 @@
     }
     .top-banner {
         padding: 1vh 0;
+    }
+    .notifications-button {
+        width: 30px;
+        height: 30px;
     }
 }
 @media (max-width: 350px) {
