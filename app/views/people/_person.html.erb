@@ -1,4 +1,35 @@
-<%# 
-    Нужно как-то дать ссылку на страницу пользователя и краткое инфо
-    Как-то: похоже на визитку CV
-%>
+<div class='brief-card'>
+    <div class='icon-placeholder'></div>
+    <div class='brief-card-info cv-info'>
+        <div class='top-line-container'>
+            <div class='top-line-element'>
+                <% 
+                    user = User.find(person.user_id)
+                %>
+                <%= link_to show_user_path(user) do %>
+                    <h2><%= person.name %> <%= person.surname %></h2>
+                <% end %>
+            </div>
+            <div class='brief-card-buttons'>
+                <% if user_signed_in? && current_user.id != user.id %>
+                    <a><div class='corner-link'><%= image_tag 'menuIcons/add-to-favourites.png' %></div></a>
+                <% end %>
+            </div>
+        </div>
+        <div class='detailed-tag-info'><span>Sex:</span> <p><%= person.sex %></p></div>
+        <div class='detailed-tag-info'>
+            <span>DOB:</span> 
+            <p>
+            <% if person.DOB.present? %>
+                <%= person.DOB %>
+            <% else %>
+                unknown
+            <% end %>
+            </p>
+        </div>
+        <% if person.about.present? %>
+            <h4>About me:</h4>
+            <p><%= truncate person.about , length: 200 %></p>
+        <% end %>
+    </div>
+</div>

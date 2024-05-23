@@ -9,25 +9,37 @@
 <% end %>
 
 <% if current_user.organization? %>
-    <div class='limitation-container' >
-        <%= form_with model: @response, url: response_path, method: :patch do | form | %>
-            <div class='form-field'>
-                <%= form.label :comments %>
-                <%= form.text_area :comments %>
-            </div>
-            <div class='form-field'>
-                <%= form.label :status %>
-                <%= form.collection_select :status, VacancyResponse.statuses.keys, :to_s, :to_s, { selected: @response.status }  %>
-            </div>
-            <%= form.submit "Update info", class: 'button' %>
-        <% end %>
-    </div>
-<% else %>
-    <div class='limitation-container' >
-        <div class='top-line-container'>
-            <p>Status: <%= @response.status %></p>
-            <%= button_to "Remove response", response_path, method: :delete, class: "button" %>
+        <% provide :page_title, "Candidate: #{@response.person.name} #{@response.person.surname}" %>
+        <div class='form responses'>
+            <%= form_with model: @response, url: response_path, method: :patch do | form | %>
+                <div class='form-field'>
+                    <%= form.label :comments %>
+                    <%= form.text_area :comments %>
+                </div>
+                <div class='top-line-container'>
+                    <div class='form-field'>
+                        <%= form.label :status %>
+                        <%= form.collection_select :status, VacancyResponse.statuses.keys, :to_s, :to_s, { selected: @response.status }  %>
+                    </div>
+                    <%= form.submit "Send response", class: 'button' %>
+                </div>
+            <% end %>
         </div>
-        <p>Comments: <% if @response.comments.present? %> <%= @response.comments %> <% else %> No comments <% end %></p>
+<% else %>
+    <% provide :page_title, "Application for #{Vacancy.find(@response.vacancy_id).title}" %>
+    <div class='brief-card-info status response'>
+            <div class='top-line-container'>
+                <div class="detailed-tag-info initial <%= @response.status %> 
+                <%= 'accepted' if @response.status == 'accepted' ||  @response.status == 'internship_offered'%> 
+                <%= 'rejected' if @response.status == 'rejected' %>
+                <%= 'neutral' if @response.status  ==  'under_consideration' || @response.status  ==  'interview_scheduled' || @response.status  ==  'reserved'%>">
+                    <p>Status: </p> <span><%= @response.status %></span>
+                </div>
+                <%= button_to "Withdraw application", response_path, method: :delete, class: "button" %>
+            </div>
+    </div>
+    <div class='brief-card responses-comment'>
+        <p>Comments:</p>
+        <p class='about-user detailed-tag-info'><% if @response.comments.present? %> <%= @response.comments %> <% else %> No comments <% end %></p>
     </div>
 <% end %>

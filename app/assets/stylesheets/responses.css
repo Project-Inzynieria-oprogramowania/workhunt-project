@@ -1,0 +1,88 @@
+.brief-card-info.status.response * {
+    margin-top: 0px;
+}
+.brief-card-info.status.response.overview {
+    box-shadow: 0px 8px 10px 2px rgba(0, 0, 0, 0.300);
+    padding: 20px;
+    background-image: linear-gradient(#302A33, #3b2e43);
+    width: calc(100% - 40px);
+    border-radius: 10px;
+    min-width: calc(300px - 40px);
+}
+.brief-card-info.status.response.overview .brief-card:first-child{
+    background-image: none;
+    box-shadow: none;
+    min-width: 200px;
+}
+.responses-comment p:nth-child(2) {
+    margin-top: 0px;
+}
+.responses-comment p:first-child{
+    width: 90%;
+    display: inline-block;
+    text-align: left;
+    padding: 10px 0;
+    color:#F4D18C;
+    font-weight: 600;
+}
+@media only screen and (max-width: 600px) {
+    .responses-comment p:first-child {
+        width: 80%;
+    }
+}
+.form.responses {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 10px 0px;
+}
+.form.responses .top-line-container div:nth-child(1) {
+    padding: 0;
+    margin: 0;
+}
+.form.responses div:first-of-type {
+    margin-top: 0px;
+}
+.form.responses .top-line-container {
+    width: 80%;
+    margin: 0 auto;
+}
+.form.responses label {
+    font-weight: 600;
+    color:#F4D18C;
+}
+.form.responses select {
+    min-width: 100px;
+}
+@media only screen and (max-width: 400px) {
+    .form.responses .top-line-container .button {
+        display: block;
+        margin: 10px auto;
+    }
+    .form.responses .top-line-container {
+        display: block;
+    }
+}
+.brief-card-info.status.response.overview.vacancy-card {
+    width: calc(100% - 10px);
+    min-width: calc(300px - 10px);
+    padding: 5px 5px;
+    max-width: none;
+    margin-top: 0px;
+    border-radius: 0px;
+}
+.brief-card-info.status.response.overview.vacancy-card .brief-card {
+    max-width: 1080px;
+}
+.detailed-tag-info.rejected span {
+    color: #f70202;
+}
+.detailed-tag-info.accepted span {
+    color: #0a9f37;
+}
+.detailed-tag-info.neutral span{
+    color: #9090ff;
+}
+.detailed-tag-info.initial span{
+    font-weight: 600;
+}
