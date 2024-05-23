@@ -1,3 +1,7 @@
 <div class="notification-block <%= 'unread' unless notification.read %>">
-    <p><%= notification.message %></p>
+    <% if notification.link.present? %>
+        <%= link_to notification.message, notification.link, method: :patch %>
+    <% else %>
+        <p><%= notification.message %></p>
+    <% end %>
 </div>

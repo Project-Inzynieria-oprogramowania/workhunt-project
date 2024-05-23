@@ -12,12 +12,8 @@
                     <span class="account-button"><%= current_user[:login] %></span>
                     <span class="small-button">...</span>
                     <ul class="account-menu">
-                        <li class="small-width-menu">
-                            <%= current_user[:login] %>
-                        </li>
-                        <li class="small-width-menu">
-                            <hr>
-                        </li> 
+                        <li class="small-width-menu"><%= current_user[:login] %></li>
+                        <li class="small-width-menu"><hr></li> 
                         <li>
                             <%= link_to show_user_path(current_user) do %>
                                 <%= image_tag 'menuIcons/human.png' %>
@@ -31,20 +27,22 @@
                             <% end %>
                         </li>
                         <li>
-                            <% if current_user.person.cv.present? %>
-                                <%= link_to show_cv_path(current_user.person.cv) do %>
-                                    <%= image_tag 'menuIcons/cv-icon.png' %>
-                                    My CV
-                                <% end %>
-                            <% elsif user_signed_in? && current_user.person? %>
-                                <%= link_to new_cv_path do %>
-                                    <%= image_tag 'menuIcons/cv-icon.png' %>
-                                    Create CV
+                            <% if current_user.person? %>
+                                <% if current_user.person.cv.present? %>
+                                    <%= link_to show_cv_path(current_user.person.cv) do %>
+                                        <%= image_tag 'menuIcons/cv-icon.png' %>
+                                        My CV
+                                    <% end %>
+                                <% else %>
+                                    <%= link_to new_cv_path do %>
+                                        <%= image_tag 'menuIcons/cv-icon.png' %>
+                                        Create CV
+                                    <% end %>
                                 <% end %>
                              <% end %>
                         </li>
                         <li>
-                            <% if user_signed_in? && current_user.person? %>
+                            <% if current_user.person? %>
                                 <%= link_to user_responses_path do %>
                                     <%= image_tag 'menuIcons/responses-icon.png' %>
                                     Responses
@@ -58,6 +56,16 @@
                             Log out
                         <% end %></li>
                     </ul>
+                    <span class="notifications-button" id="notifications-button">
+                        <%# Класс можешь менять, id не трогай %>
+                        <%# Добавить иконку и поверх иконки число, если не равно 0 %>
+                        <%# Получить число: %>
+                        <%= current_user.notifications.where(read: false).count %>
+                    </span>
+                    <div class="account-menu" id="notifications-container" style="display: none">
+                        <%= render current_user.notifications.order(created_at: :desc) %>
+                    </div>
+                    <%= javascript_include_tag 'notifications', async: true %>
                 </div>
             <% else %>
                 <div class="dropdown">
