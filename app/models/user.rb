@@ -23,11 +23,15 @@ class User < ApplicationRecord
     
     before_validation :downcase_login
 
-    def notify(message, path)
-        url = Rails.application.routes.url_helpers.send(path)
-        notifications.create(message: message, link: url)
+    def notify(message, path_method, **path_params)
+        if Rails.application.routes.url_helpers.respond_to?(path_method)
+            url = Rails.application.routes.url_helpers.send(path_method, path_params.merge(only_path: false, host: Rails.root))
+            notifications.create(message: message, link: url)
+        else
+            raise ArgumentError, "Invalid path method: #{path_method}"
+        end
     end
-    
+
     private 
 
     def downcase_login

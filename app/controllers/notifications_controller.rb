@@ -1,13 +1,9 @@
 class NotificationsController < ApplicationController
     before_action :check_authenticate
-  
-    def index
-        @notifications = current_user.notifications.order(created_at: :desc)
-    end
-  
-    def mark_as_read
-        @notification = current_user.notifications.find(params[:id])
-        @notification.update(read: true)
-        redirect_back fallback_location: root_path
+    
+    def marks_as_read
+        current_user.notifications.each do | notification |
+            notification.update(read: true)
+        end
     end
 end

@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   root :to => "home#index"
   
-  resources :notifications, only: [:index] do
-    member do
-      patch :mark_as_read
+  resources :notifications, only: [] do
+    collection do
+      patch :marks_as_read
     end
   end
   resource :user, except: [:index, :destroy, :show] do    
