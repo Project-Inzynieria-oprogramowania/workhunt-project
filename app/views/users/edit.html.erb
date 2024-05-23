@@ -10,7 +10,7 @@
                 <%= form.fields_for :avatar, @user.avatar do | avatar_fields | %>
                     <%= avatar_fields.label :image %>
                     <div class='icon-container'>
-                        <% if @user.avatar.present? %>
+                        <% if @user.avatar.image? %>
                             <%= image_tag @user.avatar.image.url %>
                         <% else %>
                             <%= image_tag 'icons/Profile.png' %>
@@ -105,12 +105,13 @@
             <% end %>
         <% end %>
         <div class='pair-container control-buttons'>
-            <%= form.submit 'Confirm changes', class: 'button disable', disabled: true %>
+            <%= form.submit 'Confirm changes', class: 'button' %>
+            <%# <%= form.submit 'Confirm changes', class: 'button disable', disabled: true %>
             <%# <%= button_to "Delete account", user_destroy_path(@user), method: :delete, confirm: 'Are you sure you want to delete account?', class: 'button delete-button' %>
         </div>
     </div>
 <% end %>
-<%= javascript_include_tag 'disable_submit', async: true %>
+<%# <%= javascript_include_tag 'disable_submit', async: true %>
 
 <div class='form profile'>
     <h2>Phone numbers:</h2>

@@ -106,7 +106,11 @@ user = User.find(organization.user_id)
         <div class='detailed-tag-info vacancy-tag skill'>
             <p>Mandatory skills:</p>
             <% if @vacancy.skills_mandatory.present? %>  
-                <span><%= @vacancy.skills_mandatory %></span>
+                <ul>
+                    <% @vacancy.skills_mandatory.split("\\n").each do | skill | %>
+                        <li><span><%= skill %></span></li>
+                    <% end %>
+                </ul>
             <% else %>
                 <span>None</span>
             <% end %>
@@ -114,7 +118,11 @@ user = User.find(organization.user_id)
         <div class='detailed-tag-info vacancy-tag skill'>
             <p>Optional skills:</p>
             <% if @vacancy.skills_optional.present? %>  
-                <span><%= @vacancy.skills_optional %></span>
+                <ul>
+                    <% @vacancy.skills_optional.split("\\n").each do | skill | %>
+                        <li><span><%= skill %></span></li>
+                    <% end %>
+                </ul>
             <% else %>
                 <span>None</span>
             <% end %>

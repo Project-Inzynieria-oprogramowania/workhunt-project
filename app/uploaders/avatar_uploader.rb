@@ -30,7 +30,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb do
-    process resize_to_fit: [50, 50]
+    process resize_to_fit: [200, 200]
   end
 
   # Add an allowlist of extensions which are allowed to be uploaded.
@@ -45,7 +45,19 @@ class AvatarUploader < CarrierWave::Uploader::Base
     "avatar-#{secure_token}.#{file.extension}" if original_filename
   end
 
+  process :crop_to_square
+
   private
+
+  def crop_to_square
+    manipulate! do |img|
+      size = [img[:width], img[:height]].min
+      x = (img[:width] - size) / 2
+      y = (img[:height] - size) / 2
+      img.crop("#{size}x#{size}+#{x}+#{y}")
+      img
+    end
+  end
 
   def secure_token
     var = :"@#{mounted_as}_secure_token"

@@ -48,8 +48,12 @@ class UsersController < ApplicationController
                 current_params.except(:password_confirmation, :old_password)
             end
         end
-
-        @user.build_avatar if @user.avatar.present?
+        
+        if current_params[:avatar_attributes][:image].blank? 
+            current_params = current_params.except(:avatar_attributes)
+        else
+            @user.build_avatar if @user.avatar.present?
+        end
 
         if @user.update(current_params)
             flash[:success] = "Data changed successfully"
