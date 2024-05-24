@@ -22,7 +22,13 @@ user = @cv.person.user
             <p><%= @cv.about %></p><br>
             <hr>
             <h3>SKILLS:</h3>
-            <p><%= @cv.skills %></p><br>
+            <ul>
+                <% @cv.skills.split("\n").each do | skill | %>
+                    <% if skill.strip.match?(/\w/) %>
+                        <li><p>-<%= skill %></p></li>
+                    <% end %>
+                <% end %>
+            </ul><br>
             <hr>
             <h3>INTERESTS:</h3>
             <p><%= @cv.interests %></p><br>

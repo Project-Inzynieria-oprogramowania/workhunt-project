@@ -107,8 +107,10 @@ user = User.find(organization.user_id)
             <p>Mandatory skills:</p>
             <% if @vacancy.skills_mandatory.present? %>  
                 <ul>
-                    <% @vacancy.skills_mandatory.split("\\n").each do | skill | %>
-                        <li><span><%= skill %></span></li>
+                    <% @vacancy.skills_mandatory.split("\n").each do | skill | %>
+                        <% if skill.strip.match?(/\w/) %>
+                            <li><span><%= skill %></span></li>
+                        <% end %>
                     <% end %>
                 </ul>
             <% else %>
@@ -119,8 +121,10 @@ user = User.find(organization.user_id)
             <p>Optional skills:</p>
             <% if @vacancy.skills_optional.present? %>  
                 <ul>
-                    <% @vacancy.skills_optional.split("\\n").each do | skill | %>
-                        <li><span><%= skill %></span></li>
+                    <% @vacancy.skills_optional.split("\n").each do | skill | %>
+                        <% if skill.strip.match?(/\w/) %>
+                            <li><span><%= skill %></span></li>
+                        <% end %>
                     <% end %>
                 </ul>
             <% else %>

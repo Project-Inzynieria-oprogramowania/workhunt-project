@@ -321,3 +321,6 @@
         height: auto;
     }
 }
+.pair-container .cv.pair-single-container:first-child ul {
+    list-style: none;
+}

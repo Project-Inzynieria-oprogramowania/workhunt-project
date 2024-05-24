@@ -191,3 +191,15 @@
 .brief-card .button{
     margin-bottom: 20px
 }
+.brief-card-info .detailed-tag-info.vacancy-tag.skill ul li{
+    text-align: left;
+    background-image: url(menuIcons/old-notification-icon.png);
+    background-size: 8px 8px;
+    background-repeat: no-repeat;
+    background-position: left;
+    background-origin: content-box;
+}
+.brief-card-info .detailed-tag-info.vacancy-tag.skill ul span{
+    padding-left: 18px;
+    max-width: calc(100% - 18px);
+}

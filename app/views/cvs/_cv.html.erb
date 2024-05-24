@@ -13,7 +13,7 @@ user = person.user
     <div class='brief-card-info cv-info'>
         <div class='top-line-container'>
             <div class='top-line-element'>
-                <h2><%= link_to "#{person.name} #{person.surname}", show_user_path(user) %></h2>
+                <h2><%= link_to "#{person.name} #{person.surname}", show_cv_path(user.person.cv) %></h2>
             </div>
             <div class='brief-card-buttons'>
                 <% if user_signed_in? && current_user.organization? %>
