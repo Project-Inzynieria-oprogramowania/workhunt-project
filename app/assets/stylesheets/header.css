@@ -207,6 +207,9 @@
     width: 30vw;
     min-width: 400px;
     font-style: italic;
+    max-height: 80vh;
+    max-width: 800px;
+    overflow-y: auto;
 }
 #notifications-container.account-menu:hover #notifications-button img:first-child{
     filter: brightness(1.2);

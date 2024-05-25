@@ -41,7 +41,7 @@
                                 Edit Account
                             <% end %>
                         </li>
-                        <li class="<%= 'active' if controller_name == 'cvs' && (action_name == 'new' || action_name == 'show') && @cv.person.user_id == current_user.id  %>">
+                        <li class="<%= 'active' if controller_name == 'cvs' && (action_name == 'new' || (action_name == 'show' && @cv.person.user_id == current_user.id)) %>">
                             <% if current_user.person? %>
                                 <% if current_user.person.cv.present? %>
                                     <%= link_to show_cv_path(current_user.person.cv) do %>
