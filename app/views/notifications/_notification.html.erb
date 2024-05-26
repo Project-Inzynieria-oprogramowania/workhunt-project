@@ -1,11 +1,11 @@
 <% if notification.link.present? %>
     <%= link_to notification.link, method: :patch do %>
-        <div class="notification-block <%= 'unread' unless notification.read %>">
+        <div class="notification-block <%= 'unread' unless notification.read %>" data-id="<%= notification.id %>">
             <p><%= notification.message %></p>
         </div>
     <% end %>
 <% else %>
-    <div class="notification-block <%= 'unread' unless notification.read %>">
+    <div class="notification-block <%= 'unread' unless notification.read %>" data-id="<%= notification.id %>">
         <p><%= notification.message %></p>
     </div>
 <% end %>

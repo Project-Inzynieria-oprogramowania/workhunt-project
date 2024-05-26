@@ -10,19 +10,18 @@
             <% if user_signed_in? %>
                 <div class="notifications-button" id="notifications-button">
                     <% if current_user.notifications.where(read: false).count > 0 %>
-                        <span><%= current_user.notifications.where(read: false).count %></span>
-                        <%= image_tag 'menuIcons/new-notification-received.png'%>
-                    <% else %>
-                         <%= image_tag 'menuIcons/notification-received.png'%>
+                        <div id="notification-counter"><%= current_user.notifications.where(read: false).count %></div>
                     <% end %>
+                    <%= image_tag 'menuIcons/notifications.svg'%>
                     <div class="account-menu" id="notifications-container" style="display: none">
                         <% if current_user.notifications.count > 0 %>
                             <%= render current_user.notifications.order(created_at: :desc) %>
                         <% else %>
-                            Wow, there is nothing here...
+                            No notifications
                         <% end %>
                     </div>
                 </div>
+                <%= javascript_include_tag 'notifications', async: true %>
                 <div class="dropdown" id="menu-button">
                     <span class="account-button"><%= current_user[:login] %></span>
                     <span class="small-button">...</span>
@@ -84,5 +83,4 @@
     </div>  
 </div>
 
-<%= javascript_include_tag 'notifications', async: true %>
-<%= javascript_include_tag 'menu', async: true %>
+<%= javascript_include_tag 'menu_dropdown', async: true %>

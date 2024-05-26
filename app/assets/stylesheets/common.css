@@ -68,7 +68,6 @@ html {
     /*box-shadow: 6px 8px 8px 1px rgba(0,0,0,0.4);*/
     display: block;
 }
-
 .detailed-tag-info
 {
     font-size: 16px;
@@ -94,7 +93,6 @@ html {
     font-size: 14px !important;
     padding: 0;
 }
-
 a.detailed-tag-info {
     background-color: #523063;
     border: 3px dashed #a260c3;
@@ -116,6 +114,18 @@ a.detailed-tag-info:hover span {
 a.detailed-tag-info:active {
     transform: translateY(4px);
 }
+hr.division-line {
+    display: block;
+    border: 0;
+    border-top: 5px dashed #262229;
+    margin: 1em 0;
+}
+.paragraph-profile-title {
+    font-size: 25px;
+    text-align: left;
+    padding: 0 4%;
+    color: #f4d18c;
+}
 
 @media only screen and (max-width: 600px) {
     .detailed-tag-info
@@ -133,34 +143,19 @@ a.detailed-tag-info:active {
     {
        font-size: 10px; 
     }
- }
- hr.division-line {
-    display: block;
-    border: 0;
-    border-top: 5px dashed #262229;
-    margin: 1em 0;
 }
 @media only screen and (max-width: 500px) {
     hr.division-line {
         margin: 0.5em 0;
     }
 }
-.paragraph-profile-title
-{
-   font-size: 25px;
-   text-align: left;
-   padding: 0 4%;
-   color: #f4d18c;
-}
 @media only screen and (max-width: 600px) {
-    .paragraph-profile-title
-    {
+    .paragraph-profile-title {
        font-size: 18px;
        padding: 0 9%;
     }
-    h4 
-    {
+    h4 {
         font-size: 12px !important;
         word-wrap: normal !important;
     }
- }
+}

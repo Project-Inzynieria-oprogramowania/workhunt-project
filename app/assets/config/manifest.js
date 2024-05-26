@@ -11,4 +11,4 @@
 //= link dynamic_search.js
 //= link notifications.js
 //= link auto_slider.js
-//= link menu.js
+//= link menu_dropdown.js

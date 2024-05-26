@@ -60,7 +60,7 @@
     background-color: #E7E7E7;
     min-width: 160px;
     box-shadow: -6px 8px 8px 1px rgba(0,0,0,0.4);
-    z-index: 1;
+    z-index: 2;
     list-style-type: none;
     border-radius: 5px;
     padding: 10px 0px 10px 0px;
@@ -166,90 +166,12 @@
     border: 3px dashed #d7b064;
     color: #d7b064;
 }
-/* notifications */
-.notifications-button {
-    display: flex;
-    transition-duration: 0.4s;
-    margin-right: 10px;
-    position: relative;
-    text-align: center;
-    cursor: pointer;
-}
-.notifications-button img {
-    width: 45px;
-    height: 45px;
-    transition-duration: 0.2s;
-}
-.notifications-button span {
-    position: absolute;
-    bottom: 1px;
-    right: 5px;
-    font-size: 14px;
-    color: white !important;
-    transition-duration: 0.2s;
-    z-index: 10;
-    font-weight: 600;
-}
-.notifications-button:hover img:first-of-type{
-    filter: brightness(1.2) drop-shadow(0px 0px 10px #9f62be);
-}
-.notifications-button:active img, .notifications-button:active span{
-    transform: translateY(2px);
-    filter: brightness(0.9);
-}
+
 .header-limit .header-element:last-of-type {
     margin-right: 15px;
     margin-left: 15px;
 }
-#notifications-container.account-menu {
-    top: 102%;
-    right: 12%;
-    width: 30vw;
-    min-width: 400px;
-    font-style: italic;
-    max-height: 80vh;
-    max-width: 800px;
-    overflow-y: auto;
-}
-#notifications-container.account-menu:hover #notifications-button img:first-child{
-    filter: brightness(1.2);
-}
-.notification-block {
-    padding: 10px 5px;
-    text-align: left;
-    transition-duration: 0.4s;
-    background-color:#c9c9c939;
-    background-image: url(menuIcons/old-notification-icon.png);
-    background-size: 20px 20px;
-    background-repeat: no-repeat;
-    background-position: left;
-    background-origin: content-box;
-}
-.notification-block a,
-.notification-block p{
-    padding-left: 25px;
-    display: block;
-}
-.notification-block:hover {
-    background-color:#c9c9c981;
-}
-.unread.notification-block {
-    background-color:#9f62be32;
-    background-image: url(menuIcons/new-notification-icon.png);
-}
-.unread.notification-block a,
-.unread.notification-block p{
-    color:#5b2775;
-}
-.unread.notification-block:hover {
-    background-color:#9f62be55
-}
-#notifications-container.account-menu .notification-block:not(:last-of-type),
-#notifications-container.account-menu a:not(:last-child),
-#notifications-container.account-menu p:not(:last-child){
-    margin-bottom: 10px;
-    display: block;
-}
+
 /* */
 @media only screen and (max-width: 600px) 
 {
@@ -275,45 +197,10 @@
     .top-banner {
         padding: 1vh 0;
     }
-    .notifications-button img{
-        width: 40px;
-        height: 40px;
-    }
-    .notifications-button span {
-        position: absolute;
-        bottom: 2px;
-        right: 5px;
-        font-size: 12px;
-        color: white !important;
-    }
-    #notifications-container.account-menu {
-        min-width: 290px;
-    }
-    .notification-block a,
-    .notification-block p{
-        font-size: 14px;
-        padding-left: 20px;
-    }
-    .notification-block {
-        padding: 4px 6px;
-        background-size: 14px 14px;
-    }
-    #notifications-container.account-menu .notification-block:not(:last-of-type),
-    #notifications-container.account-menu a:not(:last-child),
-    #notifications-container.account-menu p:not(:last-child){
-        margin-bottom: 5px;
-    }
 }
 @media (max-width: 350px) {
     .small-Button {
         font-size: 10px;
-    }
-    #notifications-container.account-menu {
-        min-width: 240px;
-    }
-    .notification-block a,
-    .notification-block p{
-        font-size: 12px;
     }
 }
 .account-menu li.active a {

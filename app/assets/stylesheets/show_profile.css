@@ -61,77 +61,72 @@
    margin: 2vh auto;
    width: 98%;
 }
- .about-user
- {
-    text-align: left;
-    position: relative;
-    display: block;
-    width: 90%;
-    margin: 2% auto;
-    border: none;
- }
- .corner-link {
-    position: relative;
-    height: auto;
- }
- .corner-link img {
-    width: 30px;
-    height: 30px;
-    filter: brightness(90%);
-    transition-duration: 0.4s;
- }
- .corner-link:hover img
- {
-    filter: brightness(120%) drop-shadow(0px 0px 10px rgba(244, 209, 140, 0.5));
-    transition-duration: 0.4s;
- }
- .profile.button
- {
-    height: auto;
-    display: block;
-    text-align: center;
-    width: 30%;
-    padding: 10px 5px;
-    min-width: 130px;
-    margin: 0;
- }
- .profile.button:hover {
-    font-size: unset;
+.about-user {
+   text-align: left;
+   position: relative;
+   display: block;
+   width: 90%;
+   margin: 2% auto;
+   border: none;
+}
+.about-user.detailed-tag-info{
+   background: none;
+}
+.corner-link {
+   position: relative;
+   height: auto;
+}
+.corner-link img {
+   width: 30px;
+   height: 30px;
+   filter: brightness(90%);
+   transition-duration: 0.4s;
+}
+.corner-link:hover img {
+   filter: brightness(120%) drop-shadow(0px 0px 10px rgba(244, 209, 140, 0.5));
+   transition-duration: 0.4s;
+}
+.profile.button {
+   height: auto;
+   display: block;
+   text-align: center;
+   width: 30%;
+   padding: 10px 5px;
+   min-width: 130px;
+   margin: 0;
+}
+.profile.button:hover {
+   font-size: unset;
 }
 
 @media only screen and (max-width: 600px) {
-   .icon-container img
-   {
-       width: 80px;
-       height: 80px;
+   .icon-container img {
+      width: 80px;
+      height: 80px;
    }
-   .about-user
-   {
+   .about-user {
       width: 80%;
       margin: 0 auto;
       margin-top: 2%;
       margin-bottom: 2%;
    }
-   .profile.button
-   {
-     font-size: 15px;
+   .profile.button {
+      font-size: 15px;
       display: inline-block;
       width: auto;
       margin: 0 auto;
       padding: 6px 3px;
    }
-   .pair-single-container.profile h1
-   {
-     font-size: 14px !important;
+   .pair-single-container.profile h1 {
+      font-size: 14px !important;
    }
    .corner-link img {
-     width: 20px;
-     height: 20px;
-  }
+      width: 20px;
+      height: 20px;
+   }
 }
 @media only screen and (max-width: 400px) {
-   .pair-single-container.profile h1
-   {
-     font-size: 12px !important;
+   .pair-single-container.profile h1 {
+      font-size: 12px !important;
    }
 }

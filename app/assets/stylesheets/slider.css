@@ -66,16 +66,16 @@
     background: #ffe4afa4;
     box-shadow: 0px 4px 10px 2px #ffe7b7cc;
 }
-#sr1:checked ~ .first {
+#sr0:checked ~ .first {
     margin-left: 0;
 }
-#sr2:checked ~ .first {
+#sr1:checked ~ .first {
     margin-left: -20%;
 }
-#sr3:checked ~ .first {
+#sr2:checked ~ .first {
     margin-left: -40%;
 }
-#sr4:checked ~ .first {
+#sr3:checked ~ .first {
     margin-left: -60%;
 }
 .auto-navigation {
@@ -97,10 +97,10 @@
 .auto-navigation div:not(:last-child){
     margin-right: 40px;
 }
+#sr0:checked ~ .auto-navigation .auto-0,
 #sr1:checked ~ .auto-navigation .auto-1,
 #sr2:checked ~ .auto-navigation .auto-2,
-#sr3:checked ~ .auto-navigation .auto-3,
-#sr4:checked ~ .auto-navigation .auto-4
+#sr3:checked ~ .auto-navigation .auto-3
 {
     border: 3px solid #fee1a6;
     background: #ffe4afa4;

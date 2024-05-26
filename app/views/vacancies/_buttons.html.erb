@@ -1,6 +1,6 @@
 <div class='brief-card-buttons'>
     <% if current_user&.organization? %>
-        <% if current_user.organization.id == vacancy.organization_id %>
+        <% if current_user.organization == vacancy.organization %>
             <% if controller_name != 'responses' %>
                 <%= button_to vacancy_responses_path(vacancy), method: :get do %>
                     <%= image_tag 'menuIcons/writeToPlaceholder.png' %>
@@ -14,6 +14,8 @@
             <% end %>
         <% end %>
     <% else %>
-        <a><div class='corner-link'><%= image_tag 'menuIcons/add-to-favourites.png' %></div></a>
+        <% if !(controller_name == 'responses' && action_name == 'index') %>
+            <a><div class='corner-link'><%= image_tag 'menuIcons/add-to-favourites.png' %></div></a>
+        <% end %>
     <% end %>
 </div>
