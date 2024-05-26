@@ -25,6 +25,7 @@ class ResponsesController < ApplicationController
             flash[:success] = "You have successfully applied for a vacancy"
             if !current_user.person.cv.present?
                 flash[:warning] = "Create a CV to have your application considered"
+                current_user.notify("Still don't have a CV? Create a CV to get your application considered", :new_cv_path)
             end
             redirect_to response_path(@response)
         else
@@ -38,11 +39,11 @@ class ResponsesController < ApplicationController
     end
 
     def update
-        puts "\n===============\n#{params.inspect}\n==============\n"
         if @response.update({
             comments: params[:vacancy_response][:comments],
             status: params[:vacancy_response][:status]}
         )
+            @response.person.user.notify("Your application status for #{@response.vacancy.title} has been updated", :response_path, id: @response)
             flash[:success] = "Response successfully updated"
             redirect_to response_path(@response)
         else

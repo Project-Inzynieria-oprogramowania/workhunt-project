@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   root :to => "home#index"
-
+  
+  resources :notifications, only: [] do
+    collection do
+      patch :marks_as_read
+    end
+  end
   resource :user, except: [:index, :destroy, :show] do    
     resources :emails, only: [:create, :destroy]
     resources :telephones, only: [:create, :destroy]

@@ -1,18 +1,34 @@
+<% 
+person = @cv.person
+user = @cv.person.user
+%>
+<% provide :page_title, "#{@cv.person.name} #{@cv.person.surname}'s CV".html_safe %>
 <div class='page-title'>
     <h1><%= @cv.person.name %> <%= @cv.person.surname %>'s CV</h1>
     <%= image_tag 'menuIcons/cv-icon.png' %>
-    <% provide :page_title, "#{@cv.person.name} #{@cv.person.surname}'s CV".html_safe %>
 </div>
 <div class='form profile cv'>
     <div class='pair-container'>
         <div class='pair-single-container cv'>
-            <div class='icon-placeholder'></div>
+            <div class='icon-container'>
+                <% if user.avatar.present? %>
+                    <%= image_tag user.avatar.image.url %>
+                <% else %>
+                    <%= image_tag 'icons/Profile.png' %>
+                <% end %>
+            </div>
             <hr>
             <h3>ABOUT ME:</h3>
             <p><%= @cv.about %></p><br>
             <hr>
             <h3>SKILLS:</h3>
-            <p><%= @cv.skills %></p><br>
+            <ul>
+                <% @cv.skills.split("\n").each do | skill | %>
+                    <% if skill.strip.match?(/\w/) %>
+                        <li><p>-<%= skill %></p></li>
+                    <% end %>
+                <% end %>
+            </ul><br>
             <hr>
             <h3>INTERESTS:</h3>
             <p><%= @cv.interests %></p><br>
@@ -38,10 +54,6 @@
             <hr>
             <div>
                 <h2>CONTACTS:</h2>
-                <% 
-                person = @cv.person
-                user = @cv.person.user
-                %>
                 <% if user.telephones.count == 0 && user.emails.count == 0 && user.links.count == 0%>
                     <span>None</span>
                 <%end%>

@@ -1,18 +1,22 @@
+<% 
+person = cv.person
+user = person.user
+%>
 <div class='brief-card'>
-    <div class='icon-placeholder'></div>
+    <div class='icon-container'>
+        <% if user.avatar.present? %>
+            <%= image_tag user.avatar.image.url %>
+        <% else %>
+            <%= image_tag 'icons/Profile.png' %>
+        <% end %>
+    </div>
     <div class='brief-card-info cv-info'>
         <div class='top-line-container'>
             <div class='top-line-element'>
-                <% 
-                    person = Person.find(cv.person_id) 
-                    user = User.find(person.user_id)
-                %>
-                <%= link_to show_cv_path(cv) do %>
-                    <h2><%= person.name %> <%= person.surname %></h2>
-                <% end %>
+                <h2><%= link_to "#{person.name} #{person.surname}", show_cv_path(user.person.cv) %></h2>
             </div>
             <div class='brief-card-buttons'>
-                <% if user_signed_in? && current_user.organization? || current_user.id != cv.person_id %>
+                <% if user_signed_in? && current_user.organization? %>
                     <a><div class='corner-link'><%= image_tag 'menuIcons/add-to-favourites.png' %></div></a>
                 <% end %>
                 <%= link_to show_user_path(user) do %>
@@ -20,7 +24,7 @@
                 <% end %>
             </div>
         </div>
-        <% if cv.city.present? || cv.country.present?%>
+        <% if cv.city.present? || cv.country.present? %>
             <div class='detailed-tag-info'>
                 <span>Location:</span><p>
                 <%= image_tag 'menuIcons/locationIcon.png' %>

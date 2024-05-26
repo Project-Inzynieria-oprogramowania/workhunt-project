@@ -60,15 +60,15 @@ html {
     }
 }
 /*tags for vacancy and profile pages*/
-.icon-placeholder
+.icon-container img
 {
     width: 100px;
     height: 100px;
-    background-color:aliceblue;
     border-radius: 30px;
-    box-shadow: 6px 8px 8px 1px rgba(0,0,0,0.4);
+    /*box-shadow: 6px 8px 8px 1px rgba(0,0,0,0.4);*/
     display: block;
 }
+
 .detailed-tag-info
 {
     font-size: 16px;

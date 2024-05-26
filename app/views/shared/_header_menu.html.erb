@@ -8,43 +8,56 @@
         </div>
         <div class="header-element">
             <% if user_signed_in? %>
-                <div class="dropdown">
+                <div class="notifications-button" id="notifications-button">
+                    <% if current_user.notifications.where(read: false).count > 0 %>
+                        <span><%= current_user.notifications.where(read: false).count %></span>
+                        <%= image_tag 'menuIcons/new-notification-received.png'%>
+                    <% else %>
+                         <%= image_tag 'menuIcons/notification-received.png'%>
+                    <% end %>
+                    <div class="account-menu" id="notifications-container" style="display: none">
+                        <% if current_user.notifications.count > 0 %>
+                            <%= render current_user.notifications.order(created_at: :desc) %>
+                        <% else %>
+                            Wow, there is nothing here...
+                        <% end %>
+                    </div>
+                </div>
+                <div class="dropdown" id="menu-button">
                     <span class="account-button"><%= current_user[:login] %></span>
                     <span class="small-button">...</span>
-                    <ul class="account-menu">
-                        <li class="small-width-menu">
-                            <%= current_user[:login] %>
-                        </li>
-                        <li class="small-width-menu">
-                            <hr>
-                        </li> 
-                        <li>
+                    <ul class="account-menu" id="menu-dropdown" style="display: none">
+                        <li class="small-width-menu"><%= current_user[:login] %></li>
+                        <li class="small-width-menu"><hr></li> 
+                        <li class="<%= 'active' if controller_name == 'users' && action_name == 'show' &&  @user.id == current_user.id  %>">
                             <%= link_to show_user_path(current_user) do %>
                                 <%= image_tag 'menuIcons/human.png' %>
                                 My Profile
                             <% end %>
                         </li>
-                        <li>
+                        <li class="<%= 'active' if controller_name == 'users' && action_name == 'edit' &&  @user.id == current_user.id  %>">
                             <%= link_to edit_user_path do %>
                                 <%= image_tag 'menuIcons/gear.png' %>
                                 Edit Account
                             <% end %>
                         </li>
-                        <li>
-                            <% if current_user.person.cv.present? %>
-                                <%= link_to show_cv_path(current_user.person.cv) do %>
-                                    <%= image_tag 'menuIcons/cv-icon.png' %>
-                                    My CV
-                                <% end %>
-                            <% elsif user_signed_in? && current_user.person? %>
-                                <%= link_to new_cv_path do %>
-                                    <%= image_tag 'menuIcons/cv-icon.png' %>
-                                    Create CV
+                        <li class="<%= 'active' if controller_name == 'cvs' && (action_name == 'new' || (action_name == 'show' && @cv.person.user_id == current_user.id)) %>">
+                            <% if current_user.person? %>
+                                <% if current_user.person.cv.present? %>
+                                    <%= link_to show_cv_path(current_user.person.cv) do %>
+                                        <%= image_tag 'menuIcons/cv-icon.png' %>
+                                        My CV
+                                    <% end %>
+                                <% else %>
+                                    <%= link_to new_cv_path do %>
+                                        <%= image_tag 'menuIcons/cv-icon.png' %>
+                                        Create CV
+                                    <% end %>
                                 <% end %>
                              <% end %>
                         </li>
-                        <li>
-                            <% if user_signed_in? && current_user.person? %>
+                        <li class="<%= 'active' if controller_name == 'responses' && action_name == 'index' %>">
+                            <% if current_user.person? %>
                                 <%= link_to user_responses_path do %>
                                     <%= image_tag 'menuIcons/responses-icon.png' %>
                                     Responses
@@ -70,3 +83,6 @@
         </div>
     </div>  
 </div>
+
+<%= javascript_include_tag 'notifications', async: true %>
+<%= javascript_include_tag 'menu', async: true %>

@@ -6,7 +6,9 @@ class User < ApplicationRecord
     has_many :telephones, dependent: :destroy
     has_one :person, ->(user) { where(user_id: user.id) }, dependent: :destroy, foreign_key: :user_id, inverse_of: :user
     has_one :organization, ->(user) { where(user_id: user.id) }, dependent: :destroy, foreign_key: :user_id, inverse_of: :user
-    accepts_nested_attributes_for :person, :organization
+    has_one :avatar, as: :imageable, dependent: :destroy
+    has_many :notifications, dependent: :destroy
+    accepts_nested_attributes_for :person, :organization, :avatar
 
     attr_accessor :old_password
     has_secure_password validations: false
@@ -20,6 +22,15 @@ class User < ApplicationRecord
     validate :correct_old_password, on: :update
     
     before_validation :downcase_login
+
+    def notify(message, path_method, **path_params)
+        if Rails.application.routes.url_helpers.respond_to?(path_method)
+            url = Rails.application.routes.url_helpers.send(path_method, path_params.merge(only_path: false, host: Rails.root))
+            notifications.create(message: message, link: url)
+        else
+            raise ArgumentError, "Invalid path method: #{path_method}"
+        end
+    end
 
     private 
 

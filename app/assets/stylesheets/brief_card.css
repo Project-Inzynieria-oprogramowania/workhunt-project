@@ -49,7 +49,7 @@
     color: #F4D18C;
     margin: 5px 0px;
 }
-.brief-card .icon-placeholder {
+.brief-card .icon-container img {
     align-items: content;
     width: 100px;
     height: 100px;
@@ -99,7 +99,7 @@
 }
 */
 @media only screen and (max-width: 900px) {
-    .brief-card .icon-placeholder {
+    .brief-card .icon-container img {
         width: 60px;
         height: 60px;
     }
@@ -148,7 +148,7 @@
     text-align: left;
 }
 @media only screen and (max-width: 500px) {
-    .brief-card .icon-placeholder {
+    .brief-card .icon-container img {
         width: 60px;
         height: 60px;
         margin-top: 5px;
@@ -190,4 +190,16 @@
 }
 .brief-card .button{
     margin-bottom: 20px
+}
+.brief-card-info .detailed-tag-info.vacancy-tag.skill ul li{
+    text-align: left;
+    background-image: url(menuIcons/old-notification-icon.png);
+    background-size: 8px 8px;
+    background-repeat: no-repeat;
+    background-position: left;
+    background-origin: content-box;
+}
+.brief-card-info .detailed-tag-info.vacancy-tag.skill ul span{
+    padding-left: 18px;
+    max-width: calc(100% - 18px);
 }

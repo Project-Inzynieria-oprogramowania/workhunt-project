@@ -19,7 +19,13 @@
 </div>
 <div class='form profile remove-padding'>
     <div class='pair-container profile'>
-        <div class='icon-placeholder'></div>
+        <div class='icon-container'>
+            <% if @user.avatar.present? %>
+                <%= image_tag @user.avatar.image.url %>
+            <% else %>
+                <%= image_tag 'icons/Profile.png' %>
+            <% end %>
+        </div>
         <div class='pair-single-container profile'>
             <%= render 'users/info' %>
         </div>
