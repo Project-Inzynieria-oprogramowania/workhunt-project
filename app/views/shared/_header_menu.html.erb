@@ -9,9 +9,13 @@
         <div class="header-element">
             <% if user_signed_in? %>
                 <div class="notifications-button" id="notifications-button">
-                    <% if current_user.notifications.where(read: false).count > 0 %>
-                        <div id="notification-counter"><%= current_user.notifications.where(read: false).count %></div>
-                    <% end %>
+                    <div id="notification-counter-block">
+                        <% if current_user.notifications.where(read: false).count > 0 %>
+                            <p id="notification-counter">
+                                <%= current_user.notifications.where(read: false).count %>
+                            </p>
+                        <% end %>
+                    </div>
                     <%= image_tag 'menuIcons/notifications.svg'%>
                     <div class="account-menu" id="notifications-container" style="display: none">
                         <% if current_user.notifications.count > 0 %>
@@ -83,4 +87,4 @@
     </div>  
 </div>
 
-<%= javascript_include_tag 'menu_dropdown', async: true %>
+<%= javascript_include_tag 'menu_dropdown' %>

@@ -46,10 +46,12 @@ class ApplicationController < ActionController::Base
     
     def sign_in( user )
         session[:user_id] = user.id
+        cookies.signed[:user_id] = user.id
     end
 
     def sign_out
         session.delete :user_id
+        cookies.delete :user_id
     end    
 
     # Делает методы доступными не только в контроллерах, но и в представлениях
