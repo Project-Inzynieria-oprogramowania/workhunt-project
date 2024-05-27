@@ -15,11 +15,7 @@ user = User.find(organization.user_id)
 </div>
 <div class='brief-card'>
     <div class='icon-container'>
-        <% if user.avatar.present? %>
-            <%= image_tag user.avatar.image.url if user.avatar.present? %>
-        <% else %>
-            <%= image_tag 'icons/Profile.png' %>
-        <% end %>
+        <%= image_tag(get_avatar(user)) %>
     </div>
     <div class='brief-card-info'>
         <div class='top-line-container'>
@@ -114,7 +110,9 @@ user = User.find(organization.user_id)
                     <% end %>
                 </ul>
             <% else %>
-                <span>None</span>
+                <ul>
+                    <li><span>None</span></li>
+                </ul>
             <% end %>
         </div>
         <div class='detailed-tag-info vacancy-tag skill'>
@@ -128,7 +126,9 @@ user = User.find(organization.user_id)
                     <% end %>
                 </ul>
             <% else %>
-                <span>None</span>
+                <ul>
+                    <li><span>None</span></li>
+                </ul>
             <% end %>
         </div>
     </div>

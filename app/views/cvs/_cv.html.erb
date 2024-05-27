@@ -4,11 +4,7 @@ user = person.user
 %>
 <div class='brief-card'>
     <div class='icon-container'>
-        <% if user.avatar.present? %>
-            <%= image_tag user.avatar.image.url %>
-        <% else %>
-            <%= image_tag 'icons/Profile.png' %>
-        <% end %>
+        <%= image_tag(get_avatar(user)) %>
     </div>
     <div class='brief-card-info cv-info'>
         <div class='top-line-container'>
