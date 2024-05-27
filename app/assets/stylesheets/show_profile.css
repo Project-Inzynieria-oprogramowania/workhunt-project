@@ -51,15 +51,15 @@
 .pair-single-container.profile {
    padding: 10px 15px;
    display: block;
-   width: 80%;
+   width: 70%;
    margin: 0;
    margin-left: 10px;
 }
 .pair-container.profile {
    align-items: center;
    justify-content: space-evenly;
-   margin: 2vh auto;
-   width: 98%;
+   margin: 2vh 4%;
+   width: 92%;
 }
 .about-user {
    text-align: left;
