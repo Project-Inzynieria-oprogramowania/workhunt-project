@@ -13,7 +13,7 @@
                         <% if @user.avatar.image? %>
                             <%= image_tag @user.avatar.image.url %>
                         <% else %>
-                            <%= image_tag 'icons/Profile.png' %>
+                            <%= image_tag 'profile-picture-placeholder.png' %>
                         <% end %>
                     </div>
                     <%= avatar_fields.file_field :image %>

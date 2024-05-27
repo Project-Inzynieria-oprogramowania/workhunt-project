@@ -212,6 +212,13 @@ class CvsReport < Prawn::Document
         
         font "Inter"
 
+        bounding_box([bounds.width*0.7, bounds.height], width: bounds.width*0.3) do
+            if @user.avatar.present?
+                image "#{Rails.root}/public/#{@user.avatar.image.url}", width: 120, height: 120
+            else
+                image "#{Rails.root}/app/assets/images/profile-picture-placeholder.png", width: 120, height: 120
+            end
+        end
         bounding_box([0, bounds.height], width: bounds.width*0.7) do
             text "#{@user.person.name} #{@user.person.surname}", size: 22, style: :bold
             table_for_info(person_info_data)
@@ -220,10 +227,11 @@ class CvsReport < Prawn::Document
                 table_for_info(person_contacts_data)
             end
         end
-        bounding_box([bounds.width*0.7, bounds.height], width: bounds.width*0.3) do
-            image "#{Rails.root}/app/assets/images/icons/Profile.png", width: 150, height: 150
+        if (@user.telephones.count > 2 || @user.emails.count > 2 || @user.links.count > 2 || (@user.telephones.count + @user.telephones.count + @user.emails.count) > 2) #Да, костыль, но вроде работает.
+            move_down 20
+        else
+            move_down 60
         end
-        
         stroke_horizontal_rule
 
         if (@cv.about.present? || @cv.skills.present?)

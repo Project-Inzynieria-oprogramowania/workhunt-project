@@ -11,11 +11,7 @@ user = @cv.person.user
     <div class='pair-container'>
         <div class='pair-single-container cv'>
             <div class='icon-container'>
-                <% if user.avatar.present? %>
-                    <%= image_tag user.avatar.image.url %>
-                <% else %>
-                    <%= image_tag 'icons/Profile.png' %>
-                <% end %>
+                <%= image_tag(get_avatar(user)) %>
             </div>
             <hr>
             <h3>ABOUT ME:</h3>
