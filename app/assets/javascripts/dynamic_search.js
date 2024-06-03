@@ -2,7 +2,7 @@ var submitButtonCVs = document.querySelector('#cvs-search-submit')
 var submitButtonVacancies = document.querySelector('#vacancies-search-submit')
 var body = document.querySelector('body')
 
-var render_search_results = function(url){
+var render_search_results = function(url){ return function(){
     var formData = new FormData(document.querySelector('form.search'))
     fetch(url, {
         method: 'POST',
@@ -21,6 +21,7 @@ var render_search_results = function(url){
             newResults.innerHTML = html
             body.insertAdjacentElement('beforeend', newResults)
     })
-}
+}}
+
 if (submitButtonCVs) { submitButtonCVs.addEventListener('click', render_search_results(`/cvs/search`)) }
 if (submitButtonVacancies) { submitButtonVacancies.addEventListener('click', render_search_results(`/vacancies/search`)) }

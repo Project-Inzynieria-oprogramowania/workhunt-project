@@ -33,7 +33,7 @@ class VacanciesController < ApplicationController
             )
         end
         @q = @vacancies.ransack(params[:q])
-        @vacancies = @q.result(distinct: true)
+        @pagy, @vacancies = pagy @q.result(distinct: true)
     end
 
     def search
@@ -46,12 +46,11 @@ class VacanciesController < ApplicationController
             )
         end
         @q = @vacancies.ransack(params[:q])
-        @vacancies = @q.result(distinct: true)
-        render partial: 'vacancies/vacancy', collection: @vacancies
+        @pagy, @vacancies = pagy @q.result(distinct: true)
+        render partial: 'vacancies/search_results', locals: { pagy: @pagy, vacancies: @vacancies }
     end
 
-    def edit
-    end
+    def edit; end
 
     def update
         @vacancy.organization_id = current_user.organization.id

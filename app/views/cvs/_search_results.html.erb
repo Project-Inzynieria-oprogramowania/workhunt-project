@@ -1,0 +1,3 @@
+<% if pagy.present? %><%== pagy_nav(pagy) %><% end %>
+<%= render partial: 'cvs/cv', collection: cvs %>
+<% if pagy.present? %><%== pagy_nav(pagy) %><% end %>

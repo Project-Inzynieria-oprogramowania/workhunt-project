@@ -62,6 +62,9 @@ gem 'mini_magick', '~> 4.11'
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+# Using Pagy for pagination [https://ddnexus.github.io/pagy/]
+gem 'pagy', '~> 8.4.1'
+
 group :development, :test do
   gem 'faker', '~> 3'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

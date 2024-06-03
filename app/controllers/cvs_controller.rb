@@ -35,8 +35,8 @@ class CvsController < ApplicationController
                         type: 'application/pdf',
                         disposition: 'inline'
                 rescue => e
-                    Rails.logger.error("Ошибка в экшене show: #{e.message}")
-                    render plain: "Произошла ошибка при рендеринге PDF", status: :internal_server_error
+                    Rails.logger.error("Error in action 'show': #{e.message}")
+                    render plain: "An error occurred while rendering the PDF", status: :internal_server_error
                 end
             end
         end
@@ -44,17 +44,16 @@ class CvsController < ApplicationController
 
     def index
         @q = Cv.all.ransack(params[:q])
-        @cvs = @q.result(distinct: true).includes(:educations)
+        @pagy, @cvs = pagy @q.result(distinct: true).includes(:educations)
     end
 
     def search
         @q = Cv.all.ransack(params[:q])
         @cvs = @q.result(distinct: true).includes(:educations)
-        render partial: 'cvs/cv', collection: @cvs
+        render partial: 'cvs/search_results', locals: { pagy: @pagy, cvs: @cvs }
     end
 
-    def edit
-    end
+    def edit; end
 
     def update
         if @cv.update(cv_params_all)

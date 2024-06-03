@@ -1,6 +1,6 @@
 <% provide :page_title, 'Vacancies' %>
 <%= render 'vacancies/search' %>
 <div id='search-results'>
-    <%= render @vacancies %>
+    <%= render 'search_results', pagy: @pagy, vacancies: @vacancies %>
 </div>
 <%= javascript_include_tag 'dynamic_search', async: true %>
