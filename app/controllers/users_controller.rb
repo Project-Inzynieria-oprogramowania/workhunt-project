@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
     before_action :check_no_authenticate, only: [:new, :create]
     before_action :check_authenticate, only: [:edit, :update, :destroy]
-    before_action :get_user, only: [:edit, :update, :destroy]
+    before_action :set_user, only: [:edit, :update, :destroy]
 
     def new
-        session[:current_time] = Time.now
         @user = User.new
     end
 
@@ -38,16 +37,6 @@ class UsersController < ApplicationController
 
     def update
         current_params = user_params_all
-
-        # Сheck password only when specifying a new one
-        if current_params[:password].blank? 
-            # Check old password when changing login
-            if current_params[:login] == @user.login
-                current_params = current_params.except(:password, :password_confirmation, :old_password)
-            else 
-                current_params.except(:password_confirmation, :old_password)
-            end
-        end
         
         if current_params[:avatar_attributes][:image].blank? 
             current_params = current_params.except(:avatar_attributes)
@@ -64,9 +53,7 @@ class UsersController < ApplicationController
         end
     end
 
-    def destroy
-
-    end
+    def destroy; end
 
     private
 
@@ -83,7 +70,7 @@ class UsersController < ApplicationController
         )
     end
 
-    def get_user
+    def set_user
         @user = User.find_by id: session[:user_id]
     end
 end

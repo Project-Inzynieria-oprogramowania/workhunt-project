@@ -16,13 +16,14 @@ class User < ApplicationRecord
     validates :login, presence: true
     validate :login_complexity, if: -> { login.present? }
     validates :login, uniqueness: true, if: -> { login.present? }
-    validates :password, confirmation: true, allow_blank: true, length: {minimum: 8, maximum: 32}
-    validate :password_complexity
+    validates :password, confirmation: true, allow_blank: true, length: { minimum: 8, maximum: 32 }
+    validate :password_complexity, if: -> { password.present? }
     validate :password_presence
-    validate :correct_old_password, on: :update
+    validate :correct_old_password, on: :update, if: -> { password.present? || login_changed? }
     
     before_validation :downcase_login
 
+    # Create a notification for this model
     def notify(message, path_method = nil, **path_params)
         if path_method && Rails.application.routes.url_helpers.respond_to?(path_method)
             url = Rails.application.routes.url_helpers.send(path_method, path_params.merge(only_path: false, host: Rails.root))
@@ -35,7 +36,7 @@ class User < ApplicationRecord
     private 
 
     def downcase_login
-        login.downcase!
+        self.login.downcase!
     end
 
     def login_complexity
@@ -44,6 +45,7 @@ class User < ApplicationRecord
     end
 
     def password_complexity
+        # Regexp extracted from https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
         return if password.blank? || password =~ /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*\.\-_])/
         errors.add :password, 'complexity requirement not met. Password should include: 1 uppercase, 1 lowercase, 1 digit and 1 special character'
     end
@@ -53,13 +55,7 @@ class User < ApplicationRecord
     end
 
     def correct_old_password
-        if login_changed? && !old_password.present?
-            errors.add(:old_password, "must be filled in when changing the login")
-            return
-        end
-        return unless password_digest_changed? && !old_password.blank?
-        return if BCrypt::Password.new(password_digest_was).is_password?(old_password) && !old_password.blank?
-        
+        return if BCrypt::Password.new(password_digest_was).is_password?(old_password)
         errors.add :old_password, 'is incorrect'
     end
 end
