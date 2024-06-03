@@ -38,10 +38,10 @@ class UsersController < ApplicationController
     def update
         current_params = user_params_all
         
-        if current_params[:avatar_attributes][:image].blank? 
+        if current_params[:avatar_attributes] && current_params[:avatar_attributes][:image].blank? 
             current_params = current_params.except(:avatar_attributes)
         else
-            @user.build_avatar if @user.avatar.present?
+            @user.build_avatar unless @user.avatar.present?
         end
 
         if @user.update(current_params)
