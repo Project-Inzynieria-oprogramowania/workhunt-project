@@ -117,25 +117,25 @@
     color: #A343D3;
     font-weight: 500;
 }
-.pair-container .pair-single-container:nth-child(2) > div:nth-of-type(5) p {
+.pair-container .cv.pair-single-container:nth-child(2) > div:nth-of-type(5) p {
     color: #262229 !important;
     font-size: 16px !important;
     font-weight: 600 !important;
 }
-.pair-container .pair-single-container:last-child > div:first-child p {
+.pair-container .cv.pair-single-container:last-child > div:first-child p {
     color: #262229 !important;
     font-size: 16px !important;
     font-weight: 600 !important;
 }
-.pair-container .pair-single-container:last-child > div:first-child p:last-of-type {
+.pair-container .cv.pair-single-container:last-child > div:first-child p:last-of-type {
     color: #A6884E!important;
     font-weight: 800!important;
     font-size: 16px!important;
 }
-.pair-container .pair-single-container:last-child > div:first-child p:first-of-type {
+.pair-container .cv.pair-single-container:last-child > div:first-child p:first-of-type {
     margin-top: 10px;
 }
-.pair-container .pair-single-container:nth-child(2) > span:last-child {
+.pair-container .cv.pair-single-container:nth-child(2) > span:last-child {
     display: block;
     font-size: 12px !important;
     opacity: 0.5;
@@ -166,7 +166,7 @@
     .pair-container .cv.pair-single-container:nth-child(2) p {
         font-size: 12px;
     }
-    .pair-container .pair-single-container:nth-child(2) > span:last-child {
+    .pair-container .cv.pair-single-container:nth-child(2) > span:last-child {
         font-size: 12px !important;
     }
 
@@ -174,15 +174,15 @@
         font-weight: 700;
         font-size: 15px;
     }
-    .pair-container .pair-single-container:nth-child(2) > div:nth-of-type(5) p {
+    .pair-container .cv.pair-single-container:nth-child(2) > div:nth-of-type(5) p {
         font-size: 14px !important;
         font-weight: 500 !important;
     }
-    .pair-container .pair-single-container:last-child > div:first-child p {
+    .pair-container .cv.pair-single-container:last-child > div:first-child p {
         font-size: 14px !important;
         font-weight: 500 !important;
     }
-    .pair-container .pair-single-container:last-child > div:first-child p:last-of-type {
+    .pair-container .cv.pair-single-container:last-child > div:first-child p:last-of-type {
         color: #A6884E!important;
         font-weight: 700!important;
         font-size: 14px!important;
@@ -229,22 +229,22 @@
     .pair-container .cv.pair-single-container:nth-child(2) p {
         font-size: 10px;
     }
-    .pair-container .pair-single-container:nth-child(2) > span:last-child {
+    .pair-container .cv.pair-single-container:nth-child(2) > span:last-child {
         font-size: 10px !important;
     }
     .pair-container .cv.pair-single-container:nth-child(2) p:nth-of-type(2){
         font-weight: 600;
         font-size: 13px;
     }
-    .pair-container .pair-single-container:nth-child(2) > div:nth-of-type(5) p {
+    .pair-container .cv.pair-single-container:nth-child(2) > div:nth-of-type(5) p {
         font-size: 12px !important;
         font-weight: 500 !important;
     }
-    .pair-container .pair-single-container:last-child > div:first-child p {
+    .pair-container .cv.pair-single-container:last-child > div:first-child p {
         font-size: 12px !important;
         font-weight: 500 !important;
     }
-    .pair-container .pair-single-container:last-child > div:first-child p:last-of-type {
+    .pair-container .cv.pair-single-container:last-child > div:first-child p:last-of-type {
         color: #A6884E!important;
         font-weight: 600!important;
         font-size: 12px!important;

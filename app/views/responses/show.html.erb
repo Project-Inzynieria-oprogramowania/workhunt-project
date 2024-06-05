@@ -35,7 +35,7 @@
                 <%= 'neutral' if @response.status  ==  'under_consideration' || @response.status  ==  'interview_scheduled' || @response.status  ==  'reserved'%>">
                     <p>Status: </p> <span><%= @response.status %></span>
                 </div>
-                <%= button_to "Withdraw application", response_path, method: :delete, class: "button" %>
+                <%= button_to "Withdraw", response_path, method: :delete, class: "button dangerous" %>
             </div>
     </div>
     <div class='brief-card responses-comment'>

@@ -1,6 +1,6 @@
 <div class="top-banner" id='header'>
     <div class="header-limit">
-        <div class="header-element" >
+        <div class="header-element">
             <%= link_to root_path, class: 'logo-link' do %>
                 <%= image_tag 'logo.png' %>
                 <%= content_tag :span, "WorkHunt" %>
@@ -8,6 +8,18 @@
         </div>
         <div class="header-element">
             <% if user_signed_in? %>
+                <div class="search-button
+                <%= 'on-search-page' if (controller_name == 'cvs' || controller_name == 'vacancies') && action_name == 'index' %>" title='Search page'>
+                    <% if current_user.person? %>
+                        <%= link_to vacancies_path do %>
+                            <%= image_tag 'menuIcons/go-search-icon.svg'%>
+                        <% end %>
+                    <% elsif current_user.organization? %>
+                        <%= link_to cvs_path do %>
+                            <%= image_tag 'menuIcons/go-search-icon.svg'%>
+                        <% end %>
+                    <% end %>
+                </div>
                 <div class="notifications-button" id="notifications-button">
                     <div id="notification-counter-block">
                         <% if current_user.notifications.where(read: false).count > 0 %>
@@ -16,7 +28,7 @@
                             </p>
                         <% end %>
                     </div>
-                    <%= image_tag 'menuIcons/notifications.svg'%>
+                    <%= image_tag 'menuIcons/notifications.svg', title: 'Show notifications'%>
                     <div class="account-menu" id="notifications-container" style="display: none">
                         <% if current_user.notifications.count > 0 %>
                             <%= render current_user.notifications.order(created_at: :desc) %>
@@ -27,8 +39,8 @@
                 </div>
                 <%= javascript_include_tag 'notifications', async: true %>
                 <div class="dropdown" id="menu-button">
-                    <span class="account-button"><%= current_user[:login] %></span>
-                    <span class="small-button">...</span>
+                    <span class="account-button" title='Main menu'><%= current_user[:login] %></span>
+                    <span class="small-button" title='Main menu'>...</span>
                     <ul class="account-menu" id="menu-dropdown" style="display: none">
                         <li class="small-width-menu"><%= current_user[:login] %></li>
                         <li class="small-width-menu"><hr></li> 

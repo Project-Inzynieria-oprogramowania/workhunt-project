@@ -135,7 +135,7 @@ user = User.find(organization.user_id)
     <% if user_signed_in? && current_user.person? %>
         <% response = VacancyResponse.find_by(person_id: current_user.person.id, vacancy_id: params[:id]) %>
         <% if response.present? %>
-            <%= button_to 'Withdraw application', response_path(response), method: :delete, class: 'button' %>
+            <%= button_to 'Withdraw', response_path(response), method: :delete, class: 'button dangerous' %>
         <% else %>
             <%= button_to 'Apply', vacancy_responses_path(@vacancy), method: :post, class: 'button' %>
         <% end %>

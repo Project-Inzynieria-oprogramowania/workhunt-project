@@ -9,7 +9,7 @@
             <%= button_to edit_vacancy_path(vacancy), method: :get do %>
                 <%= image_tag 'menuIcons/edit.png' %>
             <% end %>
-            <%= button_to vacancy_path(vacancy), method: :delete, data: { confirm: 'Are you sure you want to delete vacancy?' } do %>
+            <%= button_to vacancy_path(vacancy), method: :delete, data: { confirm: 'Are you sure you want to delete vacancy?' }, class: 'dangerous' do %>
                 <%= image_tag 'menuIcons/deleteCross.png' %>
             <% end %>
         <% end %>

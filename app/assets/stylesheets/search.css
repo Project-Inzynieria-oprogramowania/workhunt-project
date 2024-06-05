@@ -96,3 +96,93 @@
 #search-drop-block .form-field {
     width: 25%;
 }
+
+/*navigation*/
+div#search-results .brief-card:first-of-type {
+    margin-top: 0px;
+}
+div#search-results .brief-card:last-of-type {
+    margin-bottom: 0px;
+}
+nav.nav.pagy {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    width: 80%;
+    min-width: 300px;
+}
+div#search-results nav.nav.pagy {
+    margin-top: 18px;
+}
+div#search-results nav.nav.pagy:first-child {
+    margin-bottom: 18px;
+}
+div#search-results nav.nav.pagy:last-child {
+    padding-bottom: 18px;
+}
+nav.nav.pagy a {
+    background-color: #663C7B;
+    color: #F4D18C;
+    border-radius: 50%;
+    font-weight: 500;
+    font-size: 14px;
+    display: inline-flex;
+    width: 35px;
+    height: 35px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.300);
+    cursor: pointer;
+    border: none;
+}
+nav.nav.pagy a:not(a.current):hover {
+    background-color: #A343D3;
+    color: #E7E7E7;
+    outline: 2px solid #E0ACFA;
+}
+nav.nav.pagy a:not(a.current):active{
+    transform: translateY(2px);
+    background-color: #74468b;
+    outline: 2px solid #9b78ad;
+    transition-duration: 0.2s;
+}
+nav.nav.pagy a.current {
+    background-color: #513062;
+    color: #ccb077;
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+    cursor: default;
+}
+nav.nav.pagy a:not(:first-child) {
+    margin-left: 1vh;
+}
+nav.nav.pagy a[aria-disabled=true]:not(a.current) {
+    display: none;
+}
+@media only screen and (max-width: 600px) {
+    nav.nav.pagy a {
+        font-size: 12px;
+        width: 30px;
+        height: 30px;
+    }
+    nav.nav.pagy a.current {
+        width: 27px;
+        height: 27px;
+        font-size: 11px;
+    }
+}
+@media only screen and (max-width: 400px) {
+    nav.nav.pagy a {
+        font-size: 10px;
+        width: 25px;
+        height: 25px;
+    }
+    nav.nav.pagy a:not(a.current):hover {
+        outline: 1px solid #E0ACFA;
+    }
+    nav.nav.pagy a.current {
+        width: 22px;
+        height: 22px;
+    }
+}

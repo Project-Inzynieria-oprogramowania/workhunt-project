@@ -169,9 +169,31 @@
 
 .header-limit .header-element:last-of-type {
     margin-right: 15px;
+    margin-left: 5px;
+}
+.header-limit .header-element:first-of-type {
     margin-left: 15px;
 }
-
+/*go to the search button*/
+.search-button {
+    display: flex;
+    margin-right: 15px;
+    cursor: pointer;
+}
+.search-button a img, .search-button a{
+    width: 30px;
+    height: 30px;
+    transition-duration: 0.4s;
+}
+.search-button:hover a img{
+    filter: brightness(1.2) drop-shadow(0px 0px 10px #9f62be);
+}
+.search-button:active a img{
+    transform: translateY(2px);
+}
+.on-search-page {
+    display: none;
+}
 /* */
 @media only screen and (max-width: 600px) 
 {
@@ -201,6 +223,13 @@
 @media (max-width: 350px) {
     .small-Button {
         font-size: 10px;
+    }
+    .search-button a img, .search-button a{
+        width: 20px;
+        height: 20px;
+    }
+    .logo-link span {
+        font-size: 22px;
     }
 }
 .account-menu li.active a {
