@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  mount ActionCable.server => '/cable'
+  # For Action Cable working
+  # mount ActionCable.server => '/cable'
   
   root :to => "home#index"
   

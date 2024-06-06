@@ -8,7 +8,7 @@ class Notification < ApplicationRecord
     private
 
     def broadcast_notification
-        ActionCable.server.broadcast "notifications_#{self.user.id}", {
+        ActionCable.server.broadcast "notifications:#{self.user.id}", {
             id: self.id,
             message: self.message,
             link: self.link,
