@@ -60,17 +60,13 @@
     justify-content: center;
     align-items: center;
     height: min-content;
-    /*border: 3px solid red;*/
 }
 .brief-card-buttons > *
 {
     display: flex;
     text-align: center;
 }
-.brief-card-buttons a{
-    margin-left: 15px;
-}
-.brief-card-buttons button {
+.brief-card-buttons button, .brief-card-buttons a {
     display: flex;
     background: none;
     border: none;
@@ -78,26 +74,51 @@
     cursor: pointer;
     outline: none;
     margin-left: 10px;
+    transition-duration: 0.2s;
 }
-.brief-card-buttons button img {
+.brief-card-buttons button svg, .brief-card-buttons a svg {
     width: 24px;
     height: 24px;
-    filter: brightness(80%);
+    filter:brightness(80%);
 }
-/*
-.brief-card-buttons a img {
-    width: 24px;
-    height: 24px;
+.brief-card-buttons button svg,
+.brief-card-buttons button svg path,
+.brief-card-buttons button svg circle,
+.brief-card-buttons button svg rect,
+.brief-card-buttons button svg polygon,
+.brief-card-buttons button svg polyline,
+.brief-card-buttons button svg line,
+.brief-card-buttons button svg ellipse,
+.brief-card-buttons button svg use {
+    fill: #fcbe41;
+    stroke: #fcbe41;
+    transition-duration: 0.3s;
 }
-*/
-.brief-card-buttons button:hover img {
-    filter: brightness(130%) drop-shadow(0px 0px 10px rgb(255, 53, 53)) !important;
+.brief-card-buttons a svg,
+.brief-card-buttons a svg path,
+.brief-card-buttons a svg circle,
+.brief-card-buttons a svg rect,
+.brief-card-buttons a svg polygon,
+.brief-card-buttons a svg polyline,
+.brief-card-buttons a svg line,
+.brief-card-buttons a svg use
+{
+    stroke: #fcbe41;
+    transition-duration: 0.3s;
 }
-/*
-.brief-card-buttons a:hover img {
-    filter: brightness(130%) drop-shadow(0px 0px 10px rgba(244, 209, 140, 0.5));
+.brief-card-buttons a svg ellipse {
+    fill: #fcbe41;
 }
-*/
+.brief-card-buttons button.dangerous svg path {
+    fill: #ff0000 !important;
+    stroke: red;
+}
+.brief-card-buttons button:hover svg, .brief-card-buttons a:hover svg {
+    filter: brightness(110%) drop-shadow(0px 0px 10px #fcbe41);
+}
+.brief-card-buttons button.dangerous:hover svg {
+    filter: brightness(110%) drop-shadow(0px 0px 10px rgb(255, 53, 53));
+}
 @media only screen and (max-width: 900px) {
     .brief-card .icon-container img {
         width: 60px;
@@ -123,12 +144,6 @@
         font-size: 14px;
         margin: 3px 0px;
     }
-    /*
-    .brief-card-buttons a img {
-        width: 20px;
-        height: 20px;
-    }
-    */
 }
 .brief-card-info.status {
     margin: 0 auto;
@@ -174,19 +189,13 @@
         font-size: 12px;
         margin: 3px 0px;
     }
-    .brief-card-buttons button img {
-        width: 12px;
-        height: 12px;
-    }
-    .brief-card-buttons button {
-        margin-left: 5px;
-    }
-    /*
-    .brief-card-buttons a img {
+    .brief-card-buttons button svg, .brief-card-buttons a svg {
         width: 16px;
         height: 16px;
     }
-    */
+    .brief-card-buttons button, .brief-card-buttons a  {
+        margin-left: 5px;
+    }
 }
 .brief-card .button{
     margin-bottom: 20px

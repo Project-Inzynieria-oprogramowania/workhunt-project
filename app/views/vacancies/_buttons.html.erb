@@ -3,19 +3,19 @@
         <% if current_user.organization == vacancy.organization %>
             <% if controller_name != 'responses' %>
                 <%= button_to vacancy_responses_path(vacancy), method: :get do %>
-                    <%= image_tag 'menuIcons/writeToPlaceholder.png' %>
+                    <%= inline_svg_tag 'svg-icons/responses-icon.svg' %>
                 <% end %>
             <% end %>
             <%= button_to edit_vacancy_path(vacancy), method: :get do %>
-                <%= image_tag 'menuIcons/edit.png' %>
+                <%= inline_svg_tag 'svg-icons/edit-icon.svg' %>
             <% end %>
             <%= button_to vacancy_path(vacancy), method: :delete, data: { confirm: 'Are you sure you want to delete vacancy?' }, class: 'dangerous' do %>
-                <%= image_tag 'menuIcons/deleteCross.png' %>
+                <%= inline_svg_tag 'svg-icons/delete-cross-icon.svg' %>
             <% end %>
         <% end %>
-    <% else %>
-        <% if !(controller_name == 'responses' && action_name == 'index') %>
-            <a><div class='corner-link'><%= image_tag 'menuIcons/add-to-favourites.png' %></div></a>
-        <% end %>
+    <%#<% else %>
+        <%#<% if !(controller_name == 'responses' && action_name == 'index') %>
+            <!--<a><div class='corner-link'><%= inline_svg_tag 'svg-icons/add-to-favourites-icon.svg' %></div></a>-->
+        <%#<% end %>
     <% end %>
 </div>

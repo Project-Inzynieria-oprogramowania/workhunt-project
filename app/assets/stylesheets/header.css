@@ -180,15 +180,15 @@
     margin-right: 15px;
     cursor: pointer;
 }
-.search-button a img, .search-button a{
+.search-button a svg, .search-button a{
     width: 30px;
     height: 30px;
     transition-duration: 0.4s;
 }
-.search-button:hover a img{
+.search-button:hover a svg{
     filter: brightness(1.2) drop-shadow(0px 0px 10px #9f62be);
 }
-.search-button:active a img{
+.search-button:active a svg{
     transform: translateY(2px);
 }
 .on-search-page {
@@ -224,7 +224,7 @@
     .small-Button {
         font-size: 10px;
     }
-    .search-button a img, .search-button a{
+    .search-button a svg, .search-button a{
         width: 20px;
         height: 20px;
     }

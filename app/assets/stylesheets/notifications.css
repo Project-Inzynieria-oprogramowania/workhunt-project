@@ -6,17 +6,16 @@
     text-align: center;
     cursor: pointer;
 }
-.notifications-button img {
-    fill: #A6884E;
+.notifications-button svg {
     width: 30px;
     height: 30px;
     transition-duration: 0.2s;
 }
-.notifications-button img path{
-    fill: inherit;
+.notifications-button svg path {
+    fill: white;
 }
 #notification-counter-block {
-    background-color: #B50000;
+    background-color: #cb0202;
     border-radius: 10px;
     position: absolute;
     bottom: -5px;
@@ -32,10 +31,10 @@
     color: white !important;
     text-align: center;
 }
-.notifications-button:hover img:first-of-type{
+.notifications-button:hover svg:first-of-type{
     filter: brightness(1.2) drop-shadow(0px 0px 10px #9f62be);
 }
-.notifications-button:active img, .notifications-button:active span{
+.notifications-button:active svg, .notifications-button:active span{
     transform: translateY(2px);
     filter: brightness(0.9);
 }
@@ -49,7 +48,7 @@
     max-width: 800px;
     overflow-y: auto;
 }
-#notifications-container.account-menu:hover #notifications-button img:first-child{
+#notifications-container.account-menu:hover #notifications-button svg:first-child{
     filter: brightness(1.2);
 }
 .notification-block {
@@ -117,7 +116,7 @@
     }
 }
 @media (max-width: 350px) {
-    .notifications-button img{
+    .notifications-button svg{
         width: 20px;
         height: 20px;
     }

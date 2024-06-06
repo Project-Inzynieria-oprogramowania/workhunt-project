@@ -65,6 +65,9 @@ gem 'mini_magick', '~> 4.11'
 # Using Pagy for pagination [https://ddnexus.github.io/pagy/]
 gem 'pagy', '~> 8.4.1'
 
+# Gem for direct inline rendering of svg images [https://github.com/jamesmartin/inline_svg]
+gem 'inline_svg'
+
 group :development, :test do
   gem 'faker', '~> 3'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

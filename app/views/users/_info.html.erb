@@ -6,16 +6,19 @@
         <div class='top-line-element'>
             <% if user_signed_in? && @user.id == current_user.id %>
                 <%= link_to edit_user_path, class: 'corner-link' do %>
-                    <%= image_tag 'menuIcons/edit.png' %>
+                    <%# <%= image_tag 'menuIcons/edit.png' %>
+                    <%= inline_svg_tag 'svg-icons/edit-icon.svg' %>
                 <% end %>
-            <% else %>
-                <% if user_signed_in? %>
+            <%#<% else %>
+            <!--
+            <%# <% if user_signed_in? %>
                     <div class='corner-link'><%= image_tag 'menuIcons/writeToPlaceholder.png' %></div>
-                <% else %>
-                    <%# <%= link_to  do %> <a>
-                        <div class='corner-link'><%= image_tag 'menuIcons/writeToPlaceholder.png' %></div>
-                    <%# <% end %> </a>
-                <% end %>
+            <%# <% else %>
+                <%#<%= link_to  do %> <a>
+                    <div class='corner-link'><%= image_tag 'menuIcons/writeToPlaceholder.png' %></div>
+            <%#<% end %> </a>
+            <%#<% end %>
+            -->
             <% end %>
         </div>
     </div>
@@ -42,16 +45,19 @@
         <div class='top-line-element'>
             <% if current_user.present? && @user.id == current_user.id %>
                 <%= link_to edit_user_path, class: 'corner-link' do %>
-                    <%= image_tag 'menuIcons/edit.png' %>
+                    <%# <%= image_tag 'menuIcons/edit.png' %>
+                    <%= inline_svg_tag 'svg-icons/edit-icon.svg' %>
                 <% end %>
-            <% else %>
-                <% if user_signed_in? %>
+            <%#<% else %>
+            <!--
+            <%#<% if user_signed_in? %>
                     <div class='corner-link'><%= image_tag 'menuIcons/writeToPlaceholder.png' %></div>
-                <% else %>
-                    <%= link_to new_sessions_path do %>
+                <%#<% else %>
+                    <%#<%= link_to new_sessions_path do %>
                         <div class='corner-link'><%= image_tag 'menuIcons/writeToPlaceholder.png' %></div>
-                    <% end %>
-                <% end %>
+                     <%#<% end %>
+                <%#<% end %>
+            -->
             <% end %>
         </div>
     </div>

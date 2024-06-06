@@ -12,11 +12,11 @@
                 <%= 'on-search-page' if (controller_name == 'cvs' || controller_name == 'vacancies') && action_name == 'index' %>" title='Search page'>
                     <% if current_user.person? %>
                         <%= link_to vacancies_path do %>
-                            <%= image_tag 'menuIcons/go-search-icon.svg'%>
+                            <%= inline_svg_tag 'svg-icons/go-search-icon.svg' %>
                         <% end %>
                     <% elsif current_user.organization? %>
                         <%= link_to cvs_path do %>
-                            <%= image_tag 'menuIcons/go-search-icon.svg'%>
+                            <%= inline_svg_tag 'svg-icons/go-search-icon.svg' %>
                         <% end %>
                     <% end %>
                 </div>
@@ -28,7 +28,7 @@
                             </p>
                         <% end %>
                     </div>
-                    <%= image_tag 'menuIcons/notifications.svg', title: 'Show notifications'%>
+                    <%= inline_svg_tag 'svg-icons/notifications.svg', title: 'Show notifications' %>
                     <div class="account-menu" id="notifications-container" style="display: none">
                         <% if current_user.notifications.count > 0 %>
                             <%= render current_user.notifications.order(created_at: :desc) %>

@@ -82,7 +82,15 @@
    filter: brightness(90%);
    transition-duration: 0.4s;
 }
-.corner-link:hover img {
+.corner-link svg {
+   width: 30px;
+   height: 30px;
+   transition-duration: 0.4s;
+}
+.corner-link svg * {
+   fill: #fcbe41;
+}
+.corner-link:hover img, .corner-link:hover svg  {
    filter: brightness(120%) drop-shadow(0px 0px 10px rgba(244, 209, 140, 0.5));
    transition-duration: 0.4s;
 }
@@ -120,7 +128,7 @@
    .pair-single-container.profile h1 {
       font-size: 14px !important;
    }
-   .corner-link img {
+   .corner-link img, .corner-link svg {
       width: 20px;
       height: 20px;
    }

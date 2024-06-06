@@ -13,9 +13,7 @@ user = organization.user
                         <h2><%= vacancy.title %></h2>
                     </div>
                 <% end %>
-                <div class='top-line-element'>
                     <%= render 'vacancies/buttons', vacancy: vacancy %>
-                </div>
             </div>
             <p>
                 <%= link_to "#{organization.name}", show_user_path(user) %>
