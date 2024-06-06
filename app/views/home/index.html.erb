@@ -9,7 +9,7 @@
             <p>Here you can find a job that suits your preferences or find workers for your business.</p>
         </div>
     </div>
-        <%= image_tag 'Screen.png', class: ['paragraph-element about-image']%>
+        <%= image_tag 'Screen.png', class: 'paragraph-element about-image'%>
 </div>
 <div class='color-container'>
     <div class='limitation-container'>
@@ -42,12 +42,12 @@
     <div class='start-button-container'>
         <% if user_signed_in? %>
             <% if current_user.person? %>
-                <%= link_to 'TO THE HUNT!', vacancies_path, class: ['large-button'] %>
+                <%= link_to 'TO THE HUNT!', vacancies_path, class: 'large-button' %>
             <% elsif current_user.organization? %>
-                <%= link_to 'TO THE HUNT!', cvs_path, class: ['large-button'] %>
+                <%= link_to 'TO THE HUNT!', cvs_path, class: 'large-button' %>
             <% end %>
         <% else %>
-            <%= link_to 'TO THE HUNT!', vacancies_path, class: ['large-button'] %>
+            <%= link_to 'TO THE HUNT!', vacancies_path, class: 'large-button' %>
         <% end %>
      </div>
 </div>

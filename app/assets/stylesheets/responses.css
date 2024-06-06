@@ -1,7 +1,8 @@
 .brief-card-info.status.response * {
     margin-top: 0px;
 }
-.brief-card-info.status.response.overview {
+.brief-card-info.status.response.overview, 
+.brief-card-info.no-data {
     box-shadow: 0px 8px 10px 2px rgba(0, 0, 0, 0.300);
     padding: 20px;
     background-image: linear-gradient(#302A33, #3b2e43);
@@ -25,6 +26,54 @@
     color:#F4D18C;
     font-weight: 600;
 }
+/*if there is no applications/responses*/
+.brief-card-info.no-data {
+    width: 40%;
+    max-width: 800px;
+    min-width: calc(300px - 40px);
+    position: relative;
+    margin: 0 auto;
+    margin-top: 10vh;
+    align-items: center;
+}
+.brief-card-info.no-data .top-line-container img {
+    width: 40px;
+    height: auto;
+    transition-duration: 0.4s;
+}
+.brief-card-info.no-data .top-line-container .top-line-element{
+    width: 90%;
+    max-height: 90px;
+    margin-left: 20px;
+}
+.brief-card-info.no-data .button {
+    height: 20px;
+}
+.brief-card-info.no-data .top-line-container .top-line-element p {
+    transition-duration: 0.4s;
+    font-size: 15px;
+    font-weight: 600;
+    color: #E0ACFA;
+}
+@media only screen and (max-width: 900px) {
+    .brief-card-info.no-data .top-line-container img {
+        width: 20px;
+        height: auto;
+    }
+    .brief-card-info.no-data .top-line-container .top-line-element p{
+        font-size: 14px;
+    }
+    .brief-card-info.no-data .button {
+        height: 18px;
+    }
+    .brief-card-info.no-data .button:hover {
+        font-size: 16px;
+    }
+    .brief-card-info.no-data .top-line-container .top-line-element p {
+        font-size: 12px;
+    }
+}
+/* */
 @media only screen and (max-width: 600px) {
     .responses-comment p:first-child {
         width: 80%;
@@ -61,6 +110,16 @@
     }
     .form.responses .top-line-container {
         display: block;
+    }
+    .brief-card-info.no-data {
+        margin: 0 auto;
+        width: calc(100% - 40px);
+        border-radius: 0;
+        max-width: 800px;
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
     }
 }
 .brief-card-info.status.response.overview.vacancy-card {
