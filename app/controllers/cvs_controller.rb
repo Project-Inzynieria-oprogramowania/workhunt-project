@@ -43,13 +43,11 @@ class CvsController < ApplicationController
     end
 
     def index
-        @q = Cv.all.ransack(params[:q])
-        @pagy, @cvs = pagy @q.result(distinct: true).includes(:educations)
+        searching(search_params)
     end
 
     def search
-        @q = Cv.all.ransack(params[:q])
-        @cvs = @q.result(distinct: true).includes(:educations)
+        searching(search_params)
         render partial: 'cvs/search_results', locals: { pagy: @pagy, cvs: @cvs }
     end
 
@@ -82,6 +80,12 @@ class CvsController < ApplicationController
         )
     end
 
+    def search_params
+        params.fetch(:q, {}).permit(
+            :about_or_skills_cont, :educations_education_level_in
+        )
+    end
+
     def check_profile
         cv = Cv.find(current_user.person.cv.id)
         return if current_user.person.id == cv.person_id
@@ -104,5 +108,15 @@ class CvsController < ApplicationController
 
     def get_cv
         @cv ||= current_user.person.cv
+    end
+
+    def searching(search_params, action = 'index')
+        @q = Cv.all.ransack(params[:q])
+        current_url = url_for(controller: 'cvs', action: action, only_path: true)
+        @pagy, @cvs = pagy(
+            @q.result(distinct: true).includes(:educations),
+            page_params: {q: search_params}.to_query,
+            request_path: current_url,
+        )
     end
 end

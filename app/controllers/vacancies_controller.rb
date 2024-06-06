@@ -24,29 +24,11 @@ class VacanciesController < ApplicationController
     end
 
     def index
-        @vacancies = Vacancy.where(status: 'Opened')
-        if params[:q].present? && params[:q][:salary_min_cents_gteq].present?
-            min_salary = params[:q][:salary_min_cents_gteq].to_i * 100
-            @vacancies = @vacancies.where(
-                'salary_min_cents >= ? OR (salary_min_cents IS NULL AND (salary_max_cents >= ? OR salary_max_cents IS NULL))',
-                min_salary, min_salary
-            )
-        end
-        @q = @vacancies.ransack(params[:q])
-        @pagy, @vacancies = pagy @q.result(distinct: true)
+        searching(search_params)
     end
 
     def search
-        @vacancies = Vacancy.where(status: 'Opened')
-        if params[:q].present? && params[:q][:salary_min_cents_gteq].present?
-            min_salary = params[:q][:salary_min_cents_gteq].to_i * 100
-            @vacancies = @vacancies.where(
-                'salary_min_cents >= ? OR (salary_min_cents IS NULL AND (salary_max_cents >= ? OR salary_max_cents IS NULL))',
-                min_salary, min_salary
-            )
-        end
-        @q = @vacancies.ransack(params[:q])
-        @pagy, @vacancies = pagy @q.result(distinct: true)
+        searching(search_params)
         render partial: 'vacancies/search_results', locals: { pagy: @pagy, vacancies: @vacancies }
     end
 
@@ -82,6 +64,13 @@ class VacanciesController < ApplicationController
             :work_type, :status, :organization_id)
     end
 
+    def search_params
+        params.fetch(:q, {}).permit(
+            :title_or_description_cont, 
+            :job_type_in, :work_type_in, :education_in, :subordination_level_in, :contract_type_in, :working_time_in, 
+            :salary_min_cents_gteq, :currency_in)
+    end
+
     def check_profile
         @vacancy = Vacancy.find(params[:id])
         return if current_user.organization.id == @vacancy.organization_id
@@ -91,5 +80,23 @@ class VacanciesController < ApplicationController
 
     def get_vacancy
         @vacancy ||= Vacancy.find(params[:id])
+    end
+
+    def searching(search_params, action = 'index')
+        @vacancies = Vacancy.where(status: 'Opened')
+        if search_params.present? && search_params[:salary_min_cents_gteq].present?
+            min_salary = search_params[:salary_min_cents_gteq].to_i * 100
+            @vacancies = @vacancies.where(
+                'salary_min_cents >= ? OR (salary_min_cents IS NULL AND (salary_max_cents >= ? OR salary_max_cents IS NULL))',
+                min_salary, min_salary
+            )
+        end
+        @q = @vacancies.ransack(search_params)        
+        current_url = url_for(controller: 'vacancies', action: action, only_path: true)
+        @pagy, @vacancies = pagy(
+            @q.result(distinct: true),
+            page_params: {q: search_params}.to_query,
+            request_path: current_url,
+        )
     end
 end

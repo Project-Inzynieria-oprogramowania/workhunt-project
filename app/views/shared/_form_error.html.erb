@@ -1,3 +1,5 @@
+<%# PARAMS: model, parametr %>
+
 <% if model.errors[parametr].any? %> 
     <% model.errors.full_messages_for(parametr).each do | message | %> 
         <p class="form-error"><%= message %></p>  

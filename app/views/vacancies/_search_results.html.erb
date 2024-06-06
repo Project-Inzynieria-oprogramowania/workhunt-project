@@ -1,3 +1,3 @@
-<% if pagy.present? %><%== pagy_nav(pagy) %><% end %>
+<%= render 'shared/pagy_navigation', pagy: pagy %>
 <%= render partial: 'vacancies/vacancy', collection: vacancies %>
-<% if pagy.present? %><%== pagy_nav(pagy) %><% end %>
+<%= render 'shared/pagy_navigation', pagy: pagy %>
