@@ -6,8 +6,9 @@
 
 <% if current_user.organization? %>
     <% provide :page_title, "Candidates" %>
-    <% @responses.each do | response | %>
-        <div class='brief-card-info status response overview'>
+    <% if @responses.count > 0 %>
+        <% @responses.each do | response | %>
+            <div class='brief-card-info status response overview'>
                 <% if response.person.cv.present? %>
                     <%= render response.person.cv %>
                 <% else %>
@@ -22,22 +23,34 @@
                     </div>
                     <%= link_to "Show more", response_path(response), class: 'button' %>
                 </div>
+            </div>
+        <% end %>
+    <% else %>
+        <div class='brief-card-info status response overview'>
+            <p>There are no answers at the moment</p>
         </div>
-    <% end %>
+    <% end %> 
 <% else %>
     <% provide :page_title, "My applications" %>
-    <% @responses.each do | response | %>
-        <div class='brief-card-info status response overview'>
-            <%= render response.vacancy %>
-                <div class='top-line-container'>
-                    <div class="detailed-tag-info initial <%= response.status %> 
-                    <%= 'accepted' if response.status == 'accepted' ||  response.status == 'internship_offered'%> 
-                    <%= 'rejected' if response.status == 'rejected' %>
-                    <%= 'neutral' if response.status  ==  'under_consideration' || response.status  ==  'interview_scheduled' || response.status  ==  'reserved'%>">
-                        <p>Status: </p> <span><%= response.status %></span>
+    <% if @responses.count > 0 %>
+        <% @responses.each do | response | %>
+            <div class='brief-card-info status response overview'>
+                <%= render response.vacancy %>
+                    <div class='top-line-container'>
+                        <div class="detailed-tag-info initial <%= response.status %> 
+                        <%= 'accepted' if response.status == 'accepted' ||  response.status == 'internship_offered'%> 
+                        <%= 'rejected' if response.status == 'rejected' %>
+                        <%= 'neutral' if response.status  ==  'under_consideration' || response.status  ==  'interview_scheduled' || response.status  ==  'reserved'%>">
+                            <p>Status: </p> <span><%= response.status %></span>
+                        </div>
+                        <%= link_to "Show more", response_path(response), class: 'button' %>
                     </div>
-                    <%= link_to "Show more", response_path(response), class: 'button' %>
-                </div>
+            </div>
+        <% end %>
+    <% else %>
+        <div class='brief-card-info status response overview'>
+            <p>You have not submitted any applications at this time. Do it now!</p>
+             <%= link_to 'TO THE HUNT!', vacancies_path, class: 'button' %>
         </div>
-    <% end %>
+    <% end %> 
 <% end %>

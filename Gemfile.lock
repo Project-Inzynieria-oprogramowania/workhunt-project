@@ -124,6 +124,9 @@ GEM
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
       railties (>= 6.0.0)
+    inline_svg (1.9.0)
+      activesupport (>= 3.0)
+      nokogiri (>= 1.6)
     io-console (0.7.2)
     irb (1.13.1)
       rdoc (>= 4.0.0)
@@ -286,6 +289,7 @@ DEPENDENCIES
   debug
   faker (~> 3)
   importmap-rails
+  inline_svg
   mini_magick (~> 4.11)
   money-rails (~> 1.12)
   pagy (~> 8.4.1)
